@@ -7,17 +7,11 @@ export function Header() {
       </div>
 
       <div className="container max-w-4xl mx-auto text-center relative z-10">
-        {/* Logo */}
         <div className="inline-flex items-center gap-3 mb-6 animate-fade-in">
-          
-          
         </div>
-
-        {/* Tagline */}
-        
         <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto animate-slide-up" style={{
         animationDelay: '100ms'
-      }}>Discover videos from Timeless Today, Prem Rawat official YouTube channel. Begin your journey to inner peace here!</p>
+      }}>Discover videos from Timeless Today, Prem Rawat official YouTube channel. Begin your journey to inner peace here!</p>
       </div>
     </header>;
 }

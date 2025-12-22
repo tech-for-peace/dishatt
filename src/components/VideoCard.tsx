@@ -26,7 +26,7 @@ export function VideoCard({ video, index }: VideoCardProps) {
             <Play className="h-6 w-6 text-primary-foreground ml-1" />
           </div>
         </div>
-        
+
         {/* Duration Badge */}
         <div className="absolute bottom-3 right-3 px-2 py-1 rounded-md bg-foreground/80 text-background text-xs font-medium">
           {formatDuration(video.duration)}

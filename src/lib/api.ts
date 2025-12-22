@@ -10,10 +10,10 @@ export async function searchVideos(filters: SearchFilters): Promise<SearchRespon
 
   // Get results (using mock data since there's no backend)
   const response = getMockResults(filters);
-  
+
   // Cache the results
   setCachedResults(filters, response.results);
-  
+
   return response;
 }
 

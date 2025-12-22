@@ -74,10 +74,10 @@ const Index = () => {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-border py-8 mt-16">
+      <footer className="py-1">
         <div className="container max-w-6xl mx-auto px-4 text-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Disha. Your compass to wisdom and inner peace.
+            © {new Date().getFullYear()} Aman Mangal
           </p>
         </div>
       </footer>
