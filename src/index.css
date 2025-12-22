@@ -9,6 +9,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&display=swap");
 
 @layer base {
+  #lovable-badge {
+    display: none !important;
+  }
+
   :root {
     --background: 209 40% 96%;
     --foreground: 222 47% 11%;

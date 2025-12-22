@@ -44,4 +44,4 @@ export const DURATION_BANDS: DurationBand[] = [
   { label: '> 1 hour', min: 60 },
 ];
 
-export const YEARS = Array.from({ length: 15 }, (_, i) => (2024 - i).toString());
+export const YEARS = Array.from({ length: 15 }, (_, i) => (new Date().getFullYear() - i).toString());
