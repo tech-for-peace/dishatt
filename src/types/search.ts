@@ -8,7 +8,6 @@ export interface DurationBand {
 }
 
 export interface SearchFilters {
-  query: string;
   language: Language;
   source: Source;
   durationBand: string;

@@ -1,49 +1,20 @@
 import { SearchFilters, SearchResponse, DURATION_BANDS, VideoResult } from '@/types/search';
-
-const API_BASE_URL = 'http://localhost:8000';
+import { getCachedResults, setCachedResults } from './cache';
 
 export async function searchVideos(filters: SearchFilters): Promise<SearchResponse> {
-  const params = new URLSearchParams();
-
-  if (filters.query) {
-    params.append('q', filters.query);
+  // Check cache first
+  const cached = getCachedResults(filters);
+  if (cached) {
+    return { results: cached, total: cached.length };
   }
 
-  if (filters.language) {
-    params.append('language', filters.language);
-  }
-
-  if (filters.source) {
-    params.append('source', filters.source);
-  }
-
-  if (filters.year) {
-    params.append('year', filters.year);
-  }
-
-  if (filters.durationBand) {
-    const band = DURATION_BANDS.find(b => b.label === filters.durationBand);
-    if (band) {
-      if (band.min !== undefined) {
-        params.append('duration_min', band.min.toString());
-      }
-      if (band.max !== undefined) {
-        params.append('duration_max', band.max.toString());
-      }
-    }
-  }
-
-  try {
-    const response = await fetch(`${API_BASE_URL}/search?${params.toString()}`);
-    if (!response.ok) {
-      throw new Error('Search failed');
-    }
-    return await response.json();
-  } catch (error) {
-    console.error('API Error:', error);
-    // Return mock data for demo purposes when API is not available
-    return getMockResults(filters);
-  }
+  // Get results (using mock data since there's no backend)
+  const response = getMockResults(filters);
+  
+  // Cache the results
+  setCachedResults(filters, response.results);
+  
+  return response;
 }
 
 function getMockResults(filters: SearchFilters): SearchResponse {
@@ -117,13 +88,6 @@ function getMockResults(filters: SearchFilters): SearchResponse {
   ];
 
   let filtered = [...mockVideos];
-
-  if (filters.query) {
-    const query = filters.query.toLowerCase();
-    filtered = filtered.filter(
-      v => v.title.toLowerCase().includes(query) || v.description.toLowerCase().includes(query)
-    );
-  }
 
   if (filters.language) {
     filtered = filtered.filter(v => v.language === filters.language);

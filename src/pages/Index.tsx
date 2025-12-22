@@ -1,14 +1,12 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Header } from '@/components/Header';
-import { SearchBar } from '@/components/SearchBar';
 import { FilterPanel } from '@/components/FilterPanel';
 import { VideoGrid } from '@/components/VideoGrid';
-import { SearchFilters, VideoResult, Language, Source } from '@/types/search';
+import { SearchFilters, VideoResult } from '@/types/search';
 import { searchVideos } from '@/lib/api';
 import { useToast } from '@/hooks/use-toast';
 
 const initialFilters: SearchFilters = {
-  query: '',
   language: '',
   source: '',
   durationBand: '',
@@ -19,12 +17,10 @@ const Index = () => {
   const [filters, setFilters] = useState<SearchFilters>(initialFilters);
   const [videos, setVideos] = useState<VideoResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [hasSearched, setHasSearched] = useState(false);
   const { toast } = useToast();
 
   const performSearch = useCallback(async (searchFilters: SearchFilters) => {
     setIsLoading(true);
-    setHasSearched(true);
 
     try {
       const response = await searchVideos(searchFilters);
@@ -41,53 +37,41 @@ const Index = () => {
     }
   }, [toast]);
 
-  const handleSearch = useCallback((query: string) => {
-    const newFilters = { ...filters, query };
-    setFilters(newFilters);
-    performSearch(newFilters);
-  }, [filters, performSearch]);
+  // Load initial results on mount
+  useEffect(() => {
+    performSearch(filters);
+  }, []);
 
   const handleFilterChange = useCallback((key: keyof SearchFilters, value: string) => {
     const newFilters = { ...filters, [key]: value };
     setFilters(newFilters);
-    
-    // Only auto-search if we've already performed a search
-    if (hasSearched) {
-      performSearch(newFilters);
-    }
-  }, [filters, hasSearched, performSearch]);
+    performSearch(newFilters);
+  }, [filters, performSearch]);
 
   const handleClearFilters = useCallback(() => {
-    const newFilters = { ...initialFilters, query: filters.query };
-    setFilters(newFilters);
-    
-    if (hasSearched) {
-      performSearch(newFilters);
-    }
-  }, [filters.query, hasSearched, performSearch]);
+    setFilters(initialFilters);
+    performSearch(initialFilters);
+  }, [performSearch]);
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
 
       <main className="container max-w-6xl mx-auto px-4 py-8 space-y-8">
-        {/* Search Section */}
-        <div className="-mt-20 relative z-20">
-          <SearchBar onSearch={handleSearch} initialQuery={filters.query} />
-        </div>
-
         {/* Filters */}
-        <FilterPanel
-          filters={filters}
-          onFilterChange={handleFilterChange}
-          onClearFilters={handleClearFilters}
-        />
+        <div className="-mt-20 relative z-20">
+          <FilterPanel
+            filters={filters}
+            onFilterChange={handleFilterChange}
+            onClearFilters={handleClearFilters}
+          />
+        </div>
 
         {/* Results */}
         <VideoGrid
           videos={videos}
           isLoading={isLoading}
-          hasSearched={hasSearched}
+          hasSearched={true}
         />
       </main>
 
