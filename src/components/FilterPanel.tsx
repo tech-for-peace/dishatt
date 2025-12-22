@@ -80,6 +80,11 @@ export function FilterPanel({ filters, onFilterChange }: FilterPanelProps) {
           value={filters.titleSearch}
           onChange={(e) => onFilterChange('titleSearch', e.target.value)}
           className="bg-background/50 border-border/50 hover:border-primary/30 transition-colors"
+          inputMode="search"
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
         />
       </div>
     </div>
