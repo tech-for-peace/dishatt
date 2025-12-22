@@ -1,0 +1,44 @@
+export type Language = 'english' | 'hindi' | '';
+export type Source = 'youtube' | 'timelesstoday' | '';
+
+export interface DurationBand {
+  label: string;
+  min?: number;
+  max?: number;
+}
+
+export interface SearchFilters {
+  query: string;
+  language: Language;
+  source: Source;
+  durationBand: string;
+  year: string;
+}
+
+export interface VideoResult {
+  id: string;
+  title: string;
+  description: string;
+  thumbnail: string;
+  duration: number;
+  source: 'youtube' | 'timelesstoday';
+  publishedYear: number;
+  language: string;
+  url: string;
+}
+
+export interface SearchResponse {
+  results: VideoResult[];
+  total: number;
+}
+
+export const DURATION_BANDS: DurationBand[] = [
+  { label: 'Any Duration' },
+  { label: '< 10 min', max: 10 },
+  { label: '10-20 min', min: 10, max: 20 },
+  { label: '20-40 min', min: 20, max: 40 },
+  { label: '40-60 min', min: 40, max: 60 },
+  { label: '> 1 hour', min: 60 },
+];
+
+export const YEARS = Array.from({ length: 15 }, (_, i) => (2024 - i).toString());
