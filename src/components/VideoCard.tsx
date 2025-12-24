@@ -66,6 +66,7 @@ export function VideoCard({ video, index }: VideoCardProps) {
           width={355}
           height={200}
           loading={index < 3 ? "eager" : "lazy"}
+          fetchPriority={index === 0 ? "high" : undefined}
           decoding="async"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
