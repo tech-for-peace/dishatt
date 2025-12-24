@@ -63,6 +63,10 @@ export function VideoCard({ video, index }: VideoCardProps) {
         <img
           src={video.thumbnail}
           alt={video.title}
+          width={355}
+          height={200}
+          loading={index < 3 ? "eager" : "lazy"}
+          decoding="async"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300 flex items-center justify-center">
