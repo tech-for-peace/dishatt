@@ -86,7 +86,7 @@ export function VideoCard({ video, index }: VideoCardProps) {
           className={`absolute top-3 left-3 text-xs font-medium ${
             video.source === 'youtube'
               ? 'bg-red-600 hover:bg-red-700 text-white'
-              : 'bg-amber-500 hover:bg-amber-600 text-white'
+              : 'bg-amber-700 hover:bg-amber-800 text-white'
           }`}
         >
           {video.source === 'youtube' ? t('videoCard.youtube') : t('videoCard.timelessToday')}
