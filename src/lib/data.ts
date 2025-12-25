@@ -7,7 +7,7 @@ const CACHE_PATH = '/data/cache.json';
 let cachedVideos: VideoResult[] | null = null;
 let cachePromise: Promise<VideoResult[]> | null = null;
 
-interface SearchOptions extends SearchFilters {}
+type SearchOptions = SearchFilters;
 
 async function loadAllVideos(): Promise<VideoResult[]> {
   // Return cached data if already loaded
@@ -31,6 +31,7 @@ async function loadAllVideos(): Promise<VideoResult[]> {
       const data = await response.json();
       cachedVideos = data.videos
         ? Object.values(data.videos)
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             .map((video: any) => ({
               id: video.VideoID,
               title: video.Name,

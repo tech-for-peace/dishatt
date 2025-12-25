@@ -77,7 +77,7 @@ const Index = () => {
       return allVideos;
     }
     return allVideos.filter((video) => !isWatched(video.id));
-  }, [allVideos, showWatched, isWatched, watchedIds]);
+  }, [allVideos, showWatched, isWatched]);
 
   // Update displayed videos when filteredVideos or visibleCount changes
   useEffect(() => {
