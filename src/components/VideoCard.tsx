@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Play, Calendar, Clock, Globe, Sparkles, Eye, EyeOff } from 'lucide-react';
+import { Play, Calendar, Clock, Globe, Sparkles, Check } from 'lucide-react';
 import { VideoResult } from '@/types/search';
 import { Badge } from './ui/badge';
 import { isThisMonth } from 'date-fns';
@@ -99,19 +99,6 @@ export function VideoCard({ video, index, isWatched = false, onToggleWatched }: 
           {video.source === 'youtube' ? t('videoCard.youtube') : t('videoCard.timelessToday')}
         </Badge>
 
-        {/* Watched Toggle Button */}
-        <button
-          onClick={handleToggleWatched}
-          className={`absolute top-3 right-3 p-1.5 rounded-full transition-all duration-200 ${
-            isWatched
-              ? 'bg-primary text-primary-foreground'
-              : 'bg-foreground/60 text-background hover:bg-foreground/80'
-          }`}
-          title={isWatched ? t('videoCard.markUnwatched') : t('videoCard.markWatched')}
-          aria-label={isWatched ? t('videoCard.markUnwatched') : t('videoCard.markWatched')}
-        >
-          {isWatched ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
-        </button>
       </div>
 
       {/* Content */}
@@ -123,26 +110,43 @@ export function VideoCard({ video, index, isWatched = false, onToggleWatched }: 
           {video.description}
         </p>
 
-        {/* Meta Info */}
-        <div className="flex items-center gap-4 text-xs text-muted-foreground pt-2">
-          <span className="flex items-center gap-1.5">
-            <Calendar className="h-3.5 w-3.5 flex-shrink-0" />
-            {formatDate(videoDate)}
-            {isNew && (
-              <Badge variant="default" className="ml-1 bg-green-600 hover:bg-green-700 text-xs h-4 px-1.5">
-                <Sparkles className="h-2.5 w-2.5 mr-1" />
-                {t('results.new')}
-              </Badge>
-            )}
-          </span>
-          <span className="flex items-center gap-1 capitalize">
-            <Globe className="h-3.5 w-3.5" />
-            {formatLanguage(video.language)}
-          </span>
-          <span className="flex items-center gap-1">
-            <Clock className="h-3.5 w-3.5" />
-            {formatDuration(video.duration, currentLanguage)}
-          </span>
+        {/* Meta Info and Watched Button */}
+        <div className="flex items-center justify-between gap-2 pt-2">
+          <div className="flex items-center gap-4 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1.5">
+              <Calendar className="h-3.5 w-3.5 flex-shrink-0" />
+              {formatDate(videoDate)}
+              {isNew && (
+                <Badge variant="default" className="ml-1 bg-green-600 hover:bg-green-700 text-xs h-4 px-1.5">
+                  <Sparkles className="h-2.5 w-2.5 mr-1" />
+                  {t('results.new')}
+                </Badge>
+              )}
+            </span>
+            <span className="flex items-center gap-1 capitalize">
+              <Globe className="h-3.5 w-3.5" />
+              {formatLanguage(video.language)}
+            </span>
+            <span className="flex items-center gap-1">
+              <Clock className="h-3.5 w-3.5" />
+              {formatDuration(video.duration, currentLanguage)}
+            </span>
+          </div>
+
+          {/* Watched Toggle Button */}
+          <button
+            onClick={handleToggleWatched}
+            className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium transition-all duration-200 ${
+              isWatched
+                ? 'bg-primary/15 text-primary border border-primary/30'
+                : 'bg-muted text-muted-foreground hover:bg-muted/80 border border-transparent'
+            }`}
+            title={isWatched ? t('videoCard.markUnwatched') : t('videoCard.markWatched')}
+            aria-label={isWatched ? t('videoCard.markUnwatched') : t('videoCard.markWatched')}
+          >
+            <Check className={`h-3.5 w-3.5 ${isWatched ? 'opacity-100' : 'opacity-50'}`} />
+            {isWatched ? t('videoCard.watched') : t('videoCard.watched')}
+          </button>
         </div>
       </div>
     </div>

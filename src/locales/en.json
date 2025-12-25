@@ -29,6 +29,7 @@
     "videoCard": {
         "youtube": "YouTube",
         "timelessToday": "Timeless Today",
+        "watched": "Watched",
         "markWatched": "Mark as watched",
         "markUnwatched": "Mark as unwatched"
     },

@@ -29,6 +29,7 @@
     "videoCard": {
         "youtube": "यूट्यूब",
         "timelessToday": "टाइमलेस टुडे",
+        "watched": "देखा गया",
         "markWatched": "देखा गया चिह्नित करें",
         "markUnwatched": "अनदेखा चिह्नित करें"
     },
