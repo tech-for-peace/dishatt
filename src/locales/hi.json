@@ -22,11 +22,15 @@
         "loading": "लोड हो रहा है...",
         "noVideosFound": "कोई वीडियो नहीं मिला",
         "noVideosMessage": "और सामग्री खोजने के लिए अपने खोज शब्द या फ़िल्टर बदलने का प्रयास करें।",
-        "useFilters": "वीडियो खोजने के लिए ऊपर दिए गए फ़िल्टर्स का उपयोग करें"
+        "useFilters": "वीडियो खोजने के लिए ऊपर दिए गए फ़िल्टर्स का उपयोग करें",
+        "showWatched": "देखे गए दिखाएं ({{count}})",
+        "hideWatched": "देखे गए छुपाएं"
     },
     "videoCard": {
         "youtube": "यूट्यूब",
-        "timelessToday": "टाइमलेस टुडे"
+        "timelessToday": "टाइमलेस टुडे",
+        "markWatched": "देखा गया चिह्नित करें",
+        "markUnwatched": "अनदेखा चिह्नित करें"
     },
     "language": {
         "english": "English",

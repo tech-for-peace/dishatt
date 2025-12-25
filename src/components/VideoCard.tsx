@@ -1,45 +1,46 @@
-import { Play, Clock, Calendar, Globe, Sparkles } from 'lucide-react';
-import { format, isThisMonth } from 'date-fns';
-import { enUS } from 'date-fns/locale';
 import { useTranslation } from 'react-i18next';
+import { Play, Calendar, Clock, Globe, Sparkles, Eye, EyeOff } from 'lucide-react';
 import { VideoResult } from '@/types/search';
-import { formatLanguage } from '@/lib/data';
-import { Badge } from '@/components/ui/badge';
+import { Badge } from './ui/badge';
+import { isThisMonth } from 'date-fns';
 
-// Helper function to format duration
-const formatDuration = (minutes: number, language: string): string => {
+// Language-aware duration formatting
+function formatDuration(minutes: number, language: string): string {
   const hours = Math.floor(minutes / 60);
   const mins = minutes % 60;
 
   if (language === 'hi') {
-    if (hours > 0) {
-      return `${hours} घंटे ${mins} मिनट`;
-    }
+    if (hours > 0 && mins > 0) return `${hours} घंटे ${mins} मिनट`;
+    if (hours > 0) return `${hours} घंटे`;
     return `${mins} मिनट`;
   }
 
-  // English formatting
-  if (hours > 0) {
-    return `${hours}h ${mins}m`;
-  }
+  if (hours > 0 && mins > 0) return `${hours}h ${mins}m`;
+  if (hours > 0) return `${hours}h`;
   return `${mins}m`;
-};
+}
 
-// Date formatter - always use English for dates
-const formatDate = (date: Date): string => {
-  return format(date, 'MMM yyyy', { locale: enUS });
-};
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+}
+
+function formatLanguage(langCode: string): string {
+  return langCode === 'hi' ? 'Hindi' : 'English';
+}
 
 interface VideoCardProps {
   video: VideoResult;
   index: number;
+  isWatched?: boolean;
+  onToggleWatched?: (videoId: string, watched: boolean) => void;
 }
 
-export function VideoCard({ video, index }: VideoCardProps) {
+export function VideoCard({ video, index, isWatched = false, onToggleWatched }: VideoCardProps) {
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language;
   const videoDate = new Date(video.publishedYear, video.publishedMonth ? video.publishedMonth - 1 : 0, 1);
   const isNew = isThisMonth(videoDate);
+
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     let url = video.url;
@@ -50,6 +51,11 @@ export function VideoCard({ video, index }: VideoCardProps) {
     }
 
     window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleToggleWatched = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onToggleWatched?.(video.id, !isWatched);
   };
 
   return (
@@ -92,6 +98,20 @@ export function VideoCard({ video, index }: VideoCardProps) {
         >
           {video.source === 'youtube' ? t('videoCard.youtube') : t('videoCard.timelessToday')}
         </Badge>
+
+        {/* Watched Toggle Button */}
+        <button
+          onClick={handleToggleWatched}
+          className={`absolute top-3 right-3 p-1.5 rounded-full transition-all duration-200 ${
+            isWatched
+              ? 'bg-primary text-primary-foreground'
+              : 'bg-foreground/60 text-background hover:bg-foreground/80'
+          }`}
+          title={isWatched ? t('videoCard.markUnwatched') : t('videoCard.markWatched')}
+          aria-label={isWatched ? t('videoCard.markUnwatched') : t('videoCard.markWatched')}
+        >
+          {isWatched ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
+        </button>
       </div>
 
       {/* Content */}

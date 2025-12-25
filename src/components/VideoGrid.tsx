@@ -7,9 +7,11 @@ interface VideoGridProps {
   videos: VideoResult[];
   isLoading: boolean;
   hasSearched: boolean;
+  watchedIds?: Set<string>;
+  onToggleWatched?: (videoId: string, watched: boolean) => void;
 }
 
-export function VideoGrid({ videos, isLoading, hasSearched }: VideoGridProps) {
+export function VideoGrid({ videos, isLoading, hasSearched, watchedIds, onToggleWatched }: VideoGridProps) {
   const { t } = useTranslation();
   
   // Container with min-height to prevent layout shifts
@@ -73,7 +75,13 @@ export function VideoGrid({ videos, isLoading, hasSearched }: VideoGridProps) {
     <div className={containerClass}>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {videos.map((video, index) => (
-          <VideoCard key={video.id} video={video} index={index} />
+          <VideoCard
+            key={video.id}
+            video={video}
+            index={index}
+            isWatched={watchedIds?.has(video.id)}
+            onToggleWatched={onToggleWatched}
+          />
         ))}
       </div>
     </div>

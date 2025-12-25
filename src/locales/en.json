@@ -21,11 +21,16 @@
         "loading": "Loading...",
         "noVideosFound": "No videos found",
         "noVideosMessage": "Try adjusting your search terms or filters to discover more content.",
-        "useFilters": "Use the filters above to find videos"
+        "useFilters": "Use the filters above to find videos",
+        "new": "New",
+        "showWatched": "Show watched ({{count}})",
+        "hideWatched": "Hide watched"
     },
     "videoCard": {
         "youtube": "YouTube",
-        "timelessToday": "Timeless Today"
+        "timelessToday": "Timeless Today",
+        "markWatched": "Mark as watched",
+        "markUnwatched": "Mark as unwatched"
     },
     "language": {
         "english": "English",

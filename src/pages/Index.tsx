@@ -1,37 +1,38 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Eye, EyeOff } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { FilterPanel } from '@/components/FilterPanel';
 import { VideoGrid } from '@/components/VideoGrid';
-import { SearchFilters, VideoResult } from '@/types/search';
 import { searchVideos } from '@/lib/data';
+import { SearchFilters, VideoResult } from '@/types/search';
 import { useToast } from '@/hooks/use-toast';
+import { useWatchedVideos } from '@/hooks/useWatchedVideos';
 
-const STORAGE_KEY = 'disha-filters';
+const FILTERS_STORAGE_KEY = 'videoSearchFilters';
 
 const initialFilters: SearchFilters = {
   language: '',
   source: '',
-  durationBand: '',
   year: '',
+  durationBand: '',
   titleSearch: '',
 };
 
 const getStoredFilters = (): SearchFilters => {
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) : initialFilters;
-  } catch {
-    return initialFilters;
+  const stored = localStorage.getItem(FILTERS_STORAGE_KEY);
+  if (stored) {
+    try {
+      return JSON.parse(stored);
+    } catch {
+      return initialFilters;
+    }
   }
+  return initialFilters;
 };
 
 const storeFilters = (filters: SearchFilters) => {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(filters));
-  } catch {
-    // Silently fail if localStorage is not available
-  }
+  localStorage.setItem(FILTERS_STORAGE_KEY, JSON.stringify(filters));
 };
 
 const Index = () => {
@@ -39,16 +40,25 @@ const Index = () => {
   const [allVideos, setAllVideos] = useState<VideoResult[]>([]);
   const [displayedVideos, setDisplayedVideos] = useState<VideoResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(10); // Number of videos to show initially
+  const [visibleCount, setVisibleCount] = useState(10);
   const { toast } = useToast();
   const { t } = useTranslation();
+
+  const {
+    watchedIds,
+    showWatched,
+    watchedCount,
+    markAsWatched,
+    unmarkAsWatched,
+    isWatched,
+    toggleShowWatched,
+  } = useWatchedVideos();
 
   const performSearch = useCallback(async (searchFilters: SearchFilters) => {
     setIsLoading(true);
     try {
       const results = await searchVideos(searchFilters);
       setAllVideos(results);
-      setDisplayedVideos(results.slice(0, visibleCount));
     } catch (error) {
       console.error('Search error:', error);
       toast({
@@ -61,11 +71,23 @@ const Index = () => {
     }
   }, [toast]);
 
+  // Filter videos based on watched status
+  const filteredVideos = useMemo(() => {
+    if (showWatched) {
+      return allVideos;
+    }
+    return allVideos.filter((video) => !isWatched(video.id));
+  }, [allVideos, showWatched, isWatched, watchedIds]);
+
+  // Update displayed videos when filteredVideos or visibleCount changes
+  useEffect(() => {
+    setDisplayedVideos(filteredVideos.slice(0, visibleCount));
+  }, [filteredVideos, visibleCount]);
+
   const handleLoadMore = useCallback(() => {
-    const newCount = visibleCount + 10; // Load 10 more videos
+    const newCount = visibleCount + 10;
     setVisibleCount(newCount);
-    setDisplayedVideos(allVideos.slice(0, newCount));
-  }, [allVideos, visibleCount]);
+  }, [visibleCount]);
 
   // Load initial results on mount and when filters change
   useEffect(() => {
@@ -82,9 +104,16 @@ const Index = () => {
   const handleResetFilters = useCallback(() => {
     setFilters(initialFilters);
     storeFilters(initialFilters);
-    // Reset the visible count when filters are reset
     setVisibleCount(10);
   }, []);
+
+  const handleToggleWatched = useCallback((videoId: string, watched: boolean) => {
+    if (watched) {
+      markAsWatched(videoId);
+    } else {
+      unmarkAsWatched(videoId);
+    }
+  }, [markAsWatched, unmarkAsWatched]);
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -101,10 +130,26 @@ const Index = () => {
         </div>
 
         {/* Results Header */}
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
           <h2 className="text-2xl font-semibold text-foreground">
-            {t('results.videoCount', { count: allVideos.length })}
+            {t('results.videoCount', { count: filteredVideos.length })}
           </h2>
+
+          {/* Show Watched Toggle */}
+          <button
+            onClick={toggleShowWatched}
+            className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+              showWatched
+                ? 'bg-primary text-primary-foreground'
+                : 'bg-muted text-muted-foreground hover:bg-muted/80'
+            }`}
+            aria-label={showWatched ? t('results.hideWatched') : t('results.showWatched')}
+          >
+            {showWatched ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
+            {showWatched
+              ? t('results.hideWatched')
+              : t('results.showWatched', { count: watchedCount })}
+          </button>
         </div>
 
         {/* Video Grid */}
@@ -113,10 +158,12 @@ const Index = () => {
             videos={displayedVideos}
             isLoading={isLoading}
             hasSearched={true}
+            watchedIds={watchedIds}
+            onToggleWatched={handleToggleWatched}
           />
 
           {/* Load More Button */}
-          {allVideos.length > displayedVideos.length && (
+          {filteredVideos.length > displayedVideos.length && (
             <div className="flex justify-center pt-4">
               <button
                 onClick={handleLoadMore}
