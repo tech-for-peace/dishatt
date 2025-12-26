@@ -18,11 +18,16 @@ export default defineConfig(({ mode }) => ({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
+        manualChunks: (id) => {
           // Split vendor chunks for better caching
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-i18n': ['i18next', 'react-i18next', 'i18next-browser-languagedetector'],
-          'vendor-ui': ['@radix-ui/react-select', '@radix-ui/react-toast', '@radix-ui/react-tooltip'],
+          if (id.includes('node_modules')) {
+            if (id.includes('react-dom')) return 'vendor-react-dom';
+            if (id.includes('react-router')) return 'vendor-router';
+            if (id.includes('i18next')) return 'vendor-i18n';
+            if (id.includes('@radix-ui')) return 'vendor-radix';
+            if (id.includes('@tanstack')) return 'vendor-query';
+            if (id.includes('lucide-react')) return 'vendor-icons';
+          }
         },
       },
     },
