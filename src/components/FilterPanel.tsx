@@ -1,7 +1,13 @@
 import { useTranslation } from 'react-i18next';
-import { RefreshCw } from 'lucide-react';
+import { RefreshCw, ChevronDown } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuCheckboxItem,
+} from '@/components/ui/dropdown-menu';
 import { SearchFilters, DURATION_BANDS, YEARS, Language, Source } from '@/types/search';
 
 const formatDurationLabel = (label: string, language: string): string => {
@@ -35,12 +41,30 @@ const formatDurationLabel = (label: string, language: string): string => {
 
 interface FilterPanelProps {
   filters: SearchFilters;
-  onFilterChange: (key: keyof SearchFilters, value: string) => void;
+  onFilterChange: (key: keyof SearchFilters, value: string | string[]) => void;
   onResetFilters: () => void;
 }
 
 export function FilterPanel({ filters, onFilterChange, onResetFilters }: FilterPanelProps) {
   const { t, i18n } = useTranslation();
+
+  const durationOptions = DURATION_BANDS.filter(band => band.label !== 'Any Duration');
+
+  const handleDurationToggle = (label: string) => {
+    const current = filters.durationBands || [];
+    const newValue = current.includes(label)
+      ? current.filter(l => l !== label)
+      : [...current, label];
+    onFilterChange('durationBands', newValue);
+  };
+
+  const getDurationDisplayText = () => {
+    const selected = filters.durationBands || [];
+    if (selected.length === 0) return t('filters.allDurations');
+    if (selected.length === 1) return formatDurationLabel(selected[0], i18n.language);
+    return `${selected.length} ${t('filters.selected')}`;
+  };
+
   return (
     <div className="w-full bg-card/80 backdrop-blur-sm rounded-xl p-4 shadow-soft border border-border/50 animate-fade-in">
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
@@ -58,30 +82,29 @@ export function FilterPanel({ filters, onFilterChange, onResetFilters }: FilterP
           </SelectContent>
         </Select>
 
-        <Select
-          value={filters.durationBand || 'all'}
-          onValueChange={(value) => onFilterChange('durationBand', value === 'all' ? '' : value)}
-        >
-          <SelectTrigger className="bg-background/50 border-border/50 hover:border-primary/30 transition-colors h-9">
-            <SelectValue placeholder={t('filters.duration')} />
-          </SelectTrigger>
-          <SelectContent>
-            {DURATION_BANDS.map((band) => {
-              const displayLabel = band.label === 'Any Duration'
-                ? t('filters.allDurations')
-                : formatDurationLabel(band.label, i18n.language);
+        <DropdownMenu>
+          <DropdownMenuTrigger className="flex h-9 w-full items-center justify-between rounded-md border border-border/50 bg-background/50 px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground hover:border-primary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+            <span className="truncate">{getDurationDisplayText()}</span>
+            <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="start" className="w-48">
+            {durationOptions.map((band) => {
+              const displayLabel = formatDurationLabel(band.label, i18n.language);
+              const isSelected = (filters.durationBands || []).includes(band.label);
 
               return (
-                <SelectItem
+                <DropdownMenuCheckboxItem
                   key={band.label}
-                  value={band.label === 'Any Duration' ? 'all' : band.label}
+                  checked={isSelected}
+                  onCheckedChange={() => handleDurationToggle(band.label)}
+                  onSelect={(e) => e.preventDefault()}
                 >
                   {displayLabel}
-                </SelectItem>
+                </DropdownMenuCheckboxItem>
               );
             })}
-          </SelectContent>
-        </Select>
+          </DropdownMenuContent>
+        </DropdownMenu>
 
         <Select
           value={filters.year || 'all'}

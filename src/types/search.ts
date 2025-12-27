@@ -10,7 +10,7 @@ export interface DurationBand {
 export interface SearchFilters {
   language: Language;
   source: Source;
-  durationBand: string;
+  durationBands: string[];
   year: string;
   titleSearch: string;
 }

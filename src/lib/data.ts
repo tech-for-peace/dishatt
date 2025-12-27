@@ -92,14 +92,16 @@ function filterVideos(
       return false;
     }
 
-    if (filters.durationBand) {
+    if (filters.durationBands && filters.durationBands.length > 0) {
       const duration = video.duration || 0;
-      const band = DURATION_BANDS.find(b => b.label === filters.durationBand);
-
-      if (band) {
+      const matchesAnyBand = filters.durationBands.some(bandLabel => {
+        const band = DURATION_BANDS.find(b => b.label === bandLabel);
+        if (!band) return false;
         if (band.min !== undefined && duration < band.min) return false;
         if (band.max !== undefined && duration >= band.max) return false;
-      }
+        return true;
+      });
+      if (!matchesAnyBand) return false;
     }
 
     // Title search - search for each word in the title

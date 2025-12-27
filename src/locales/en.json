@@ -11,6 +11,7 @@
         "allYears": "All Years",
         "allSources": "All Sources",
         "allDurations": "All Durations",
+        "selected": "selected",
         "searchPlaceholder": "Search in title (optional)...",
         "reset": "Reset Filters"
     },

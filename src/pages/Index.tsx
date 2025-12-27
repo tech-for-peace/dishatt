@@ -15,7 +15,7 @@ const initialFilters: SearchFilters = {
   language: '',
   source: '',
   year: '',
-  durationBand: '',
+  durationBands: [],
   titleSearch: '',
 };
 
@@ -94,7 +94,7 @@ const Index = () => {
     performSearch(filters);
   }, [filters, performSearch]);
 
-  const handleFilterChange = useCallback((key: keyof SearchFilters, value: string) => {
+  const handleFilterChange = useCallback((key: keyof SearchFilters, value: string | string[]) => {
     const newFilters = { ...filters, [key]: value };
     setFilters(newFilters);
     storeFilters(newFilters);
