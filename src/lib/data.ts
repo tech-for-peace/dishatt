@@ -88,8 +88,10 @@ function filterVideos(
       return false;
     }
 
-    if (filters.year && String(video.publishedYear) !== String(filters.year)) {
-      return false;
+    if (filters.years && filters.years.length > 0) {
+      if (!filters.years.includes(String(video.publishedYear))) {
+        return false;
+      }
     }
 
     if (filters.durationBands && filters.durationBands.length > 0) {

@@ -14,7 +14,7 @@ const FILTERS_STORAGE_KEY = 'videoSearchFilters';
 const initialFilters: SearchFilters = {
   language: '',
   source: '',
-  year: '',
+  years: [],
   durationBands: [],
   titleSearch: '',
 };

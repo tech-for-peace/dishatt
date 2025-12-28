@@ -11,7 +11,7 @@ export interface SearchFilters {
   language: Language;
   source: Source;
   durationBands: string[];
-  year: string;
+  years: string[];
   titleSearch: string;
 }
 

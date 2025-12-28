@@ -59,10 +59,25 @@ export function FilterPanel({ filters, onFilterChange, onResetFilters }: FilterP
     onFilterChange('durationBands', newValue);
   };
 
+  const handleYearToggle = (year: string) => {
+    const current = filters.years || [];
+    const newValue = current.includes(year)
+      ? current.filter(y => y !== year)
+      : [...current, year];
+    onFilterChange('years', newValue);
+  };
+
   const getDurationDisplayText = () => {
     const selected = filters.durationBands || [];
     if (selected.length === 0) return t('filters.allDurations');
     if (selected.length === 1) return formatDurationLabel(selected[0], i18n.language);
+    return `${selected.length} ${t('filters.selected')}`;
+  };
+
+  const getYearDisplayText = () => {
+    const selected = filters.years || [];
+    if (selected.length === 0) return t('filters.allYears');
+    if (selected.length === 1) return selected[0];
     return `${selected.length} ${t('filters.selected')}`;
   };
 
@@ -113,22 +128,34 @@ export function FilterPanel({ filters, onFilterChange, onResetFilters }: FilterP
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <Select
-          value={filters.year || 'all'}
-          onValueChange={(value) => onFilterChange('year', value === 'all' ? '' : value)}
-        >
-          <SelectTrigger className="bg-background/50 border-border/50 hover:border-primary/30 transition-colors h-9">
-            <SelectValue placeholder={t('filters.year')} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">{t('filters.allYears')}</SelectItem>
-            {YEARS.map((year) => (
-              <SelectItem key={year} value={year}>
-                {year}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <DropdownMenu>
+          <DropdownMenuTrigger className="flex h-9 w-full items-center justify-between rounded-md border border-border/50 bg-background/50 px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground hover:border-primary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+            <span className="truncate">{getYearDisplayText()}</span>
+            <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="start" className="w-48 max-h-64 overflow-y-auto">
+            <DropdownMenuCheckboxItem
+              checked={(filters.years || []).length === 0}
+              onCheckedChange={() => onFilterChange('years', [])}
+            >
+              {t('filters.allYears')}
+            </DropdownMenuCheckboxItem>
+            {YEARS.map((year) => {
+              const isSelected = (filters.years || []).includes(year);
+
+              return (
+                <DropdownMenuCheckboxItem
+                  key={year}
+                  checked={isSelected}
+                  onCheckedChange={() => handleYearToggle(year)}
+                  onSelect={(e) => e.preventDefault()}
+                >
+                  {year}
+                </DropdownMenuCheckboxItem>
+              );
+            })}
+          </DropdownMenuContent>
+        </DropdownMenu>
 
         <Select
           value={filters.source || 'all'}
