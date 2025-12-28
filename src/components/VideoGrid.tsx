@@ -13,10 +13,10 @@ interface VideoGridProps {
 
 export function VideoGrid({ videos, isLoading, hasSearched, watchedIds, onToggleWatched }: VideoGridProps) {
   const { t } = useTranslation();
-  
+
   // Container with min-height to prevent layout shifts
   const containerClass = "min-h-[600px]";
-  
+
   if (isLoading) {
     return (
       <div className={containerClass}>

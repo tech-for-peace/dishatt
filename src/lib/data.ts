@@ -1,4 +1,4 @@
-import type { SearchFilters, SearchResponse, VideoResult } from '@/types/search';
+import type { SearchFilters, VideoResult } from '@/types/search';
 import { DURATION_BANDS } from '@/types/search';
 
 const CACHE_PATH = '/data/cache.json';

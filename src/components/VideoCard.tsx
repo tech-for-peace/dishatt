@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Check, Calendar, Globe, Clock, Play, Sparkles, Eye, EyeOff, Plus } from 'lucide-react';
+import { Check, Calendar, Globe, Clock, Play, Sparkles, Plus } from 'lucide-react';
 import { VideoResult } from '@/types/search';
 import { Badge } from './ui/badge';
 import { isThisMonth } from 'date-fns';

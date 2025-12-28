@@ -7,7 +7,6 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuCheckboxItem,
-  DropdownMenuItem,
 } from '@/components/ui/dropdown-menu';
 import { SearchFilters, DURATION_BANDS, YEARS, Language, Source } from '@/types/search';
 
