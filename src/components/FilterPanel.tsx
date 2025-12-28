@@ -89,12 +89,12 @@ export function FilterPanel({ filters, onFilterChange, onResetFilters }: FilterP
             <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start" className="w-48">
-            <DropdownMenuItem
-              className="pl-8"
-              onSelect={() => onFilterChange('durationBands', [])}
+            <DropdownMenuCheckboxItem
+              checked={(filters.durationBands || []).length === 0}
+              onCheckedChange={() => onFilterChange('durationBands', [])}
             >
               {t('filters.allDurations')}
-            </DropdownMenuItem>
+            </DropdownMenuCheckboxItem>
             {durationOptions.map((band) => {
               const displayLabel = formatDurationLabel(band.label, i18n.language);
               const isSelected = (filters.durationBands || []).includes(band.label);
