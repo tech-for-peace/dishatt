@@ -9,6 +9,18 @@ let cachePromise: Promise<VideoResult[]> | null = null;
 
 type SearchOptions = SearchFilters;
 
+interface VideoData {
+  VideoID: string;
+  Name: string;
+  Description?: string;
+  ThumbnailURL: string;
+  VideoDuration?: number;
+  ClickURL?: string;
+  PublishYear: number;
+  PublishMonth?: number;
+  Language?: string;
+}
+
 async function loadAllVideos(): Promise<VideoResult[]> {
   // Return cached data if already loaded
   if (cachedVideos) {
@@ -30,8 +42,7 @@ async function loadAllVideos(): Promise<VideoResult[]> {
 
       const data = await response.json();
       cachedVideos = data.videos
-        ? Object.values(data.videos)
-            .map((video: any) => ({
+        ? Object.values(data.videos).map((video: VideoData) => ({
               id: video.VideoID,
               title: video.Name,
               description: video.Description || '',
