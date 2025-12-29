@@ -7,7 +7,7 @@ export function Header() {
   return (
     <header className="bg-hero text-primary-foreground py-16 px-4 relative overflow-hidden">
       {/* Language switcher in top-right corner */}
-      <div className="absolute top-4 right-4 z-20">
+      <div className="absolute top-4 right-4 z-30">
         <LanguageSwitcher />
       </div>
 
@@ -18,8 +18,6 @@ export function Header() {
       </div>
 
       <div className="container max-w-4xl mx-auto text-center relative z-10">
-        <div className="inline-flex items-center gap-3 mb-6 animate-fade-in">
-        </div>
         <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto animate-slide-up" style={{
           animationDelay: '100ms'
         }}>

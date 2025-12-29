@@ -2,7 +2,6 @@ import { useTranslation } from 'react-i18next';
 import { Calendar, Globe, Clock, Play, Sparkles } from 'lucide-react';
 import { VideoResult } from '@/types/search';
 import { Badge } from './ui/badge';
-import { isThisMonth } from 'date-fns';
 
 // Language-aware duration formatting
 function formatDuration(minutes: number, language: string): string {
@@ -18,6 +17,11 @@ function formatDuration(minutes: number, language: string): string {
   if (hours > 0 && mins > 0) return `${hours}h ${mins}m`;
   if (hours > 0) return `${hours}h`;
   return `${mins}m`;
+}
+
+function isThisMonth(date: Date): boolean {
+  const now = new Date();
+  return date.getFullYear() === now.getFullYear() && date.getMonth() === now.getMonth();
 }
 
 function formatDate(date: Date): string {

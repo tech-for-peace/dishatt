@@ -31,7 +31,6 @@ async function loadAllVideos(): Promise<VideoResult[]> {
       const data = await response.json();
       cachedVideos = data.videos
         ? Object.values(data.videos)
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             .map((video: any) => ({
               id: video.VideoID,
               title: video.Name,
@@ -141,12 +140,6 @@ function normalizeLanguageCode(langCode?: string): 'en' | 'hi' {
 
   // Default to English
   return 'en';
-}
-
-export function formatDuration(minutes: number): string {
-  const hours = Math.floor(minutes / 60);
-  const mins = minutes % 60;
-  return hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
 }
 
 export function formatLanguage(langCode: string): string {

@@ -16,12 +16,12 @@ export function LanguageSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm" className="h-9 gap-2 px-3">
-          <Globe className="h-4 w-4" />
-          <span className="font-medium">{currentLang}</span>
+        <Button variant="outline" size="sm" className="h-10 gap-2 px-3 bg-white border-gray-300 hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all duration-200">
+          <Globe className="h-4 w-4 text-gray-700" />
+          <span className="font-semibold text-sm text-gray-800">{currentLang}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="min-w-[140px]">
+      <DropdownMenuContent align="end" className="min-w-[140px] bg-white border-gray-300 shadow-lg">
         <DropdownMenuItem
           onClick={() => changeLanguage('en')}
           className={`flex items-center justify-between ${i18n.language === 'en' ? 'bg-accent' : ''}`}
