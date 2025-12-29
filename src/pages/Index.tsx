@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Header } from '@/components/Header';
 import { FilterPanel } from '@/components/FilterPanel';
@@ -64,10 +64,25 @@ const Index = () => {
     setDisplayedVideos(allVideos.slice(0, visibleCount));
   }, [allVideos, visibleCount]);
 
-  const handleLoadMore = useCallback(() => {
-    const newCount = visibleCount + 12;
-    setVisibleCount(newCount);
-  }, [visibleCount]);
+  // Infinite scroll with Intersection Observer
+  const loadMoreRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !isLoading && allVideos.length > visibleCount) {
+          setVisibleCount(prev => prev + 12);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (loadMoreRef.current) {
+      observer.observe(loadMoreRef.current);
+    }
+    
+    return () => observer.disconnect();
+  }, [isLoading, allVideos.length, visibleCount]);
 
   // Load initial results on mount and when filters change
   useEffect(() => {
@@ -117,16 +132,10 @@ const Index = () => {
             hasSearched={true}
           />
 
-          {/* Load More Button */}
+          {/* Infinite scroll trigger */}
           {allVideos.length > displayedVideos.length && (
-            <div className="flex justify-center pt-4">
-              <button
-                onClick={handleLoadMore}
-                disabled={isLoading}
-                className="px-6 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isLoading ? t('results.loading') : t('results.loadMore')}
-              </button>
+            <div ref={loadMoreRef} className="flex justify-center py-8">
+              <div className="h-8 w-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
             </div>
           )}
         </div>
