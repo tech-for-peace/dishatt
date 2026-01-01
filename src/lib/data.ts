@@ -116,14 +116,15 @@ function filterVideos(
       if (!matchesAnyBand) return false;
     }
 
-    // Title search - search for each word in the title
+    // Title and description search - search for each word in the title or description
     if (filters.titleSearch) {
       const searchWords = filters.titleSearch.trim().toLowerCase().split(/\s+/).filter(word => word.length > 0);
       const title = video.title.toLowerCase();
+      const description = video.description.toLowerCase();
 
-      // All search words must be found in the title
+      // All search words must be found in either the title or description
       for (const word of searchWords) {
-        if (!title.includes(word)) {
+        if (!title.includes(word) && !description.includes(word)) {
           return false;
         }
       }

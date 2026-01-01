@@ -12,7 +12,7 @@
         "allSources": "All Sources",
         "allDurations": "All Durations",
         "selected": "selected",
-        "searchPlaceholder": "Search in title (optional)...",
+        "searchPlaceholder": "Search in title and description (optional)...",
         "reset": "Reset Filters"
     },
     "results": {

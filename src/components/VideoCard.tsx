@@ -104,9 +104,9 @@ export function VideoCard({ video, index }: VideoCardProps) {
           <h3 className="font-heading text-xl font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors duration-200">
             {video.title}
           </h3>
-          <p className="text-sm text-muted-foreground line-clamp-2">
+          {/* <p className="text-sm text-muted-foreground line-clamp-2">
             {video.description}
-          </p>
+          </p> */}
         </div>
 
         {/* Meta Info */}
