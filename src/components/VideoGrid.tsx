@@ -1,20 +1,16 @@
 import { useTranslation } from 'react-i18next';
 import { Compass } from 'lucide-react';
-import { VideoResult } from '@/types/search';
+import { VideoResult } from '@/lib/types';
 import { VideoCard } from './VideoCard';
-
 interface VideoGridProps {
   videos: VideoResult[];
   isLoading: boolean;
   hasSearched: boolean;
 }
-
 export function VideoGrid({ videos, isLoading, hasSearched }: VideoGridProps) {
   const { t } = useTranslation();
-
   // Container with min-height to prevent layout shifts
   const containerClass = "min-h-[600px]";
-
   if (isLoading) {
     return (
       <div className={containerClass}>
@@ -22,7 +18,8 @@ export function VideoGrid({ videos, isLoading, hasSearched }: VideoGridProps) {
           {Array.from({ length: 6 }).map((_, i) => (
             <div
               key={i}
-              className="bg-card rounded-xl overflow-hidden shadow-soft border border-border animate-pulse"
+              className="bg-card rounded-xl overflow-hidden shadow-soft border border-border
+                       animate-pulse"
             >
               <div className="aspect-video bg-muted" />
               <div className="p-4 space-y-3">
@@ -40,7 +37,6 @@ export function VideoGrid({ videos, isLoading, hasSearched }: VideoGridProps) {
       </div>
     );
   }
-
   if (hasSearched && videos.length === 0) {
     return (
       <div className={`${containerClass} text-center py-16 animate-fade-in`}>
@@ -53,11 +49,11 @@ export function VideoGrid({ videos, isLoading, hasSearched }: VideoGridProps) {
       </div>
     );
   }
-
   if (!hasSearched) {
     return (
       <div className={`${containerClass} text-center py-16 animate-fade-in`}>
-        <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
+        <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary/10
+                         flex items-center justify-center">
           <Compass className="h-10 w-10 text-primary" />
         </div>
         <p className="text-muted-foreground text-center py-8">
@@ -68,7 +64,6 @@ export function VideoGrid({ videos, isLoading, hasSearched }: VideoGridProps) {
       </div>
     );
   }
-
   return (
     <div className={containerClass}>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

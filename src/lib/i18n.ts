@@ -3,9 +3,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import enTranslations from '../locales/en.json';
 import hiTranslations from '../locales/hi.json';
-
 const STORAGE_KEY = 'disha-language-preference';
-
 // Get the saved language or default to Hindi
 const getInitialLanguage = (): string => {
   try {
@@ -15,12 +13,10 @@ const getInitialLanguage = (): string => {
     return 'hi';
   }
 };
-
 const resources = {
   en: { translation: enTranslations },
   hi: { translation: hiTranslations },
 };
-
 // Initialize i18next
 i18n
   .use(initReactI18next)
@@ -36,7 +32,6 @@ i18n
       useSuspense: false,
     },
   });
-
 // Listen for language changes
 i18n.on('languageChanged', (lng) => {
   try {
@@ -46,5 +41,4 @@ i18n.on('languageChanged', (lng) => {
     // Silent error handling for localStorage
   }
 });
-
 export default i18n;
