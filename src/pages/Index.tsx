@@ -93,7 +93,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
-      <main className="flex-1 container max-w-6xl mx-auto px-4 py-4 md:py-8 space-y-8">
+      <main className="flex-1 container max-w-6xl mx-auto px-4 py-4 md:py-8 space-y-3">
         {/* Filters */}
         <div className="-mt-12 md:-mt-20 relative z-20">
           <FilterPanel

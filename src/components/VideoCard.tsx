@@ -92,7 +92,7 @@ export function VideoCard({ video, index }: VideoCardProps) {
         </Badge>
       </div>
       {/* Content */}
-      <div className="px-3 pt-1.5 pb-1.5 flex flex-col h-[125px]">
+      <div className="px-3 pt-1 pb-1 flex flex-col h-[90px]">
         <div className="flex-grow">
           <h3
             className="font-heading text-xl font-semibold text-foreground line-clamp-2
