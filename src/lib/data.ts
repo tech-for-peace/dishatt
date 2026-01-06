@@ -1,9 +1,12 @@
-import { SearchFilters, VideoResult, DURATION_BANDS } from '@/lib/types';
-const CACHE_PATH = '/data/cache.json';
+import { SearchFilters, VideoResult, DURATION_BANDS } from "@/lib/types";
+
+const CACHE_PATH = "/data/cache.json";
+
 // In-memory cache for the video data
 let cachedVideos: VideoResult[] | null = null;
 let cachePromise: Promise<VideoResult[]> | null = null;
 type SearchOptions = SearchFilters;
+
 interface VideoData {
   VideoID: string;
   Name: string;
@@ -21,10 +24,12 @@ async function loadAllVideos(): Promise<VideoResult[]> {
   if (cachedVideos) {
     return cachedVideos;
   }
+
   // Return existing promise if currently loading
   if (cachePromise) {
     return cachePromise;
   }
+
   // Create and cache the loading promise
   cachePromise = (async () => {
     try {
@@ -32,70 +37,82 @@ async function loadAllVideos(): Promise<VideoResult[]> {
       if (!response.ok) {
         throw new Error(`Failed to fetch cache: ${response.statusText}`);
       }
+
       const data = await response.json();
       cachedVideos = data.videos
-        ? Object.values(data.videos).map((video: VideoData) => ({
+        ? Object.values(data.videos)
+            .map((video: VideoData) => ({
               id: video.VideoID,
               title: video.Name,
-              description: video.Description || '',
+              description: video.Description || "",
               thumbnail: video.ThumbnailURL,
               // Convert nanoseconds to minutes (1e9 ns in a second, 60 seconds in a minute)
               duration: Math.round((video.VideoDuration || 0) / 1e9 / 60),
-              source: (video.ClickURL?.includes('youtube.com')
-                ? 'youtube'
-                : 'timelesstoday') as 'youtube' | 'timelesstoday',
+              source: (video.ClickURL?.includes("youtube.com")
+                ? "youtube"
+                : "timelesstoday") as "youtube" | "timelesstoday",
               publishedYear: video.PublishYear,
               publishedMonth: video.PublishMonth - 1, // Convert to 0-indexed month for Date
               language: normalizeLanguageCode(video.Language),
               url: video.ClickURL,
               audioOnly: video.AudioOnly || false,
               // Store timestamp for sorting
-              timestamp: new Date(video.PublishYear, (video.PublishMonth || 1) - 1, 1).getTime(),
+              timestamp: new Date(
+                video.PublishYear,
+                (video.PublishMonth || 1) - 1,
+                1,
+              ).getTime(),
             }))
             // Sort by publish date (newest first)
             .sort((a, b) => b.timestamp - a.timestamp)
         : [];
+
       return cachedVideos;
     } catch (error) {
-      console.error('Error reading cache file:', error);
+      console.error("Error reading cache file:", error);
       return [];
     } finally {
       cachePromise = null;
     }
   })();
+
   return cachePromise;
 }
 export async function searchVideos(
-  filters: SearchOptions
+  filters: SearchOptions,
 ): Promise<VideoResult[]> {
   const allVideos = await loadAllVideos();
   return filterVideos(allVideos, filters);
 }
+
 function filterVideos(
   videos: VideoResult[],
-  filters: SearchFilters
+  filters: SearchFilters,
 ): VideoResult[] {
-  return videos.filter(video => {
+  return videos.filter((video) => {
     // Language filter - convert filter language to VideoResult format ('en' | 'hi')
     if (filters.language) {
       const videoLang = video.language; // Already in 'en' | 'hi' format
-      const filterLang = filters.language === 'hindi' ? 'hi' : 'en';
+      const filterLang = filters.language === "hindi" ? "hi" : "en";
       if (videoLang !== filterLang) {
         return false;
       }
     }
+
     if (filters.source && video.source !== filters.source) {
       return false;
     }
+
     if (filters.years && filters.years.length > 0) {
       if (!filters.years.includes(String(video.publishedYear))) {
         return false;
       }
     }
+
     if (filters.durationBands && filters.durationBands.length > 0) {
       const duration = video.duration || 0;
-      const matchesAnyBand = filters.durationBands.some(bandLabel => {
-        const band = DURATION_BANDS.find(b => b.label === bandLabel);
+      const matchesAnyBand = filters.durationBands.some((bandLabel) => {
+        const band = DURATION_BANDS.find((b) => b.label === bandLabel);
         if (!band) return false;
         if (band.min !== undefined && duration < band.min) return false;
         if (band.max !== undefined && duration >= band.max) return false;
@@ -103,15 +120,17 @@ function filterVideos(
       });
       if (!matchesAnyBand) return false;
     }
+
     // Title and description search - search for each word in the title or description
     if (filters.titleSearch) {
       const searchWords = filters.titleSearch
-      .trim()
-      .toLowerCase()
-      .split(/\s+/)
-      .filter(word => word.length > 0);
+        .trim()
+        .toLowerCase()
+        .split(/\s+/)
+        .filter((word) => word.length > 0);
       const title = video.title.toLowerCase();
       const description = video.description.toLowerCase();
+
       // All search words must be found in either the title or description
       for (const word of searchWords) {
         if (!title.includes(word) && !description.includes(word)) {
@@ -119,6 +138,7 @@ function filterVideos(
         }
       }
     }
+
     return true;
   });
 }
@@ -126,17 +146,21 @@ function filterVideos(
  * Normalizes language codes to the format used in VideoResult ('en' | 'hi')
  * Handles both 'en'/'hi' and 'english'/'hindi' formats
  */
-function normalizeLanguageCode(langCode?: string): 'en' | 'hi' {
-  if (!langCode) return 'en';
-  const lang = langCode.split('-')[0].toLowerCase();
+function normalizeLanguageCode(langCode?: string): "en" | "hi" {
+  if (!langCode) return "en";
+  const lang = langCode.split("-")[0].toLowerCase();
+
   // Handle full language names
-  if (lang === 'hindi') return 'hi';
-  if (lang === 'english') return 'en';
+  if (lang === "hindi") return "hi";
+  if (lang === "english") return "en";
+
   // Handle language codes
-  if (lang === 'hi') return 'hi';
+  if (lang === "hi") return "hi";
+
   // Default to English
-  return 'en';
+  return "en";
 }
+
 export function formatLanguage(langCode: string): string {
-  return langCode === 'hi' ? 'Hindi' : 'English';
+  return langCode === "hi" ? "Hindi" : "English";
 }
