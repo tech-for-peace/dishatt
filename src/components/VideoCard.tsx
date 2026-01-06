@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Calendar, Globe, Clock, Play, Sparkles } from 'lucide-react';
+import { Calendar, Globe, Clock, Play, Sparkles, Headphones } from 'lucide-react';
 import { VideoResult } from '@/lib/types';
 import { Badge } from './ui/badge';
 import { formatLanguage } from '@/lib/data';
@@ -115,15 +115,26 @@ export function VideoCard({ video, index }: VideoCardProps) {
           </p> */}
         </div>
         {/* Meta Info */}
-        <div className="flex items-center gap-4 text-xs text-muted-foreground">
-          <span className="flex items-center gap-1.5">
-            <Calendar className="h-3.5 w-3.5 flex-shrink-0" />
-            {formatDate(videoDate)}
-          </span>
-          <span className="flex items-center gap-1 capitalize">
-            <Globe className="h-3.5 w-3.5" />
-            {formatLanguage(video.language)}
-          </span>
+        <div className="flex items-center justify-between text-xs text-muted-foreground">
+          <div className="flex items-center gap-4">
+            <span className="flex items-center gap-1.5">
+              <Calendar className="h-3.5 w-3.5 flex-shrink-0" />
+              {formatDate(videoDate)}
+            </span>
+            <span className="flex items-center gap-1 capitalize">
+              <Globe className="h-3.5 w-3.5" />
+              {formatLanguage(video.language)}
+            </span>
+          </div>
+          {video.audioOnly && (
+            <Badge
+              variant="secondary"
+              className="bg-pink-500 hover:bg-pink-600 text-white text-xs h-5 px-2"
+            >
+              <Headphones className="h-2.5 w-2.5 mr-1" />
+              Audio only
+            </Badge>
+          )}
         </div>
       </div>
     </div>

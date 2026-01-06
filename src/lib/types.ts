@@ -23,6 +23,7 @@ export interface VideoResult {
   publishedMonth?: number; // 0-11 (0 = January)
   language: 'en' | 'hi';
   url: string;
+  audioOnly?: boolean; // for audio-only videos
   timestamp?: number; // for internal sorting
 }
 export interface SearchResponse {

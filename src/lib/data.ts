@@ -14,6 +14,7 @@ interface VideoData {
   PublishYear: number;
   PublishMonth?: number;
   Language?: string;
+  AudioOnly?: boolean;
 }
 async function loadAllVideos(): Promise<VideoResult[]> {
   // Return cached data if already loaded
@@ -47,6 +48,7 @@ async function loadAllVideos(): Promise<VideoResult[]> {
               publishedMonth: video.PublishMonth - 1, // Convert to 0-indexed month for Date
               language: normalizeLanguageCode(video.Language),
               url: video.ClickURL,
+              audioOnly: video.AudioOnly || false,
               // Store timestamp for sorting
               timestamp: new Date(video.PublishYear, (video.PublishMonth || 1) - 1, 1).getTime(),
             }))
