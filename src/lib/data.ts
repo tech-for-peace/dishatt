@@ -50,7 +50,9 @@ async function loadAllVideos(): Promise<VideoResult[]> {
               duration: Math.round((video.VideoDuration || 0) / 1e9 / 60),
               source: (video.ClickURL?.includes("youtube.com")
                 ? "youtube"
-                : "timelesstoday") as "youtube" | "timelesstoday",
+                : video.ClickURL?.includes("spotify.com")
+                ? "spotify"
+                : "timelesstoday") as "youtube" | "timelesstoday" | "spotify",
               publishedYear: video.PublishYear,
               publishedMonth: video.PublishMonth - 1, // Convert to 0-indexed month for Date
               language: normalizeLanguageCode(video.Language),

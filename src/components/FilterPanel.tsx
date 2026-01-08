@@ -175,6 +175,7 @@ export function FilterPanel({ filters, onFilterChange, onResetFilters }: FilterP
             <SelectItem value="all">{t('filters.allSources')}</SelectItem>
             <SelectItem value="youtube">{t('videoCard.youtube')}</SelectItem>
             <SelectItem value="timelesstoday">{t('videoCard.timelessToday')}</SelectItem>
+            <SelectItem value="spotify">{t('videoCard.spotify')}</SelectItem>
           </SelectContent>
         </Select>
       </div>

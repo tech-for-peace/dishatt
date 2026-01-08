@@ -30,6 +30,7 @@
     "videoCard": {
         "youtube": "YouTube",
         "timelessToday": "Timeless Today",
+        "spotify": "Spotify",
         "markWatched": "Watched",
         "markUnwatched": "Unwatched"
     },

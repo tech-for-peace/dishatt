@@ -88,18 +88,22 @@ export function VideoCard({ video, index }: VideoCardProps) {
           className={`absolute top-3 left-3 text-xs font-medium ${
             video.source === "youtube"
               ? "bg-red-600 hover:bg-red-700 text-white"
+              : video.source === "spotify"
+              ? "bg-green-600 hover:bg-green-700 text-white"
               : "bg-amber-700 hover:bg-amber-800 text-white"
           }`}
         >
           {video.source === "youtube"
             ? t("videoCard.youtube")
+            : video.source === "spotify"
+            ? t("videoCard.spotify")
             : t("videoCard.timelessToday")}
         </Badge>
         {/* New Badge */}
         {isNew && (
           <Badge
             variant="default"
-            className="absolute top-3 right-3 bg-green-600 hover:bg-green-700 text-xs h-5 px-2"
+            className="absolute top-3 right-3 bg-purple-600 hover:bg-purple-700 text-xs h-5 px-2"
           >
             <Sparkles className="h-2.5 w-2.5 mr-1" />
             {t("results.new")}
