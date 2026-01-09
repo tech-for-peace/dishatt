@@ -42,7 +42,7 @@ export function VideoCard({ video, index }: VideoCardProps) {
   const currentLanguage = i18n.language;
   const videoDate = new Date(
     video.publishedYear,
-    video.publishedMonth ? video.publishedMonth - 1 : 0,
+    video.publishedMonth ? video.publishedMonth : 0,
     1,
   );
   const isNew = isThisMonth(videoDate);
