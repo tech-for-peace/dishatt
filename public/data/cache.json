@@ -1629,7 +1629,7 @@
       "ClickURL": "https://www.timelesstoday.tv/en/home/product/14baeb68-dfaa-4648-904b-00dd753e809b",
       "PublishYear": 2019,
       "PublishMonth": 6,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img/0003851_singular-in-nature.jpeg?format=auto",
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/singular-in-nature.jpg?format=auto",
       "AudioOnly": false
     },
     "14c4bc60-da08-47db-8e94-7db6ffadf6cc": {
@@ -2673,7 +2673,7 @@
       "ClickURL": "https://www.timelesstoday.tv/en/home/product/2438a724-190c-4a78-ba1a-3995f3e3ac9b",
       "PublishYear": 2018,
       "PublishMonth": 10,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img/0002743_your-deck-of-cards.jpeg?format=auto",
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/your-deck-of-cards.jpg?format=auto",
       "AudioOnly": true
     },
     "2444afa4-536f-4d3c-83f3-c77afbb67062": {
@@ -4233,7 +4233,7 @@
       "ClickURL": "https://www.timelesstoday.tv/en/home/product/3c480221-86cf-41d9-a9de-6ff6acf6562e",
       "PublishYear": 2019,
       "PublishMonth": 7,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img/0003919_fail-and-failure.jpeg?format=auto",
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/fail-and-failure.jpg?format=auto",
       "AudioOnly": true
     },
     "3c790e8b-1df2-4a20-9b09-539a8c7b7b76": {
@@ -4881,7 +4881,7 @@
       "ClickURL": "https://www.timelesstoday.tv/en/home/product/45c4d765-dbd6-4b28-b615-6e9bd2146094",
       "PublishYear": 2019,
       "PublishMonth": 11,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img/0004452_you-have-a-choice.jpeg?format=auto",
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/you-have-a-choice.jpg?format=auto",
       "AudioOnly": false
     },
     "45d76296-6220-4d1b-8a05-a5c47ff61df5": {
@@ -4905,7 +4905,7 @@
       "ClickURL": "https://www.timelesstoday.tv/en/home/product/4648ac9f-5d3b-4efb-9c68-f2e0ac717182",
       "PublishYear": 2019,
       "PublishMonth": 9,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img/0004076_choice.jpeg?format=auto",
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/choice.jpg?format=auto",
       "AudioOnly": false
     },
     "46c310a6-1abe-4db1-ab4e-755b05827ca7": {
@@ -7593,7 +7593,7 @@
       "ClickURL": "https://www.timelesstoday.tv/en/home/product/6baa8d0a-8858-4cb3-a80c-8eb22de4c477",
       "PublishYear": 2019,
       "PublishMonth": 12,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img/0004556_keeping-your-house-clean.jpeg?format=auto",
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/keeping-your-house-clean.jpg?format=auto",
       "AudioOnly": true
     },
     "6bd852ac-c7ca-41c9-bd89-fb92da81dda5": {
@@ -16329,7 +16329,7 @@
       "ClickURL": "https://www.timelesstoday.tv/en/home/product/ad39f18f-5bbd-4575-bd8c-bd837b6aecbf",
       "PublishYear": 2019,
       "PublishMonth": 9,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img/0004063_the-value-of-light.jpeg?format=auto",
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/the-value-of-light.jpg?format=auto",
       "AudioOnly": false
     },
     "ad5c7676-d872-48e9-9ca3-a94714715535": {
@@ -21297,7 +21297,7 @@
       "ClickURL": "https://www.timelesstoday.tv/en/home/product/fde25801-49b2-433f-9c3f-28796ed70b6f",
       "PublishYear": 2019,
       "PublishMonth": 1,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img/0002972_know-for-yourself.jpeg?format=auto",
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/know-for-yourself.jpg?format=auto",
       "AudioOnly": false
     },
     "fdgcfxm9jSw": {
@@ -21345,7 +21345,7 @@
       "ClickURL": "https://www.timelesstoday.tv/en/home/product/fe950dff-556d-4618-83ad-51fb2ba11372",
       "PublishYear": 2019,
       "PublishMonth": 11,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img/0004431_buddhas-bowl.jpeg?format=auto",
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/buddhas-bowl.jpg?format=auto",
       "AudioOnly": false
     },
     "fe9d97b7-61a3-4b11-b80f-52775afc9f14": {
@@ -24697,5 +24697,5 @@
       "AudioOnly": false
     }
   },
-  "lastUpdated": "2026-01-09T00:10:34.721069828Z"
+  "lastUpdated": "2026-01-11T00:11:35.584707286Z"
 }
