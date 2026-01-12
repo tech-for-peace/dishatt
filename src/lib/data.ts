@@ -16,6 +16,7 @@ interface VideoData {
   ClickURL?: string;
   PublishYear: number;
   PublishMonth?: number;
+  PublishDay?: number;
   Language?: string;
   AudioOnly?: boolean;
 }
@@ -62,7 +63,7 @@ async function loadAllVideos(): Promise<VideoResult[]> {
               timestamp: new Date(
                 video.PublishYear,
                 (video.PublishMonth || 1) - 1,
-                1,
+                video.PublishDay || 1,
               ).getTime(),
             }))
             // Sort by publish date (newest first)
