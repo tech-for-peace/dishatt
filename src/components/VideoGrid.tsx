@@ -1,7 +1,7 @@
-import { useTranslation } from 'react-i18next';
-import { Compass } from 'lucide-react';
-import { VideoResult } from '@/lib/types';
-import { VideoCard } from './VideoCard';
+import { useTranslation } from "react-i18next";
+import { Compass } from "lucide-react";
+import { VideoResult } from "@/lib/types";
+import { VideoCard } from "./VideoCard";
 interface VideoGridProps {
   videos: VideoResult[];
   isLoading: boolean;
@@ -41,10 +41,10 @@ export function VideoGrid({ videos, isLoading, hasSearched }: VideoGridProps) {
     return (
       <div className={`${containerClass} text-center py-16 animate-fade-in`}>
         <h3 className="font-heading text-2xl font-semibold text-foreground mb-2">
-          {t('results.noVideosFound')}
+          {t("results.noVideosFound")}
         </h3>
         <p className="text-muted-foreground max-w-md mx-auto">
-          {t('results.noVideosMessage')}
+          {t("results.noVideosMessage")}
         </p>
       </div>
     );
@@ -52,14 +52,16 @@ export function VideoGrid({ videos, isLoading, hasSearched }: VideoGridProps) {
   if (!hasSearched) {
     return (
       <div className={`${containerClass} text-center py-16 animate-fade-in`}>
-        <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary/10
-                         flex items-center justify-center">
+        <div
+          className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary/10
+                         flex items-center justify-center"
+        >
           <Compass className="h-10 w-10 text-primary" />
         </div>
         <p className="text-muted-foreground text-center py-8">
           {hasSearched
-            ? t('results.videoCount', { count: videos.length })
-            : t('results.useFilters')}
+            ? t("results.videoCount", { count: videos.length })
+            : t("results.useFilters")}
         </p>
       </div>
     );
@@ -68,11 +70,7 @@ export function VideoGrid({ videos, isLoading, hasSearched }: VideoGridProps) {
     <div className={containerClass}>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {videos.map((video, index) => (
-          <VideoCard
-            key={video.id}
-            video={video}
-            index={index}
-          />
+          <VideoCard key={video.id} video={video} index={index} />
         ))}
       </div>
     </div>

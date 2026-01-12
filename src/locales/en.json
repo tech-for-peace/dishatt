@@ -1,41 +1,41 @@
 {
-    "header": {
-        "tagline": "Discover videos from Timeless Today and Prem Rawat official YouTube. Begin your journey to inner peace!"
-    },
-    "filters": {
-        "language": "Language",
-        "duration": "Duration",
-        "year": "Year",
-        "source": "Source",
-        "allLanguages": "All Languages",
-        "allYears": "All Years",
-        "allSources": "All Sources",
-        "allDurations": "All Durations",
-        "selected": "selected",
-        "searchPlaceholder": "Search in title and description (optional)...",
-        "reset": "Reset Filters"
-    },
-    "results": {
-        "videoCount_one": "{{count}} video found",
-        "videoCount_other": "{{count}} videos found",
-        "loadMore": "Load More",
-        "loading": "Loading...",
-        "noVideosFound": "No videos found",
-        "noVideosMessage": "Try adjusting your search terms or filters to discover more content.",
-        "useFilters": "Use the filters above to find videos",
-        "new": "New",
-        "showWatched": "Show watched ({{count}})",
-        "hideWatched": "Hide watched"
-    },
-    "videoCard": {
-        "youtube": "YouTube",
-        "timelessToday": "Timeless Today",
-        "spotify": "Spotify",
-        "markWatched": "Watched",
-        "markUnwatched": "Unwatched"
-    },
-    "language": {
-        "english": "English",
-        "hindi": "हिंदी"
-    }
+  "header": {
+    "tagline": "Discover videos from Timeless Today and Prem Rawat official YouTube. Begin your journey to inner peace!"
+  },
+  "filters": {
+    "language": "Language",
+    "duration": "Duration",
+    "year": "Year",
+    "source": "Source",
+    "allLanguages": "All Languages",
+    "allYears": "All Years",
+    "allSources": "All Sources",
+    "allDurations": "All Durations",
+    "selected": "selected",
+    "searchPlaceholder": "Search in title and description (optional)...",
+    "reset": "Reset Filters"
+  },
+  "results": {
+    "videoCount_one": "{{count}} video found",
+    "videoCount_other": "{{count}} videos found",
+    "loadMore": "Load More",
+    "loading": "Loading...",
+    "noVideosFound": "No videos found",
+    "noVideosMessage": "Try adjusting your search terms or filters to discover more content.",
+    "useFilters": "Use the filters above to find videos",
+    "new": "New",
+    "showWatched": "Show watched ({{count}})",
+    "hideWatched": "Hide watched"
+  },
+  "videoCard": {
+    "youtube": "YouTube",
+    "timelessToday": "Timeless Today",
+    "spotify": "Spotify",
+    "markWatched": "Watched",
+    "markUnwatched": "Unwatched"
+  },
+  "language": {
+    "english": "English",
+    "hindi": "हिंदी"
+  }
 }

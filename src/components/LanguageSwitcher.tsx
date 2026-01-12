@@ -1,19 +1,19 @@
 // src/components/LanguageSwitcher.tsx
-import { useTranslation } from 'react-i18next';
-import { Button } from './ui/button';
+import { useTranslation } from "react-i18next";
+import { Button } from "./ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger
-} from './ui/dropdown-menu';
-import { Globe } from 'lucide-react';
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { Globe } from "lucide-react";
 export function LanguageSwitcher() {
   const { i18n } = useTranslation();
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
   };
-  const currentLang = i18n.language === 'hi' ? 'हि' : 'EN';
+  const currentLang = i18n.language === "hi" ? "हि" : "EN";
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -33,9 +33,9 @@ export function LanguageSwitcher() {
         className="min-w-[140px] bg-white border-gray-300 shadow-lg dark:bg-gray-800 dark:border-gray-600"
       >
         <DropdownMenuItem
-          onClick={() => changeLanguage('en')}
+          onClick={() => changeLanguage("en")}
           className={`flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-700 ${
-            i18n.language === 'en' ? 'bg-accent' : ''
+            i18n.language === "en" ? "bg-accent" : ""
           }`}
         >
           <span className="dark:text-white">English</span>
@@ -44,9 +44,9 @@ export function LanguageSwitcher() {
           </span>
         </DropdownMenuItem>
         <DropdownMenuItem
-          onClick={() => changeLanguage('hi')}
+          onClick={() => changeLanguage("hi")}
           className={`flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-700 ${
-            i18n.language === 'hi' ? 'bg-accent' : ''
+            i18n.language === "hi" ? "bg-accent" : ""
           }`}
         >
           <span className="dark:text-white">हिंदी</span>

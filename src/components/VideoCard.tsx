@@ -80,15 +80,15 @@ export function VideoCard({ video, index }: VideoCardProps) {
             video.source === "youtube"
               ? "bg-red-600 hover:bg-red-700 text-white"
               : video.source === "spotify"
-              ? "bg-green-600 hover:bg-green-700 text-white"
-              : "bg-amber-700 hover:bg-amber-800 text-white"
+                ? "bg-green-600 hover:bg-green-700 text-white"
+                : "bg-amber-700 hover:bg-amber-800 text-white"
           }`}
         >
           {video.source === "youtube"
             ? t("videoCard.youtube")
             : video.source === "spotify"
-            ? t("videoCard.spotify")
-            : t("videoCard.timelessToday")}
+              ? t("videoCard.spotify")
+              : t("videoCard.timelessToday")}
         </Badge>
         {/* New Badge */}
         {video.isNew && (

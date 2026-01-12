@@ -1,41 +1,41 @@
 {
-    "header": {
-        "tagline": "Timeless Today और Prem Rawat के आधिकारिक YouTube चैनल से वीडियो खोजें। आंतरिक शांति की अपनी यात्रा शुरू करें!"
-    },
-    "filters": {
-        "language": "भाषा",
-        "duration": "अवधि",
-        "year": "वर्ष",
-        "source": "स्रोत",
-        "allLanguages": "सभी भाषाएँ",
-        "allYears": "सभी वर्ष",
-        "allSources": "सभी स्रोत (All Sources)",
-        "allDurations": "सभी अवधि",
-        "selected": "चुने हुए",
-        "searchPlaceholder": "शीर्षक और विवरण में खोजें (वैकल्पिक)...",
-        "reset": "फ़िल्टर्स रीसेट करें"
-    },
-    "results": {
-        "videoCount_one": "{{count}} वीडियो मिला",
-        "videoCount_other": "{{count}} वीडियो मिले",
-        "new": "नया",
-        "loadMore": "और लोड करें",
-        "loading": "लोड हो रहा है...",
-        "noVideosFound": "कोई वीडियो नहीं मिला",
-        "noVideosMessage": "और सामग्री खोजने के लिए अपने खोज शब्द या फ़िल्टर बदलने का प्रयास करें।",
-        "useFilters": "वीडियो खोजने के लिए ऊपर दिए गए फ़िल्टर्स का उपयोग करें",
-        "showWatched": "देखी हुई दिखाएं ({{count}})",
-        "hideWatched": "देखी हुई छुपाएं"
-    },
-    "videoCard": {
-        "youtube": "यूट्यूब",
-        "timelessToday": "टाइमलेस टुडे",
-        "spotify": "स्पॉटिफाई",
-        "markWatched": "देखी हुई है",
-        "markUnwatched": "नहीं देखी है"
-    },
-    "language": {
-        "english": "English",
-        "hindi": "हिंदी"
-    }
+  "header": {
+    "tagline": "Timeless Today और Prem Rawat के आधिकारिक YouTube चैनल से वीडियो खोजें। आंतरिक शांति की अपनी यात्रा शुरू करें!"
+  },
+  "filters": {
+    "language": "भाषा",
+    "duration": "अवधि",
+    "year": "वर्ष",
+    "source": "स्रोत",
+    "allLanguages": "सभी भाषाएँ",
+    "allYears": "सभी वर्ष",
+    "allSources": "सभी स्रोत (All Sources)",
+    "allDurations": "सभी अवधि",
+    "selected": "चुने हुए",
+    "searchPlaceholder": "शीर्षक और विवरण में खोजें (वैकल्पिक)...",
+    "reset": "फ़िल्टर्स रीसेट करें"
+  },
+  "results": {
+    "videoCount_one": "{{count}} वीडियो मिला",
+    "videoCount_other": "{{count}} वीडियो मिले",
+    "new": "नया",
+    "loadMore": "और लोड करें",
+    "loading": "लोड हो रहा है...",
+    "noVideosFound": "कोई वीडियो नहीं मिला",
+    "noVideosMessage": "और सामग्री खोजने के लिए अपने खोज शब्द या फ़िल्टर बदलने का प्रयास करें।",
+    "useFilters": "वीडियो खोजने के लिए ऊपर दिए गए फ़िल्टर्स का उपयोग करें",
+    "showWatched": "देखी हुई दिखाएं ({{count}})",
+    "hideWatched": "देखी हुई छुपाएं"
+  },
+  "videoCard": {
+    "youtube": "यूट्यूब",
+    "timelessToday": "टाइमलेस टुडे",
+    "spotify": "स्पॉटिफाई",
+    "markWatched": "देखी हुई है",
+    "markUnwatched": "नहीं देखी है"
+  },
+  "language": {
+    "english": "English",
+    "hindi": "हिंदी"
+  }
 }
