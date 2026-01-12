@@ -17,14 +17,6 @@ function formatDuration(minutes: number, language: string): string {
   return `${mins}m`;
 }
 
-function isThisMonth(date: Date): boolean {
-  const now = new Date();
-  return (
-    date.getFullYear() === now.getFullYear() &&
-    date.getMonth() === now.getMonth()
-  );
-}
-
 function formatDate(date: Date): string {
   return date.toLocaleDateString("en-US", {
     month: "short",
@@ -45,7 +37,6 @@ export function VideoCard({ video, index }: VideoCardProps) {
     video.publishedMonth ? video.publishedMonth : 0,
     1,
   );
-  const isNew = isThisMonth(videoDate);
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -100,7 +91,7 @@ export function VideoCard({ video, index }: VideoCardProps) {
             : t("videoCard.timelessToday")}
         </Badge>
         {/* New Badge */}
-        {isNew && (
+        {video.isNew && (
           <Badge
             variant="default"
             className="absolute top-3 right-3 bg-purple-600 hover:bg-purple-700 text-xs h-5 px-2"

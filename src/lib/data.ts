@@ -1,11 +1,106 @@
 import { SearchFilters, VideoResult, DURATION_BANDS } from "@/lib/types";
 
 const CACHE_PATH = "/data/cache.json";
+const LAST_VISIT_KEY = "dishatt_last_visit";
 
 // In-memory cache for the video data
 let cachedVideos: VideoResult[] | null = null;
 let cachePromise: Promise<VideoResult[]> | null = null;
 type SearchOptions = SearchFilters;
+
+/**
+ * Get the last visit date from localStorage
+ * Returns null if no previous visit
+ */
+function getLastVisitDate(): Date | null {
+  if (typeof window === "undefined") return null;
+
+  const lastVisit = localStorage.getItem(LAST_VISIT_KEY);
+  if (!lastVisit) return null;
+
+  return new Date(lastVisit);
+}
+
+/**
+ * Update the last visit date to current time
+ */
+function updateLastVisitDate(): void {
+  if (typeof window === "undefined") return;
+
+  localStorage.setItem(LAST_VISIT_KEY, new Date().toISOString());
+}
+
+/**
+ * Determine which videos should be marked as new based on visit history
+ * Ensures at least 5 videos are marked as new following the specified rules
+ */
+function determineNewVideos(videos: VideoResult[], lastVisit: Date | null): VideoResult[] {
+  const now = new Date();
+  const currentMonth = now.getMonth();
+  const currentYear = now.getFullYear();
+  const lastMonth = currentMonth === 0 ? 11 : currentMonth - 1;
+  const lastMonthYear = currentMonth === 0 ? currentYear - 1 : currentYear;
+
+  let newVideos: VideoResult[] = [];
+
+  if (!lastVisit) {
+    // No previous visit: show videos from current month as new, ensure at least 5
+    newVideos = videos.filter(video => {
+      const videoDate = new Date(video.timestamp!);
+      return videoDate.getMonth() === currentMonth &&
+             videoDate.getFullYear() === currentYear;
+    });
+
+    // If less than 5 videos from current month, include last month videos
+    if (newVideos.length < 5) {
+      const lastMonthVideos = videos.filter(video => {
+        const videoDate = new Date(video.timestamp!);
+        return videoDate.getMonth() === lastMonth &&
+               videoDate.getFullYear() === lastMonthYear;
+      });
+
+      const needed = 5 - newVideos.length;
+      newVideos = [...newVideos, ...lastMonthVideos.slice(0, needed)];
+    }
+  } else {
+    // Has previous visit: only show videos since last visit as new
+    // Only include videos from current month or last month
+    newVideos = videos.filter(video => {
+      if (video.timestamp! <= lastVisit.getTime()) return false;
+
+      const videoDate = new Date(video.timestamp!);
+      const isCurrentMonth = videoDate.getMonth() === currentMonth &&
+                            videoDate.getFullYear() === currentYear;
+      return isCurrentMonth;
+    });
+
+    // Only include videos from last month to get to count of 5 if necessary
+    if (newVideos.length < 5) {
+      const lastMonthVideosSinceVisit = videos.filter(video => {
+        if (video.timestamp! <= lastVisit.getTime()) return false;
+
+        const videoDate = new Date(video.timestamp!);
+        return videoDate.getMonth() === lastMonth &&
+               videoDate.getFullYear() === lastMonthYear;
+      });
+
+      // Sort by timestamp (newest first) and take enough to reach 5
+      lastMonthVideosSinceVisit.sort((a, b) => b.timestamp! - a.timestamp!);
+      const existingIds = new Set(newVideos.map(v => v.id));
+      const additionalVideos = lastMonthVideosSinceVisit.filter(v => !existingIds.has(v.id));
+
+      const needed = 5 - newVideos.length;
+      newVideos = [...newVideos, ...additionalVideos.slice(0, needed)];
+    }
+  }
+
+  // Mark the selected videos as new
+  const newVideoIds = new Set(newVideos.map(v => v.id));
+  return videos.map(video => ({
+    ...video,
+    isNew: newVideoIds.has(video.id)
+  }));
+}
 
 interface VideoData {
   VideoID: string;
@@ -40,35 +135,48 @@ async function loadAllVideos(): Promise<VideoResult[]> {
       }
 
       const data = await response.json();
+      const lastVisit = getLastVisitDate();
+
       cachedVideos = data.videos
         ? Object.values(data.videos)
-            .map((video: VideoData) => ({
-              id: video.VideoID,
-              title: video.Name,
-              description: video.Description || "",
-              thumbnail: video.ThumbnailURL,
-              // Convert nanoseconds to minutes (1e9 ns in a second, 60 seconds in a minute)
-              duration: Math.round((video.VideoDuration || 0) / 1e9 / 60),
-              source: (video.ClickURL?.includes("youtube.com")
-                ? "youtube"
-                : video.ClickURL?.includes("spotify.com")
-                ? "spotify"
-                : "timelesstoday") as "youtube" | "timelesstoday" | "spotify",
-              publishedYear: video.PublishYear,
-              publishedMonth: video.PublishMonth - 1, // Convert to 0-indexed month for Date
-              language: normalizeLanguageCode(video.Language),
-              url: video.ClickURL,
-              audioOnly: video.AudioOnly || false,
-              // Store timestamp for sorting
-              timestamp: new Date(
+            .map((video: VideoData) => {
+              const timestamp = new Date(
                 video.PublishYear,
                 (video.PublishMonth || 1) - 1,
                 video.PublishDay || 1,
-              ).getTime(),
-            }))
+              ).getTime();
+
+              return {
+                id: video.VideoID,
+                title: video.Name,
+                description: video.Description || "",
+                thumbnail: video.ThumbnailURL,
+                // Convert nanoseconds to minutes (1e9 ns in a second, 60 seconds in a minute)
+                duration: Math.round((video.VideoDuration || 0) / 1e9 / 60),
+                source: (video.ClickURL?.includes("youtube.com")
+                  ? "youtube"
+                  : video.ClickURL?.includes("spotify.com")
+                  ? "spotify"
+                  : "timelesstoday") as "youtube" | "timelesstoday" | "spotify",
+                publishedYear: video.PublishYear,
+                publishedMonth: video.PublishMonth - 1, // Convert to 0-indexed month for Date
+                language: normalizeLanguageCode(video.Language),
+                url: video.ClickURL,
+                audioOnly: video.AudioOnly || false,
+                timestamp,
+              };
+            })
             // Sort by publish date (newest first)
             .sort((a, b) => b.timestamp - a.timestamp)
         : [];
+
+      // Determine which videos should be marked as new
+      if (cachedVideos.length > 0) {
+        cachedVideos = determineNewVideos(cachedVideos, lastVisit);
+      }
+
+      // Update last visit date after processing
+      updateLastVisitDate();
 
       return cachedVideos;
     } catch (error) {

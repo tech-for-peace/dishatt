@@ -28,6 +28,7 @@ export interface VideoResult {
   url: string;
   audioOnly?: boolean; // for audio-only videos
   timestamp?: number; // for internal sorting
+  isNew?: boolean; // for showing "new" tag
 }
 
 export interface SearchResponse {
