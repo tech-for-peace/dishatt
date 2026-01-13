@@ -140,7 +140,7 @@ const Index = () => {
       <footer className="py-1 mt-auto">
         <div className="container max-w-6xl mx-auto px-4 text-center">
           <p className="text-sm text-muted-foreground">
-            © 2026 techforpeace.co.in
+            © {new Date().getFullYear()} techforpeace.co.in
           </p>
         </div>
       </footer>
