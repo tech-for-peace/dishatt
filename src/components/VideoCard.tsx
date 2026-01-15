@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Calendar, Globe, Play, Sparkles, Headphones } from "lucide-react";
 import { VideoResult } from "@/lib/types";
 import { Badge } from "./ui/badge";
-import { formatLanguage } from "@/lib/data";
+import { formatLanguage, markVideoAsClicked } from "@/lib/data";
 // Language-aware duration formatting
 function formatDuration(minutes: number, language: string): string {
   const hours = Math.floor(minutes / 60);
@@ -40,6 +40,10 @@ export function VideoCard({ video, index }: VideoCardProps) {
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
+    
+    // Mark video as clicked (removes NEW badge)
+    markVideoAsClicked(video.id);
+    
     let url = video.url;
     // Ensure timelesstoday.tv URLs don't have www
     if (url.includes("timelesstoday.tv")) {

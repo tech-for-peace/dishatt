@@ -2,39 +2,75 @@ import { SearchFilters, VideoResult, DURATION_BANDS } from "@/lib/types";
 
 const CACHE_PATH = "/data/cache.json";
 const LAST_VISIT_KEY = "dishatt_last_visit";
+const MIN_NEW_VIDEOS = 2;
 
 let cachedVideos: VideoResult[] | null = null;
 let cachePromise: Promise<VideoResult[]> | null = null;
 
 /**
- * Get the last visit date from localStorage
- * Returns null if no previous visit
+ * Get the set of clicked video IDs from localStorage
+ * Returns empty set if no data or if old date format is detected
  */
-function getLastVisitDate(): Date | null {
-  if (typeof window === "undefined") return null;
+function getClickedVideoIds(): Set<string> {
+  if (typeof window === "undefined") return new Set();
 
-  const lastVisit = localStorage.getItem(LAST_VISIT_KEY);
-  if (!lastVisit) return null;
+  const stored = localStorage.getItem(LAST_VISIT_KEY);
+  if (!stored) return new Set();
 
-  return new Date(lastVisit);
+  try {
+    const parsed = JSON.parse(stored);
+    // Check if it's an array (new format)
+    if (Array.isArray(parsed)) {
+      return new Set(parsed);
+    }
+    // Old format (date string) or invalid - ignore and return empty
+    return new Set();
+  } catch {
+    // If JSON parse fails, it's likely an old date string - ignore
+    return new Set();
+  }
 }
 
 /**
- * Update the last visit date to current time
+ * Save clicked video IDs to localStorage
+ * Cleans up IDs that are no longer in the video dataset
  */
-function updateLastVisitDate(): void {
+function saveClickedVideoIds(clickedIds: Set<string>, validVideoIds: Set<string>): void {
   if (typeof window === "undefined") return;
 
-  localStorage.setItem(LAST_VISIT_KEY, new Date().toISOString());
+  // Only keep IDs that exist in current video dataset to prevent growth
+  const cleanedIds = Array.from(clickedIds).filter(id => validVideoIds.has(id));
+  localStorage.setItem(LAST_VISIT_KEY, JSON.stringify(cleanedIds));
 }
 
 /**
- * Determine which videos should be marked as new based on visit history
- * Ensures at least 5 videos are marked as new following the specified rules
+ * Mark a video as clicked - exported for use by VideoCard
+ */
+export function markVideoAsClicked(videoId: string): void {
+  if (typeof window === "undefined") return;
+
+  const clickedIds = getClickedVideoIds();
+  clickedIds.add(videoId);
+  
+  // Save without cleanup (we don't have valid IDs here, cleanup happens on load)
+  localStorage.setItem(LAST_VISIT_KEY, JSON.stringify(Array.from(clickedIds)));
+  
+  // Update cached videos to reflect the change
+  if (cachedVideos) {
+    cachedVideos = cachedVideos.map(video => 
+      video.id === videoId ? { ...video, isNew: false } : video
+    );
+  }
+}
+
+/**
+ * Determine which videos should be marked as new
+ * A video is new if: published in current month AND never clicked
+ * If fewer than MIN_NEW_VIDEOS, include last month's unclicked videos
  */
 function determineNewVideos(
   videos: VideoResult[],
-  lastVisit: Date | null,
+  clickedIds: Set<string>,
 ): VideoResult[] {
   const now = new Date();
   const currentMonth = now.getMonth();
@@ -42,60 +78,34 @@ function determineNewVideos(
   const lastMonth = currentMonth === 0 ? 11 : currentMonth - 1;
   const lastMonthYear = currentMonth === 0 ? currentYear - 1 : currentYear;
 
-  let newVideos: VideoResult[] = [];
+  // Get current month videos that haven't been clicked
+  const currentMonthNewVideos = videos.filter((video) => {
+    if (clickedIds.has(video.id)) return false;
+    const videoDate = new Date(video.timestamp!);
+    return (
+      videoDate.getMonth() === currentMonth &&
+      videoDate.getFullYear() === currentYear
+    );
+  });
 
-  if (!lastVisit) {
-    newVideos = videos.filter((video) => {
+  let newVideos = [...currentMonthNewVideos];
+
+  // If not enough, add last month's unclicked videos
+  if (newVideos.length < MIN_NEW_VIDEOS) {
+    const lastMonthNewVideos = videos.filter((video) => {
+      if (clickedIds.has(video.id)) return false;
       const videoDate = new Date(video.timestamp!);
       return (
-        videoDate.getMonth() === currentMonth &&
-        videoDate.getFullYear() === currentYear
+        videoDate.getMonth() === lastMonth &&
+        videoDate.getFullYear() === lastMonthYear
       );
     });
 
-    if (newVideos.length < 5) {
-      const lastMonthVideos = videos.filter((video) => {
-        const videoDate = new Date(video.timestamp!);
-        return (
-          videoDate.getMonth() === lastMonth &&
-          videoDate.getFullYear() === lastMonthYear
-        );
-      });
-
-      const needed = 5 - newVideos.length;
-      newVideos = [...newVideos, ...lastMonthVideos.slice(0, needed)];
-    }
-  } else {
-    newVideos = videos.filter((video) => {
-      if (video.timestamp! <= lastVisit.getTime()) return false;
-
-      const videoDate = new Date(video.timestamp!);
-      const isCurrentMonth =
-        videoDate.getMonth() === currentMonth &&
-        videoDate.getFullYear() === currentYear;
-      return isCurrentMonth;
-    });
-
-    if (newVideos.length < 5) {
-      const lastMonthVideosSinceVisit = videos.filter((video) => {
-        if (video.timestamp! <= lastVisit.getTime()) return false;
-
-        const videoDate = new Date(video.timestamp!);
-        return (
-          videoDate.getMonth() === lastMonth &&
-          videoDate.getFullYear() === lastMonthYear
-        );
-      });
-
-      lastMonthVideosSinceVisit.sort((a, b) => b.timestamp! - a.timestamp!);
-      const existingIds = new Set(newVideos.map((v) => v.id));
-      const additionalVideos = lastMonthVideosSinceVisit.filter(
-        (v) => !existingIds.has(v.id),
-      );
-
-      const needed = 5 - newVideos.length;
-      newVideos = [...newVideos, ...additionalVideos.slice(0, needed)];
-    }
+    // Sort by timestamp descending (most recent first)
+    lastMonthNewVideos.sort((a, b) => b.timestamp! - a.timestamp!);
+    
+    const needed = MIN_NEW_VIDEOS - newVideos.length;
+    newVideos = [...newVideos, ...lastMonthNewVideos.slice(0, needed)];
   }
 
   // Mark the selected videos as new
@@ -137,7 +147,7 @@ async function loadAllVideos(): Promise<VideoResult[]> {
       }
 
       const data = await response.json();
-      const lastVisit = getLastVisitDate();
+      const clickedIds = getClickedVideoIds();
 
       cachedVideos = data.videos
         ? Object.values(data.videos)
@@ -174,10 +184,12 @@ async function loadAllVideos(): Promise<VideoResult[]> {
         : [];
 
       if (cachedVideos.length > 0) {
-        cachedVideos = determineNewVideos(cachedVideos, lastVisit);
+        // Get valid video IDs to clean up storage
+        const validVideoIds = new Set(cachedVideos.map(v => v.id));
+        saveClickedVideoIds(clickedIds, validVideoIds);
+        
+        cachedVideos = determineNewVideos(cachedVideos, clickedIds);
       }
-
-      updateLastVisitDate();
 
       return cachedVideos;
     } catch (error) {
