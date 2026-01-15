@@ -17,10 +17,9 @@ function formatDuration(minutes: number, language: string): string {
   return `${mins}m`;
 }
 
-function formatDate(date: Date, language: string): string {
-  const locale = language === "hi" ? "hi-IN" : "en-US";
-  return date.toLocaleDateString(locale, {
-    month: "long",
+function formatDate(date: Date): string {
+  return date.toLocaleDateString("en-US", {
+    month: "short",
     year: "numeric",
   });
 }
@@ -118,7 +117,7 @@ export function VideoCard({ video, index }: VideoCardProps) {
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1.5">
               <Calendar className="h-3.5 w-3.5 flex-shrink-0" />
-              {formatDate(videoDate, currentLanguage)}
+              {formatDate(videoDate)}
             </span>
             <span className="flex items-center gap-1 capitalize">
               <Globe className="h-3.5 w-3.5" />
