@@ -174,6 +174,7 @@ async function loadAllVideos(): Promise<VideoResult[]> {
                   | "spotify",
                 publishedYear: video.PublishYear,
                 publishedMonth: video.PublishMonth - 1,
+                publishedDay: video.PublishDay,
                 language: normalizeLanguageCode(video.Language),
                 url: video.ClickURL,
                 audioOnly: video.AudioOnly || false,

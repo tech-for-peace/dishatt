@@ -17,7 +17,14 @@ function formatDuration(minutes: number, language: string): string {
   return `${mins}m`;
 }
 
-function formatDate(date: Date): string {
+function formatDate(date: Date, hasDay: boolean): string {
+  if (hasDay) {
+    return date.toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+  }
   return date.toLocaleDateString("en-US", {
     month: "short",
     year: "numeric",
@@ -34,9 +41,10 @@ export function VideoCard({ video, index }: VideoCardProps) {
   const currentLanguage = i18n.language;
   const videoDate = new Date(
     video.publishedYear,
-    video.publishedMonth ? video.publishedMonth : 0,
-    1,
+    video.publishedMonth ?? 0,
+    video.publishedDay ?? 1,
   );
+  const hasDay = video.publishedDay !== undefined;
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -117,7 +125,7 @@ export function VideoCard({ video, index }: VideoCardProps) {
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1.5">
               <Calendar className="h-3.5 w-3.5 flex-shrink-0" />
-              {formatDate(videoDate)}
+              {formatDate(videoDate, hasDay)}
             </span>
             <span className="flex items-center gap-1 capitalize">
               <Globe className="h-3.5 w-3.5" />
