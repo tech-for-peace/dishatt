@@ -1739,7 +1739,7 @@
       "PublishYear": 2019,
       "PublishMonth": 4,
       "PublishDay": 3,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img2/0003274_glowing-memories_V2.jpg?format=auto",
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/0003274_glowing-memories.jpg?format=auto",
       "AudioOnly": false
     },
     "14832813-48c0-4003-8958-e2407b1f3234": {
@@ -2727,7 +2727,7 @@
       "PublishYear": 2023,
       "PublishMonth": 10,
       "PublishDay": 18,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img/0010398_the-ultimate-argument.jpeg?format=auto",
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/220906_1_The_Ultimate_Argument_800_EN.jpg?format=auto",
       "AudioOnly": false
     },
     "21573a5b-1db5-4136-b789-b6517c371555": {
@@ -5746,6 +5746,19 @@
       "ThumbnailURL": "https://i.ytimg.com/vi/4Xx5VzVLkKM/mqdefault.jpg",
       "AudioOnly": false
     },
+    "4Xxrf33yqapCxge75pX47b": {
+      "VideoID": "4Xxrf33yqapCxge75pX47b",
+      "Name": "Have we forgotten our humanity?",
+      "Description": "Have we forgotten our humanity? Tune in to find strength. Have we forgotten our humanity? Are human lives just statistics? How do we find strength and hope in dark times? We answer these questions in this provocative episode of Life’s Essentials with Prem Rawat. Dive deeper into life’s essentials with Prem Rawat’s new bestseller Breath-Wake Up to Life, published by St. Martin’s Essentials, and available from https://BreathBook.life or an independent bookstore near you. If you have any questions for Prem Rawat about his bestselling books or the Life’s Essentials podcast, please email us at lifesessentialswithpremrawat@gmail.comTo access other seasons and the latest updates, visit www.premrawat.com/podcast. This podcast is brought to you by Udo's Choice, made with your health in mind. Health is your birthright and natural state. For more information on our award-winning supplements, go to udoschoice.com. Hosted on Acast. See acast.com/privacy for more information.",
+      "VideoDuration": 1045000000000,
+      "Language": "en-US",
+      "ClickURL": "https://open.spotify.com/episode/4Xxrf33yqapCxge75pX47b",
+      "PublishYear": 2026,
+      "PublishMonth": 1,
+      "PublishDay": 20,
+      "ThumbnailURL": "https://i.scdn.co/image/ab6765630000ba8af2045479ab214cf768ef61cc",
+      "AudioOnly": true
+    },
     "4ZqDJJxM1nj5Y84VAmY5kS": {
       "VideoID": "4ZqDJJxM1nj5Y84VAmY5kS",
       "Name": "WHEN IS A GIFT A GIFT?",
@@ -7578,6 +7591,19 @@
       "PublishDay": 6,
       "ThumbnailURL": "https://images.timelesstoday.tv/img/0001888_best-friend.jpeg?format=auto",
       "AudioOnly": false
+    },
+    "63KhLoLFqYVCniwlVLNcfb": {
+      "VideoID": "63KhLoLFqYVCniwlVLNcfb",
+      "Name": "Can simplicity survive the noise?",
+      "Description": "Can simplicity survive the noise? Tune in to stay simple. When a storm brews between your ears, is there any place to find comfort? How do you stay simple in the midst of all the noise? We offer simple answers in this episode of Life’s Essentials with Prem Rawat. Dive deeper into life’s essentials with Prem Rawat’s new bestseller Breath-Wake Up to Life, published by St. Martin’s Essentials, and available from https://BreathBook.life or an independent bookstore near you. If you have any questions for Prem Rawat about his bestselling books or the Life’s Essentials podcast, please email us at lifesessentialswithpremrawat@gmail.comTo access other seasons and the latest updates, visit www.premrawat.com/podcast. This podcast is brought to you by Udo's Choice, made with your health in mind. Health is your birthright and natural state. For more information on our award-winning supplements, go to udoschoice.com. Hosted on Acast. See acast.com/privacy for more information.",
+      "VideoDuration": 1008000000000,
+      "Language": "en-US",
+      "ClickURL": "https://open.spotify.com/episode/63KhLoLFqYVCniwlVLNcfb",
+      "PublishYear": 2026,
+      "PublishMonth": 1,
+      "PublishDay": 27,
+      "ThumbnailURL": "https://i.scdn.co/image/ab6765630000ba8af2045479ab214cf768ef61cc",
+      "AudioOnly": true
     },
     "63ab48ba-73e7-4d30-b210-db00dcfc04a9": {
       "VideoID": "63ab48ba-73e7-4d30-b210-db00dcfc04a9",
@@ -26937,5 +26963,5 @@
       "AudioOnly": false
     }
   },
-  "lastUpdated": "2026-01-27T01:02:13.946841632Z"
+  "lastUpdated": "2026-01-27T13:02:45.047209231Z"
 }
