@@ -229,10 +229,10 @@ export function FilterPanel({
           <button
             type="button"
             onClick={onResetFilters}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-normal
-                     text-muted-foreground/80 hover:text-foreground/80 hover:bg-muted/30
-                     transition-colors whitespace-nowrap rounded-md border border-border/40
-                     hover:border-border/60"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium
+                     text-foreground/70 hover:text-foreground hover:bg-muted/40
+                     transition-colors whitespace-nowrap rounded-md border border-border/60
+                     hover:border-border"
             title={t("filters.reset")}
           >
             <RefreshCw className="h-3.5 w-3.5" />
