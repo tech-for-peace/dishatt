@@ -178,7 +178,7 @@ export function VideoCard({ video, index }: VideoCardProps) {
             )}
             <button
               onClick={handleShare}
-              className="p-2 rounded-full bg-green-500 hover:bg-green-600 text-white transition-colors duration-200 ml-1"
+              className="p-1 rounded-full bg-green-500 hover:bg-green-600 text-white transition-colors duration-200 ml-1 md:hidden"
               aria-label="Share on WhatsApp"
             >
               <WhatsAppIcon className="h-4 w-4" />
