@@ -74,7 +74,7 @@ export function VideoCard({ video, index }: VideoCardProps) {
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
-  const handleShare = (e: React.MouseEvent) => {
+  const handleShare = async (e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent card click
     
     let shareUrl = video.url;
@@ -84,12 +84,32 @@ export function VideoCard({ video, index }: VideoCardProps) {
     
     const shareText = `${video.title} - ${shareUrl}`;
     
-    // Always use direct WhatsApp URL to avoid browser attribution (e.g., "sent from Firefox")
-    openWhatsAppShare(shareText);
-  };
-
-  const openWhatsAppShare = (text: string) => {
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
+    // Try to share with thumbnail image using Web Share API
+    if (navigator.share && navigator.canShare) {
+      try {
+        // Fetch the thumbnail image
+        const response = await fetch(video.thumbnail);
+        const blob = await response.blob();
+        const file = new File([blob], 'thumbnail.jpg', { type: blob.type });
+        
+        const shareData = {
+          text: shareText,
+          files: [file],
+        };
+        
+        // Check if sharing files is supported
+        if (navigator.canShare(shareData)) {
+          await navigator.share(shareData);
+          return;
+        }
+      } catch (error) {
+        // If file sharing fails, fall back to WhatsApp URL
+        console.log('File sharing failed, using WhatsApp URL fallback');
+      }
+    }
+    
+    // Fallback to direct WhatsApp URL
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
