@@ -35,11 +35,16 @@ function getClickedVideoIds(): Set<string> {
  * Save clicked video IDs to localStorage
  * Cleans up IDs that are no longer in the video dataset
  */
-function saveClickedVideoIds(clickedIds: Set<string>, validVideoIds: Set<string>): void {
+function saveClickedVideoIds(
+  clickedIds: Set<string>,
+  validVideoIds: Set<string>,
+): void {
   if (typeof window === "undefined") return;
 
   // Only keep IDs that exist in current video dataset to prevent growth
-  const cleanedIds = Array.from(clickedIds).filter(id => validVideoIds.has(id));
+  const cleanedIds = Array.from(clickedIds).filter((id) =>
+    validVideoIds.has(id),
+  );
   localStorage.setItem(LAST_VISIT_KEY, JSON.stringify(cleanedIds));
 }
 
@@ -51,14 +56,14 @@ export function markVideoAsClicked(videoId: string): void {
 
   const clickedIds = getClickedVideoIds();
   clickedIds.add(videoId);
-  
+
   // Save without cleanup (we don't have valid IDs here, cleanup happens on load)
   localStorage.setItem(LAST_VISIT_KEY, JSON.stringify(Array.from(clickedIds)));
-  
+
   // Update cached videos to reflect the change
   if (cachedVideos) {
-    cachedVideos = cachedVideos.map(video => 
-      video.id === videoId ? { ...video, isNew: false } : video
+    cachedVideos = cachedVideos.map((video) =>
+      video.id === videoId ? { ...video, isNew: false } : video,
     );
   }
 }
@@ -103,7 +108,7 @@ function determineNewVideos(
 
     // Sort by timestamp descending (most recent first)
     lastMonthNewVideos.sort((a, b) => b.timestamp! - a.timestamp!);
-    
+
     const needed = MIN_NEW_VIDEOS - newVideos.length;
     newVideos = [...newVideos, ...lastMonthNewVideos.slice(0, needed)];
   }
@@ -186,9 +191,9 @@ async function loadAllVideos(): Promise<VideoResult[]> {
 
       if (cachedVideos.length > 0) {
         // Get valid video IDs to clean up storage
-        const validVideoIds = new Set(cachedVideos.map(v => v.id));
+        const validVideoIds = new Set(cachedVideos.map((v) => v.id));
         saveClickedVideoIds(clickedIds, validVideoIds);
-        
+
         cachedVideos = determineNewVideos(cachedVideos, clickedIds);
       }
 
