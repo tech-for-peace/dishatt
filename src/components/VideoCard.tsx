@@ -84,19 +84,8 @@ export function VideoCard({ video, index }: VideoCardProps) {
     
     const shareText = `${video.title} - ${shareUrl}`;
     
-    // Try Web Share API first (works on mobile)
-    if (navigator.share) {
-      navigator.share({
-        title: video.title,
-        url: shareUrl,
-      }).catch(() => {
-        // Fallback to WhatsApp if share fails
-        openWhatsAppShare(shareText);
-      });
-    } else {
-      // Direct WhatsApp share for desktop
-      openWhatsAppShare(shareText);
-    }
+    // Always use direct WhatsApp URL to avoid browser attribution (e.g., "sent from Firefox")
+    openWhatsAppShare(shareText);
   };
 
   const openWhatsAppShare = (text: string) => {
@@ -189,10 +178,10 @@ export function VideoCard({ video, index }: VideoCardProps) {
             )}
             <button
               onClick={handleShare}
-              className="p-1.5 rounded-full bg-green-500 hover:bg-green-600 text-white transition-colors duration-200"
+              className="p-2 rounded-full bg-green-500 hover:bg-green-600 text-white transition-colors duration-200 ml-1"
               aria-label="Share on WhatsApp"
             >
-              <WhatsAppIcon className="h-3.5 w-3.5" />
+              <WhatsAppIcon className="h-4 w-4" />
             </button>
           </div>
         </div>
