@@ -46,7 +46,9 @@ const Index = () => {
         const results = await searchVideos(searchFilters);
         setAllVideos(results);
       } catch (error) {
-        console.error("Search error:", error);
+        if (import.meta.env.DEV) {
+          console.error("Search error:", error);
+        }
         toast({
           title: "Search failed",
           description: "Unable to fetch results. Please try again.",

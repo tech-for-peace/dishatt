@@ -199,7 +199,9 @@ async function loadAllVideos(): Promise<VideoResult[]> {
 
       return cachedVideos;
     } catch (error) {
-      console.error("Error reading cache file:", error);
+      if (import.meta.env.DEV) {
+        console.error("Error reading cache file:", error);
+      }
       return [];
     } finally {
       cachePromise = null;
