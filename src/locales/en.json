@@ -13,7 +13,8 @@
     "allDurations": "All Durations",
     "selected": "selected",
     "searchPlaceholder": "Search in title and description (optional)...",
-    "reset": "Reset Filters"
+    "reset": "Reset Filters",
+    "freeOnly": "Free"
   },
   "results": {
     "videoCount_one": "{{count}} video found",
