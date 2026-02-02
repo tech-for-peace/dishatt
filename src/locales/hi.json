@@ -13,7 +13,8 @@
     "allDurations": "सभी अवधि",
     "selected": "चुने हुए",
     "searchPlaceholder": "शीर्षक और विवरण में खोजें (वैकल्पिक)...",
-    "reset": "फ़िल्टर्स रीसेट करें"
+    "reset": "फ़िल्टर्स रीसेट करें",
+    "freeOnly": "मुफ़्त"
   },
   "results": {
     "videoCount_one": "{{count}} वीडियो मिला",

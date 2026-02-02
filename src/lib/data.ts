@@ -133,6 +133,7 @@ interface VideoData {
   PublishDay?: number;
   Language?: string;
   AudioOnly?: boolean;
+  LoginRequired?: boolean;
 }
 
 async function loadAllVideos(): Promise<VideoResult[]> {
@@ -183,6 +184,7 @@ async function loadAllVideos(): Promise<VideoResult[]> {
                 language: normalizeLanguageCode(video.Language),
                 url: video.ClickURL,
                 audioOnly: video.AudioOnly || false,
+                loginRequired: video.LoginRequired || false,
                 timestamp,
               };
             })
@@ -247,6 +249,10 @@ function filterVideos(
         return true;
       });
       if (!matchesAnyBand) return false;
+    }
+
+    if (filters.freeOnly && video.loginRequired) {
+      return false;
     }
 
     if (filters.titleSearch) {

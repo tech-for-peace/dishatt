@@ -14,6 +14,7 @@ const initialFilters: SearchFilters = {
   years: [],
   durationBands: [],
   titleSearch: "",
+  freeOnly: false,
 };
 
 const getStoredFilters = (): SearchFilters => {
@@ -86,7 +87,7 @@ const Index = () => {
     performSearch(filters);
   }, [filters, performSearch]);
   const handleFilterChange = useCallback(
-    (key: keyof SearchFilters, value: string | string[]) => {
+    (key: keyof SearchFilters, value: string | string[] | boolean) => {
       const newFilters = { ...filters, [key]: value };
       setFilters(newFilters);
       storeFilters(newFilters);

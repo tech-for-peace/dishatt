@@ -13,6 +13,7 @@ export interface SearchFilters {
   durationBands: string[];
   years: string[];
   titleSearch: string;
+  freeOnly: boolean;
 }
 
 export interface VideoResult {
@@ -30,6 +31,7 @@ export interface VideoResult {
   audioOnly?: boolean; // for audio-only videos
   timestamp?: number; // for internal sorting
   isNew?: boolean; // for showing "new" tag
+  loginRequired?: boolean; // true if login is required to watch
 }
 
 export interface SearchResponse {

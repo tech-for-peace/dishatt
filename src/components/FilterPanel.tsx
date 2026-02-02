@@ -46,7 +46,7 @@ const formatDurationLabel = (label: string, language: string): string => {
 };
 interface FilterPanelProps {
   filters: SearchFilters;
-  onFilterChange: (key: keyof SearchFilters, value: string | string[]) => void;
+  onFilterChange: (key: keyof SearchFilters, value: string | string[] | boolean) => void;
   onResetFilters: () => void;
 }
 export function FilterPanel({
@@ -211,7 +211,7 @@ export function FilterPanel({
           </SelectContent>
         </Select>
       </div>
-      {/* Text Search */}
+      {/* Text Search and Free Toggle */}
       <div className="mt-3">
         <div className="flex gap-2">
           <Input
@@ -226,6 +226,20 @@ export function FilterPanel({
             autoCapitalize="off"
             spellCheck="false"
           />
+          <label
+            className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium
+                     text-foreground/80 hover:text-foreground
+                     transition-colors whitespace-nowrap rounded-md border border-border/60
+                     hover:border-border cursor-pointer select-none"
+          >
+            <input
+              type="checkbox"
+              checked={filters.freeOnly}
+              onChange={(e) => onFilterChange("freeOnly", e.target.checked)}
+              className="h-4 w-4 rounded border-border accent-primary"
+            />
+            <span>{t("filters.freeOnly")}</span>
+          </label>
           <button
             type="button"
             onClick={onResetFilters}
