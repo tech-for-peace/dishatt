@@ -14,7 +14,7 @@
     "selected": "चुने हुए",
     "searchPlaceholder": "शीर्षक और विवरण में खोजें (वैकल्पिक)...",
     "reset": "फ़िल्टर्स रीसेट करें",
-    "freeOnly": "लॉगिन नहीं"
+    "freeOnly": "Free"
   },
   "results": {
     "videoCount_one": "{{count}} वीडियो मिला",
