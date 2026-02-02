@@ -14,7 +14,7 @@
     "selected": "selected",
     "searchPlaceholder": "Search in title and description (optional)...",
     "reset": "Reset Filters",
-    "freeOnly": "Free"
+    "freeOnly": "No Login"
   },
   "results": {
     "videoCount_one": "{{count}} video found",
