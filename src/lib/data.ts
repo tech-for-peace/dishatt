@@ -11,6 +11,10 @@ let cachePromise: Promise<VideoResult[]> | null = null;
  * Get the set of clicked video IDs from localStorage
  * Returns empty set if no data or if old date format is detected
  */
+const isValidClickedIds = (data: unknown): data is string[] => {
+  return Array.isArray(data) && data.every(item => typeof item === 'string');
+};
+
 function getClickedVideoIds(): Set<string> {
   if (typeof window === "undefined") return new Set();
 
@@ -19,14 +23,14 @@ function getClickedVideoIds(): Set<string> {
 
   try {
     const parsed = JSON.parse(stored);
-    // Check if it's an array (new format)
-    if (Array.isArray(parsed)) {
+    // Validate it's an array of strings
+    if (isValidClickedIds(parsed)) {
       return new Set(parsed);
     }
-    // Old format (date string) or invalid - ignore and return empty
+    // Invalid format - return empty
     return new Set();
   } catch {
-    // If JSON parse fails, it's likely an old date string - ignore
+    // If JSON parse fails - return empty
     return new Set();
   }
 }
