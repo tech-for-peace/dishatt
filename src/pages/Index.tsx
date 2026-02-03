@@ -17,11 +17,27 @@ const initialFilters: SearchFilters = {
   freeOnly: false,
 };
 
+const isValidSearchFilters = (data: unknown): data is SearchFilters => {
+  if (typeof data !== 'object' || data === null) return false;
+  const obj = data as Record<string, unknown>;
+  return (
+    (typeof obj.language === 'string' || obj.language === '') &&
+    (typeof obj.source === 'string' || obj.source === '') &&
+    Array.isArray(obj.years) &&
+    Array.isArray(obj.durationBands) &&
+    typeof obj.titleSearch === 'string' &&
+    typeof obj.freeOnly === 'boolean'
+  );
+};
+
 const getStoredFilters = (): SearchFilters => {
   const stored = localStorage.getItem(UI_CONFIG.cacheKey);
   if (stored) {
     try {
-      return JSON.parse(stored);
+      const parsed = JSON.parse(stored);
+      if (isValidSearchFilters(parsed)) {
+        return parsed;
+      }
     } catch {
       return initialFilters;
     }
