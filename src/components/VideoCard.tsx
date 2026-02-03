@@ -104,8 +104,7 @@ export function VideoCard({ video, index }: VideoCardProps) {
           return;
         }
       } catch {
-        // If file sharing fails, fall back to WhatsApp URL
-        console.log('File sharing failed, using WhatsApp URL fallback');
+        // File sharing failed, fall through to WhatsApp URL fallback
       }
     }
 
