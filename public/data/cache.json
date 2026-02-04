@@ -5906,7 +5906,7 @@
       "PublishDay": 9,
       "ThumbnailURL": "https://images.timelesstoday.tv/img/0001215_one-day-would-be-enough-part-1.jpeg?format=auto",
       "AudioOnly": false,
-      "LoginRequired": true
+      "LoginRequired": false
     },
     "482d3bb0-4a64-4a26-8390-0054cd4dbacf": {
       "VideoID": "482d3bb0-4a64-4a26-8390-0054cd4dbacf",
@@ -11470,7 +11470,7 @@
       "VideoID": "8b0fae00-d665-44c9-a30e-db9afb2747f9",
       "Name": "Session 7, 50th Anniversary",
       "Description": "Amaroo 2016 Celebration Series\n\n\nPrem Rawat in Ivory's Rock Conference and Events Center, Ipswich, 2016. \nA 5-day conference celebrating the 50th anniversary of his relentless efforts to spread the message of peace.\n\nFor the past 50 years, Prem Rawat has been focused on one simple goal – to communicate his message of peace to as many people as possible.  His efforts have been relentless and the results have been extraordinary – but never as extraordinary as this past year. Indeed, in 2016, Prem reached more people than ever before.\n\nIn September 2016, 4,500 of these people attended a five-day event with Prem at the Ivory’s Rock Conference and Event Center (aka Amaroo) in Australia. By all accounts, the event was a most remarkable one.\n\nToday, in honor of the holiday season and the many requests we’ve received, we are happy to announce the launch of an online 50th Anniversary Gift Set.  This comprehensive collection includes nine of Prem’s addresses from the 5-day celebration with material not seen before on TimelessToday.  It also features many of the extraordinary stories he told in Amaroo from the Mahabharata – a classic Indian epic infused with enduring principles still relevant today.\n\n Written by Mitch Ditkoff",
-      "VideoDuration": 4800000000000,
+      "VideoDuration": 2760000000000,
       "Language": "en-US",
       "ClickURL": "https://www.timelesstoday.tv/en/home/product/8b0fae00-d665-44c9-a30e-db9afb2747f9",
       "PublishYear": 2024,
@@ -11954,7 +11954,7 @@
       "PublishDay": 2,
       "ThumbnailURL": "https://images.timelesstoday.tv/img2/250731_Guru_Puja_Inspire_800.jpg?format=auto",
       "AudioOnly": false,
-      "LoginRequired": true
+      "LoginRequired": false
     },
     "912b7124-9ef4-40b8-b9c2-41d71f025e19": {
       "VideoID": "912b7124-9ef4-40b8-b9c2-41d71f025e19",
@@ -29079,5 +29079,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-02-03T01:11:15.352053767Z"
+  "lastUpdated": "2026-02-04T01:06:10.537165463Z"
 }
