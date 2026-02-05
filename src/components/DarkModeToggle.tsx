@@ -42,7 +42,7 @@ export function DarkModeToggle() {
         <Button
           variant="outline"
           size="sm"
-          className="h-5 md:h-10 gap-1 px-1 md:px-3 bg-white border-gray-300 hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all duration-200"
+          className={`h-5 md:h-10 gap-1 px-1 md:px-3 bg-white border-gray-300 hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all duration-200`}
         >
           {getCurrentIcon()}
           <span className="font-semibold text-xs md:text-sm text-gray-800">
@@ -52,7 +52,7 @@ export function DarkModeToggle() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
-        className="min-w-[140px] bg-white border-gray-300 shadow-lg dark:bg-gray-800 dark:border-gray-600"
+        className={`min-w-[140px] bg-white border-gray-300 shadow-lg dark:bg-gray-800 dark:border-gray-600`}
       >
         <DropdownMenuItem
           onClick={() => handleThemeChange("light")}

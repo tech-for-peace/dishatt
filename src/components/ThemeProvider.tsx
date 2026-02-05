@@ -9,7 +9,6 @@ type ThemeProviderProps = {
   storageKey?: string;
 };
 
-
 export function ThemeProvider({
   children,
   defaultTheme = "system",
@@ -19,7 +18,7 @@ export function ThemeProvider({
   const [theme, setTheme] = useState<Theme>(() => {
     const stored = localStorage.getItem(storageKey);
     // Validate that stored value is a valid theme
-    if (stored === 'dark' || stored === 'light' || stored === 'system') {
+    if (stored === "dark" || stored === "light" || stored === "system") {
       return stored;
     }
     return defaultTheme;

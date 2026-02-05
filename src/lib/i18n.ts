@@ -5,8 +5,8 @@ import enTranslations from "../locales/en.json";
 import hiTranslations from "../locales/hi.json";
 const STORAGE_KEY = "disha-language-preference";
 // Get the saved language or default to Hindi
-const isValidLanguage = (value: unknown): value is 'en' | 'hi' => {
-  return value === 'en' || value === 'hi';
+const isValidLanguage = (value: unknown): value is "en" | "hi" => {
+  return value === "en" || value === "hi";
 };
 
 const getInitialLanguage = (): string => {

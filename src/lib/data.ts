@@ -12,7 +12,7 @@ let cachePromise: Promise<VideoResult[]> | null = null;
  * Returns empty set if no data or if old date format is detected
  */
 const isValidClickedIds = (data: unknown): data is string[] => {
-  return Array.isArray(data) && data.every(item => typeof item === 'string');
+  return Array.isArray(data) && data.every((item) => typeof item === "string");
 };
 
 function getClickedVideoIds(): Set<string> {

@@ -46,7 +46,10 @@ const formatDurationLabel = (label: string, language: string): string => {
 };
 interface FilterPanelProps {
   filters: SearchFilters;
-  onFilterChange: (key: keyof SearchFilters, value: string | string[] | boolean) => void;
+  onFilterChange: (
+    key: keyof SearchFilters,
+    value: string | string[] | boolean,
+  ) => void;
   onResetFilters: () => void;
 }
 export function FilterPanel({
@@ -227,32 +230,32 @@ export function FilterPanel({
             spellCheck="false"
           />
           <div className="flex gap-2">
-          <label
-            className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium
+            <label
+              className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium
                      text-foreground/80 hover:text-foreground
                      transition-colors whitespace-nowrap rounded-md border border-border/60
                      hover:border-border cursor-pointer select-none"
-          >
-            <input
-              type="checkbox"
-              checked={filters.freeOnly}
-              onChange={(e) => onFilterChange("freeOnly", e.target.checked)}
-              className="h-4 w-4 rounded border-border accent-primary"
-            />
-            <span>{t("filters.freeOnly")}</span>
-          </label>
-          <button
-            type="button"
-            onClick={onResetFilters}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium
+            >
+              <input
+                type="checkbox"
+                checked={filters.freeOnly}
+                onChange={(e) => onFilterChange("freeOnly", e.target.checked)}
+                className="h-4 w-4 rounded border-border accent-primary"
+              />
+              <span>{t("filters.freeOnly")}</span>
+            </label>
+            <button
+              type="button"
+              onClick={onResetFilters}
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium
                      text-foreground/70 hover:text-foreground hover:bg-muted/40
                      transition-colors whitespace-nowrap rounded-md border border-border/60
                      hover:border-border"
-            title={t("filters.reset")}
-          >
-            <RefreshCw className="h-3.5 w-3.5" />
-            <span>{t("filters.reset")}</span>
-          </button>
+              title={t("filters.reset")}
+            >
+              <RefreshCw className="h-3.5 w-3.5" />
+              <span>{t("filters.reset")}</span>
+            </button>
           </div>
         </div>
       </div>

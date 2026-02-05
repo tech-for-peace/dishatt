@@ -1,8 +1,10 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
+
 import { Header } from "@/components/Header";
 import { FilterPanel } from "@/components/FilterPanel";
 import { VideoGrid } from "@/components/VideoGrid";
+
 import { searchVideos } from "@/lib/data";
 import { SearchFilters, VideoResult } from "@/lib/types";
 import { useToast } from "@/lib";
@@ -18,33 +20,30 @@ const initialFilters: SearchFilters = {
 };
 
 const isValidSearchFilters = (data: unknown): data is SearchFilters => {
-  if (typeof data !== 'object' || data === null) return false;
+  if (typeof data !== "object" || data === null) return false;
   const obj = data as Record<string, unknown>;
   return (
-    (typeof obj.language === 'string' || obj.language === '') &&
-    (typeof obj.source === 'string' || obj.source === '') &&
+    (typeof obj.language === "string" || obj.language === "") &&
+    (typeof obj.source === "string" || obj.source === "") &&
     Array.isArray(obj.years) &&
     Array.isArray(obj.durationBands) &&
-    typeof obj.titleSearch === 'string' &&
-    typeof obj.freeOnly === 'boolean'
+    typeof obj.titleSearch === "string" &&
+    typeof obj.freeOnly === "boolean"
   );
 };
 
 const getStoredFilters = (): SearchFilters => {
   const stored = localStorage.getItem(UI_CONFIG.cacheKey);
-  if (stored) {
-    try {
-      const parsed = JSON.parse(stored);
-      if (isValidSearchFilters(parsed)) {
-        return parsed;
-      }
-    } catch {
-      return initialFilters;
-    }
+  if (!stored) return initialFilters;
+
+  try {
+    const parsed = JSON.parse(stored);
+    return isValidSearchFilters(parsed) ? parsed : initialFilters;
+  } catch {
+    return initialFilters;
   }
-  return initialFilters;
 };
-const storeFilters = (filters: SearchFilters) => {
+const storeFilters = (filters: SearchFilters): void => {
   localStorage.setItem(UI_CONFIG.cacheKey, JSON.stringify(filters));
 };
 const Index = () => {
@@ -53,12 +52,14 @@ const Index = () => {
   const [displayedVideos, setDisplayedVideos] = useState<VideoResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [visibleCount, setVisibleCount] = useState(UI_CONFIG.videosPerLoad);
+
   const { toast } = useToast();
   const { t } = useTranslation();
   const performSearch = useCallback(
     async (searchFilters: SearchFilters) => {
       setIsLoading(true);
-      setVisibleCount(UI_CONFIG.videosPerLoad); // Reset to initial count on new search
+      setVisibleCount(UI_CONFIG.videosPerLoad);
+
       try {
         const results = await searchVideos(searchFilters);
         setAllVideos(results);
@@ -74,12 +75,11 @@ const Index = () => {
     },
     [toast],
   );
-  // Update displayed videos when allVideos or visibleCount changes
   useEffect(() => {
     setDisplayedVideos(allVideos.slice(0, visibleCount));
   }, [allVideos, visibleCount]);
-  // Infinite scroll with Intersection Observer
   const loadMoreRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -93,12 +93,13 @@ const Index = () => {
       },
       { threshold: 0.1 },
     );
+
     if (loadMoreRef.current && allVideos.length > visibleCount) {
       observer.observe(loadMoreRef.current);
     }
+
     return () => observer.disconnect();
   }, [isLoading, allVideos.length, visibleCount]);
-  // Load initial results on mount and when filters change
   useEffect(() => {
     performSearch(filters);
   }, [filters, performSearch]);
@@ -111,6 +112,7 @@ const Index = () => {
     },
     [filters, performSearch],
   );
+
   const handleResetFilters = useCallback(() => {
     setFilters(initialFilters);
     storeFilters(initialFilters);
@@ -144,10 +146,7 @@ const Index = () => {
           {/* Infinite scroll trigger */}
           {allVideos.length > displayedVideos.length && (
             <div ref={loadMoreRef} className="flex justify-center py-8">
-              <div
-                className="h-8 w-8 border-2 border-primary border-t-transparent
-                         rounded-full animate-spin"
-              />
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
             </div>
           )}
         </div>
