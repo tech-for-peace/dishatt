@@ -213,19 +213,20 @@ export function FilterPanel({
       </div>
       {/* Text Search and Free Toggle */}
       <div className="mt-3">
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2">
           <Input
             placeholder={t("filters.searchPlaceholder")}
             value={filters.titleSearch}
             onChange={(e) => onFilterChange("titleSearch", e.target.value)}
             className="bg-background/50 border-border/50 hover:border-primary/30
-                   transition-colors flex-1"
+                   transition-colors w-full sm:flex-1"
             inputMode="search"
             autoComplete="off"
             autoCorrect="off"
             autoCapitalize="off"
             spellCheck="false"
           />
+          <div className="flex gap-2">
           <label
             className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium
                      text-foreground/80 hover:text-foreground
@@ -252,6 +253,7 @@ export function FilterPanel({
             <RefreshCw className="h-3.5 w-3.5" />
             <span>{t("filters.reset")}</span>
           </button>
+          </div>
         </div>
       </div>
     </div>
