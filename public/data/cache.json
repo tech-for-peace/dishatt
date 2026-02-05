@@ -168,6 +168,20 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "001df9b6-d7ce-11ee-b867-325096b39f47": {
+      "VideoID": "001df9b6-d7ce-11ee-b867-325096b39f47",
+      "Name": "Barsan Lagyo Rang",
+      "Description": "Bhajan (traditional, Indian devotional song) featuring Indian classical musicians and renowned vocalist Madan Gopal.\n\nWith kind permission from the respective copyright holder(s). All rights reserved.",
+      "VideoDuration": 380000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/4",
+      "PublishYear": 2024,
+      "PublishMonth": 2,
+      "PublishDay": 11,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/EverSound_Bhajans_800x500.jpg",
+      "AudioOnly": true,
+      "LoginRequired": true
+    },
     "014f28c7-8411-4ba5-be12-7f4600571224": {
       "VideoID": "014f28c7-8411-4ba5-be12-7f4600571224",
       "Name": "Taking Account",
@@ -700,6 +714,20 @@
       "AudioOnly": false,
       "LoginRequired": true
     },
+    "09708331-3ba2-4a8c-859c-5bf3ecb7927c": {
+      "VideoID": "09708331-3ba2-4a8c-859c-5bf3ecb7927c",
+      "Name": "My Friend Showed Me",
+      "Description": "My Friend Showed Me, song from Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "VideoDuration": 335000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/85",
+      "PublishYear": 2025,
+      "PublishMonth": 12,
+      "PublishDay": 6,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/PPSR_AlbumArt_Gifts_EN_800.jpg",
+      "AudioOnly": true,
+      "LoginRequired": false
+    },
     "09M736xbDIEIERoCdjhDpQ": {
       "VideoID": "09M736xbDIEIERoCdjhDpQ",
       "Name": "What’s your driving force?",
@@ -1133,6 +1161,20 @@
       "ThumbnailURL": "https://images.timelesstoday.tv/img2/180808_The_shortest_sentence.jpg?format=auto",
       "AudioOnly": true,
       "LoginRequired": false
+    },
+    "0b5db3d4-d7ce-11ee-9c49-325096b39f47": {
+      "VideoID": "0b5db3d4-d7ce-11ee-9c49-325096b39f47",
+      "Name": "Maya Mein Arujh Gaya Manwa",
+      "Description": "Bhajan (traditional, Indian devotional song) featuring Indian classical musicians and renowned vocalist Mangla Saloni.\n\nWith kind permission from the respective copyright holder(s). All rights reserved.",
+      "VideoDuration": 260000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/5",
+      "PublishYear": 2024,
+      "PublishMonth": 2,
+      "PublishDay": 11,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/EverSound_Bhajans_800x500.jpg",
+      "AudioOnly": true,
+      "LoginRequired": true
     },
     "0b6a1bc2-ce62-4498-8c8f-c505f47040a6": {
       "VideoID": "0b6a1bc2-ce62-4498-8c8f-c505f47040a6",
@@ -1680,6 +1722,20 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "112337ab-5eab-4d45-9d50-9b7d3680525d": {
+      "VideoID": "112337ab-5eab-4d45-9d50-9b7d3680525d",
+      "Name": "सद्गुरु",
+      "Description": "Narrated and produced by Prem Rawat in Hindi from an address he gave in Ranchi, India in 2023.\n\nWith kind permission from the respective copyright holder(s). All rights reserved.",
+      "VideoDuration": 481000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/44",
+      "PublishYear": 2024,
+      "PublishMonth": 7,
+      "PublishDay": 1,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/TT_MU_The_Master_Hindi_800x500.jpg",
+      "AudioOnly": true,
+      "LoginRequired": true
+    },
     "11853a99-708e-4961-be53-426672f22a39": {
       "VideoID": "11853a99-708e-4961-be53-426672f22a39",
       "Name": "The Noise Box",
@@ -2015,6 +2071,20 @@
       "ThumbnailURL": "https://images.timelesstoday.tv/img/0004310_-.jpeg?format=auto",
       "AudioOnly": true,
       "LoginRequired": false
+    },
+    "15fc07e6-d7ce-11ee-9cba-325096b39f47": {
+      "VideoID": "15fc07e6-d7ce-11ee-9cba-325096b39f47",
+      "Name": "Sanwara Mhar Pret",
+      "Description": "Bhajan (traditional, Indian devotional song) featuring Indian classical musicians and renowned vocalist Gurinder Kaur.\n\nWith kind permission from the respective copyright holder(s). All rights reserved. ",
+      "VideoDuration": 408000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/7",
+      "PublishYear": 2024,
+      "PublishMonth": 2,
+      "PublishDay": 11,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/EverSound_Bhajans_800x500.jpg",
+      "AudioOnly": true,
+      "LoginRequired": true
     },
     "163a5a82-69bd-4d4c-bc72-26ce9ff5be6b": {
       "VideoID": "163a5a82-69bd-4d4c-bc72-26ce9ff5be6b",
@@ -2421,6 +2491,20 @@
       "ThumbnailURL": "https://images.timelesstoday.tv/img/0003983_-.jpeg?format=auto",
       "AudioOnly": true,
       "LoginRequired": true
+    },
+    "1c4c2d71-53ef-40d8-a313-11fc745844bb": {
+      "VideoID": "1c4c2d71-53ef-40d8-a313-11fc745844bb",
+      "Name": "Tu Sumrin",
+      "Description": "Tu Sumrin, a bhajan from Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "VideoDuration": 336000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/87",
+      "PublishYear": 2025,
+      "PublishMonth": 12,
+      "PublishDay": 6,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/PPSR_AlbumArt_Gifts_EN_800.jpg",
+      "AudioOnly": true,
+      "LoginRequired": false
     },
     "1c904dc0-0528-4811-94d9-30dd18a08662": {
       "VideoID": "1c904dc0-0528-4811-94d9-30dd18a08662",
@@ -4088,6 +4172,20 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "3045e518-d7ce-11ee-927a-325096b39f47": {
+      "VideoID": "3045e518-d7ce-11ee-927a-325096b39f47",
+      "Name": "Udho Tujhe Gyan Saar",
+      "Description": "Bhajan (traditional, Indian devotional song) featuring Indian classical musicians and renowned vocalist Madan Gopal.\n\nWith kind permission from the respective copyright holder(s). All rights reserved. ",
+      "VideoDuration": 319000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/8",
+      "PublishYear": 2024,
+      "PublishMonth": 2,
+      "PublishDay": 11,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/EverSound_Bhajans_800x500.jpg",
+      "AudioOnly": true,
+      "LoginRequired": true
+    },
     "304uRyPiBfw": {
       "VideoID": "304uRyPiBfw",
       "Name": "साथ साथ, न० : 3, श्रृंखला, श्री प्रेम रावत द्वारा  - स्वांस रुपी मंथन",
@@ -4563,6 +4661,20 @@
       "ThumbnailURL": "https://images.timelesstoday.tv/img/0003867_-.jpeg?format=auto",
       "AudioOnly": true,
       "LoginRequired": false
+    },
+    "38c7ef88-d7ce-11ee-becf-325096b39f47": {
+      "VideoID": "38c7ef88-d7ce-11ee-becf-325096b39f47",
+      "Name": "Always Remembering",
+      "Description": "Contemporary Bhajan featuring Wendy Lewis and Charan Anand, sung in English.\n\nWith kind permission from the respective copyright holder(s). All rights reserved. ",
+      "VideoDuration": 301000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/9",
+      "PublishYear": 2024,
+      "PublishMonth": 2,
+      "PublishDay": 11,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/EverSound_Bhajans_800x500.jpg",
+      "AudioOnly": true,
+      "LoginRequired": true
     },
     "38dee251-4ea4-49eb-af3b-f57e56f79240": {
       "VideoID": "38dee251-4ea4-49eb-af3b-f57e56f79240",
@@ -5169,7 +5281,7 @@
     "3folqLPwGco": {
       "VideoID": "3folqLPwGco",
       "Name": "Overcoming Fear With Love",
-      "Description": "Prem Rawat explores the theme of fear as the ultimate adversary.  He emphasizes the contrast between fear and love.\n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here: https://www.timelesstoday.tv/230715-copenhagen-en-video/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nGet your copy of Prem's latest book: “Hear Yourself,” How to Find Peace in a Noisy World\nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #fear #love",
+      "Description": "Prem Rawat explores the theme of fear as the ultimate adversary.  He emphasizes the contrast between fear and love.\n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here: \nCopenhagen, Denmark - July 15, 2023\nhttps://www.timelesstoday.tv/en/events/product/e98bb70a-8050-45ea-b4d0-66e135276079/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem's latest books: “Breath” Wake Up to Life and “Hear Yourself,” How to Find Peace in a Noisy World \nhttps://breathbook.life/?utm_source=youtube\u0026utm_medium=des \nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #fear #love",
       "VideoDuration": 157000000000,
       "Language": "en-US",
       "ClickURL": "https://www.youtube.com/watch?v=3folqLPwGco",
@@ -7109,6 +7221,20 @@
       "PublishMonth": 3,
       "PublishDay": 17,
       "ThumbnailURL": "https://i.scdn.co/image/ab6765630000ba8af2045479ab214cf768ef61cc",
+      "AudioOnly": true,
+      "LoginRequired": false
+    },
+    "55028433-74f8-49fe-9e02-24ab9a227750": {
+      "VideoID": "55028433-74f8-49fe-9e02-24ab9a227750",
+      "Name": "Tumev",
+      "Description": "Tumev, a bhajan from Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "VideoDuration": 318000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/88",
+      "PublishYear": 2025,
+      "PublishMonth": 12,
+      "PublishDay": 6,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/PPSR_AlbumArt_Gifts_EN_800.jpg",
       "AudioOnly": true,
       "LoginRequired": false
     },
@@ -11060,6 +11186,20 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "857807db-03b5-43e0-9c7b-450a20d23850": {
+      "VideoID": "857807db-03b5-43e0-9c7b-450a20d23850",
+      "Name": "Gratitude",
+      "Description": "Gratitude, song from Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "VideoDuration": 190000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/83",
+      "PublishYear": 2025,
+      "PublishMonth": 12,
+      "PublishDay": 6,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/PPSR_AlbumArt_Gifts_EN_800.jpg",
+      "AudioOnly": true,
+      "LoginRequired": false
+    },
     "8599f763-7821-40de-8506-c7f859b22dfb": {
       "VideoID": "8599f763-7821-40de-8506-c7f859b22dfb",
       "Name": "Port Louis, Mauritius",
@@ -12334,6 +12474,20 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "962c8322-9930-45ee-be89-35f691de7813": {
+      "VideoID": "962c8322-9930-45ee-be89-35f691de7813",
+      "Name": "Mere Satguru Deyi Btaye",
+      "Description": "Mere Satguru Deyi Btaye, a bhajan from Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "VideoDuration": 298000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/84",
+      "PublishYear": 2025,
+      "PublishMonth": 12,
+      "PublishDay": 6,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/PPSR_AlbumArt_Gifts_EN_800.jpg",
+      "AudioOnly": true,
+      "LoginRequired": false
+    },
     "96cee41a-92bb-49b5-afac-126a21a85f5f": {
       "VideoID": "96cee41a-92bb-49b5-afac-126a21a85f5f",
       "Name": "लॉकडाउन प्रेम रावत जी के साथ  #51  (15 मई,, 2020)",
@@ -13107,7 +13261,7 @@
     "9l--f_WkIpw": {
       "VideoID": "9l--f_WkIpw",
       "Name": "A Friend of the Divine",
-      "Description": "In this insightful short video, Prem Rawat describes a human being as one who possesses a unique gift, emphasizing the companionship nature of life itself.\n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here: https://www.timelesstoday.tv/230720-dublin-en-video/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nGet your copy of Prem's latest book: “Hear Yourself,” How to Find Peace in a Noisy World\nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #companionship #divine",
+      "Description": "In this insightful short video, Prem Rawat describes a human being as one who possesses a unique gift, emphasizing the companionship nature of life itself.\n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here:\nDublin, Ireland - July 20, 2023\nhttps://www.timelesstoday.tv/en/events/product/a4c7857e-7e05-4dce-b9e7-22e62922b941/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem's latest books: “Breath” Wake Up to Life and “Hear Yourself,” How to Find Peace in a Noisy World \nhttps://breathbook.life/?utm_source=youtube\u0026utm_medium=des \nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #companionship #divine",
       "VideoDuration": 181000000000,
       "Language": "en-US",
       "ClickURL": "https://www.youtube.com/watch?v=9l--f_WkIpw",
@@ -13429,7 +13583,7 @@
     "BZLMjX2nFRo": {
       "VideoID": "BZLMjX2nFRo",
       "Name": "The Limitation of Concepts",
-      "Description": "Prem Rawat encourages listeners to go beyond preconceived notions that stop us from recognizing what love is, what peace is.\n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here: https://www.timelesstoday.tv/230311-barcelona-en-video/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nGet your copy of Prem's latest book: “Hear Yourself,” How to Find Peace in a Noisy World\nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #concepts #limitations",
+      "Description": "Prem Rawat encourages listeners to go beyond preconceived notions that stop us from recognizing what love is, what peace is.\n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here: \nBarcelona, Spain - March 11, 2023 \nhttps://www.timelesstoday.tv/en/events/product/5fe45381-e337-40bc-b206-015a6d0fcc9a/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem's latest books: “Breath” Wake Up to Life and “Hear Yourself,” How to Find Peace in a Noisy World \nhttps://breathbook.life/?utm_source=youtube\u0026utm_medium=des \nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #concepts #limitations",
       "VideoDuration": 345000000000,
       "Language": "en-US",
       "ClickURL": "https://www.youtube.com/watch?v=BZLMjX2nFRo",
@@ -14843,7 +14997,7 @@
     "KHbnvVYsNF4": {
       "VideoID": "KHbnvVYsNF4",
       "Name": "Heaven And Hell Within Us",
-      "Description": "Bestselling author and peace educator, Prem Rawat, tells a story about a king obsessed with thoughts of heaven and hell. He shares how he meets a wise man who fearlessly points out the difference in the two states.\n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here: https://www.timelesstoday.tv/230705-athens-en-video/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nGet your copy of Prem's latest book: “Hear Yourself,” How to Find Peace in a Noisy World\nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #compassion #heaven",
+      "Description": "Bestselling author and peace educator, Prem Rawat, tells a story about a king obsessed with thoughts of heaven and hell. He shares how he meets a wise man who fearlessly points out the difference in the two states.\n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here: \nAthens, Greece - July 5, 2023\nhttps://www.timelesstoday.tv/en/events/product/54fa720b-7d13-4b85-a12f-cde24b5fbbf4/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem's latest books: “Breath” Wake Up to Life and “Hear Yourself,” How to Find Peace in a Noisy World \nhttps://breathbook.life/?utm_source=youtube\u0026utm_medium=des \nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #compassion #heaven",
       "VideoDuration": 331000000000,
       "Language": "en-US",
       "ClickURL": "https://www.youtube.com/watch?v=KHbnvVYsNF4",
@@ -15193,7 +15347,7 @@
     "LnwSE9_JYds": {
       "VideoID": "LnwSE9_JYds",
       "Name": "The Point of Life",
-      "Description": "In this narrative, Prem Rawat speaks to the nature of reality. Reality is not one's ideas but it is a beauty unto itself. Experience that true beauty.\n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here: https://www.timelesstoday.tv/230806-boston-en-video/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nGet your copy of Prem's latest book: “Hear Yourself,” How to Find Peace in a Noisy World\nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #betterment #understanding",
+      "Description": "In this narrative, Prem Rawat speaks to the nature of reality. Reality is not one's ideas but it is a beauty unto itself. Experience that true beauty.\n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here:\nBoston, USA - August 6, 2023\nhttps://www.timelesstoday.tv/en/events/product/95dbe427-e5ad-4319-9762-02c2889f5d63/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem's latest books: “Breath” Wake Up to Life and “Hear Yourself,” How to Find Peace in a Noisy World \nhttps://breathbook.life/?utm_source=youtube\u0026utm_medium=des \nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #betterment #understanding",
       "VideoDuration": 195000000000,
       "Language": "en-US",
       "ClickURL": "https://www.youtube.com/watch?v=LnwSE9_JYds",
@@ -15263,7 +15417,7 @@
     "M3_hGDJxEI0": {
       "VideoID": "M3_hGDJxEI0",
       "Name": "The Indestructible",
-      "Description": "Beyond everyday concerns, such as relationships, accomplishments and dreams, exists the real you.\n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here: https://www.timelesstoday.tv/230528-capetown-en-video/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nGet your copy of Prem's latest book: “Hear Yourself,” How to Find Peace in a Noisy World\nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #indestructible #relationships",
+      "Description": "Beyond everyday concerns, such as relationships, accomplishments and dreams, exists the real you.\n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here: \nCape Town, South Africa - May 28, 2023\nhttps://www.timelesstoday.tv/en/events/product/ef0c639b-c4e7-4bcf-b29f-e7e429ffd08c/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem's latest books: “Breath” Wake Up to Life and “Hear Yourself,” How to Find Peace in a Noisy World \nhttps://breathbook.life/?utm_source=youtube\u0026utm_medium=des \nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #indestructible #relationships",
       "VideoDuration": 400000000000,
       "Language": "en-US",
       "ClickURL": "https://www.youtube.com/watch?v=M3_hGDJxEI0",
@@ -16117,7 +16271,7 @@
     "QIubaIdnu6Q": {
       "VideoID": "QIubaIdnu6Q",
       "Name": "Waiting for Signs",
-      "Description": "Journalist Dana Abulaban sits down with bestselling author Prem Rawat in Dubai, UAE to discuss his book, “Hear Yourself.” Prem tells a story and states, 'You want the infinite to prove to you that the infinite loves you! You should prove to the infinite, you love the infinite.'\n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here: https://www.timelesstoday.tv/en/discover/events/product/fa3ccb65-de44-49f8-bab9-0ad4739304b6/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nGet your copy of Prem's latest book: “Hear Yourself,” How to Find Peace in a Noisy World\nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n \n#PremRawatOfficial #Dubai #signs",
+      "Description": "Journalist Dana Abulaban sits down with bestselling author Prem Rawat in Dubai, UAE to discuss his book, “Hear Yourself.” Prem tells a story and states, 'You want the infinite to prove to you that the infinite loves you! You should prove to the infinite, you love the infinite.'\n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here:\nDubai, UAE - October 22, 2023\nhttps://www.timelesstoday.tv/en/events/product/fa3ccb65-de44-49f8-bab9-0ad4739304b6/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem's latest books: “Breath” Wake Up to Life and “Hear Yourself,” How to Find Peace in a Noisy World \nhttps://breathbook.life/?utm_source=youtube\u0026utm_medium=des \nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n \n#PremRawatOfficial #Dubai #signs",
       "VideoDuration": 266000000000,
       "Language": "en-US",
       "ClickURL": "https://www.youtube.com/watch?v=QIubaIdnu6Q",
@@ -18424,6 +18578,20 @@
       "AudioOnly": false,
       "LoginRequired": true
     },
+    "a07633e4-dbb7-4a6d-a431-6de5e578573c": {
+      "VideoID": "a07633e4-dbb7-4a6d-a431-6de5e578573c",
+      "Name": "Play This Instrument - Prem Rawat",
+      "Description": "“Make joy happen in your life. Make peace happen in your life.”\n\nWords: Prem Rawat. Music: We Are Love arranged \u0026 performed by Manuel Iman, written by Geoff Bridgford. From Manuel Iman’s album Songs From A Grateful Heart.\n \nWith kind permission from the respective copyright holder(s). All rights reserved. ",
+      "VideoDuration": 267000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/43",
+      "PublishYear": 2024,
+      "PublishMonth": 2,
+      "PublishDay": 15,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/Play_This_Instrument_800x500.jpg",
+      "AudioOnly": true,
+      "LoginRequired": true
+    },
     "a09dc7c9-e67a-48b2-b398-5237db131779": {
       "VideoID": "a09dc7c9-e67a-48b2-b398-5237db131779",
       "Name": "Choose Right",
@@ -19023,6 +19191,20 @@
       "PublishMonth": 11,
       "PublishDay": 16,
       "ThumbnailURL": "https://i.ytimg.com/vi/aGeJji61eXc/mqdefault.jpg",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
+    "aKGpptVFwXs": {
+      "VideoID": "aKGpptVFwXs",
+      "Name": "A journey that touched millions—60 years of Prem Rawat’s efforts for humanity. #60yearsofpeace",
+      "Description": "",
+      "VideoDuration": 80000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://www.youtube.com/watch?v=aKGpptVFwXs",
+      "PublishYear": 2026,
+      "PublishMonth": 2,
+      "PublishDay": 5,
+      "ThumbnailURL": "https://i.ytimg.com/vi/aKGpptVFwXs/mqdefault.jpg",
       "AudioOnly": false,
       "LoginRequired": false
     },
@@ -20986,6 +21168,20 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "c713045e-d7cd-11ee-8a63-325096b39f47": {
+      "VideoID": "c713045e-d7cd-11ee-8a63-325096b39f47",
+      "Name": "Aaj Din Ke Main Jaun",
+      "Description": "Bhajan (traditional, Indian devotional song) featuring Indian classical musicians and renowned vocalist Gurinder Kaur.\n\nWith kind permission from the respective copyright holder(s). All rights reserved. ",
+      "VideoDuration": 339000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/2",
+      "PublishYear": 2024,
+      "PublishMonth": 2,
+      "PublishDay": 9,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/EverSound_Bhajans_800x500.jpg",
+      "AudioOnly": true,
+      "LoginRequired": true
+    },
     "c7252eab-2a8f-4374-9271-76bb2fdc3be7": {
       "VideoID": "c7252eab-2a8f-4374-9271-76bb2fdc3be7",
       "Name": "लक्ष्य सबका एक है",
@@ -21405,6 +21601,20 @@
       "ThumbnailURL": "https://images.timelesstoday.tv/img/0003220_simple-achievement.jpeg?format=auto",
       "AudioOnly": false,
       "LoginRequired": false
+    },
+    "cbf2013f-d8b4-4e56-912d-218986ca1c41": {
+      "VideoID": "cbf2013f-d8b4-4e56-912d-218986ca1c41",
+      "Name": "The Master ",
+      "Description": "Produced by Prem Rawat from an address he gave in Barcelona, Spain in 2001. Words: Prem Rawat. Music: Focus by Geoff Bridgford, performed by One Foundation.\n\nWith kind permission from the respective copyright holder(s). All rights reserved.",
+      "VideoDuration": 532000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/42",
+      "PublishYear": 2024,
+      "PublishMonth": 2,
+      "PublishDay": 15,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/The_Master_800x500.jpg",
+      "AudioOnly": true,
+      "LoginRequired": true
     },
     "cc307a9a-d12b-4f54-937e-7e3854ecea85": {
       "VideoID": "cc307a9a-d12b-4f54-937e-7e3854ecea85",
@@ -22315,6 +22525,20 @@
       "ThumbnailURL": "https://images.timelesstoday.tv/img2/Replay_241208_Barcelona_800_EN.jpg?format=auto",
       "AudioOnly": false,
       "LoginRequired": true
+    },
+    "d98dd716-9b99-4f09-a075-1025be5540d1": {
+      "VideoID": "d98dd716-9b99-4f09-a075-1025be5540d1",
+      "Name": "Oh My My",
+      "Description": "Oh My My, song from Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "VideoDuration": 287000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/86",
+      "PublishYear": 2025,
+      "PublishMonth": 12,
+      "PublishDay": 6,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/PPSR_AlbumArt_Gifts_EN_800.jpg",
+      "AudioOnly": true,
+      "LoginRequired": false
     },
     "d9TT70SaD6A": {
       "VideoID": "d9TT70SaD6A",
@@ -23352,6 +23576,20 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "e89e3512-3a24-409f-a742-08e11fa4e63e": {
+      "VideoID": "e89e3512-3a24-409f-a742-08e11fa4e63e",
+      "Name": "Sharanagat Pal Kripal Hari",
+      "Description": "Bhajan (traditional, Indian devotional song) featuring Indian classical musicians and renowned vocalist Madan Gopal.\n\nWith kind permission from the respective copyright holder(s). All rights reserved.",
+      "VideoDuration": 408000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/10",
+      "PublishYear": 2024,
+      "PublishMonth": 2,
+      "PublishDay": 11,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/EverSound_Bhajans_800x500.jpg",
+      "AudioOnly": true,
+      "LoginRequired": true
+    },
     "e8asE6XFhLM": {
       "VideoID": "e8asE6XFhLM",
       "Name": "लॉकडाउन 32 \"पाप और पुण्य क्या है\"",
@@ -23783,6 +24021,20 @@
       "PublishMonth": 1,
       "PublishDay": 1,
       "ThumbnailURL": "https://i.ytimg.com/vi/edIv97MOpRQ/mqdefault.jpg",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
+    "eda82aae-6bb4-4f16-95da-59a338fce07c": {
+      "VideoID": "eda82aae-6bb4-4f16-95da-59a338fce07c",
+      "Name": "The Recognition of thirst",
+      "Description": "Pearls of wisdom from Prem Rawat touch the heart and speak to the true potential of a human being.\n\n\n\u003cp\u003eYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here: \u003ca href=\"https://www.timelesstoday.tv/en/discover/series/Amaroo%202016/product/4981ad6f-082d-4604-88ed-a062c9b09d3d\" target=\"_blank\" rel=\"noopener\"\u003eAmaroo 2016 Session 6\u003c/a\u003e\u003c/p\u003e",
+      "VideoDuration": 320000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.timelesstoday.tv/en/home/product/eda82aae-6bb4-4f16-95da-59a338fce07c",
+      "PublishYear": 2026,
+      "PublishMonth": 2,
+      "PublishDay": 5,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/160922_The_Recognition_of_Thirst_EN_800.jpg?format=auto",
       "AudioOnly": false,
       "LoginRequired": false
     },
@@ -24569,6 +24821,20 @@
       "ThumbnailURL": "https://images.timelesstoday.tv/img/0001880_a-strategy-for-life.jpeg?format=auto",
       "AudioOnly": true,
       "LoginRequired": false
+    },
+    "f7a36870-d7cd-11ee-8492-325096b39f47": {
+      "VideoID": "f7a36870-d7cd-11ee-8492-325096b39f47",
+      "Name": "Apne Piya Ki Diwani",
+      "Description": "Bhajan (traditional, Indian devotional song) featuring Indian classical musicians and renowned vocalist Mangla Saloni.\n\nWith kind permission from the respective copyright holder(s). All rights reserved. ",
+      "VideoDuration": 415000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/3",
+      "PublishYear": 2024,
+      "PublishMonth": 2,
+      "PublishDay": 11,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/EverSound_Bhajans_800x500.jpg",
+      "AudioOnly": true,
+      "LoginRequired": true
     },
     "f7b40ba4-d88e-4b08-ad71-bb88fece46cb": {
       "VideoID": "f7b40ba4-d88e-4b08-ad71-bb88fece46cb",
@@ -25413,7 +25679,7 @@
     "gWpAMoWYEPA": {
       "VideoID": "gWpAMoWYEPA",
       "Name": "Your Purpose",
-      "Description": "In this excerpt, the act of going within and becoming \"Divine full\" rather than \"mind full\"  is highlighted by Prem as the opportunity we each have during our life.\n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here: https://www.timelesstoday.tv/230928-honolulu-video/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nGet your copy of Prem's latest book: “Hear Yourself,” How to Find Peace in a Noisy World\nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #purpose #understanding",
+      "Description": "In this excerpt, the act of going within and becoming \"Divine full\" rather than \"mind full\"  is highlighted by Prem as the opportunity we each have during our life.\n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here:\nHonolulu, Hawaii - September 28, 2023\nhttps://www.timelesstoday.tv/en/events/product/4ad6f1a9-a446-41ab-9d31-c083fb2e7520/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem's latest books: “Breath” Wake Up to Life and “Hear Yourself,” How to Find Peace in a Noisy World \nhttps://breathbook.life/?utm_source=youtube\u0026utm_medium=des \nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #purpose #understanding",
       "VideoDuration": 203000000000,
       "Language": "en-US",
       "ClickURL": "https://www.youtube.com/watch?v=gWpAMoWYEPA",
@@ -25623,7 +25889,7 @@
     "hk9Bu-lM7JI": {
       "VideoID": "hk9Bu-lM7JI",
       "Name": "To Be Human",
-      "Description": "Human beings have the opportunity to experience something extraordinary, every moment.  \n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here: https://www.timelesstoday.tv/230522-port-elizabeth-en-video/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nGet your copy of Prem's latest book: “Hear Yourself,” How to Find Peace in a Noisy World\nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #human #experience",
+      "Description": "Human beings have the opportunity to experience something extraordinary, every moment.  \n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here:\nPort Elizabeth, South Africa - May 22, 2023\nhttps://www.timelesstoday.tv/en/events/product/12fbb15e-30d8-4fe3-a9b2-a808eaa9d146/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem's latest books: “Breath” Wake Up to Life and “Hear Yourself,” How to Find Peace in a Noisy World \nhttps://breathbook.life/?utm_source=youtube\u0026utm_medium=des \nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #human #experience",
       "VideoDuration": 207000000000,
       "Language": "en-US",
       "ClickURL": "https://www.youtube.com/watch?v=hk9Bu-lM7JI",
@@ -25973,7 +26239,7 @@
     "jY91uGkkKpM": {
       "VideoID": "jY91uGkkKpM",
       "Name": "A Memory of Kindness",
-      "Description": "Prem Rawat emphasizes the significant role memories play in shaping our existence and our perception of the world around us. He speaks about the lasting impact that conscious living and acts of kindness have in creating positive memories throughout one’s life.\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nGet your copy of Prem's latest book: “Hear Yourself,” How to Find Peace in a Noisy World\nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #kindness #memory",
+      "Description": "Prem Rawat emphasizes the significant role memories play in shaping our existence and our perception of the world around us. He speaks about the lasting impact that conscious living and acts of kindness have in creating positive memories throughout one’s life.\n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here: Barcelona, Spain - July 9, 2022\nhttps://www.timelesstoday.tv/en/events/product/83a7ef01-5044-4e98-a395-6fced1cdc658/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem's latest books: “Breath” Wake Up to Life and “Hear Yourself,” How to Find Peace in a Noisy World \nhttps://breathbook.life/?utm_source=youtube\u0026utm_medium=des \nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #kindness #memory",
       "VideoDuration": 533000000000,
       "Language": "en-US",
       "ClickURL": "https://www.youtube.com/watch?v=jY91uGkkKpM",
@@ -26359,6 +26625,20 @@
       "PublishMonth": 7,
       "PublishDay": 14,
       "ThumbnailURL": "https://i.ytimg.com/vi/m52fLS83lSE/mqdefault.jpg",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
+    "m83RjbbP68A": {
+      "VideoID": "m83RjbbP68A",
+      "Name": "दाता तेरा मेरा प्यार कभी ना बदले | भजन मदन गोपाल | Madan Gopal Bhajans | उत्सव - संतों की अनमोल वाणी",
+      "Description": "भजन मदन गोपाल - दाता तेरा मेरा प्यार | Madan Gopal Bhajans | उत्सव - संतों की अनमोल वाणी \n\n1. Mera Jeevan Saara मेरा जीवन सारा (00:00 Minutes) \n2. Sharnagat Pal शरणागत पाल (09:44 Minutes) \n3. Data Tera Mera Pyar दाता तेरा मेरा प्यार (16:31 Minutes)\n4. Lagan Bin लगन बिन (22:31 Minutes) \n5. Sharan Mein Aa Pada शरण में आ पड़ा (27:59 Minutes) \n\n1. भजन - मेरा जीवन सारा बीते\nमेरा जीवन सारा बीते, तेरा नाम जपते-जपते।\nतेरा नाम जपते-जपते।।\nकोई बाधा न आने पाये, तेरी राह में चलते-चलते।\nतेरी राह में चलते-चलते।।\nभवसागर में मेरी नइया, जिसका न कोई खिवैया।\nमैं भवसागर तरि जाऊं, तेरा नाम जपते-जपते।।\nजिस हाल में तू रक्खे, खुश होके मैं गुज़ारूं।\nमेरी स्वांसा पूरी होवे, तेरा नाम जपते-जपते।।\nतेरी मंज़िल मुझे बुलाये, मेरे पांव डगमगायें।\nतेरी मंज़िल तक मैं पहुंचूं, तेरा दर्शन करते-करते।।\nमैं कुछ नहीं तू ही है सब कुछ, सब कुछ है तेरी माया।\nमेरा हर पल जग में बीते, तेरी याद करते-करते।। \n\n2. भजन - शरणागत पाल कृपाल हरि\nशरणागत पाल कृपाल हरि, हमको एक आस तुम्हारी है।\nतुम्हरे सम दूसर और नहीं, कोउ दीनन को हितकारी है।।\nसुधि लेत सदा सब जीवन की, कैसी करूणा उरधारी है।\nप्रतिपाल करो बिन ही बदले, अस कौन पिता महतारी है।।\nजब नाथ दया कर देखत हो, छुट जात व्यथा संसारी है।\nबिसराय तुम्हें जो सुख चाहे, वो महा नादान अनारी है।।\nचाहना स्वर्गहुं की हमें नहीं, ना हमको कीरति प्यारी है।\nहम प्रेम भक्ति के हैं प्यासे, हरि चरण कमल रज प्यारी है।।\nसब भांति समर्थ सहायक हो, तब आश्रित बुद्धि हमारी है।\nगुरू हंस कृपा के सागर हो, यह सेवक शरण तुम्हारी है।।\n\n3. दाता तेरा मेरा प्यार\nदाता तेरा मेरा प्यार कभी ना बदले।\nमेरा यह विचार, कभी ना बदले।।\nद्वार पे तेरे, आता रहूं मैं, चरणों में शीश झुकाता रहूं मैं।\nमेरा यह व्यवहार, कभी ना बदले।।\nअपना हो या हो बेगाना, रूठे चाहे यह सारा जमाना।\nचाहे यह सारा संसार क्यों न बदले।।\nसत्संग तेरा छोडूं कभी ना, मुहं भी तुझसे मोडूं कभी ना।\nसदगुरु तेरा मेरा तार कभी ना बदले।।\n\n4. भजन - लगन बिन जागे\nलगन बिन जागे ना निर्मोही।।\nबिना लगन की प्रीत बावरे, ओस नीर ज्यों धोई।।\nहम तो रहते राम भरोसे, राम करे सो होई।।\nबिन सद्गुरू कृपा नहीं पावे, लाख जतन करे कोई।।\nकहें कबीर सुनो भाई साधो, गुरू बिन मुक्ति न होई।।\n\n5. भजन - शरण में आ पड़ा तेरी\nशरण में आ पड़ा तेरी, प्रभु मुझको भुलाना ना।।\nतेरा है नाम दुनिया में, पतित पावन सभी जानें।\nदेखकर दोष को मेरे, नज़र मुझसे हटाना ना।।\nकाल की है नदी भारी, बहा जाता हूं धारा में।\nपकड़ ले हाथ अब मेरा, नाथ देरी लगाना ना।।\nभगत तेरे हैं बहुतेरे, करें सुमिरण सदा मन में।\nजानकर दास दासन का, मुझे उनसे छुड़ाना ना।।\n\nतेरा है रूप अविनाशी, जगत सारे में है पूरण।\nवो ब्रह्मानंद नैनन से, मेरे कबहूं छिपाना ना।।\n\n\nEnjoy other similar songs -\nKabir Amritwani (Kavita Krishnamurti \u0026 Sanjay Talwar) - https://youtu.be/jDLj-DjUfAU\nMahima (Chamanlal Gurdaspuri) - https://youtu.be/ZO3LKJMrfa4\nGuru Mahima (Madan Gopal) - https://youtu.be/e35F8nFjou8\n\nYou like the video don't forget to share with others. \n\nStay connected with us !!\n\n► Subscribe: http://www.youtube.com/myanjantv\n► Like us on Facebook: http://www.facebook.com/myanjantv\n► Visit us on Website: https://anjan.tv",
+      "VideoDuration": 2183000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://www.youtube.com/watch?v=m83RjbbP68A",
+      "PublishYear": 2021,
+      "PublishMonth": 12,
+      "PublishDay": 9,
+      "ThumbnailURL": "https://i.ytimg.com/vi/m83RjbbP68A/mqdefault.jpg",
       "AudioOnly": false,
       "LoginRequired": false
     },
@@ -27023,7 +27303,7 @@
     "pgUlyJxaXAA": {
       "VideoID": "pgUlyJxaXAA",
       "Name": "Be in Awe: Prem Rawat in Dubrovnik, Croatia",
-      "Description": "Nearly 8,000 virtual attendees tuned in from 82 countries for Prem Rawat’s first speaking engagement in Dubrovnik, Croatia on May 19, 2024.\n\nWith clarity and wisdom, he reminded the audience that knowledge of the self triggers a sense of awe. He emphasized the importance of seizing every moment, urging us to not let a single day, hour, minute or even a fraction of a second slip away. \n\nWatch “Be in Awe” Replay: https://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des",
+      "Description": "Nearly 8,000 virtual attendees tuned in from 82 countries for Prem Rawat’s first speaking engagement in Dubrovnik, Croatia on May 19, 2024.\n\nWith clarity and wisdom, he reminded the audience that knowledge of the self triggers a sense of awe. He emphasized the importance of seizing every moment, urging us to not let a single day, hour, minute or even a fraction of a second slip away. \n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here: Dubrovnik, Croatia - May 19, 2024\nhttps://www.timelesstoday.tv/en/events/product/dd71b195-4e8c-424f-a165-82d32f85fc21/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message... \nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem's latest books: “Breath” Wake Up to Life and “Hear Yourself,” How to Find Peace in a Noisy World \nhttps://breathbook.life/?utm_source=youtube\u0026utm_medium=des \nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial",
       "VideoDuration": 141000000000,
       "Language": "en-US",
       "ClickURL": "https://www.youtube.com/watch?v=pgUlyJxaXAA",
@@ -28563,7 +28843,7 @@
     "xaR49n9MDck": {
       "VideoID": "xaR49n9MDck",
       "Name": "What Makes You, You?",
-      "Description": "Did you know that a human being is the union of two contrasting elements: the finite and the infinite? Embark on a lifelong journey to what makes you, you.\n\n\"Inside every human being is a thirst to experience something beautiful.\" Prem Rawat\n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here: https://www.timelesstoday.tv/220703-live-berlin-video/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nGet your copy of Prem's latest book: “Hear Yourself,” How to Find Peace in a Noisy World\nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n \n#PremRawatOfficial #peace #you",
+      "Description": "Did you know that a human being is the union of two contrasting elements: the finite and the infinite? Embark on a lifelong journey to what makes you, you.\n\n\"Inside every human being is a thirst to experience something beautiful.\" Prem Rawat\n\nYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here:\nBerlin, Germany - July 3, 2022, \"Hear Yourself\" Author Event\nhttps://www.timelesstoday.tv/en/events/product/240f6874-f266-4dcd-abbd-0b8e4de14bac/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem's latest books: “Breath” Wake Up to Life and “Hear Yourself,” How to Find Peace in a Noisy World \nhttps://breathbook.life/?utm_source=youtube\u0026utm_medium=des \nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n \n#PremRawatOfficial #peace #you",
       "VideoDuration": 374000000000,
       "Language": "en-US",
       "ClickURL": "https://www.youtube.com/watch?v=xaR49n9MDck",
@@ -29093,5 +29373,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-02-05T07:20:01.993986235Z"
+  "lastUpdated": "2026-02-05T19:18:35.426231605Z"
 }
