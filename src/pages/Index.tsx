@@ -93,7 +93,7 @@ const Index = () => {
       },
       { threshold: 0.1 },
     );
-    if (loadMoreRef.current) {
+    if (loadMoreRef.current && allVideos.length > visibleCount) {
       observer.observe(loadMoreRef.current);
     }
     return () => observer.disconnect();
