@@ -131,7 +131,7 @@ interface VideoData {
   Name: string;
   Description?: string;
   ThumbnailURL: string;
-  VideoDuration?: number;
+  Duration?: number;
   ClickURL?: string;
   PublishYear: number;
   PublishMonth?: number;
@@ -174,7 +174,7 @@ async function loadAllVideos(): Promise<VideoResult[]> {
                 title: video.Name,
                 description: video.Description || "",
                 thumbnail: video.ThumbnailURL,
-                duration: Math.round((video.VideoDuration || 0) / 1e9 / 60),
+                duration: Math.round((video.Duration || 0) / 1e9 / 60),
                 source: (video.ClickURL?.includes("youtube.com")
                   ? "youtube"
                   : video.ClickURL?.includes("spotify.com")
