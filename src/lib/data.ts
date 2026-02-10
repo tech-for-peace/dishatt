@@ -179,10 +179,13 @@ async function loadAllVideos(): Promise<VideoResult[]> {
                   ? "youtube"
                   : video.ClickURL?.includes("spotify.com")
                     ? "spotify"
-                    : "timelesstoday") as
+                    : video.ClickURL?.includes("mixcloud.com")
+                      ? "transradio"
+                      : "timelesstoday") as
                   | "youtube"
                   | "timelesstoday"
-                  | "spotify",
+                  | "spotify"
+                  | "transradio",
                 publishedYear: video.PublishYear,
                 publishedMonth: video.PublishMonth - 1,
                 publishedDay: video.PublishDay,

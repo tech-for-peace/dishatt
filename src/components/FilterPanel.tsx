@@ -268,6 +268,7 @@ export function FilterPanel({
               {t("videoCard.timelessToday")}
             </SelectItem>
             <SelectItem value="spotify">{t("videoCard.spotify")}</SelectItem>
+            <SelectItem value="transradio">{t("videoCard.transradio")}</SelectItem>
           </SelectContent>
         </Select>
         <label

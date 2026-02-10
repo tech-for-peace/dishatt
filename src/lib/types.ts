@@ -1,5 +1,5 @@
 export type Language = "english" | "hindi" | "";
-export type Source = "youtube" | "timelesstoday" | "spotify" | "";
+export type Source = "youtube" | "timelesstoday" | "spotify" | "transradio" | "";
 export type Category = "Video" | "Music" | "Podcast" | "Video Music";
 
 export interface DurationBand {
@@ -24,7 +24,7 @@ export interface VideoResult {
   description: string;
   thumbnail: string;
   duration: number; // in minutes
-  source: "youtube" | "timelesstoday" | "spotify";
+  source: "youtube" | "timelesstoday" | "spotify" | "transradio";
   publishedYear: number;
   publishedMonth?: number; // 0-11 (0 = January)
   publishedDay?: number; // 1-31
