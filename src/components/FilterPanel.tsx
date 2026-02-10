@@ -257,7 +257,7 @@ export function FilterPanel({
         >
           <SelectTrigger
             className="bg-background/50 border-border/50
-                                     hover:border-primary/30 transition-colors h-8"
+                                     hover:border-primary/30 transition-colors h-8 text-left"
           >
             <SelectValue placeholder={t("filters.source")} />
           </SelectTrigger>
