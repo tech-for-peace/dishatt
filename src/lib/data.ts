@@ -127,6 +127,7 @@ function determineNewVideos(
 
 interface VideoData {
   VideoID: string;
+  Category?: string;
   Name: string;
   Description?: string;
   ThumbnailURL: string;
@@ -190,6 +191,7 @@ async function loadAllVideos(): Promise<VideoResult[]> {
                 audioOnly: video.AudioOnly || false,
                 loginRequired: video.LoginRequired || false,
                 timestamp,
+                category: video.Category || "Video",
               };
             })
             .sort((a, b) => b.timestamp - a.timestamp)
@@ -235,6 +237,12 @@ function filterVideos(
 
     if (filters.source && video.source !== filters.source) {
       return false;
+    }
+
+    if (filters.categories && filters.categories.length > 0) {
+      if (!filters.categories.includes(video.category || "Video")) {
+        return false;
+      }
     }
 
     if (filters.years && filters.years.length > 0) {

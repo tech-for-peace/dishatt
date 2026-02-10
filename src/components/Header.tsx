@@ -5,7 +5,9 @@ import { DarkModeToggle } from "./DarkModeToggle";
 export function Header() {
   const { t } = useTranslation();
   return (
-    <header className={`bg-hero text-primary-foreground py-6 md:py-16 px-4 relative overflow-hidden`}>
+    <header
+      className={`bg-hero text-primary-foreground py-6 md:py-16 px-4 relative overflow-hidden`}
+    >
       {/* Language switcher and dark mode toggle in top-right corner */}
       <div className="absolute top-4 right-4 z-30 flex items-center gap-2">
         <DarkModeToggle />

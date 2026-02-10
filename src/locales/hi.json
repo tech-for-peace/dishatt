@@ -4,10 +4,12 @@
   },
   "filters": {
     "language": "भाषा",
+    "category": "श्रेणी",
     "duration": "अवधि",
     "year": "वर्ष",
     "source": "स्रोत",
     "allLanguages": "सभी भाषाएँ",
+    "allCategories": "सभी श्रेणियाँ",
     "allYears": "सभी वर्ष",
     "allSources": "सभी स्रोत (All Sources)",
     "allDurations": "सभी अवधि",
@@ -38,5 +40,11 @@
   "language": {
     "english": "English",
     "hindi": "हिंदी"
+  },
+  "category": {
+    "video": "वीडियो",
+    "music": "संगीत",
+    "podcast": "पॉडकास्ट",
+    "videoMusic": "वीडियो संगीत"
   }
 }

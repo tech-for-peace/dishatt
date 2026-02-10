@@ -1,5 +1,6 @@
 export type Language = "english" | "hindi" | "";
 export type Source = "youtube" | "timelesstoday" | "spotify" | "";
+export type Category = "Video" | "Music" | "Podcast" | "Video Music";
 
 export interface DurationBand {
   label: string;
@@ -10,6 +11,7 @@ export interface DurationBand {
 export interface SearchFilters {
   language: Language;
   source: Source;
+  categories: string[];
   durationBands: string[];
   years: string[];
   titleSearch: string;
@@ -32,6 +34,7 @@ export interface VideoResult {
   timestamp?: number; // for internal sorting
   isNew?: boolean; // for showing "new" tag
   loginRequired?: boolean; // true if login is required to watch
+  category?: string; // video category
 }
 
 export interface SearchResponse {
@@ -52,3 +55,5 @@ export const DURATION_BANDS: DurationBand[] = [
 export const YEARS = Array.from({ length: 15 }, (_, i) =>
   (new Date().getFullYear() - i).toString(),
 );
+
+export const CATEGORIES = ["Video", "Music", "Podcast", "Video Music"] as const;

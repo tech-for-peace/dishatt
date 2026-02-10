@@ -133,13 +133,19 @@ export function VideoCard({ video, index }: VideoCardProps) {
           decoding="async"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        <div className={`absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300 flex items-center justify-center`}>
-          <div className={`w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-300`}>
+        <div
+          className={`absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300 flex items-center justify-center`}
+        >
+          <div
+            className={`w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-300`}
+          >
             <Play className="h-6 w-6 text-primary-foreground ml-1" />
           </div>
         </div>
         {/* Duration Badge */}
-        <div className={`absolute bottom-3 right-3 px-2 py-1 rounded-md bg-foreground/80 text-background text-xs font-medium`}>
+        <div
+          className={`absolute bottom-3 right-3 px-2 py-1 rounded-md bg-foreground/80 text-background text-xs font-medium`}
+        >
           {formatDuration(video.duration, currentLanguage)}
         </div>
         {/* Source Badge */}

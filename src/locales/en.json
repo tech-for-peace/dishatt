@@ -4,10 +4,12 @@
   },
   "filters": {
     "language": "Language",
+    "category": "Category",
     "duration": "Duration",
     "year": "Year",
     "source": "Source",
     "allLanguages": "All Languages",
+    "allCategories": "All Categories",
     "allYears": "All Years",
     "allSources": "All Sources",
     "allDurations": "All Durations",
@@ -38,5 +40,11 @@
   "language": {
     "english": "English",
     "hindi": "हिंदी"
+  },
+  "category": {
+    "video": "Video",
+    "music": "Music",
+    "podcast": "Podcast",
+    "videoMusic": "Video Music"
   }
 }

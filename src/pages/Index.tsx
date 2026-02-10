@@ -13,6 +13,7 @@ import { UI_CONFIG } from "@/lib/constants";
 const initialFilters: SearchFilters = {
   language: "",
   source: "",
+  categories: [],
   years: [],
   durationBands: [],
   titleSearch: "",
@@ -25,6 +26,7 @@ const isValidSearchFilters = (data: unknown): data is SearchFilters => {
   return (
     (typeof obj.language === "string" || obj.language === "") &&
     (typeof obj.source === "string" || obj.source === "") &&
+    Array.isArray(obj.categories) &&
     Array.isArray(obj.years) &&
     Array.isArray(obj.durationBands) &&
     typeof obj.titleSearch === "string" &&
