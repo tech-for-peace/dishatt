@@ -9,9 +9,9 @@ export function Header() {
       className={`bg-hero text-primary-foreground py-6 md:py-16 px-4 relative overflow-hidden`}
     >
       {/* Language switcher and dark mode toggle in top-right corner */}
-      <div className="absolute top-4 right-4 z-30 flex items-center gap-2">
-        <DarkModeToggle />
+      <div className="absolute top-4 right-0 md:right-4 z-30 flex items-center gap-2">
         <LanguageSwitcher />
+        <DarkModeToggle />
       </div>
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">

@@ -45,7 +45,7 @@ export function DarkModeToggle() {
           className={`h-5 md:h-10 gap-1 px-1 md:px-3 bg-white border-gray-300 hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all duration-200`}
         >
           {getCurrentIcon()}
-          <span className="font-semibold text-xs md:text-sm text-gray-800">
+          <span className="font-semibold text-xs md:text-sm text-gray-800 hidden md:inline">
             {getCurrentLabel()}
           </span>
         </Button>
