@@ -73,6 +73,18 @@ export function markVideoAsClicked(videoId: string): void {
 }
 
 /**
+ * Compare two videos for sorting: by timestamp descending,
+ * then title length descending, then title descending alphabetically (case-insensitive)
+ */
+function compareVideos(a: VideoResult, b: VideoResult): number {
+  const timeDiff = b.timestamp - a.timestamp;
+  if (timeDiff !== 0) return timeDiff;
+  const lenDiff = b.title.length - a.title.length;
+  if (lenDiff !== 0) return lenDiff;
+  return b.title.toLowerCase().localeCompare(a.title.toLowerCase());
+}
+
+/**
  * Determine which videos should be marked as new
  * A video is new if: published in current month AND never clicked
  * If fewer than MIN_NEW_VIDEOS, include last month's unclicked videos
@@ -110,8 +122,8 @@ function determineNewVideos(
       );
     });
 
-    // Sort by timestamp descending (most recent first)
-    lastMonthNewVideos.sort((a, b) => b.timestamp! - a.timestamp!);
+    // Sort by timestamp descending (most recent first), then by title length descending, then by title descending
+    lastMonthNewVideos.sort(compareVideos);
 
     const needed = MIN_NEW_VIDEOS - newVideos.length;
     newVideos = [...newVideos, ...lastMonthNewVideos.slice(0, needed)];
@@ -197,7 +209,7 @@ async function loadAllVideos(): Promise<VideoResult[]> {
                 category: video.Category || "Video",
               };
             })
-            .sort((a, b) => b.timestamp - a.timestamp)
+            .sort(compareVideos)
         : [];
 
       if (cachedVideos.length > 0) {
