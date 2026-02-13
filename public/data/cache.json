@@ -24360,21 +24360,6 @@
       "AudioOnly": true,
       "LoginRequired": false
     },
-    "d76c0d24-277c-4e5b-96d3-45f3e21f5244": {
-      "VideoID": "d76c0d24-277c-4e5b-96d3-45f3e21f5244",
-      "Category": "Video",
-      "Name": "Keep the Good",
-      "Description": "When you focus on what is wrong, you miss out on appreciating all that is going right.   Excerpted from \"Amaroo 2018 Series, Episode 6\".",
-      "Duration": 232000000000,
-      "Language": "en-US",
-      "ClickURL": "https://www.timelesstoday.tv/en/home/product/d76c0d24-277c-4e5b-96d3-45f3e21f5244",
-      "PublishYear": 2019,
-      "PublishMonth": 4,
-      "PublishDay": 16,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img/0003323_keep-the-good.jpeg?format=auto",
-      "AudioOnly": false,
-      "LoginRequired": false
-    },
     "d76d07c4-e09b-4076-8074-591f73f696c8": {
       "VideoID": "d76d07c4-e09b-4076-8074-591f73f696c8",
       "Category": "Video",
@@ -31846,5 +31831,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-02-12T01:11:40.075662089Z"
+  "lastUpdated": "2026-02-13T01:16:15.434411416Z"
 }
