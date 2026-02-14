@@ -11,8 +11,11 @@ let cachePromise: Promise<VideoResult[]> | null = null;
  * Get the set of clicked video IDs from localStorage
  * Returns empty set if no data or if old date format is detected
  */
+const isValidVideoId = (id: string): boolean =>
+  /^[\w-]{1,128}$/.test(id);
+
 const isValidClickedIds = (data: unknown): data is string[] => {
-  return Array.isArray(data) && data.every((item) => typeof item === "string");
+  return Array.isArray(data) && data.length <= 5000 && data.every((item) => typeof item === "string" && isValidVideoId(item));
 };
 
 function getClickedVideoIds(): Set<string> {
