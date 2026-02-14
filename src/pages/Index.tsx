@@ -30,6 +30,7 @@ const isValidSearchFilters = (data: unknown): data is SearchFilters => {
     Array.isArray(obj.years) &&
     Array.isArray(obj.durationBands) &&
     typeof obj.titleSearch === "string" &&
+    (obj.titleSearch as string).length <= 500 &&
     typeof obj.freeOnly === "boolean"
   );
 };
