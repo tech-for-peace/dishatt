@@ -9525,6 +9525,21 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "68bf4674-84be-44a4-af62-cba61b817cee": {
+      "VideoID": "68bf4674-84be-44a4-af62-cba61b817cee",
+      "Category": "Video",
+      "Name": "Keep the Good",
+      "Description": "When you focus on what is wrong, you miss out on appreciating all that is going right.   \n\n\n\u003cp\u003eYou can watch the full talk that this excerpt is taken from with your TimelessToday subscription here: \u003ca href=\"https://timelesstoday.tv/en/discover/series/Amaroo%202018/product/0ad4b4ec-f415-42b9-8b6e-827752e50644\" target=\"_blank\" rel=\"noopener\"\u003eAmaroo 2018 Session 6\u003c/a\u003e\u003c/p\u003e",
+      "Duration": 232000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.timelesstoday.tv/en/home/product/68bf4674-84be-44a4-af62-cba61b817cee",
+      "PublishYear": 2026,
+      "PublishMonth": 2,
+      "PublishDay": 12,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img/0003323_keep-the-good.jpeg?format=auto",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
     "68dba694-6924-4e69-9004-fc38a330ceb2": {
       "VideoID": "68dba694-6924-4e69-9004-fc38a330ceb2",
       "Category": "Video",
@@ -24836,7 +24851,7 @@
       "PublishYear": 2017,
       "PublishMonth": 7,
       "PublishDay": 7,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img/0000206_the-divine.png?format=auto",
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/170702_TimelessToday_The_Divine_800.jpg?format=auto",
       "AudioOnly": false,
       "LoginRequired": false
     },
@@ -31831,5 +31846,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-02-13T01:16:15.434411416Z"
+  "lastUpdated": "2026-02-14T01:07:58.429761093Z"
 }
