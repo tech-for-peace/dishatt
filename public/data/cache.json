@@ -318,7 +318,7 @@
     "02ad3340-0e5a-4aa9-94ae-0a8f627eef39": {
       "VideoID": "02ad3340-0e5a-4aa9-94ae-0a8f627eef39",
       "Category": "Video",
-      "Name": "São Paulo 2016",
+      "Name": "São Paulo 2016 - Remastered",
       "Description": "Prem Rawat in São Paolo, Brazil\n\n\nPrem Rawat in São Paolo, Brazil",
       "Duration": 3900000000000,
       "Language": "en-US",
@@ -6513,7 +6513,7 @@
     "48efcdf3-50b7-4813-a6a5-833d5bf953aa": {
       "VideoID": "48efcdf3-50b7-4813-a6a5-833d5bf953aa",
       "Category": "Video",
-      "Name": "The Story of a Human Being",
+      "Name": "The Story of a Human Being - Remastered",
       "Description": "This story of the human being just simply needs to be told.   Prem Rawat in Miami Beach, Florida. USA",
       "Duration": 4780000000000,
       "Language": "en-US",
@@ -11778,7 +11778,7 @@
     "804983da-9e05-427e-b40b-080264929cf5": {
       "VideoID": "804983da-9e05-427e-b40b-080264929cf5",
       "Category": "Video",
-      "Name": "Prem Rawat in Sebokeng, South Africa",
+      "Name": "Prem Rawat in Sebokeng, South Africa - Remastered",
       "Description": "Prem Rawat in Sebokeng",
       "Duration": 1909000000000,
       "Language": "en-US",
@@ -31861,5 +31861,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-02-16T01:12:02.136354548Z"
+  "lastUpdated": "2026-02-17T01:10:39.70377654Z"
 }
