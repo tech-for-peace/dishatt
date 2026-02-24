@@ -60,6 +60,15 @@ const ALLOWED_THUMBNAIL_DOMAINS = [
 const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];
 const MAX_THUMBNAIL_BYTES = 5 * 1024 * 1024; // 5 MB
 
+function isSafeUrl(url: string): boolean {
+  try {
+    const parsed = new URL(url);
+    return parsed.protocol === "http:" || parsed.protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
 interface VideoCardProps {
   video: VideoResult;
   index: number;
@@ -82,11 +91,12 @@ export function VideoCard({ video, index }: VideoCardProps) {
     markVideoAsClicked(video.id);
 
     let url = video.url;
-    // Ensure timelesstoday.tv URLs don't have www
     if (url.includes("timelesstoday.tv")) {
       url = url.replace("//www.", "//");
     }
-    window.open(url, "_blank", "noopener,noreferrer");
+    if (isSafeUrl(url)) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
   };
 
   const handleShare = async (e: React.MouseEvent) => {
