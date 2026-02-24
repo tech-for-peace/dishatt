@@ -49,6 +49,17 @@ function formatDate(date: Date, hasDay: boolean): string {
   });
 }
 
+const ALLOWED_THUMBNAIL_DOMAINS = [
+  "i.ytimg.com",
+  "img.youtube.com",
+  "timelesstoday.com",
+  "www.timelesstoday.com",
+  "timelesstoday.tv",
+  "i.scdn.co",
+];
+const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];
+const MAX_THUMBNAIL_BYTES = 5 * 1024 * 1024; // 5 MB
+
 interface VideoCardProps {
   video: VideoResult;
   index: number;
@@ -91,20 +102,25 @@ export function VideoCard({ video, index }: VideoCardProps) {
     // Try to share with thumbnail image using Web Share API
     if (navigator.share && navigator.canShare) {
       try {
-        // Fetch the thumbnail image
-        const response = await fetch(video.thumbnail);
-        const blob = await response.blob();
-        const file = new File([blob], "thumbnail.jpg", { type: blob.type });
+        // Validate thumbnail domain before fetching
+        const thumbUrl = new URL(video.thumbnail);
+        if (ALLOWED_THUMBNAIL_DOMAINS.includes(thumbUrl.hostname)) {
+          const response = await fetch(video.thumbnail);
+          const blob = await response.blob();
 
-        const shareData = {
-          text: shareText,
-          files: [file],
-        };
+          // Validate content type and size
+          if (
+            ALLOWED_IMAGE_TYPES.includes(blob.type) &&
+            blob.size <= MAX_THUMBNAIL_BYTES
+          ) {
+            const file = new File([blob], "thumbnail.jpg", { type: blob.type });
+            const shareData = { text: shareText, files: [file] };
 
-        // Check if sharing files is supported
-        if (navigator.canShare(shareData)) {
-          await navigator.share(shareData);
-          return;
+            if (navigator.canShare(shareData)) {
+              await navigator.share(shareData);
+              return;
+            }
+          }
         }
       } catch {
         // File sharing failed, fall through to WhatsApp URL fallback

@@ -6,7 +6,7 @@ import { FilterPanel } from "@/components/FilterPanel";
 import { VideoGrid } from "@/components/VideoGrid";
 
 import { searchVideos } from "@/lib/data";
-import { SearchFilters, VideoResult } from "@/lib/types";
+import { SearchFilters, VideoResult, DURATION_BANDS } from "@/lib/types";
 import { useToast } from "@/lib";
 import { UI_CONFIG } from "@/lib/constants";
 
@@ -20,15 +20,29 @@ const initialFilters: SearchFilters = {
   freeOnly: false,
 };
 
+const VALID_LANGUAGES: string[] = ["", "english", "hindi"];
+const VALID_SOURCES: string[] = ["", "youtube", "timelesstoday", "spotify", "transradio"];
+const VALID_CATEGORIES: string[] = ["Video", "Music", "Podcast", "Video Music"];
+const VALID_DURATION_LABELS: string[] = DURATION_BANDS.map((b) => b.label);
+const YEAR_REGEX = /^\d{4}$/;
+
+const isStringArray = (arr: unknown[], maxLen: number, validator: (s: string) => boolean): boolean =>
+  arr.length <= maxLen && arr.every((item) => typeof item === "string" && validator(item));
+
 const isValidSearchFilters = (data: unknown): data is SearchFilters => {
   if (typeof data !== "object" || data === null) return false;
   const obj = data as Record<string, unknown>;
   return (
-    (typeof obj.language === "string" || obj.language === "") &&
-    (typeof obj.source === "string" || obj.source === "") &&
+    typeof obj.language === "string" &&
+    VALID_LANGUAGES.includes(obj.language) &&
+    typeof obj.source === "string" &&
+    VALID_SOURCES.includes(obj.source) &&
     Array.isArray(obj.categories) &&
+    isStringArray(obj.categories, 10, (s) => VALID_CATEGORIES.includes(s)) &&
     Array.isArray(obj.years) &&
+    isStringArray(obj.years, 20, (s) => YEAR_REGEX.test(s)) &&
     Array.isArray(obj.durationBands) &&
+    isStringArray(obj.durationBands, 10, (s) => VALID_DURATION_LABELS.includes(s)) &&
     typeof obj.titleSearch === "string" &&
     (obj.titleSearch as string).length <= 500 &&
     typeof obj.freeOnly === "boolean"

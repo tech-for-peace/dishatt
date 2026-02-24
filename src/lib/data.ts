@@ -169,7 +169,7 @@ async function loadAllVideos(): Promise<VideoResult[]> {
     try {
       const response = await fetch(CACHE_PATH);
       if (!response.ok) {
-        throw new Error(`Failed to fetch cache: ${response.statusText}`);
+        throw new Error("Failed to load video data");
       }
 
       const data = await response.json();
