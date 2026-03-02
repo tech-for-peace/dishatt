@@ -9315,21 +9315,6 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
-    "658d6d3e-e775-4730-820c-e07a17e71694": {
-      "VideoID": "658d6d3e-e775-4730-820c-e07a17e71694",
-      "Category": "Video",
-      "Name": "Self Reliance",
-      "Description": "Peace cannot be found in ideal political conditions. Peace can be found within you.  This is an excerpt from Prem Rawat’s interview with Fernando Mauro Trezza in São Paulo, Brazil.",
-      "Duration": 109000000000,
-      "Language": "en-US",
-      "ClickURL": "https://www.timelesstoday.tv/en/home/product/658d6d3e-e775-4730-820c-e07a17e71694",
-      "PublishYear": 2018,
-      "PublishMonth": 4,
-      "PublishDay": 21,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img2/130408_self_reliance.jpg?format=auto",
-      "AudioOnly": false,
-      "LoginRequired": false
-    },
     "65RqXgf50RQWuE6PAkPX2y": {
       "VideoID": "65RqXgf50RQWuE6PAkPX2y",
       "Category": "Podcast",
@@ -22470,6 +22455,21 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "ba46c079-18d8-47c7-a074-b8ecd292d263": {
+      "VideoID": "ba46c079-18d8-47c7-a074-b8ecd292d263",
+      "Category": "Video",
+      "Name": "Self Reliance",
+      "Description": "Peace cannot be found in ideal political conditions. Peace can be found within you.  This is an excerpt from Prem Rawat’s interview with Fernando Mauro Trezza in São Paulo, Brazil.",
+      "Duration": 109000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.timelesstoday.tv/en/home/product/ba46c079-18d8-47c7-a074-b8ecd292d263",
+      "PublishYear": 2026,
+      "PublishMonth": 3,
+      "PublishDay": 1,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/130408_self_reliance.jpg?format=auto",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
     "baaeab66-a6dc-4218-8733-974ebddaf3e7": {
       "VideoID": "baaeab66-a6dc-4218-8733-974ebddaf3e7",
       "Category": "Video",
@@ -31906,5 +31906,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-03-01T01:17:08.204116858Z"
+  "lastUpdated": "2026-03-02T01:09:36.17770552Z"
 }
