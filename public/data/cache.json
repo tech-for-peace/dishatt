@@ -9990,6 +9990,21 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "6fjWHEw6aPI": {
+      "VideoID": "6fjWHEw6aPI",
+      "Category": "Video",
+      "Name": "इस होली दें ऐसा उपहार",
+      "Description": "रंगों की उमंग में,\nशोरगुल के माहौल में,\nअपना फ़र्ज़ निभाना—\nप्रियजनों को ज्ञान और विवेक के मार्ग पर ले जाना।\n\nक्योंकि रंग तो फीके पड़ जाते हैं,\nपर शांति… कभी नहीं।\n\nइस होली, अपने प्रियजनों को दें\nशांति का अनुपम उपहार—\nTimelessToday की सदस्यता।\n\ntimelesstoday.tv पर जाएँ\nऔर मित्रों के लिए यह अनमोल सौगात लाएँ।\n\nश्री प्रेम रावत जी के साथ 'रंगोत्सव' कार्यक्रम से लिया गया एक अंश।\nसम्पूर्ण संस्करण टाइमलेस टुडे पर उपलब्ध: https://timelesstoday.tv/hi/events/product/b37a42ef-11d8-4059-9592-fb10dcaa78a6",
+      "Duration": 91000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://www.youtube.com/watch?v=6fjWHEw6aPI",
+      "PublishYear": 2026,
+      "PublishMonth": 3,
+      "PublishDay": 5,
+      "ThumbnailURL": "https://i.ytimg.com/vi/6fjWHEw6aPI/mqdefault.jpg",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
     "6iOJT_kxH2U": {
       "VideoID": "6iOJT_kxH2U",
       "Category": "Video",
@@ -31936,5 +31951,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-03-05T01:10:06.869682761Z"
+  "lastUpdated": "2026-03-06T01:14:18.199679774Z"
 }
