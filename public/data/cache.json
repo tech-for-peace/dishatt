@@ -1920,6 +1920,21 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "128fb1b7-d058-400e-9da4-2ff8d70f223d": {
+      "VideoID": "128fb1b7-d058-400e-9da4-2ff8d70f223d",
+      "Category": "Video",
+      "Name": "Life: An Invitation",
+      "Description": "Prem Rawat in Miami-Fort Lauderdale, Florida\n\n\nIt was a remarkable start to 2026. In Fort Lauderdale, Florida, Prem Rawat brought together a live audience and over 6,000 livestream viewers worldwide for an evening of profound insights and original music with lyrics that left a lasting impression.\n\nDrawing on mythology, personal anecdotes and two original songs — Come On In and Empty the Cup — Prem explored the nature of ego, the pitfalls of borrowed wisdom and the breath as a living source of peace.\n\nHe ended the evening on a reassuring note that no matter what is happening in the world, there is nothing more powerful than the divine residing inside each person — and that is reason enough not to fear.\n\n\n\u003cp\u003eThe replay is now available in English for Classic and Premier subscribers in the app and on the website.\u003c/p\u003e",
+      "Duration": 4149000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.timelesstoday.tv/en/home/product/128fb1b7-d058-400e-9da4-2ff8d70f223d",
+      "PublishYear": 2026,
+      "PublishMonth": 3,
+      "PublishDay": 6,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/260228_Ft_Lauderdale_800_EN.jpg?format=auto",
+      "AudioOnly": false,
+      "LoginRequired": true
+    },
     "12948b91-c6ff-4d70-9316-3aef3e51174c": {
       "VideoID": "12948b91-c6ff-4d70-9316-3aef3e51174c",
       "Category": "Video",
@@ -31951,5 +31966,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-03-06T01:14:18.199679774Z"
+  "lastUpdated": "2026-03-07T01:06:03.08502228Z"
 }
