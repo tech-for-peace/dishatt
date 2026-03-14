@@ -231,8 +231,8 @@ export const MediaCard = memo(function MediaCard({
                   ? t("mediaCard.intelligentExistence")
                   : t("mediaCard.timelessToday")}
         </Badge>
-        {/* Badge - Either New or Upcoming, not both */}
-        {isUpcoming && !media.isNew && (
+        {/* Badge - Show Upcoming if applicable, otherwise show New if applicable */}
+        {isUpcoming && (
           <Badge
             variant="default"
             className="absolute top-3 right-3 bg-orange-600 hover:bg-orange-700 text-xs h-5 px-2"
