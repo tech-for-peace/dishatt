@@ -85,7 +85,7 @@ export const MediaCard = memo(function MediaCard({
   const currentLanguage = i18n.language;
   const mediaDate = new Date(
     media.publishedYear,
-    media.publishedMonth ?? 0,
+    media.publishedMonth,
     media.publishedDay && media.publishedDay > 0 ? media.publishedDay : 1,
   );
   const hasDay =
