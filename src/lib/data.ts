@@ -183,7 +183,7 @@ async function loadAllMedia(): Promise<MediaResult[]> {
             .map((media: MediaData) => {
               const timestamp = new Date(
                 media.PublishYear,
-                (media.PublishMonth || 1) - 1,
+                media.PublishMonth - 1,
                 media.PublishDay || 1,
               ).getTime();
 
