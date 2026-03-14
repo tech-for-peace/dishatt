@@ -1,5 +1,10 @@
 export type Language = "english" | "hindi" | "";
-export type Source = "youtube" | "timelesstoday" | "spotify" | "transradio" | "";
+export type Source =
+  | "youtube"
+  | "timelesstoday"
+  | "spotify"
+  | "transradio"
+  | "";
 export type Category = "Video" | "Music" | "Podcast" | "Video Music";
 
 export interface DurationBand {
@@ -18,7 +23,7 @@ export interface SearchFilters {
   freeOnly: boolean;
 }
 
-export interface VideoResult {
+export interface MediaResult {
   id: string;
   title: string;
   description: string;
@@ -30,15 +35,15 @@ export interface VideoResult {
   publishedDay?: number; // 1-31
   language: "en" | "hi";
   url: string;
-  audioOnly?: boolean; // for audio-only videos
+  audioOnly?: boolean; // for audio-only media
   timestamp?: number; // for internal sorting
   isNew?: boolean; // for showing "new" tag
   loginRequired?: boolean; // true if login is required to watch
-  category?: string; // video category
+  category?: string; // media category
 }
 
-export interface SearchResponse {
-  results: VideoResult[];
+export interface MediaResponse {
+  results: MediaResult[];
   total: number;
   limit: number;
   offset: number;

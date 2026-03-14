@@ -3,10 +3,10 @@ import { useTranslation } from "react-i18next";
 
 import { Header } from "@/components/Header";
 import { FilterPanel } from "@/components/FilterPanel";
-import { VideoGrid } from "@/components/VideoGrid";
+import { MediaGrid } from "@/components/MediaGrid";
 
-import { searchVideos } from "@/lib/data";
-import { SearchFilters, VideoResult, DURATION_BANDS } from "@/lib/types";
+import { searchMedia } from "@/lib/data";
+import { SearchFilters, MediaResult, DURATION_BANDS } from "@/lib/types";
 import { useToast } from "@/lib";
 import { UI_CONFIG } from "@/lib/constants";
 
@@ -21,13 +21,24 @@ const initialFilters: SearchFilters = {
 };
 
 const VALID_LANGUAGES: string[] = ["", "english", "hindi"];
-const VALID_SOURCES: string[] = ["", "youtube", "timelesstoday", "spotify", "transradio"];
+const VALID_SOURCES: string[] = [
+  "",
+  "youtube",
+  "timelesstoday",
+  "spotify",
+  "transradio",
+];
 const VALID_CATEGORIES: string[] = ["Video", "Music", "Podcast", "Video Music"];
 const VALID_DURATION_LABELS: string[] = DURATION_BANDS.map((b) => b.label);
 const YEAR_REGEX = /^\d{4}$/;
 
-const isStringArray = (arr: unknown[], maxLen: number, validator: (s: string) => boolean): boolean =>
-  arr.length <= maxLen && arr.every((item) => typeof item === "string" && validator(item));
+const isStringArray = (
+  arr: unknown[],
+  maxLen: number,
+  validator: (s: string) => boolean,
+): boolean =>
+  arr.length <= maxLen &&
+  arr.every((item) => typeof item === "string" && validator(item));
 
 const isValidSearchFilters = (data: unknown): data is SearchFilters => {
   if (typeof data !== "object" || data === null) return false;
@@ -42,7 +53,9 @@ const isValidSearchFilters = (data: unknown): data is SearchFilters => {
     Array.isArray(obj.years) &&
     isStringArray(obj.years, 20, (s) => YEAR_REGEX.test(s)) &&
     Array.isArray(obj.durationBands) &&
-    isStringArray(obj.durationBands, 10, (s) => VALID_DURATION_LABELS.includes(s)) &&
+    isStringArray(obj.durationBands, 10, (s) =>
+      VALID_DURATION_LABELS.includes(s),
+    ) &&
     typeof obj.titleSearch === "string" &&
     (obj.titleSearch as string).length <= 500 &&
     typeof obj.freeOnly === "boolean"
@@ -65,21 +78,21 @@ const storeFilters = (filters: SearchFilters): void => {
 };
 const Index = () => {
   const [filters, setFilters] = useState<SearchFilters>(getStoredFilters());
-  const [allVideos, setAllVideos] = useState<VideoResult[]>([]);
-  const [displayedVideos, setDisplayedVideos] = useState<VideoResult[]>([]);
+  const [allMedia, setAllMedia] = useState<MediaResult[]>([]);
+  const [displayedMedia, setDisplayedMedia] = useState<MediaResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(UI_CONFIG.videosPerLoad);
+  const [visibleCount, setVisibleCount] = useState(UI_CONFIG.mediaPerLoad);
 
   const { toast } = useToast();
   const { t } = useTranslation();
   const performSearch = useCallback(
     async (searchFilters: SearchFilters) => {
       setIsLoading(true);
-      setVisibleCount(UI_CONFIG.videosPerLoad);
+      setVisibleCount(UI_CONFIG.mediaPerLoad);
 
       try {
-        const results = await searchVideos(searchFilters);
-        setAllVideos(results);
+        const results = await searchMedia(searchFilters);
+        setAllMedia(results);
       } catch {
         toast({
           title: "Search failed",
@@ -93,8 +106,8 @@ const Index = () => {
     [toast],
   );
   useEffect(() => {
-    setDisplayedVideos(allVideos.slice(0, visibleCount));
-  }, [allVideos, visibleCount]);
+    setDisplayedMedia(allMedia.slice(0, visibleCount));
+  }, [allMedia, visibleCount]);
   const loadMoreRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -103,20 +116,20 @@ const Index = () => {
         if (
           entries[0].isIntersecting &&
           !isLoading &&
-          allVideos.length > visibleCount
+          allMedia.length > visibleCount
         ) {
-          setVisibleCount((prev) => prev + UI_CONFIG.videosPerLoad);
+          setVisibleCount((prev) => prev + UI_CONFIG.mediaPerLoad);
         }
       },
       { threshold: 0.1 },
     );
 
-    if (loadMoreRef.current && allVideos.length > visibleCount) {
+    if (loadMoreRef.current && allMedia.length > visibleCount) {
       observer.observe(loadMoreRef.current);
     }
 
     return () => observer.disconnect();
-  }, [isLoading, allVideos.length, visibleCount]);
+  }, [isLoading, allMedia.length, visibleCount]);
   useEffect(() => {
     performSearch(filters);
   }, [filters, performSearch]);
@@ -133,7 +146,7 @@ const Index = () => {
   const handleResetFilters = useCallback(() => {
     setFilters(initialFilters);
     storeFilters(initialFilters);
-    setVisibleCount(UI_CONFIG.videosPerLoad);
+    setVisibleCount(UI_CONFIG.mediaPerLoad);
   }, []);
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -150,18 +163,18 @@ const Index = () => {
         {/* Results Header */}
         <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
           <h2 className="text-2xl font-semibold text-foreground">
-            {t("results.videoCount", { count: allVideos.length })}
+            {t("results.mediaCount", { count: allMedia.length })}
           </h2>
         </div>
-        {/* Video Grid */}
+        {/* Media Grid */}
         <div className="space-y-8">
-          <VideoGrid
-            videos={displayedVideos}
+          <MediaGrid
+            media={displayedMedia}
             isLoading={isLoading}
             hasSearched={true}
           />
           {/* Infinite scroll trigger */}
-          {allVideos.length > displayedVideos.length && (
+          {allMedia.length > displayedMedia.length && (
             <div ref={loadMoreRef} className="flex justify-center py-8">
               <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
             </div>

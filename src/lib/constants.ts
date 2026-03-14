@@ -2,13 +2,13 @@
 export const APP_CONFIG = {
   name: "Disha",
   description:
-    "Discover videos from Timeless Today and Prem Rawat official YouTube",
+    "Discover videos from Timeless Today and Prem Rawat official YouTube channels",
 } as const;
 
 export const UI_CONFIG = {
-  videosPerLoad: 12,
+  mediaPerLoad: 12,
   animationDelay: 100,
-  cacheKey: "videoSearchFilters",
+  cacheKey: "mediaSearchFilters",
 };
 
 export const API_CONFIG = {

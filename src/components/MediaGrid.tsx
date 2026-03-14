@@ -1,13 +1,13 @@
 import { useTranslation } from "react-i18next";
 import { Compass } from "lucide-react";
-import { VideoResult } from "@/lib/types";
-import { VideoCard } from "./VideoCard";
-interface VideoGridProps {
-  videos: VideoResult[];
+import { MediaResult } from "@/lib/types";
+import { MediaCard } from "./MediaCard";
+interface MediaGridProps {
+  media: MediaResult[];
   isLoading: boolean;
   hasSearched: boolean;
 }
-export function VideoGrid({ videos, isLoading, hasSearched }: VideoGridProps) {
+export function MediaGrid({ media, isLoading, hasSearched }: MediaGridProps) {
   const { t } = useTranslation();
   // Container with min-height to prevent layout shifts
   const containerClass = "min-h-[600px]";
@@ -37,14 +37,14 @@ export function VideoGrid({ videos, isLoading, hasSearched }: VideoGridProps) {
       </div>
     );
   }
-  if (hasSearched && videos.length === 0) {
+  if (hasSearched && media.length === 0) {
     return (
       <div className={`${containerClass} text-center py-16 animate-fade-in`}>
         <h3 className="font-heading text-2xl font-semibold text-foreground mb-2">
-          {t("results.noVideosFound")}
+          {t("results.noMediaFound")}
         </h3>
         <p className="text-muted-foreground max-w-md mx-auto">
-          {t("results.noVideosMessage")}
+          {t("results.noMediaMessage")}
         </p>
       </div>
     );
@@ -60,7 +60,7 @@ export function VideoGrid({ videos, isLoading, hasSearched }: VideoGridProps) {
         </div>
         <p className="text-muted-foreground text-center py-8">
           {hasSearched
-            ? t("results.videoCount", { count: videos.length })
+            ? t("results.mediaCount", { count: media.length })
             : t("results.useFilters")}
         </p>
       </div>
@@ -69,8 +69,8 @@ export function VideoGrid({ videos, isLoading, hasSearched }: VideoGridProps) {
   return (
     <div className={containerClass}>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {videos.map((video, index) => (
-          <VideoCard key={video.id} video={video} index={index} />
+        {media.map((media, index) => (
+          <MediaCard key={media.id} media={media} index={index} />
         ))}
       </div>
     </div>

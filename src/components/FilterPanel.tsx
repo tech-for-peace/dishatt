@@ -263,12 +263,14 @@ export function FilterPanel({
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">{t("filters.allSources")}</SelectItem>
-            <SelectItem value="youtube">{t("videoCard.youtube")}</SelectItem>
+            <SelectItem value="youtube">{t("mediaCard.youtube")}</SelectItem>
             <SelectItem value="timelesstoday">
-              {t("videoCard.timelessToday")}
+              {t("mediaCard.timelessToday")}
             </SelectItem>
-            <SelectItem value="spotify">{t("videoCard.spotify")}</SelectItem>
-            <SelectItem value="transradio">{t("videoCard.transradio")}</SelectItem>
+            <SelectItem value="spotify">{t("mediaCard.spotify")}</SelectItem>
+            <SelectItem value="transradio">
+              {t("mediaCard.transradio")}
+            </SelectItem>
           </SelectContent>
         </Select>
         <label

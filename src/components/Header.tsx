@@ -24,10 +24,13 @@ export function Header() {
                          bg-primary-foreground/10 blur-3xl"
         />
       </div>
-      <div className="container max-w-4xl mx-auto text-center relative z-10">
+      <div className="container max-w-4xl mx-auto text-center relative z-10 px-4">
         <p
-          className="text-base md:text-lg text-primary-foreground/80 dark:text-white/90
-                     max-w-2xl mx-auto animate-slide-up"
+          className="text-sm md:text-lg text-primary-foreground/80 dark:text-white/90
+                     mx-auto animate-slide-up
+                     leading-relaxed
+                     md:leading-normal
+                     line-clamp-2"
           style={{ animationDelay: "100ms" }}
         >
           {t("header.tagline")}

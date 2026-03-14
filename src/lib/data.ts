@@ -1,24 +1,27 @@
-import { SearchFilters, VideoResult, DURATION_BANDS } from "@/lib/types";
+import { SearchFilters, MediaResult, DURATION_BANDS } from "@/lib/types";
 
 const CACHE_PATH = "/data/cache.json";
 const LAST_VISIT_KEY = "dishatt_last_visit";
-const MIN_NEW_VIDEOS = 2;
+const MIN_NEW_MEDIA = 2;
 
-let cachedVideos: VideoResult[] | null = null;
-let cachePromise: Promise<VideoResult[]> | null = null;
+let cachedMedia: MediaResult[] | null = null;
+let cachePromise: Promise<MediaResult[]> | null = null;
 
 /**
- * Get the set of clicked video IDs from localStorage
+ * Get the set of clicked media IDs from localStorage
  * Returns empty set if no data or if old date format is detected
  */
-const isValidVideoId = (id: string): boolean =>
-  /^[\w-]{1,128}$/.test(id);
+const isValidMediaId = (id: string): boolean => /^[\w-]{1,128}$/.test(id);
 
 const isValidClickedIds = (data: unknown): data is string[] => {
-  return Array.isArray(data) && data.length <= 5000 && data.every((item) => typeof item === "string" && isValidVideoId(item));
+  return (
+    Array.isArray(data) &&
+    data.length <= 5000 &&
+    data.every((item) => typeof item === "string" && isValidMediaId(item))
+  );
 };
 
-function getClickedVideoIds(): Set<string> {
+function getClickedMediaIds(): Set<string> {
   if (typeof window === "undefined") return new Set();
 
   const stored = localStorage.getItem(LAST_VISIT_KEY);
@@ -39,47 +42,47 @@ function getClickedVideoIds(): Set<string> {
 }
 
 /**
- * Save clicked video IDs to localStorage
- * Cleans up IDs that are no longer in the video dataset
+ * Save clicked media IDs to localStorage
+ * Cleans up IDs that are no longer in the media dataset
  */
-function saveClickedVideoIds(
+function saveClickedMediaIds(
   clickedIds: Set<string>,
-  validVideoIds: Set<string>,
+  validMediaIds: Set<string>,
 ): void {
   if (typeof window === "undefined") return;
 
-  // Only keep IDs that exist in current video dataset to prevent growth
+  // Only keep IDs that exist in current media dataset to prevent growth
   const cleanedIds = Array.from(clickedIds).filter((id) =>
-    validVideoIds.has(id),
+    validMediaIds.has(id),
   );
   localStorage.setItem(LAST_VISIT_KEY, JSON.stringify(cleanedIds));
 }
 
 /**
- * Mark a video as clicked - exported for use by VideoCard
+ * Mark a media as clicked - exported for use by MediaCard
  */
-export function markVideoAsClicked(videoId: string): void {
+export function markMediaAsClicked(mediaId: string): void {
   if (typeof window === "undefined") return;
 
-  const clickedIds = getClickedVideoIds();
-  clickedIds.add(videoId);
+  const clickedIds = getClickedMediaIds();
+  clickedIds.add(mediaId);
 
   // Save without cleanup (we don't have valid IDs here, cleanup happens on load)
   localStorage.setItem(LAST_VISIT_KEY, JSON.stringify(Array.from(clickedIds)));
 
-  // Update cached videos to reflect the change
-  if (cachedVideos) {
-    cachedVideos = cachedVideos.map((video) =>
-      video.id === videoId ? { ...video, isNew: false } : video,
+  // Update cached media to reflect the change
+  if (cachedMedia) {
+    cachedMedia = cachedMedia.map((media) =>
+      media.id === mediaId ? { ...media, isNew: false } : media,
     );
   }
 }
 
 /**
- * Compare two videos for sorting: by timestamp descending,
+ * Compare two media items for sorting: by timestamp descending,
  * then title length descending, then title descending alphabetically (case-insensitive)
  */
-function compareVideos(a: VideoResult, b: VideoResult): number {
+function compareMedia(a: MediaResult, b: MediaResult): number {
   const timeDiff = b.timestamp - a.timestamp;
   if (timeDiff !== 0) return timeDiff;
   const lenDiff = b.title.length - a.title.length;
@@ -88,60 +91,60 @@ function compareVideos(a: VideoResult, b: VideoResult): number {
 }
 
 /**
- * Determine which videos should be marked as new
- * A video is new if: published in current month AND never clicked
- * If fewer than MIN_NEW_VIDEOS, include last month's unclicked videos
+ * Determine which media should be marked as new
+ * A media is new if: published in current month AND never clicked
+ * If fewer than MIN_NEW_MEDIA, include last month's unclicked media
  */
-function determineNewVideos(
-  videos: VideoResult[],
+function determineNewMedia(
+  media: MediaResult[],
   clickedIds: Set<string>,
-): VideoResult[] {
+): MediaResult[] {
   const now = new Date();
   const currentMonth = now.getMonth();
   const currentYear = now.getFullYear();
   const lastMonth = currentMonth === 0 ? 11 : currentMonth - 1;
   const lastMonthYear = currentMonth === 0 ? currentYear - 1 : currentYear;
 
-  // Get current month videos that haven't been clicked
-  const currentMonthNewVideos = videos.filter((video) => {
-    if (clickedIds.has(video.id)) return false;
-    const videoDate = new Date(video.timestamp!);
+  // Get current month media that haven't been clicked
+  const currentMonthNewMedia = media.filter((media) => {
+    if (clickedIds.has(media.id)) return false;
+    const mediaDate = new Date(media.timestamp!);
     return (
-      videoDate.getMonth() === currentMonth &&
-      videoDate.getFullYear() === currentYear
+      mediaDate.getMonth() === currentMonth &&
+      mediaDate.getFullYear() === currentYear
     );
   });
 
-  let newVideos = [...currentMonthNewVideos];
+  let newMedia = [...currentMonthNewMedia];
 
-  // If not enough, add last month's unclicked videos
-  if (newVideos.length < MIN_NEW_VIDEOS) {
-    const lastMonthNewVideos = videos.filter((video) => {
-      if (clickedIds.has(video.id)) return false;
-      const videoDate = new Date(video.timestamp!);
+  // If not enough, add last month's unclicked media
+  if (newMedia.length < MIN_NEW_MEDIA) {
+    const lastMonthNewMedia = media.filter((media) => {
+      if (clickedIds.has(media.id)) return false;
+      const mediaDate = new Date(media.timestamp!);
       return (
-        videoDate.getMonth() === lastMonth &&
-        videoDate.getFullYear() === lastMonthYear
+        mediaDate.getMonth() === lastMonth &&
+        mediaDate.getFullYear() === lastMonthYear
       );
     });
 
     // Sort by timestamp descending (most recent first), then by title length descending, then by title descending
-    lastMonthNewVideos.sort(compareVideos);
+    lastMonthNewMedia.sort(compareMedia);
 
-    const needed = MIN_NEW_VIDEOS - newVideos.length;
-    newVideos = [...newVideos, ...lastMonthNewVideos.slice(0, needed)];
+    const needed = MIN_NEW_MEDIA - newMedia.length;
+    newMedia = [...newMedia, ...lastMonthNewMedia.slice(0, needed)];
   }
 
-  // Mark the selected videos as new
-  const newVideoIds = new Set(newVideos.map((v) => v.id));
-  return videos.map((video) => ({
-    ...video,
-    isNew: newVideoIds.has(video.id),
+  // Mark the selected media as new
+  const newMediaIds = new Set(newMedia.map((m) => m.id));
+  return media.map((media) => ({
+    ...media,
+    isNew: newMediaIds.has(media.id),
   }));
 }
 
-interface VideoData {
-  VideoID: string;
+interface MediaData {
+  MediaID: string;
   Category?: string;
   Name: string;
   Description?: string;
@@ -156,9 +159,9 @@ interface VideoData {
   LoginRequired?: boolean;
 }
 
-async function loadAllVideos(): Promise<VideoResult[]> {
-  if (cachedVideos) {
-    return cachedVideos;
+async function loadAllMedia(): Promise<MediaResult[]> {
+  if (cachedMedia) {
+    return cachedMedia;
   }
 
   if (cachePromise) {
@@ -169,61 +172,61 @@ async function loadAllVideos(): Promise<VideoResult[]> {
     try {
       const response = await fetch(CACHE_PATH);
       if (!response.ok) {
-        throw new Error("Failed to load video data");
+        throw new Error("Failed to load media data");
       }
 
       const data = await response.json();
-      const clickedIds = getClickedVideoIds();
+      const clickedIds = getClickedMediaIds();
 
-      cachedVideos = data.videos
-        ? Object.values(data.videos)
-            .map((video: VideoData) => {
+      cachedMedia = data.medias
+        ? Object.values(data.medias)
+            .map((media: MediaData) => {
               const timestamp = new Date(
-                video.PublishYear,
-                (video.PublishMonth || 1) - 1,
-                video.PublishDay || 1,
+                media.PublishYear,
+                (media.PublishMonth || 1) - 1,
+                media.PublishDay || 1,
               ).getTime();
 
               return {
-                id: video.VideoID,
-                title: video.Name,
-                description: video.Description || "",
-                thumbnail: video.ThumbnailURL,
-                duration: Math.round((video.Duration || 0) / 1e9 / 60),
-                source: (video.ClickURL?.includes("youtube.com")
+                id: media.MediaID,
+                title: media.Name,
+                description: media.Description || "",
+                thumbnail: media.ThumbnailURL,
+                duration: Math.round((media.Duration || 0) / 1e9 / 60),
+                source: (media.ClickURL?.includes("youtube.com")
                   ? "youtube"
-                  : video.ClickURL?.includes("spotify.com")
+                  : media.ClickURL?.includes("spotify.com")
                     ? "spotify"
-                    : video.ClickURL?.includes("mixcloud.com")
+                    : media.ClickURL?.includes("mixcloud.com")
                       ? "transradio"
                       : "timelesstoday") as
                   | "youtube"
                   | "timelesstoday"
                   | "spotify"
                   | "transradio",
-                publishedYear: video.PublishYear,
-                publishedMonth: video.PublishMonth - 1,
-                publishedDay: video.PublishDay,
-                language: normalizeLanguageCode(video.Language),
-                url: video.ClickURL,
-                audioOnly: video.AudioOnly || false,
-                loginRequired: video.LoginRequired || false,
+                publishedYear: media.PublishYear,
+                publishedMonth: media.PublishMonth - 1,
+                publishedDay: media.PublishDay,
+                language: normalizeLanguageCode(media.Language),
+                url: media.ClickURL,
+                audioOnly: media.AudioOnly || false,
+                loginRequired: media.LoginRequired || false,
                 timestamp,
-                category: video.Category || "Video",
+                category: media.Category || "Video",
               };
             })
-            .sort(compareVideos)
+            .sort(compareMedia)
         : [];
 
-      if (cachedVideos.length > 0) {
-        // Get valid video IDs to clean up storage
-        const validVideoIds = new Set(cachedVideos.map((v) => v.id));
-        saveClickedVideoIds(clickedIds, validVideoIds);
+      if (cachedMedia.length > 0) {
+        // Get valid media IDs to clean up storage
+        const validMediaIds = new Set(cachedMedia.map((m) => m.id));
+        saveClickedMediaIds(clickedIds, validMediaIds);
 
-        cachedVideos = determineNewVideos(cachedVideos, clickedIds);
+        cachedMedia = determineNewMedia(cachedMedia, clickedIds);
       }
 
-      return cachedVideos;
+      return cachedMedia;
     } catch {
       return [];
     } finally {
@@ -233,44 +236,44 @@ async function loadAllVideos(): Promise<VideoResult[]> {
 
   return cachePromise;
 }
-export async function searchVideos(
+export async function searchMedia(
   filters: SearchFilters,
-): Promise<VideoResult[]> {
-  const allVideos = await loadAllVideos();
-  return filterVideos(allVideos, filters);
+): Promise<MediaResult[]> {
+  const allMedia = await loadAllMedia();
+  return filterMedia(allMedia, filters);
 }
 
-function filterVideos(
-  videos: VideoResult[],
+function filterMedia(
+  media: MediaResult[],
   filters: SearchFilters,
-): VideoResult[] {
-  return videos.filter((video) => {
+): MediaResult[] {
+  return media.filter((media) => {
     if (filters.language) {
-      const videoLang = video.language;
+      const mediaLang = media.language;
       const filterLang = filters.language === "hindi" ? "hi" : "en";
-      if (videoLang !== filterLang) {
+      if (mediaLang !== filterLang) {
         return false;
       }
     }
 
-    if (filters.source && video.source !== filters.source) {
+    if (filters.source && media.source !== filters.source) {
       return false;
     }
 
     if (filters.categories && filters.categories.length > 0) {
-      if (!filters.categories.includes(video.category || "Video")) {
+      if (!filters.categories.includes(media.category || "Video")) {
         return false;
       }
     }
 
     if (filters.years && filters.years.length > 0) {
-      if (!filters.years.includes(String(video.publishedYear))) {
+      if (!filters.years.includes(String(media.publishedYear))) {
         return false;
       }
     }
 
     if (filters.durationBands && filters.durationBands.length > 0) {
-      const duration = video.duration || 0;
+      const duration = media.duration || 0;
       const matchesAnyBand = filters.durationBands.some((bandLabel) => {
         const band = DURATION_BANDS.find((b) => b.label === bandLabel);
         if (!band) return false;
@@ -281,7 +284,7 @@ function filterVideos(
       if (!matchesAnyBand) return false;
     }
 
-    if (filters.freeOnly && video.loginRequired) {
+    if (filters.freeOnly && media.loginRequired) {
       return false;
     }
 
@@ -291,8 +294,8 @@ function filterVideos(
         .toLowerCase()
         .split(/\s+/)
         .filter((word) => word.length > 0);
-      const title = video.title.toLowerCase();
-      const description = video.description.toLowerCase();
+      const title = media.title.toLowerCase();
+      const description = media.description.toLowerCase();
 
       for (const word of searchWords) {
         if (!title.includes(word) && !description.includes(word)) {
