@@ -86,9 +86,13 @@ export const MediaCard = memo(function MediaCard({
   const mediaDate = new Date(
     media.publishedYear,
     media.publishedMonth ?? 0,
-    media.publishedDay ?? 1,
+    media.publishedDay && media.publishedDay > 0 ? media.publishedDay : 1,
   );
-  const hasDay = media.publishedDay !== undefined && media.publishedDay !== 0;
+  const hasDay =
+    media.publishedDay !== undefined &&
+    media.publishedDay !== 0 &&
+    media.publishedDay > 0;
+  const isUpcoming = mediaDate > new Date();
 
   const [imageError, setImageError] = useState(false);
 
@@ -213,8 +217,8 @@ export const MediaCard = memo(function MediaCard({
                 : media.source === "transradio"
                   ? "bg-blue-600 hover:bg-blue-700 text-white"
                   : media.source === "intelligentexistence"
-                    ? "bg-purple-600 hover:bg-purple-700 text-white"
-                    : "bg-amber-700 hover:bg-amber-800 text-white"
+                    ? "bg-gray-800 hover:bg-gray-900 text-white"
+                    : "bg-amber-600 hover:bg-amber-700 text-white"
           }`}
         >
           {media.source === "youtube"
@@ -227,8 +231,17 @@ export const MediaCard = memo(function MediaCard({
                   ? t("mediaCard.intelligentExistence")
                   : t("mediaCard.timelessToday")}
         </Badge>
-        {/* New Badge */}
-        {media.isNew && (
+        {/* Badge - Either New or Upcoming, not both */}
+        {isUpcoming && !media.isNew && (
+          <Badge
+            variant="default"
+            className="absolute top-3 right-3 bg-orange-600 hover:bg-orange-700 text-xs h-5 px-2"
+          >
+            <Calendar className="h-2.5 w-2.5 mr-1" />
+            {currentLanguage === "hi" ? "आने वाला" : "Upcoming"}
+          </Badge>
+        )}
+        {media.isNew && !isUpcoming && (
           <Badge
             variant="default"
             className="absolute top-3 right-3 bg-purple-600 hover:bg-purple-700 text-xs h-5 px-2"
