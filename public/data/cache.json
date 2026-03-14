@@ -28215,21 +28215,6 @@
       "AudioOnly": false,
       "LoginRequired": true
     },
-    "ie-argentina-3": {
-      "MediaID": "ie-argentina-3",
-      "Category": "Video",
-      "Name": "Buenos Aires - April 3(Included With Purchase)",
-      "Description": "Session 4: April 3 – Premiere release with Prem Rawat\n                                    from Argentina.",
-      "Duration": 0,
-      "Language": "en-US",
-      "ClickURL": "https://www.intelligentexistence.com/argentina-session-4/",
-      "PublishYear": 2026,
-      "PublishMonth": 4,
-      "PublishDay": 3,
-      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/02/argentina-session-4-poster-for-slider.jpg",
-      "AudioOnly": false,
-      "LoginRequired": true
-    },
     "ie-connection-0": {
       "MediaID": "ie-connection-0",
       "Category": "Video",
@@ -31981,5 +31966,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-03-14T19:04:01.454437449Z"
+  "lastUpdated": "2026-03-14T19:11:58.359707277Z"
 }
