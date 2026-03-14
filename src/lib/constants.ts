@@ -8,7 +8,7 @@ export const APP_CONFIG = {
 export const UI_CONFIG = {
   mediaPerLoad: 12,
   animationDelay: 100,
-  cacheKey: "mediaSearchFilters",
+  cacheKey: "videoSearchFilters",
 };
 
 export const API_CONFIG = {

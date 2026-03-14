@@ -27,6 +27,7 @@ const VALID_SOURCES: string[] = [
   "timelesstoday",
   "spotify",
   "transradio",
+  "intelligentexistence",
 ];
 const VALID_CATEGORIES: string[] = ["Video", "Music", "Podcast", "Video Music"];
 const VALID_DURATION_LABELS: string[] = DURATION_BANDS.map((b) => b.label);
