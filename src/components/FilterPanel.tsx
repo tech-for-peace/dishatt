@@ -271,6 +271,9 @@ export function FilterPanel({
             <SelectItem value="transradio">
               {t("mediaCard.transradio")}
             </SelectItem>
+            <SelectItem value="intelligentexistence">
+              {t("mediaCard.intelligentExistence")}
+            </SelectItem>
           </SelectContent>
         </Select>
         <label

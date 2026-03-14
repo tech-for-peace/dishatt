@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Calendar, Globe, Play, Sparkles, Headphones } from "lucide-react";
-import { memo } from "react";
+import { memo, useState } from "react";
 
 import { MediaResult } from "@/lib/types";
 import { formatLanguage, markMediaAsClicked } from "@/lib/data";
@@ -57,6 +57,8 @@ const ALLOWED_THUMBNAIL_DOMAINS = [
   "www.timelesstoday.com",
   "timelesstoday.tv",
   "i.scdn.co",
+  "intelligentexistence.com",
+  "www.intelligentexistence.com",
 ];
 const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];
 const MAX_THUMBNAIL_BYTES = 5 * 1024 * 1024; // 5 MB
@@ -86,7 +88,13 @@ export const MediaCard = memo(function MediaCard({
     media.publishedMonth ?? 0,
     media.publishedDay ?? 1,
   );
-  const hasDay = media.publishedDay !== undefined;
+  const hasDay = media.publishedDay !== undefined && media.publishedDay !== 0;
+
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -154,15 +162,29 @@ export const MediaCard = memo(function MediaCard({
     >
       {/* Thumbnail */}
       <div className="relative aspect-video overflow-hidden">
-        <img
-          src={media.thumbnail}
-          alt={media.title}
-          width={355}
-          height={200}
-          loading={index < 3 ? "eager" : "lazy"}
-          decoding="async"
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
+        {imageError ? (
+          <div className="w-full h-full bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900 dark:to-purple-800 flex items-center justify-center">
+            <div className="text-center p-4">
+              <div className="w-12 h-12 mx-auto mb-2 rounded-full bg-purple-300 dark:bg-purple-700 flex items-center justify-center">
+                <Play className="h-6 w-6 text-purple-600 dark:text-purple-300" />
+              </div>
+              <p className="text-sm text-purple-700 dark:text-purple-300 font-medium">
+                {media.title}
+              </p>
+            </div>
+          </div>
+        ) : (
+          <img
+            src={media.thumbnail}
+            alt={media.title}
+            width={355}
+            height={200}
+            loading={index < 3 ? "eager" : "lazy"}
+            decoding="async"
+            onError={handleImageError}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        )}
         <div
           className={`absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300 flex items-center justify-center`}
         >
@@ -173,22 +195,26 @@ export const MediaCard = memo(function MediaCard({
           </div>
         </div>
         {/* Duration Badge */}
-        <div
-          className={`absolute bottom-3 right-3 px-2 py-1 rounded-md bg-foreground/80 text-background text-xs font-medium`}
-        >
-          {formatDuration(media.duration, currentLanguage)}
-        </div>
+        {media.duration > 0 && (
+          <div
+            className={`absolute bottom-3 right-3 px-2 py-1 rounded-md bg-foreground/80 text-background text-xs font-medium`}
+          >
+            {formatDuration(media.duration, currentLanguage)}
+          </div>
+        )}
         {/* Source Badge */}
         <Badge
           variant="secondary"
-          className={`absolute top-3 left-3 text-xs font-medium ${
+          className={`absolute top-2 left-3 text-xs font-medium ${
             media.source === "youtube"
               ? "bg-red-600 hover:bg-red-700 text-white"
               : media.source === "spotify"
                 ? "bg-green-600 hover:bg-green-700 text-white"
                 : media.source === "transradio"
                   ? "bg-blue-600 hover:bg-blue-700 text-white"
-                  : "bg-amber-700 hover:bg-amber-800 text-white"
+                  : media.source === "intelligentexistence"
+                    ? "bg-purple-600 hover:bg-purple-700 text-white"
+                    : "bg-amber-700 hover:bg-amber-800 text-white"
           }`}
         >
           {media.source === "youtube"
@@ -197,7 +223,9 @@ export const MediaCard = memo(function MediaCard({
               ? t("mediaCard.spotify")
               : media.source === "transradio"
                 ? t("mediaCard.transradio")
-                : t("mediaCard.timelessToday")}
+                : media.source === "intelligentexistence"
+                  ? t("mediaCard.intelligentExistence")
+                  : t("mediaCard.timelessToday")}
         </Badge>
         {/* New Badge */}
         {media.isNew && (
