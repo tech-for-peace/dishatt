@@ -214,22 +214,18 @@ export const MediaCard = memo(function MediaCard({
               ? "bg-red-600 hover:bg-red-700 text-white"
               : media.source === "spotify"
                 ? "bg-green-600 hover:bg-green-700 text-white"
-                : media.source === "transradio"
-                  ? "bg-blue-600 hover:bg-blue-700 text-white"
-                  : media.source === "intelligentexistence"
-                    ? "bg-gray-800 hover:bg-gray-900 text-white"
-                    : "bg-amber-600 hover:bg-amber-700 text-white"
+                : media.source === "intelligentexistence"
+                  ? "bg-gray-800 hover:bg-gray-900 text-white"
+                  : "bg-amber-600 hover:bg-amber-700 text-white"
           }`}
         >
           {media.source === "youtube"
             ? t("mediaCard.youtube")
             : media.source === "spotify"
               ? t("mediaCard.spotify")
-              : media.source === "transradio"
-                ? t("mediaCard.transradio")
-                : media.source === "intelligentexistence"
-                  ? t("mediaCard.intelligentExistence")
-                  : t("mediaCard.timelessToday")}
+              : media.source === "intelligentexistence"
+                ? t("mediaCard.intelligentExistence")
+                : t("mediaCard.timelessToday")}
         </Badge>
         {/* Badge - Show Upcoming if applicable, otherwise show New if applicable */}
         {isUpcoming && (

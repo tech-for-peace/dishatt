@@ -3,7 +3,6 @@ export type Source =
   | "youtube"
   | "timelesstoday"
   | "spotify"
-  | "transradio"
   | "intelligentexistence"
   | "";
 export type Category = "Video" | "Music" | "Podcast" | "Video Music";
@@ -30,12 +29,7 @@ export interface MediaResult {
   description: string;
   thumbnail: string;
   duration: number; // in minutes
-  source:
-    | "youtube"
-    | "timelesstoday"
-    | "spotify"
-    | "transradio"
-    | "intelligentexistence";
+  source: "youtube" | "timelesstoday" | "spotify" | "intelligentexistence";
   publishedYear: number;
   publishedMonth?: number; // 0-11 (0 = January)
   publishedDay?: number; // 1-31

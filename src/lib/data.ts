@@ -197,15 +197,12 @@ async function loadAllMedia(): Promise<MediaResult[]> {
                   ? "youtube"
                   : media.ClickURL?.includes("spotify.com")
                     ? "spotify"
-                    : media.ClickURL?.includes("mixcloud.com")
-                      ? "transradio"
-                      : media.ClickURL?.includes("intelligentexistence.com")
-                        ? "intelligentexistence"
-                        : "timelesstoday") as
+                    : media.ClickURL?.includes("intelligentexistence.com")
+                      ? "intelligentexistence"
+                      : "timelesstoday") as
                   | "youtube"
                   | "timelesstoday"
                   | "spotify"
-                  | "transradio"
                   | "intelligentexistence",
                 publishedYear: media.PublishYear,
                 publishedMonth: media.PublishMonth - 1,

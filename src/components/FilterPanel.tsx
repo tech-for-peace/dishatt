@@ -268,9 +268,6 @@ export function FilterPanel({
               {t("mediaCard.timelessToday")}
             </SelectItem>
             <SelectItem value="spotify">{t("mediaCard.spotify")}</SelectItem>
-            <SelectItem value="transradio">
-              {t("mediaCard.transradio")}
-            </SelectItem>
             <SelectItem value="intelligentexistence">
               {t("mediaCard.intelligentExistence")}
             </SelectItem>

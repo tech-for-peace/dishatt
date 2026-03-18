@@ -26,7 +26,6 @@ const VALID_SOURCES: string[] = [
   "youtube",
   "timelesstoday",
   "spotify",
-  "transradio",
   "intelligentexistence",
 ];
 const VALID_CATEGORIES: string[] = ["Video", "Music", "Podcast", "Video Music"];
