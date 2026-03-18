@@ -18,7 +18,7 @@ export default defineConfig(() => ({
     sourcemap: false,
     rollupOptions: {
       output: {
-        manualChunks: (id: string) => {
+        manualChunks: (id) => {
           if (id.includes("node_modules")) {
             // Keep react and react-dom together to avoid duplicate instances
             if (id.includes("react-dom") || id.includes("/react/"))
