@@ -18,10 +18,13 @@ export default defineConfig(() => ({
     sourcemap: false,
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
+        manualChunks: (id: string) => {
           if (id.includes("node_modules")) {
-            // Keep react and react-dom together to avoid duplicate instances
-            if (id.includes("react-dom") || id.includes("/react/"))
+            if (
+              id.includes("react-dom") ||
+              id.includes("/react/") ||
+              id.includes("react-i18next")
+            )
               return "vendor-react";
             if (id.includes("react-router")) return "vendor-router";
             if (id.includes("i18next")) return "vendor-i18n";
