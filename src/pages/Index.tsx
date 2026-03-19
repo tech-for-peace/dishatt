@@ -12,8 +12,8 @@ import { UI_CONFIG } from "@/lib/constants";
 
 const initialFilters: SearchFilters = {
   language: "",
-  source: "",
   categories: [],
+  channels: [],
   years: [],
   durationBands: [],
   titleSearch: "",
@@ -21,14 +21,7 @@ const initialFilters: SearchFilters = {
 };
 
 const VALID_LANGUAGES: string[] = ["", "english", "hindi"];
-const VALID_SOURCES: string[] = [
-  "",
-  "youtube",
-  "timelesstoday",
-  "spotify",
-  "intelligentexistence",
-];
-const VALID_CATEGORIES: string[] = ["Video", "Music", "Podcast", "Video Music"];
+const VALID_CATEGORIES: string[] = ["Video", "Music", "Podcast"];
 const VALID_DURATION_LABELS: string[] = DURATION_BANDS.map((b) => b.label);
 const YEAR_REGEX = /^\d{4}$/;
 
@@ -46,10 +39,14 @@ const isValidSearchFilters = (data: unknown): data is SearchFilters => {
   return (
     typeof obj.language === "string" &&
     VALID_LANGUAGES.includes(obj.language) &&
-    typeof obj.source === "string" &&
-    VALID_SOURCES.includes(obj.source) &&
     Array.isArray(obj.categories) &&
     isStringArray(obj.categories, 10, (s) => VALID_CATEGORIES.includes(s)) &&
+    Array.isArray(obj.channels) &&
+    isStringArray(
+      obj.channels,
+      20,
+      (s) => typeof s === "string" && s.length <= 100,
+    ) &&
     Array.isArray(obj.years) &&
     isStringArray(obj.years, 20, (s) => YEAR_REGEX.test(s)) &&
     Array.isArray(obj.durationBands) &&
@@ -169,11 +166,7 @@ const Index = () => {
         </div>
         {/* Media Grid */}
         <div className="space-y-8">
-          <MediaGrid
-            media={displayedMedia}
-            isLoading={isLoading}
-            hasSearched={true}
-          />
+          <MediaGrid media={displayedMedia} isLoading={isLoading} />
           {/* Infinite scroll trigger */}
           {allMedia.length > displayedMedia.length && (
             <div ref={loadMoreRef} className="flex justify-center py-8">

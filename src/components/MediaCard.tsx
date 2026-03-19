@@ -210,20 +210,20 @@ export const MediaCard = memo(function MediaCard({
         <Badge
           variant="secondary"
           className={`absolute top-2 left-3 text-xs font-medium ${
-            media.source === "youtube"
+            media.channel?.includes("YouTube")
               ? "bg-red-600 hover:bg-red-700 text-white"
-              : media.source === "spotify"
+              : media.channel?.includes("Spotify")
                 ? "bg-green-600 hover:bg-green-700 text-white"
-                : media.source === "intelligentexistence"
+                : media.channel?.includes("Intelligent Existence")
                   ? "bg-gray-800 hover:bg-gray-900 text-white"
                   : "bg-amber-600 hover:bg-amber-700 text-white"
           }`}
         >
-          {media.source === "youtube"
+          {media.channel?.includes("YouTube")
             ? t("mediaCard.youtube")
-            : media.source === "spotify"
+            : media.channel?.includes("Spotify")
               ? t("mediaCard.spotify")
-              : media.source === "intelligentexistence"
+              : media.channel?.includes("Intelligent Existence")
                 ? t("mediaCard.intelligentExistence")
                 : t("mediaCard.timelessToday")}
         </Badge>

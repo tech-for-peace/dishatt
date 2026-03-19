@@ -146,6 +146,7 @@ function determineNewMedia(
 interface MediaData {
   MediaID: string;
   Category?: string;
+  ContentSource?: string;
   Name: string;
   Description?: string;
   ThumbnailURL: string;
@@ -193,17 +194,6 @@ async function loadAllMedia(): Promise<MediaResult[]> {
                 description: media.Description || "",
                 thumbnail: media.ThumbnailURL,
                 duration: Math.round((media.Duration || 0) / 1e9 / 60),
-                source: (media.ClickURL?.includes("youtube.com")
-                  ? "youtube"
-                  : media.ClickURL?.includes("spotify.com")
-                    ? "spotify"
-                    : media.ClickURL?.includes("intelligentexistence.com")
-                      ? "intelligentexistence"
-                      : "timelesstoday") as
-                  | "youtube"
-                  | "timelesstoday"
-                  | "spotify"
-                  | "intelligentexistence",
                 publishedYear: media.PublishYear,
                 publishedMonth: media.PublishMonth - 1,
                 publishedDay: media.PublishDay,
@@ -213,6 +203,7 @@ async function loadAllMedia(): Promise<MediaResult[]> {
                 loginRequired: media.LoginRequired || false,
                 timestamp,
                 category: media.Category || "Video",
+                channel: media.ContentSource || "",
               };
             })
             .sort(compareMedia)
@@ -243,6 +234,28 @@ export async function searchMedia(
   return filterMedia(allMedia, filters);
 }
 
+export async function getUniqueCategories(): Promise<string[]> {
+  const allMedia = await loadAllMedia();
+  const categories = new Set<string>();
+  allMedia.forEach((media) => {
+    if (media.category) {
+      categories.add(media.category);
+    }
+  });
+  return Array.from(categories).sort();
+}
+
+export async function getUniqueChannels(): Promise<string[]> {
+  const allMedia = await loadAllMedia();
+  const channels = new Set<string>();
+  allMedia.forEach((media) => {
+    if (media.channel) {
+      channels.add(media.channel);
+    }
+  });
+  return Array.from(channels).sort();
+}
+
 function filterMedia(
   media: MediaResult[],
   filters: SearchFilters,
@@ -256,12 +269,14 @@ function filterMedia(
       }
     }
 
-    if (filters.source && media.source !== filters.source) {
-      return false;
-    }
-
     if (filters.categories && filters.categories.length > 0) {
       if (!filters.categories.includes(media.category || "Video")) {
+        return false;
+      }
+    }
+
+    if (filters.channels && filters.channels.length > 0) {
+      if (!media.channel || !filters.channels.includes(media.channel)) {
         return false;
       }
     }

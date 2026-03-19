@@ -14,26 +14,25 @@ import {
   DropdownMenuContent,
   DropdownMenuCheckboxItem,
 } from "@/components/ui/dropdown-menu";
-import {
-  SearchFilters,
-  DURATION_BANDS,
-  YEARS,
-  CATEGORIES,
-  Language,
-  Source,
-} from "@/lib/types";
+import { SearchFilters, DURATION_BANDS, YEARS, Language } from "@/lib/types";
+import { useState, useEffect } from "react";
+import { getUniqueCategories, getUniqueChannels } from "@/lib/data";
 const formatDurationLabel = (label: string, language: string): string => {
   if (label === "Any Duration") return label;
+
   // Handle 'hour' in the label
   if (label.includes("hour")) {
     const num = parseInt(label.match(/\d+/)?.[0] || "1", 10);
     return language === "hi" ? `${num} घंटे से अधिक` : label;
   }
+
   const match = label.match(/([<>-]?\s*\d+)\s*(?:-\s*)?(\d+)?\s*(min)?/);
   if (!match) return label;
+
   const [, firstNum, secondNum] = match;
   const num1 = parseInt(firstNum.replace(/[<>-]/g, "").trim(), 10);
   const num2 = secondNum ? parseInt(secondNum, 10) : null;
+
   if (language === "hi") {
     if (label.startsWith("<")) {
       return `${num1} मिनट से कम`;
@@ -43,6 +42,7 @@ const formatDurationLabel = (label: string, language: string): string => {
       return `${num1} मिनट से अधिक`;
     }
   }
+
   return label; // Return original for English or if no match
 };
 interface FilterPanelProps {
@@ -59,6 +59,22 @@ export function FilterPanel({
   onResetFilters,
 }: FilterPanelProps) {
   const { t, i18n } = useTranslation();
+  const [categories, setCategories] = useState<string[]>([]);
+  const [channels, setChannels] = useState<string[]>([]);
+
+  useEffect(() => {
+    const loadFilterOptions = async () => {
+      const [uniqueCategories, uniqueChannels] = await Promise.all([
+        getUniqueCategories(),
+        getUniqueChannels(),
+      ]);
+      setCategories(uniqueCategories);
+      setChannels(uniqueChannels);
+    };
+
+    loadFilterOptions();
+  }, []);
+
   const durationOptions = DURATION_BANDS.filter(
     (band) => band.label !== "Any Duration",
   );
@@ -83,6 +99,13 @@ export function FilterPanel({
       : [...current, category];
     onFilterChange("categories", newValue);
   };
+  const handleChannelToggle = (channel: string) => {
+    const current = filters.channels || [];
+    const newValue = current.includes(channel)
+      ? current.filter((c) => c !== channel)
+      : [...current, channel];
+    onFilterChange("channels", newValue);
+  };
   const getDurationDisplayText = () => {
     const selected = filters.durationBands || [];
     if (selected.length === 0) return t("filters.allDurations");
@@ -97,7 +120,6 @@ export function FilterPanel({
     return `${selected.length} ${t("filters.selected")}`;
   };
   const getCategoryKey = (category: string): string => {
-    if (category === "Video Music") return "videoMusic";
     return category.toLowerCase();
   };
 
@@ -110,11 +132,15 @@ export function FilterPanel({
     }
     return `${selected.length} ${t("filters.selected")}`;
   };
+
+  const getChannelDisplayText = () => {
+    const selected = filters.channels || [];
+    if (selected.length === 0) return t("filters.allChannels");
+    if (selected.length === 1) return selected[0];
+    return `${selected.length} ${t("filters.selected")}`;
+  };
   return (
-    <div
-      className="w-full bg-card/80 backdrop-blur-sm rounded-xl p-3
-                 shadow-soft border border-border/50 animate-fade-in"
-    >
+    <div className="w-full bg-card/80 backdrop-blur-sm rounded-xl p-3 shadow-soft border border-border/50 animate-fade-in">
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1.5">
         <Select
           value={filters.language || "all"}
@@ -125,10 +151,7 @@ export function FilterPanel({
             )
           }
         >
-          <SelectTrigger
-            className="bg-background/50 border-border/50
-                                     hover:border-primary/30 transition-colors h-8"
-          >
+          <SelectTrigger className="bg-background/50 border-border/50 hover:border-primary/30 transition-colors h-8">
             <SelectValue placeholder={t("filters.language")} />
           </SelectTrigger>
           <SelectContent>
@@ -138,14 +161,7 @@ export function FilterPanel({
           </SelectContent>
         </Select>
         <DropdownMenu>
-          <DropdownMenuTrigger
-            className="flex h-8 w-full items-center justify-between rounded-md
-                     border border-border/50 bg-background/50 px-3 py-1 text-sm
-                     ring-offset-background placeholder:text-muted-foreground
-                     hover:border-primary/30 transition-colors focus:outline-none
-                     focus:ring-2 focus:ring-ring focus:ring-offset-2
-                     disabled:cursor-not-allowed disabled:opacity-50"
-          >
+          <DropdownMenuTrigger className="flex h-8 w-full items-center justify-between rounded-md border border-border/50 bg-background/50 px-3 py-1 text-sm ring-offset-background placeholder:text-muted-foreground hover:border-primary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
             <span className="truncate">{getCategoryDisplayText()}</span>
             <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
           </DropdownMenuTrigger>
@@ -156,7 +172,7 @@ export function FilterPanel({
             >
               {t("filters.allCategories")}
             </DropdownMenuCheckboxItem>
-            {CATEGORIES.map((category) => {
+            {categories.map((category) => {
               const categoryKey = getCategoryKey(category);
               const isSelected = (filters.categories || []).includes(category);
               return (
@@ -166,21 +182,44 @@ export function FilterPanel({
                   onCheckedChange={() => handleCategoryToggle(category)}
                   onSelect={(e) => e.preventDefault()}
                 >
-                  {t(`category.${categoryKey}`)}
+                  {t(`category.${categoryKey}`, category)}
                 </DropdownMenuCheckboxItem>
               );
             })}
           </DropdownMenuContent>
         </DropdownMenu>
         <DropdownMenu>
-          <DropdownMenuTrigger
-            className="flex h-8 w-full items-center justify-between rounded-md
-                     border border-border/50 bg-background/50 px-3 py-1 text-sm
-                     ring-offset-background placeholder:text-muted-foreground
-                     hover:border-primary/30 transition-colors focus:outline-none
-                     focus:ring-2 focus:ring-ring focus:ring-offset-2
-                     disabled:cursor-not-allowed disabled:opacity-50"
+          <DropdownMenuTrigger className="flex h-8 w-full items-center justify-between rounded-md border border-border/50 bg-background/50 px-3 py-1 text-sm ring-offset-background placeholder:text-muted-foreground hover:border-primary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+            <span className="truncate">{getChannelDisplayText()}</span>
+            <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
+            align="start"
+            className="w-48 max-h-64 overflow-y-auto"
           >
+            <DropdownMenuCheckboxItem
+              checked={(filters.channels || []).length === 0}
+              onCheckedChange={() => onFilterChange("channels", [])}
+            >
+              {t("filters.allChannels")}
+            </DropdownMenuCheckboxItem>
+            {channels.map((channel) => {
+              const isSelected = (filters.channels || []).includes(channel);
+              return (
+                <DropdownMenuCheckboxItem
+                  key={channel}
+                  checked={isSelected}
+                  onCheckedChange={() => handleChannelToggle(channel)}
+                  onSelect={(e) => e.preventDefault()}
+                >
+                  {channel}
+                </DropdownMenuCheckboxItem>
+              );
+            })}
+          </DropdownMenuContent>
+        </DropdownMenu>
+        <DropdownMenu>
+          <DropdownMenuTrigger className="flex h-8 w-full items-center justify-between rounded-md border border-border/50 bg-background/50 px-3 py-1 text-sm ring-offset-background placeholder:text-muted-foreground hover:border-primary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
             <span className="truncate">{getDurationDisplayText()}</span>
             <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
           </DropdownMenuTrigger>
@@ -213,14 +252,7 @@ export function FilterPanel({
           </DropdownMenuContent>
         </DropdownMenu>
         <DropdownMenu>
-          <DropdownMenuTrigger
-            className="flex h-8 w-full items-center justify-between rounded-md
-                     border border-border/50 bg-background/50 px-3 py-1 text-sm
-                     ring-offset-background placeholder:text-muted-foreground
-                     hover:border-primary/30 transition-colors focus:outline-none
-                     focus:ring-2 focus:ring-ring focus:ring-offset-2
-                     disabled:cursor-not-allowed disabled:opacity-50"
-          >
+          <DropdownMenuTrigger className="flex h-8 w-full items-center justify-between rounded-md border border-border/50 bg-background/50 px-3 py-1 text-sm ring-offset-background placeholder:text-muted-foreground hover:border-primary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
             <span className="truncate">{getYearDisplayText()}</span>
             <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
           </DropdownMenuTrigger>
@@ -249,36 +281,7 @@ export function FilterPanel({
             })}
           </DropdownMenuContent>
         </DropdownMenu>
-        <Select
-          value={filters.source || "all"}
-          onValueChange={(value) =>
-            onFilterChange("source", value === "all" ? "" : (value as Source))
-          }
-        >
-          <SelectTrigger
-            className="bg-background/50 border-border/50
-                                     hover:border-primary/30 transition-colors h-8 text-left"
-          >
-            <SelectValue placeholder={t("filters.source")} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">{t("filters.allSources")}</SelectItem>
-            <SelectItem value="youtube">{t("mediaCard.youtube")}</SelectItem>
-            <SelectItem value="timelesstoday">
-              {t("mediaCard.timelessToday")}
-            </SelectItem>
-            <SelectItem value="spotify">{t("mediaCard.spotify")}</SelectItem>
-            <SelectItem value="intelligentexistence">
-              {t("mediaCard.intelligentExistence")}
-            </SelectItem>
-          </SelectContent>
-        </Select>
-        <label
-          className="flex items-center gap-2 px-3 py-1 text-sm font-medium
-                 text-foreground/80 hover:text-foreground
-                 transition-colors whitespace-nowrap rounded-md border border-border/60
-                 hover:border-border cursor-pointer select-none h-8 lg:hidden"
-        >
+        <label className="flex items-center gap-2 px-3 py-1 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors whitespace-nowrap rounded-md border border-border/60 hover:border-border cursor-pointer select-none h-8 lg:hidden">
           <input
             type="checkbox"
             checked={filters.freeOnly}
@@ -295,20 +298,14 @@ export function FilterPanel({
             placeholder={t("filters.searchPlaceholder")}
             value={filters.titleSearch}
             onChange={(e) => onFilterChange("titleSearch", e.target.value)}
-            className="bg-background/50 border-border/50 hover:border-primary/30
-                   transition-colors flex-1 h-8"
+            className="bg-background/50 border-border/50 hover:border-primary/30 transition-colors flex-1 h-8"
             inputMode="search"
             autoComplete="off"
             autoCorrect="off"
             autoCapitalize="off"
             spellCheck="false"
           />
-          <label
-            className="hidden lg:flex items-center gap-2 px-3 py-1 text-sm font-medium
-                   text-foreground/80 hover:text-foreground
-                   transition-colors whitespace-nowrap rounded-md border border-border/60
-                   hover:border-border cursor-pointer select-none h-8"
-          >
+          <label className="hidden lg:flex items-center gap-2 px-3 py-1 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors whitespace-nowrap rounded-md border border-border/60 hover:border-border cursor-pointer select-none h-8">
             <input
               type="checkbox"
               checked={filters.freeOnly}
@@ -320,10 +317,7 @@ export function FilterPanel({
           <button
             type="button"
             onClick={onResetFilters}
-            className="flex items-center gap-1.5 px-3 py-1 text-xs font-medium
-                   text-foreground/70 hover:text-foreground hover:bg-muted/40
-                   transition-colors whitespace-nowrap rounded-md border border-border/60
-                   hover:border-border h-8"
+            className="flex items-center gap-1.5 px-3 py-1 text-xs font-medium text-foreground/70 hover:text-foreground hover:bg-muted/40 transition-colors whitespace-nowrap rounded-md border border-border/60 hover:border-border h-8"
             title={t("filters.reset")}
           >
             <RefreshCw className="h-3.5 w-3.5" />

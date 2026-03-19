@@ -5,9 +5,8 @@ import { MediaCard } from "./MediaCard";
 interface MediaGridProps {
   media: MediaResult[];
   isLoading: boolean;
-  hasSearched: boolean;
 }
-export function MediaGrid({ media, isLoading, hasSearched }: MediaGridProps) {
+export function MediaGrid({ media, isLoading }: MediaGridProps) {
   const { t } = useTranslation();
   // Container with min-height to prevent layout shifts
   const containerClass = "min-h-[600px]";
@@ -26,10 +25,6 @@ export function MediaGrid({ media, isLoading, hasSearched }: MediaGridProps) {
                 <div className="h-5 bg-muted rounded w-3/4" />
                 <div className="h-4 bg-muted rounded w-full" />
                 <div className="h-4 bg-muted rounded w-2/3" />
-                <div className="flex gap-4 pt-2">
-                  <div className="h-3 bg-muted rounded w-16" />
-                  <div className="h-3 bg-muted rounded w-16" />
-                </div>
               </div>
             </div>
           ))}
@@ -37,19 +32,8 @@ export function MediaGrid({ media, isLoading, hasSearched }: MediaGridProps) {
       </div>
     );
   }
-  if (hasSearched && media.length === 0) {
-    return (
-      <div className={`${containerClass} text-center py-16 animate-fade-in`}>
-        <h3 className="font-heading text-2xl font-semibold text-foreground mb-2">
-          {t("results.noMediaFound")}
-        </h3>
-        <p className="text-muted-foreground max-w-md mx-auto">
-          {t("results.noMediaMessage")}
-        </p>
-      </div>
-    );
-  }
-  if (!hasSearched) {
+
+  if (media.length === 0) {
     return (
       <div className={`${containerClass} text-center py-16 animate-fade-in`}>
         <div
@@ -59,13 +43,12 @@ export function MediaGrid({ media, isLoading, hasSearched }: MediaGridProps) {
           <Compass className="h-10 w-10 text-primary" />
         </div>
         <p className="text-muted-foreground text-center py-8">
-          {hasSearched
-            ? t("results.mediaCount", { count: media.length })
-            : t("results.useFilters")}
+          {t("results.noMediaMessage")}
         </p>
       </div>
     );
   }
+
   return (
     <div className={containerClass}>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -5,13 +5,13 @@
   "filters": {
     "language": "Language",
     "category": "Category",
+    "channel": "Channel",
     "duration": "Duration",
     "year": "Year",
-    "source": "Source",
     "allLanguages": "All Languages",
     "allCategories": "All Categories",
+    "allChannels": "All Channels",
     "allYears": "All Years",
-    "allSources": "All Sources",
     "allDurations": "All Durations",
     "selected": "selected",
     "searchPlaceholder": "Search in title and description (optional)...",
@@ -21,31 +21,24 @@
   "results": {
     "mediaCount_one": "{{count}} video found",
     "mediaCount_other": "{{count}} videos found",
-    "loadMore": "Load More",
     "loading": "Loading...",
     "noMediaFound": "No videos found",
     "noMediaMessage": "Try adjusting your search terms or filters to discover more content.",
-    "useFilters": "Use filters above to find videos",
-    "new": "New",
-    "showWatched": "Show watched ({{count}})",
-    "hideWatched": "Hide watched"
+    "new": "New"
   },
   "mediaCard": {
     "youtube": "YouTube",
     "timelessToday": "Timeless Today",
     "spotify": "Spotify",
-    "intelligentExistence": "Intelligent Existence",
-    "markWatched": "Watched",
-    "markUnwatched": "Unwatched"
+    "intelligentExistence": "Intelligent Existence"
   },
   "language": {
     "english": "English",
-    "hindi": "हिंदी"
+    "hindi": "Hindi"
   },
   "category": {
     "video": "Video",
     "music": "Music",
-    "podcast": "Podcast",
-    "videoMusic": "Video Music"
+    "podcast": "Podcast"
   }
 }
