@@ -47,7 +47,7 @@ interface State {
   toasts: ToasterToast[];
 }
 
-const toastTimeouts = new Map<string, NodeJS.Timeout>();
+const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>();
 
 const addToRemoveQueue = (toastId: string) => {
   if (toastTimeouts.has(toastId)) {
