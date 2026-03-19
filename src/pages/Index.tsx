@@ -135,12 +135,13 @@ const Index = () => {
   }, [filters, performSearch]);
   const handleFilterChange = useCallback(
     (key: keyof SearchFilters, value: string | string[] | boolean) => {
-      const newFilters = { ...filters, [key]: value };
-      setFilters(newFilters);
-      storeFilters(newFilters);
-      performSearch(newFilters);
+      setFilters((prev) => {
+        const newFilters = { ...prev, [key]: value };
+        storeFilters(newFilters);
+        return newFilters;
+      });
     },
-    [filters, performSearch],
+    [],
   );
 
   const handleResetFilters = useCallback(() => {
