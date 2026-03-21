@@ -30640,6 +30640,22 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "kV8tSalrDhc": {
+      "MediaID": "kV8tSalrDhc",
+      "Name": "Uncover Life | Prem Rawat LIVE from Buenos Aires, Argentina",
+      "Category": "Video",
+      "ContentSource": "YouTube @TimelessToday",
+      "Description": "March 27, 28, 29, 2026\nJoin this three-day global gathering, wherever you are — in person or online.\n\nEach evening Prem Rawat will share his original music, inviting you into the inspiration and insight that gave it voice.\n \nOnline, the gathering begins with TimelessToday’s livestream of the opening night, available in multiple languages.\n\n“This life is more juicy than you can possibly imagine. It is spicier than any spice, and is sweeter than any honey on the face of this earth. And you have it.” Prem Rawat\n\nFriday 27:\nEvening - session 1\nTimelessToday LIVESTREAM\n\nSaturday 28:\nMorning - session 2\nIntelligent Existence\nDetails coming soon\n\nEvening - session 3\nTimelessToday\nVideo release on April 4\n\nSunday 29:\nMorning - session 4\nIntelligent Existence\nDetails coming soon\n\nEvening - session 5\nTimelessToday\nVideo release on April 11\n\nDo you live in Latin America?\nWatch the opening night Livestream on the TimelessToday website at no charge with a free Basic user account. Set yours up today!\n(You can then purchase a paid subscription and access the Replay and video releases of the three evening sessions on the app and website to enjoy any time and as often as you like!)\n\nhttps://timelesstoday.tv/en/home/product/92e931ab-4b69-46d3-8eb9-3a0722afa62d",
+      "Duration": 58000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.youtube.com/watch?v=kV8tSalrDhc",
+      "PublishYear": 2026,
+      "PublishMonth": 3,
+      "PublishDay": 20,
+      "ThumbnailURL": "https://i.ytimg.com/vi/kV8tSalrDhc/mqdefault.jpg",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
     "kY6V1L_G3uw": {
       "MediaID": "kY6V1L_G3uw",
       "Name": "The Great Pyramids",
@@ -34113,5 +34129,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-03-20T01:10:30.404565684Z"
+  "lastUpdated": "2026-03-21T01:05:58.946976622Z"
 }
