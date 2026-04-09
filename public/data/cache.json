@@ -640,6 +640,22 @@
       "AudioOnly": true,
       "LoginRequired": false
     },
+    "073f7273-33ca-456c-8859-3b5965e03354": {
+      "MediaID": "073f7273-33ca-456c-8859-3b5965e03354",
+      "Name": "Uncover Life",
+      "Category": "Video",
+      "ContentSource": "Timeless Today",
+      "Description": "Prem Rawat in Buenos Aires | Saturday Evening\n\n\nWhat if the weight you're carrying isn't yours to bear? In this refreshingly candid and deeply human talk, which includes questions from viewers, Prem Rawat tackles life's most universal struggles with equal parts wisdom and wit.\n\nDrawing on ancient storytelling and turbulent airplane flights alike, Prem Rawat invites us to stop dwelling on our wrongs and turn toward what we actually have. His take on grief is breathtaking in its simplicity. His perspective on guilt will make you laugh before it makes you think. And joy? Not something you chase – something you uncover.\n\nWarm, funny and utterly unfiltered, Prem’s perspective doesn’t ask you to change your life – it asks you to live it fully\n\n\n\n\u003cp\u003eThe replay awaits with your Classic or Premier subscription. \u003cbr\u003eLooking for coverage of Saturday \u0026amp; Sunday Morning Sessions? Visit \u003ca href=\"https://www.intelligentexistence.com/\" target=\"_blank\" rel=\"noopener\"\u003eintelligentexistence.com/\u003c/a\u003e.\u003c/p\u003e",
+      "Duration": 4446000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.timelesstoday.tv/en/home/product/073f7273-33ca-456c-8859-3b5965e03354",
+      "PublishYear": 2026,
+      "PublishMonth": 4,
+      "PublishDay": 8,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/260328_PM_Prem_Rawat_in_Argentina_EN_800.jpg?format=auto",
+      "AudioOnly": false,
+      "LoginRequired": true
+    },
     "0760bf05-0000-4c3f-9bc3-bd0bbeaea2e6": {
       "MediaID": "0760bf05-0000-4c3f-9bc3-bd0bbeaea2e6",
       "Name": "Chapter 4 Splitting the Arrow",
@@ -34209,5 +34225,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-04-08T18:30:15.035557782Z"
+  "lastUpdated": "2026-04-09T01:11:31.108949881Z"
 }
