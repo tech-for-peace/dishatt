@@ -24576,6 +24576,22 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "c6488c33-7291-40ad-a5bd-7f63e36083b9": {
+      "MediaID": "c6488c33-7291-40ad-a5bd-7f63e36083b9",
+      "Name": "The Art of Enjoyment",
+      "Category": "Video",
+      "ContentSource": "Timeless Today",
+      "Description": "In the fourth segment of this 5-part interview, Jessica and Prem talk about the inspiration for the book “Peace is Possible,” and how little stories have the potential to make a great impact.",
+      "Duration": 328000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.timelesstoday.tv/en/home/product/c6488c33-7291-40ad-a5bd-7f63e36083b9",
+      "PublishYear": 2020,
+      "PublishMonth": 4,
+      "PublishDay": 24,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img/0005303_the-art-of-enjoyment.jpeg?format=auto",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
     "c691837a-53a4-490c-8481-b773e25c235b": {
       "MediaID": "c691837a-53a4-490c-8481-b773e25c235b",
       "Name": "Lockdown with Prem Rawat - Day 57",
@@ -24814,22 +24830,6 @@
       "PublishDay": 17,
       "ThumbnailURL": "https://images.timelesstoday.tv/img/0001836_a-pill-for-peace.jpeg?format=auto",
       "AudioOnly": true,
-      "LoginRequired": false
-    },
-    "c8ee444d-cd86-4217-bc8a-4cac250a15ce": {
-      "MediaID": "c8ee444d-cd86-4217-bc8a-4cac250a15ce",
-      "Name": "The Art of Enjoyment",
-      "Category": "Video",
-      "ContentSource": "Timeless Today",
-      "Description": "In the fourth segment of this 5-part interview, Jessica and Prem talk about the inspiration for the book “Peace is Possible,” and how little stories have the potential to make a great impact.",
-      "Duration": 328000000000,
-      "Language": "en-US",
-      "ClickURL": "https://www.timelesstoday.tv/en/home/product/c8ee444d-cd86-4217-bc8a-4cac250a15ce",
-      "PublishYear": 2020,
-      "PublishMonth": 4,
-      "PublishDay": 24,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img/0005303_the-art-of-enjoyment.jpeg?format=auto",
-      "AudioOnly": false,
       "LoginRequired": false
     },
     "c902f48d-0897-4072-bcaa-f4c78dd85ef4": {
@@ -34401,5 +34401,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-04-24T01:29:44.599340328Z"
+  "lastUpdated": "2026-04-25T01:22:00.129036515Z"
 }
