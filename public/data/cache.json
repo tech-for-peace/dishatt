@@ -3132,7 +3132,7 @@
       "PublishYear": 2017,
       "PublishMonth": 6,
       "PublishDay": 28,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img/0000291_defeat-the-dragons.jpeg?format=auto",
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/Defeat_the_Dragons_800x500.jpg?format=auto",
       "AudioOnly": true,
       "LoginRequired": false
     },
@@ -5295,6 +5295,22 @@
       "ThumbnailURL": "https://images.timelesstoday.tv/img/0005541_lockdown-day-51.jpeg?format=auto",
       "AudioOnly": false,
       "LoginRequired": false
+    },
+    "36aa50d4-017e-4f6d-b047-3f5e0d30b720": {
+      "MediaID": "36aa50d4-017e-4f6d-b047-3f5e0d30b720",
+      "Name": "The Peace That Needs No Ceasefire",
+      "Category": "Video",
+      "ContentSource": "Timeless Today",
+      "Description": "Uncover Life, Prem Rawat in Barcelona\n\n\nSome talks inform. Some inspire. And then there are the rare ones that shift something inside you. In Barcelona, Prem Rawat took on the biggest question of all — why, after all this time, do we still not have peace? — and answered it in a way that's both disarmingly simple and impossible to forget. What followed was laughter, his original music compositions presented for the first time, and a clarity that's hard to shake. \n\n\n\u003cp\u003eEnjoy the full replay with your Classic or Premier subscription.\u003c/p\u003e",
+      "Duration": 2303000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.timelesstoday.tv/en/home/product/36aa50d4-017e-4f6d-b047-3f5e0d30b720",
+      "PublishYear": 2026,
+      "PublishMonth": 4,
+      "PublishDay": 30,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/Replay_260426_Uncover_Life_Barcelona_800_EN.jpg?format=auto",
+      "AudioOnly": false,
+      "LoginRequired": true
     },
     "36bd60be-b716-454d-89be-8d651f592e08": {
       "MediaID": "36bd60be-b716-454d-89be-8d651f592e08",
@@ -34401,5 +34417,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-04-30T01:56:00.676060628Z"
+  "lastUpdated": "2026-05-01T01:57:59.121557084Z"
 }
