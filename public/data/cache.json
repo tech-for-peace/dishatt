@@ -2462,7 +2462,7 @@
       "PublishDay": 13,
       "ThumbnailURL": "https://images.timelesstoday.tv/img/0004520_the-strength-of-human-beings-video.jpeg?format=auto",
       "AudioOnly": false,
-      "LoginRequired": false
+      "LoginRequired": true
     },
     "177325bf-ce1d-42e3-9453-866adb188d5a": {
       "MediaID": "177325bf-ce1d-42e3-9453-866adb188d5a",
@@ -10800,6 +10800,22 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "6faa2f3e-483f-4f07-9b27-6ac8dd506944": {
+      "MediaID": "6faa2f3e-483f-4f07-9b27-6ac8dd506944",
+      "Name": "Journey Home - Deutsch",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Journey Home - Deutsch/German version from Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "Duration": 309000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/115",
+      "PublishYear": 2026,
+      "PublishMonth": 5,
+      "PublishDay": 6,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/PPSR_AlbumArt_Gifts_EN_800.jpg?format=auto",
+      "AudioOnly": true,
+      "LoginRequired": false
+    },
     "6fb40bb0-7ed3-4a65-8d53-d9b573193097": {
       "MediaID": "6fb40bb0-7ed3-4a65-8d53-d9b573193097",
       "Name": "Lockdown with Prem Rawat - Day 14",
@@ -18688,6 +18704,22 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "P1ots0EihJw": {
+      "MediaID": "P1ots0EihJw",
+      "Name": "Only You - Prem Rawat Song - Gifts Album",
+      "Category": "Video",
+      "ContentSource": "YouTube @PremRawatOfficial",
+      "Description": "Only You, a song from Prem Rawat’s album Gifts, premiered during Prem Rawat’s event in Bad Vilbel, Germany, May 2026.\n\nListen to all Gifts tracks on YouTube\nhttps://www.youtube.com/playlist?list=PLUQ2Jshpz1Yn-sZvDdtJb9WYI8JNGXRLP\nor \nENGLISH: https://timelesstoday.tv/en/discover/music/28/?utm_source=youtube\u0026utm_medium=gifts\nHINDI: https://timelesstoday.tv/hi/discover/music/28/?utm_source=youtube\u0026utm_medium=gifts\n\nhttps://www.premrawat.com/gifts-album/?utm_source=youtube\u0026utm_medium=gifts\n\n© Rawat Creations, 2026. All rights reserved.",
+      "Duration": 356000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.youtube.com/watch?v=P1ots0EihJw",
+      "PublishYear": 2026,
+      "PublishMonth": 5,
+      "PublishDay": 6,
+      "ThumbnailURL": "https://i.ytimg.com/vi/P1ots0EihJw/mqdefault.jpg",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
     "P4ydOD6Y36o": {
       "MediaID": "P4ydOD6Y36o",
       "Name": "Lockdown Day 50 with Prem Rawat - Be in touch with that goodness that is inside of you",
@@ -20013,6 +20045,22 @@
       "PublishMonth": 5,
       "PublishDay": 28,
       "ThumbnailURL": "https://i.ytimg.com/vi/V7-FfIIQILw/mqdefault.jpg",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
+    "V7fnkxTvvbc": {
+      "MediaID": "V7fnkxTvvbc",
+      "Name": "Journey Home - English - Prem Rawat Song - Gifts Album",
+      "Category": "Video",
+      "ContentSource": "YouTube @PremRawatOfficial",
+      "Description": "Journey Home - English, a song from Prem Rawat’s album Gifts, premiered during Prem Rawat’s event in Bad Vilbel, Germany, May 2026.\n\nListen to all Gifts tracks on YouTube\nhttps://www.youtube.com/playlist?list=PLUQ2Jshpz1Yn-sZvDdtJb9WYI8JNGXRLP\nor \nENGLISH: https://timelesstoday.tv/en/discover/music/28/?utm_source=youtube\u0026utm_medium=gifts\nHINDI: https://timelesstoday.tv/hi/discover/music/28/?utm_source=youtube\u0026utm_medium=gifts\n\nhttps://www.premrawat.com/gifts-album/?utm_source=youtube\u0026utm_medium=gifts\n\n© Rawat Creations, 2026. All rights reserved.",
+      "Duration": 313000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.youtube.com/watch?v=V7fnkxTvvbc",
+      "PublishYear": 2026,
+      "PublishMonth": 5,
+      "PublishDay": 6,
+      "ThumbnailURL": "https://i.ytimg.com/vi/V7fnkxTvvbc/mqdefault.jpg",
       "AudioOnly": false,
       "LoginRequired": false
     },
@@ -23968,6 +24016,22 @@
       "AudioOnly": true,
       "LoginRequired": false
     },
+    "bb260815-0f0f-4bda-9c3c-e76256ef033b": {
+      "MediaID": "bb260815-0f0f-4bda-9c3c-e76256ef033b",
+      "Name": "Clouds - Deutsch",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Clouds - a duet in German from Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "Duration": 255000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/112",
+      "PublishYear": 2026,
+      "PublishMonth": 5,
+      "PublishDay": 6,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/PPSR_AlbumArt_Gifts_EN_800.jpg?format=auto",
+      "AudioOnly": true,
+      "LoginRequired": false
+    },
     "bba6f17b-8362-4126-af0d-69e06f49d478": {
       "MediaID": "bba6f17b-8362-4126-af0d-69e06f49d478",
       "Name": "125th Hans Jayanti Celebration",
@@ -24046,6 +24110,22 @@
       "PublishDay": 28,
       "ThumbnailURL": "https://images.timelesstoday.tv/img26/220328_Life_Is_About_Enjoyment.jpg?format=auto",
       "AudioOnly": false,
+      "LoginRequired": false
+    },
+    "bcf254ab-c724-48e4-9f56-d107c1a911e1": {
+      "MediaID": "bcf254ab-c724-48e4-9f56-d107c1a911e1",
+      "Name": "Find the divine German  ",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Find The Divine, a song in Deutsch/Gerrman from Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "Duration": 275000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/113",
+      "PublishYear": 2026,
+      "PublishMonth": 5,
+      "PublishDay": 6,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/PPSR_AlbumArt_Gifts_EN_800.jpg?format=auto",
+      "AudioOnly": true,
       "LoginRequired": false
     },
     "bd083b81-ee75-4905-a343-b01386647d29": {
@@ -28192,6 +28272,22 @@
       "AudioOnly": false,
       "LoginRequired": true
     },
+    "efa5d2fe-6a6b-4e00-9062-5459b2d54fee": {
+      "MediaID": "efa5d2fe-6a6b-4e00-9062-5459b2d54fee",
+      "Name": "Journey Home - English",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Journey Home - English version from Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "Duration": 310000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/114",
+      "PublishYear": 2026,
+      "PublishMonth": 5,
+      "PublishDay": 6,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/PPSR_AlbumArt_Gifts_EN_800.jpg?format=auto",
+      "AudioOnly": true,
+      "LoginRequired": false
+    },
     "emoLRXGGa18": {
       "MediaID": "emoLRXGGa18",
       "Name": "The Face of Peace: Prem Rawat",
@@ -28510,6 +28606,22 @@
       "PublishDay": 9,
       "ThumbnailURL": "https://images.timelesstoday.tv/img/0000741_beacon.jpeg?format=auto",
       "AudioOnly": false,
+      "LoginRequired": false
+    },
+    "f2316870-08a8-41d4-a4ea-2aa234d9b062": {
+      "MediaID": "f2316870-08a8-41d4-a4ea-2aa234d9b062",
+      "Name": "Need To Feel It - Deutsch",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Need To Feel It - a song in Deutsch/German, from Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "Duration": 349000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/116",
+      "PublishYear": 2026,
+      "PublishMonth": 5,
+      "PublishDay": 6,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/PPSR_AlbumArt_Gifts_EN_800.jpg?format=auto",
+      "AudioOnly": true,
       "LoginRequired": false
     },
     "f275c381-80a5-4383-8286-d87386204452": {
@@ -34433,5 +34545,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-05-06T01:50:30.069626171Z"
+  "lastUpdated": "2026-05-06T21:18:57.918477642Z"
 }
