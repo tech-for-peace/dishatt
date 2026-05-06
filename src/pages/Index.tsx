@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect, useRef, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Header } from "@/components/Header";
@@ -76,7 +76,6 @@ const storeFilters = (filters: SearchFilters): void => {
 const Index = () => {
   const [filters, setFilters] = useState<SearchFilters>(getStoredFilters());
   const [allMedia, setAllMedia] = useState<MediaResult[]>([]);
-  const [displayedMedia, setDisplayedMedia] = useState<MediaResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [visibleCount, setVisibleCount] = useState(UI_CONFIG.mediaPerLoad);
 
@@ -102,9 +101,10 @@ const Index = () => {
     },
     [toast],
   );
-  useEffect(() => {
-    setDisplayedMedia(allMedia.slice(0, visibleCount));
-  }, [allMedia, visibleCount]);
+  const displayedMedia = useMemo(
+    () => allMedia.slice(0, visibleCount),
+    [allMedia, visibleCount],
+  );
   const loadMoreRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -128,8 +128,36 @@ const Index = () => {
     return () => observer.disconnect();
   }, [isLoading, allMedia.length, visibleCount]);
   useEffect(() => {
-    performSearch(filters);
-  }, [filters, performSearch]);
+    const controller = new AbortController();
+
+    const doSearch = async () => {
+      setIsLoading(true);
+      setVisibleCount(UI_CONFIG.mediaPerLoad);
+
+      try {
+        const results = await searchMedia(filters);
+        if (!controller.signal.aborted) {
+          setAllMedia(results);
+        }
+      } catch {
+        if (!controller.signal.aborted) {
+          toast({
+            title: "Search failed",
+            description: "Unable to fetch results. Please try again.",
+            variant: "destructive",
+          });
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    doSearch();
+
+    return () => controller.abort();
+  }, [filters, toast]);
   const handleFilterChange = useCallback(
     (key: keyof SearchFilters, value: string | string[] | boolean) => {
       setFilters((prev) => {
