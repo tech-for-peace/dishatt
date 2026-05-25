@@ -5680,22 +5680,6 @@
       "AudioOnly": true,
       "LoginRequired": false
     },
-    "3SqIslzn4P4": {
-      "MediaID": "3SqIslzn4P4",
-      "Name": "Your True Nature",
-      "Category": "Video",
-      "ContentSource": "YouTube @PremRawatOfficial",
-      "Description": "Find out more about Prem Rawat, his life, work and message... https://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des",
-      "Duration": 24000000000,
-      "Language": "hi-IN",
-      "ClickURL": "https://www.youtube.com/watch?v=3SqIslzn4P4",
-      "PublishYear": 2020,
-      "PublishMonth": 8,
-      "PublishDay": 18,
-      "ThumbnailURL": "https://i.ytimg.com/vi/3SqIslzn4P4/mqdefault.jpg",
-      "AudioOnly": false,
-      "LoginRequired": false
-    },
     "3UI5s2fOkTPw2jvfkJoiR0": {
       "MediaID": "3UI5s2fOkTPw2jvfkJoiR0",
       "Name": "Is peace really possible?",
@@ -33168,22 +33152,6 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
-    "tJztwxYI6RE": {
-      "MediaID": "tJztwxYI6RE",
-      "Name": "Focus On Being Fulfilled",
-      "Category": "Video",
-      "ContentSource": "YouTube @wopgyt",
-      "Description": "[1:44] \"Is the focus to be content? To be fulfilled?\"",
-      "Duration": 105000000000,
-      "Language": "en-US",
-      "ClickURL": "https://www.youtube.com/watch?v=tJztwxYI6RE",
-      "PublishYear": 2013,
-      "PublishMonth": 3,
-      "PublishDay": 13,
-      "ThumbnailURL": "https://i.ytimg.com/vi/tJztwxYI6RE/mqdefault.jpg",
-      "AudioOnly": false,
-      "LoginRequired": false
-    },
     "tKoStZV2Dhs": {
       "MediaID": "tKoStZV2Dhs",
       "Name": "One 2 One, No. 21 - The Vast Ocean Within",
@@ -34769,5 +34737,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-05-24T02:07:17.063839306Z"
+  "lastUpdated": "2026-05-25T02:15:33.227403054Z"
 }
