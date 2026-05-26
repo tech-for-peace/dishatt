@@ -48,22 +48,6 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
-    "-PShtEUku3A": {
-      "MediaID": "-PShtEUku3A",
-      "Name": "Turn on Closed Captions",
-      "Category": "Video",
-      "ContentSource": "YouTube @TimelessToday",
-      "Description": "This feature is useful for the hearing impaired, and to be able to enjoy your favorite videos in your preferred language.\n\nFor support: https://help.timelesstoday.tv/en/support/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #TimelessToday #support",
-      "Duration": 68000000000,
-      "Language": "hi-IN",
-      "ClickURL": "https://www.youtube.com/watch?v=-PShtEUku3A",
-      "PublishYear": 2022,
-      "PublishMonth": 12,
-      "PublishDay": 5,
-      "ThumbnailURL": "https://i.ytimg.com/vi/-PShtEUku3A/mqdefault.jpg",
-      "AudioOnly": false,
-      "LoginRequired": false
-    },
     "-PiDr5znsPY": {
       "MediaID": "-PiDr5znsPY",
       "Name": "2014 Highlights Part Three",
@@ -5680,6 +5664,22 @@
       "AudioOnly": true,
       "LoginRequired": false
     },
+    "3RD80Wi40PU": {
+      "MediaID": "3RD80Wi40PU",
+      "Name": "Going to Amaroo - Prem Rawat Song - Gifts Album NEW",
+      "Category": "Video",
+      "ContentSource": "YouTube @PremRawatOfficial",
+      "Description": "Going to Amaroo, a song from Prem Rawat’s album Gifts.\n\nListen to all Gifts tracks on YouTube\nhttps://www.youtube.com/playlist?list=PLUQ2Jshpz1Yn-sZvDdtJb9WYI8JNGXRLP\nor \nENGLISH: https://timelesstoday.tv/en/discover/music/28/?utm_source=youtube\u0026utm_medium=gifts\nHINDI: https://timelesstoday.tv/hi/discover/music/28/?utm_source=youtube\u0026utm_medium=gifts\n\nhttps://www.premrawat.com/gifts-album/?utm_source=youtube\u0026utm_medium=gifts\n\n© Rawat Creations, 2026. All rights reserved.",
+      "Duration": 286000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.youtube.com/watch?v=3RD80Wi40PU",
+      "PublishYear": 2026,
+      "PublishMonth": 5,
+      "PublishDay": 25,
+      "ThumbnailURL": "https://i.ytimg.com/vi/3RD80Wi40PU/mqdefault.jpg",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
     "3UI5s2fOkTPw2jvfkJoiR0": {
       "MediaID": "3UI5s2fOkTPw2jvfkJoiR0",
       "Name": "Is peace really possible?",
@@ -10672,6 +10672,22 @@
       "AudioOnly": true,
       "LoginRequired": false
     },
+    "6bb15895-b121-475c-b7eb-4b119c60b616": {
+      "MediaID": "6bb15895-b121-475c-b7eb-4b119c60b616",
+      "Name": "Going To Amaroo NEW",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Going To Amaroo, a song included in Prem Rawat’s album Gifts. Listen now on\nTimelessToday.",
+      "Duration": 283000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/124",
+      "PublishYear": 2026,
+      "PublishMonth": 5,
+      "PublishDay": 25,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/Going_to_Amaroo_800.jpg",
+      "AudioOnly": true,
+      "LoginRequired": false
+    },
     "6bd852ac-c7ca-41c9-bd89-fb92da81dda5": {
       "MediaID": "6bd852ac-c7ca-41c9-bd89-fb92da81dda5",
       "Name": "संवाद : रेडियो 94.3 MYfm के साथ",
@@ -11102,22 +11118,6 @@
       "PublishDay": 19,
       "ThumbnailURL": "https://i.scdn.co/image/ab6765630000ba8af2045479ab214cf768ef61cc",
       "AudioOnly": true,
-      "LoginRequired": false
-    },
-    "6xLW3nDM8PE": {
-      "MediaID": "6xLW3nDM8PE",
-      "Name": "HAPPY - Pharrell Williams - We are from Planet Earth",
-      "Category": "Video",
-      "ContentSource": "YouTube @wopgyt",
-      "Description": "A new take on the 'Happy' song, with words from Prem Rawat, soundtrack by Pharrell Williams and Kuri, and smiles from around the world: http://www.amillionsmilesmovie.com.",
-      "Duration": 150000000000,
-      "Language": "en-US",
-      "ClickURL": "https://www.youtube.com/watch?v=6xLW3nDM8PE",
-      "PublishYear": 2014,
-      "PublishMonth": 11,
-      "PublishDay": 27,
-      "ThumbnailURL": "https://i.ytimg.com/vi/6xLW3nDM8PE/mqdefault.jpg",
-      "AudioOnly": false,
       "LoginRequired": false
     },
     "6xT5uR0iKdI": {
@@ -15920,22 +15920,6 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
-    "BJti789T89E": {
-      "MediaID": "BJti789T89E",
-      "Name": "Excerpt: Prem Rawat in Conversation with Mr Gee, Part 2",
-      "Category": "Video",
-      "ContentSource": "YouTube @wopgyt",
-      "Description": "If you liked Part 1 of this fascinating conversation, you'll love the lively exchanges of Part 2, available here: http://www.wopg.org/wld/prem-rawat-in-conversation-with-mr-gee-part-2/. This brief excerpt stands on its own as a memorable moment.",
-      "Duration": 191000000000,
-      "Language": "en-US",
-      "ClickURL": "https://www.youtube.com/watch?v=BJti789T89E",
-      "PublishYear": 2014,
-      "PublishMonth": 11,
-      "PublishDay": 14,
-      "ThumbnailURL": "https://i.ytimg.com/vi/BJti789T89E/mqdefault.jpg",
-      "AudioOnly": false,
-      "LoginRequired": false
-    },
     "BKqAfitlEBU": {
       "MediaID": "BKqAfitlEBU",
       "Name": "भजन | निर्बल के बल राम | Bhajan | Nirbal Ke Bal Ram",
@@ -20365,22 +20349,6 @@
       "PublishMonth": 6,
       "PublishDay": 25,
       "ThumbnailURL": "https://i.ytimg.com/vi/VhXqnUu5_pA/mqdefault.jpg",
-      "AudioOnly": false,
-      "LoginRequired": false
-    },
-    "Vi9q42b6-qk": {
-      "MediaID": "Vi9q42b6-qk",
-      "Name": "PEAK is here! - Peace Education and Knowledge",
-      "Category": "Video",
-      "ContentSource": "YouTube @PremRawatOfficial",
-      "Description": "Discover and enjoy PEAK (Peace Education and Knowledge), the groundbreaking course from Prem Rawat about understanding and uncovering the peace already within you. \n\nFind out more about Prem’s PEAK online course, and enrol free of charge…\nhttps://www.intelligentexistence.com/peak/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem Rawat, his life, work and message...\nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.com/?utm_source=youtube\u0026utm_medium=des",
-      "Duration": 193000000000,
-      "Language": "en-US",
-      "ClickURL": "https://www.youtube.com/watch?v=Vi9q42b6-qk",
-      "PublishYear": 2020,
-      "PublishMonth": 5,
-      "PublishDay": 28,
-      "ThumbnailURL": "https://i.ytimg.com/vi/Vi9q42b6-qk/mqdefault.jpg",
       "AudioOnly": false,
       "LoginRequired": false
     },
@@ -31536,22 +31504,6 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
-    "m_gDxpZ2QcE": {
-      "MediaID": "m_gDxpZ2QcE",
-      "Name": "You Can Love",
-      "Category": "Video",
-      "ContentSource": "YouTube @PremRawatOfficial",
-      "Description": "Find out more about Prem Rawat, his life, work and message... https://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des",
-      "Duration": 13000000000,
-      "Language": "hi-IN",
-      "ClickURL": "https://www.youtube.com/watch?v=m_gDxpZ2QcE",
-      "PublishYear": 2020,
-      "PublishMonth": 8,
-      "PublishDay": 20,
-      "ThumbnailURL": "https://i.ytimg.com/vi/m_gDxpZ2QcE/mqdefault.jpg",
-      "AudioOnly": false,
-      "LoginRequired": false
-    },
     "mbztPPHvxQQ": {
       "MediaID": "mbztPPHvxQQ",
       "Name": "Prem Rawat on Mankind’s Finest Achievement",
@@ -33968,22 +33920,6 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
-    "xBVxOA2Iwco": {
-      "MediaID": "xBVxOA2Iwco",
-      "Name": "Welcome to the World of Life",
-      "Category": "Video",
-      "ContentSource": "YouTube @wopgyt",
-      "Description": "[6 min] Prem Rawat talks about the moment a baby is born and \"the one concern: breathing or not?\" At the end of our lives, he says, we have the same concern. \"Everything you are is predicated on something so simple. This reality is beautiful. Welcome to the World of Life.\"\n\nVisit wopg.org to hear more.",
-      "Duration": 366000000000,
-      "Language": "en-US",
-      "ClickURL": "https://www.youtube.com/watch?v=xBVxOA2Iwco",
-      "PublishYear": 2013,
-      "PublishMonth": 3,
-      "PublishDay": 13,
-      "ThumbnailURL": "https://i.ytimg.com/vi/xBVxOA2Iwco/mqdefault.jpg",
-      "AudioOnly": false,
-      "LoginRequired": false
-    },
     "xDkDg-sYlN0": {
       "MediaID": "xDkDg-sYlN0",
       "Name": "किसकी दुनिया?",
@@ -34737,5 +34673,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-05-25T02:15:33.227403054Z"
+  "lastUpdated": "2026-05-26T02:06:21.107119185Z"
 }
