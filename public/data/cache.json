@@ -24378,8 +24378,8 @@
       "Language": "en-US",
       "ClickURL": "#",
       "PublishYear": 2026,
-      "PublishMonth": 6,
-      "PublishDay": 1,
+      "PublishMonth": 7,
+      "PublishDay": 11,
       "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/06/UK-carousel-posters-session-4-woman-smiling.jpg",
       "AudioOnly": false,
       "LoginRequired": true
@@ -29995,7 +29995,7 @@
       "ClickURL": "#",
       "PublishYear": 2026,
       "PublishMonth": 6,
-      "PublishDay": 1,
+      "PublishDay": 20,
       "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/06/ie-flip-it-image.jpeg",
       "AudioOnly": false,
       "LoginRequired": true
@@ -30454,7 +30454,7 @@
       "Category": "Video",
       "ContentSource": "Intelligent Existence",
       "Description": "Heart of the Connection — New Delhi, India November 16, 2025",
-      "Duration": 0,
+      "Duration": 7763000000000,
       "Language": "en-US",
       "ClickURL": "https://www.intelligentexistence.com/heart-of-the-connection/",
       "PublishYear": 2025,
@@ -31606,7 +31606,7 @@
       "Category": "Video",
       "ContentSource": "Intelligent Existence",
       "Description": "My Connection — Kuala Lumpur, Malaysia April 6, 2025",
-      "Duration": 0,
+      "Duration": 3689000000000,
       "Language": "en-US",
       "ClickURL": "https://www.intelligentexistence.com/my-connection/",
       "PublishYear": 2025,
@@ -33198,7 +33198,7 @@
       "PublishDay": 1,
       "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/03/the-mountain-part-one-carousel-header.jpg",
       "AudioOnly": false,
-      "LoginRequired": true
+      "LoginRequired": false
     },
     "the-mountain-part-2-complimentary": {
       "MediaID": "the-mountain-part-2-complimentary",
@@ -33214,7 +33214,7 @@
       "PublishDay": 1,
       "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/03/return-to-the-mountain-white-text.jpg",
       "AudioOnly": false,
-      "LoginRequired": true
+      "LoginRequired": false
     },
     "tib7x06EfZs": {
       "MediaID": "tib7x06EfZs",
@@ -33819,7 +33819,7 @@
       "ClickURL": "#",
       "PublishYear": 2026,
       "PublishMonth": 6,
-      "PublishDay": 1,
+      "PublishDay": 27,
       "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/06/Flip-It-a-film-by-Prem-Rawat_1web-5.jpg",
       "AudioOnly": false,
       "LoginRequired": true
@@ -34689,5 +34689,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-06-15T01:15:13.534307921Z"
+  "lastUpdated": "2026-06-15T01:45:03.45159103Z"
 }
