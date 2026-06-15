@@ -24352,35 +24352,67 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
-    "buenos-aires-april-3": {
-      "MediaID": "buenos-aires-april-3",
-      "Name": "Buenos Aires - April 3",
+    "brighton-uk-july-4-livestream": {
+      "MediaID": "brighton-uk-july-4-livestream",
+      "Name": "Brighton, UK - July 4, LIVESTREAM",
       "Category": "Video",
       "ContentSource": "Intelligent Existence",
-      "Description": "Buenos Aires - April 3\nSession 4: April 3 – Premiere release with Prem Rawat from Argentina.",
+      "Description": "Brighton, UK - July 4, LIVESTREAM\nSession 3 takes place during the morning session of Prem Rawat’s Global Gathering in Brighton and moves from reflection into real-time engagement.",
       "Duration": 0,
       "Language": "en-US",
-      "ClickURL": "https://www.intelligentexistence.com/argentina-2026-premiere-release/",
+      "ClickURL": "#",
       "PublishYear": 2026,
-      "PublishMonth": 4,
-      "PublishDay": 3,
-      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/02/argentina-session-4-poster-for-slider.jpg",
+      "PublishMonth": 7,
+      "PublishDay": 4,
+      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/06/UK-carousel-posters-prem-rawat-session-online-session-3.jpg",
       "AudioOnly": false,
       "LoginRequired": true
     },
-    "buenos-aires-march-28-2026": {
-      "MediaID": "buenos-aires-march-28-2026",
-      "Name": "Buenos Aires - March 28, 2026",
+    "brighton-uk-online-premiere": {
+      "MediaID": "brighton-uk-online-premiere",
+      "Name": "Brighton, UK - Online Premiere",
       "Category": "Video",
       "ContentSource": "Intelligent Existence",
-      "Description": "Buenos Aires - March 28, 2026\nAt the heart of this four-part Intelligent Existence® program is a LIVE global gathering with Prem Rawat — broadcast worldwide from Argentina.",
+      "Description": "Brighton, UK - Online Premiere\nThe four-part program concludes with an online premiere recorded live in Brighton.",
       "Duration": 0,
+      "Language": "en-US",
+      "ClickURL": "#",
+      "PublishYear": 2026,
+      "PublishMonth": 6,
+      "PublishDay": 1,
+      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/06/UK-carousel-posters-session-4-woman-smiling.jpg",
+      "AudioOnly": false,
+      "LoginRequired": true
+    },
+    "buenos-aires-march-28-part-1": {
+      "MediaID": "buenos-aires-march-28-part-1",
+      "Name": "Buenos Aires - March 28, Part 1",
+      "Category": "Video",
+      "ContentSource": "Intelligent Existence",
+      "Description": "Buenos Aires - March 28, Part 1\nAt the heart of this four-part Intelligent Existence® program is a LIVE global gathering with Prem Rawat — broadcast worldwide from Argentina.",
+      "Duration": 6569000000000,
       "Language": "en-US",
       "ClickURL": "https://www.intelligentexistence.com/argentina-2026/",
       "PublishYear": 2026,
       "PublishMonth": 3,
       "PublishDay": 28,
-      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/02/Argentina-session-3-poster.jpg",
+      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/04/Argentina-session-3-part-1-video-poster-web.jpg",
+      "AudioOnly": false,
+      "LoginRequired": true
+    },
+    "buenos-aires-march-28-part-2": {
+      "MediaID": "buenos-aires-march-28-part-2",
+      "Name": "Buenos Aires - March 28, Part 2",
+      "Category": "Video",
+      "ContentSource": "Intelligent Existence",
+      "Description": "Buenos Aires - March 28, Part 2\nAt the heart of this four-part Intelligent Existence® program is a LIVE global gathering with Prem Rawat — broadcast worldwide from Argentina.",
+      "Duration": 4417000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.intelligentexistence.com/argentina-2026-part-2/",
+      "PublishYear": 2026,
+      "PublishMonth": 3,
+      "PublishDay": 28,
+      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/04/Argentina-session-3-part-2-video-poster-web.jpg",
       "AudioOnly": false,
       "LoginRequired": true
     },
@@ -29952,6 +29984,22 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "flip-it-session-1-complimentary": {
+      "MediaID": "flip-it-session-1-complimentary",
+      "Name": "Flip It – Session 1 Complimentary",
+      "Category": "Video",
+      "ContentSource": "Intelligent Existence",
+      "Description": "Flip It – Session 1 Complimentary\nFlip It explores the quiet power of changing direction — not by forcing the world to move, but by turning our understanding.",
+      "Duration": 0,
+      "Language": "en-US",
+      "ClickURL": "#",
+      "PublishYear": 2026,
+      "PublishMonth": 6,
+      "PublishDay": 1,
+      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/06/ie-flip-it-image.jpeg",
+      "AudioOnly": false,
+      "LoginRequired": true
+    },
     "focus-session-amaroo-australia": {
       "MediaID": "focus-session-amaroo-australia",
       "Name": "Focus Session - Amaroo, Australia",
@@ -33147,7 +33195,7 @@
       "ClickURL": "https://www.intelligentexistence.com/the-mountain-part-1/",
       "PublishYear": 2026,
       "PublishMonth": 3,
-      "PublishDay": 14,
+      "PublishDay": 1,
       "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/03/the-mountain-part-one-carousel-header.jpg",
       "AudioOnly": false,
       "LoginRequired": true
@@ -33158,12 +33206,12 @@
       "Category": "Video",
       "ContentSource": "Intelligent Existence",
       "Description": "The Mountain – Part 2 Complimentary\nWe return to The Mountain — allowing what first emerged to gently unfold. With space to pause, this moment invites a deeper uncovering as the journey continues toward the Live Global Gathering.",
-      "Duration": 1067000000000,
+      "Duration": 1065000000000,
       "Language": "en-US",
       "ClickURL": "https://www.intelligentexistence.com/the-mountain-part-2",
       "PublishYear": 2026,
       "PublishMonth": 3,
-      "PublishDay": 21,
+      "PublishDay": 1,
       "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/03/return-to-the-mountain-white-text.jpg",
       "AudioOnly": false,
       "LoginRequired": true
@@ -33759,6 +33807,22 @@
       "ThumbnailURL": "https://i.ytimg.com/vi/wcErBeY2dpg/mqdefault.jpg",
       "AudioOnly": false,
       "LoginRequired": false
+    },
+    "when-you-flip-it-session-2-complimentary": {
+      "MediaID": "when-you-flip-it-session-2-complimentary",
+      "Name": "When you Flip It – Session 2 Complimentary",
+      "Category": "Video",
+      "ContentSource": "Intelligent Existence",
+      "Description": "When you Flip It – Session 2 Complimentary\nRather than trying to force the situation to change, this session invites us to consider a different question: What happens when we change the way we see it?",
+      "Duration": 0,
+      "Language": "en-US",
+      "ClickURL": "#",
+      "PublishYear": 2026,
+      "PublishMonth": 6,
+      "PublishDay": 1,
+      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/06/Flip-It-a-film-by-Prem-Rawat_1web-5.jpg",
+      "AudioOnly": false,
+      "LoginRequired": true
     },
     "wmBKM6fsZD4": {
       "MediaID": "wmBKM6fsZD4",
@@ -34625,5 +34689,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-06-15T00:45:31.882682027Z"
+  "lastUpdated": "2026-06-15T01:15:13.534307921Z"
 }
