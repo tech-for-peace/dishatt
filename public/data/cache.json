@@ -23733,7 +23733,7 @@
       "Name": "Discovery Not Creation",
       "Category": "Video",
       "ContentSource": "Timeless Today",
-      "Description": "Prem talks to radio hosts Zizo and KCi about the true purpose of his travels around the globe: to share a message that will cause people to think for themselves, “Peace has always been inside me.”",
+      "Description": "Prem talks to radio hosts Zizo and KCi about the true purpose of his travels around the globe: to share a message that will cause people to think for themselves, “Peace has always been inside me.”\n\n",
       "Duration": 316000000000,
       "Language": "en-US",
       "ClickURL": "https://www.timelesstoday.tv/en/home/product/b8bfd7a6-0952-44ef-91b2-a9ee7f7d5c6e",
@@ -34689,5 +34689,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-06-15T02:40:01.720139652Z"
+  "lastUpdated": "2026-06-16T02:41:40.740643991Z"
 }
