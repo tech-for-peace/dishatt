@@ -2608,6 +2608,22 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "1DmKd5gkQO8": {
+      "MediaID": "1DmKd5gkQO8",
+      "Name": "Intelligent Existence Update | Q1 \u0026 Q2 2026",
+      "Category": "Video",
+      "ContentSource": "YouTube @TimelessToday",
+      "Description": "Join Nitasha Owthar for an update from Intelligent Existence. This edition includes Team Trainings, the new four-part learning program, upcoming sessions from Brighton, preparations for Prem Rawat's 60th Anniversary, and a look ahead to Amaroo 2026.",
+      "Duration": 512000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://www.youtube.com/watch?v=1DmKd5gkQO8",
+      "PublishYear": 2026,
+      "PublishMonth": 6,
+      "PublishDay": 26,
+      "ThumbnailURL": "https://i.ytimg.com/vi/1DmKd5gkQO8/mqdefault.jpg",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
     "1FVPtXv2pWU": {
       "MediaID": "1FVPtXv2pWU",
       "Name": "Intelligent Existence 2025 Q2 Update",
@@ -34753,5 +34769,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-06-26T06:27:27.884031343Z"
+  "lastUpdated": "2026-06-27T02:06:42.247516365Z"
 }
