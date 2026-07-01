@@ -2576,6 +2576,22 @@
       "AudioOnly": false,
       "LoginRequired": true
     },
+    "1964998b-4476-487d-8c13-3d30c220d0ae": {
+      "MediaID": "1964998b-4476-487d-8c13-3d30c220d0ae",
+      "Name": "The Voice Worth Listening To",
+      "Category": "Video",
+      "ContentSource": "Timeless Today",
+      "Description": "Uncover Life, Prem Rawat in Bologna, Italy\n\n\nIt began with a book. Over 25 readings of Breath across Italy, something kept happening: people who had never heard of Prem Rawat were showing up—and leaving genuinely moved. When he heard this, he wanted to meet them. That became the Bologna event, connecting live to four town squares across Italy and reaching over 16,000 livestream viewers worldwide.\n\nHe opened with a simple question: why is peace—free, already inside us, and that makes us feel good—so hard to accept? Using the parable of five blind men and an elephant, he showed how each of us grasps only part of the truth and mistakes it for the whole—and how that misunderstanding has fueled conflict for thousands of years.\n\nThe heart of his message was hopeful. What we are looking for is not out there—it is already within us. Wanting peace, wanting joy, is not weakness. It is strength. \"The day you accept that,\" he said, \"peace will come looking for you.\"\n\nThe questions \u0026 answers felt just as alive. Asked how to open one's heart to peace when the world offers so little help, he didn't cushion his answer: the world, he said, is never going to help you. But he knows someone who can—someone very close. Yourself.\n\nHe closed with the story of a monk who wrote an insult in the sand and carved a kindness into stone. Let the mistakes wash away. Keep the good.\n\nUnscripted, warm, and humorous—this is Prem Rawat at his best.\n",
+      "Duration": 6300000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.timelesstoday.tv/en/home/product/1964998b-4476-487d-8c13-3d30c220d0ae",
+      "PublishYear": 2026,
+      "PublishMonth": 6,
+      "PublishDay": 30,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/260620_Replay_Uncover_Life_Bologna_800_EN.jpg?format=auto",
+      "AudioOnly": false,
+      "LoginRequired": true
+    },
     "19U0Wag6aWQ": {
       "MediaID": "19U0Wag6aWQ",
       "Name": "Know Your Strength",
@@ -34769,5 +34785,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-06-30T02:12:30.015491949Z"
+  "lastUpdated": "2026-07-01T02:29:07.969967082Z"
 }
