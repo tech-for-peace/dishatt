@@ -7648,6 +7648,22 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "4afc33f0-a2ee-40b4-afa1-24285e0c0e06": {
+      "MediaID": "4afc33f0-a2ee-40b4-afa1-24285e0c0e06",
+      "Name": "Noise Cancelling for the Heart",
+      "Category": "Video",
+      "ContentSource": "Timeless Today",
+      "Description": "Uncover Life, Prem Rawat in Brighton, UK | Day 2\n\n\nNobody expected the evening to go quite as it did.\n\nQuestions came in from around the world—from India, Canada, France, Switzerland, Australia, Malaysia, USA and Scotland. A 72-year-old who doesn't want to die because life is too beautiful. A young man paralyzed by the fear of failure. Someone still haunted by a toxic relationship. A student who got low marks and wants to give up. \n\nThe questions were real and personal, and the answers? As unexpected as they were profoundly insightful, Prem told tales about snails, penguins in cockpits, people on road-trips and somewhere between the laughter and the storytelling, he made a simple but quietly striking point: we are remarkably good at canceling out the noise of airplanes and trains—and remarkably bad at canceling out the noise in our own heads.\n\nThen, just when the evening seemed to be wrapping up, he took out his iPad and started playing his latest and never-before-heard original music tracks—including a blues-soaked road song about a broken-down car, a stranger at a gas station, and what it really means to be running on empty.\n\n\n\u003cp\u003eBy the end of the night, attendees didn't want to leave.\u0026nbsp;\u003c/p\u003e",
+      "Duration": 3996000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.timelesstoday.tv/en/home/product/4afc33f0-a2ee-40b4-afa1-24285e0c0e06",
+      "PublishYear": 2026,
+      "PublishMonth": 7,
+      "PublishDay": 9,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/260704_Brighton_Day2_EN_800.jpg?format=auto",
+      "AudioOnly": false,
+      "LoginRequired": true
+    },
     "4awiHOGdo6MmlNTvT8bruY": {
       "MediaID": "4awiHOGdo6MmlNTvT8bruY",
       "Name": "Are you stuck in a box?",
@@ -18493,6 +18509,22 @@
       "PublishMonth": 5,
       "PublishDay": 29,
       "ThumbnailURL": "https://i.ytimg.com/vi/MfMSpFoTLPs/mqdefault.jpg",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
+    "MjKmi-m6LH0": {
+      "MediaID": "MjKmi-m6LH0",
+      "Name": "Discovering Yourself",
+      "Category": "Video",
+      "ContentSource": "YouTube @PremRawatOfficial",
+      "Description": "Who am I? Why am I here? What does it mean to truly know myself? In this introduction to Discovering Yourself, Prem Rawat explores the importance of self-knowledge and the possibility of finding peace, fulfillment and strength within. Through personal reflections and inspiring stories, this video invites viewers to embark on their own journey of self-discovery.\n\nFind out more about Prem Rawat, his life, work and message... \nhttps://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des\n\nFind out more about Prem's latest books: “Breath” Wake Up to Life and “Hear Yourself,” How to Find Peace in a Noisy World \nhttps://breathbook.life/?utm_source=youtube\u0026utm_medium=des \nhttps://www.hearyourselfbook.com/?utm_source=youtube\u0026utm_medium=des\n\n#PremRawatOfficial #selfknowledge  #peace",
+      "Duration": 175000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.youtube.com/watch?v=MjKmi-m6LH0",
+      "PublishYear": 2026,
+      "PublishMonth": 7,
+      "PublishDay": 9,
+      "ThumbnailURL": "https://i.ytimg.com/vi/MjKmi-m6LH0/mqdefault.jpg",
       "AudioOnly": false,
       "LoginRequired": false
     },
@@ -35041,5 +35073,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-07-09T01:52:22.579270961Z"
+  "lastUpdated": "2026-07-10T01:50:52.08864342Z"
 }
