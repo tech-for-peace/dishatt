@@ -1050,8 +1050,8 @@
       "Language": "en-US",
       "ClickURL": "https://open.spotify.com/episode/0MPeylITW9J5BrEgXb2wEQ",
       "PublishYear": 2026,
-      "PublishMonth": 4,
-      "PublishDay": 1,
+      "PublishMonth": 7,
+      "PublishDay": 7,
       "ThumbnailURL": "https://i.scdn.co/image/ab6765630000eeeef2045479ab214cf768ef61cc",
       "AudioOnly": true,
       "LoginRequired": false
@@ -10718,6 +10718,22 @@
       "PublishDay": 28,
       "ThumbnailURL": "https://i.ytimg.com/vi/6MBWH7OJnA8/mqdefault.jpg",
       "AudioOnly": false,
+      "LoginRequired": false
+    },
+    "6MRqYJ1X2jgn48R5tffKxc": {
+      "MediaID": "6MRqYJ1X2jgn48R5tffKxc",
+      "Name": "Just doing or truly feeling?",
+      "Category": "Podcast",
+      "ContentSource": "Spotify",
+      "Description": "Just doing or truly feeling? Tune in to feel better. We spend so much time trying to do the next 'cool' thing. But how do you know what’s cool when the world keeps changing? Maybe you’re too focused on doing when you could be focused on feeling. What feeling you actually want in your life? Tap the link for your answer in this free episode of Life’s Essentials with Prem Rawat. Dive deeper into life’s essentials with Prem Rawat’s new bestseller Breath-Wake Up to Life, published by St. Martin’s Essentials, and available from https://BreathBook.life or an independent bookstore near you. If you have any questions for Prem Rawat about his bestselling books or the Life’s Essentials podcast, please email us at lifesessentialswithpremrawat@gmail.com or CustomerCare@timelesstoday.comTo access other seasons and the latest updates, visit www.premrawat.com/podcast. This podcast is brought to you by TimelessToday, a multi-platform media company that produces premium content about the human potential for peace and well-being as explored by Prem Rawat. For more information visit https://timelesstoday.tv Hosted on Acast. See acast.com/privacy for more information.",
+      "Duration": 1554000000000,
+      "Language": "en-US",
+      "ClickURL": "https://open.spotify.com/episode/6MRqYJ1X2jgn48R5tffKxc",
+      "PublishYear": 2026,
+      "PublishMonth": 3,
+      "PublishDay": 31,
+      "ThumbnailURL": "https://i.scdn.co/image/ab6765630000eeeef2045479ab214cf768ef61cc",
+      "AudioOnly": true,
       "LoginRequired": false
     },
     "6N4cIhm4tNYFmckeboctHY": {
@@ -24712,7 +24728,7 @@
       "Description": "Brighton – July 11 Session 4: Online Premiere\nThe closing session, where Prem Rawat takes the understanding deeper and brings the themes of the program into practical focus.",
       "Duration": 0,
       "Language": "en-US",
-      "ClickURL": "#",
+      "ClickURL": "https://www.intelligentexistence.com/uk-brighton-2026-online-premiere/",
       "PublishYear": 2026,
       "PublishMonth": 7,
       "PublishDay": 11,
@@ -35121,5 +35137,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-07-16T01:29:02.809896224Z"
+  "lastUpdated": "2026-07-16T04:48:47.679057177Z"
 }
