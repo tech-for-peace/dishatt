@@ -24786,10 +24786,10 @@
     },
     "buenos-aires-march-29": {
       "MediaID": "buenos-aires-march-29",
-      "Name": "Buenos Aires - March 29",
+      "Name": "Buenos Aires - March 29 (Included With Purchase)",
       "Category": "Video",
       "ContentSource": "Intelligent Existence",
-      "Description": "Buenos Aires - March 29\nSession 4: March 29 – Premiere release with Prem Rawat from Argentina.",
+      "Description": "Buenos Aires - March 29 (Included With Purchase)\nSession 4: March 29 – Premiere release with Prem Rawat from Argentina.",
       "Duration": 0,
       "Language": "en-US",
       "ClickURL": "https://www.intelligentexistence.com/argentina-2026-premiere-release/",
@@ -26092,7 +26092,7 @@
       "PublishYear": 2025,
       "PublishMonth": 11,
       "PublishDay": 23,
-      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/03/connect-to-clarity-hyderabad.jpg",
+      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/03/connect-to-clarity-Delhi-swapped-version.jpg",
       "AudioOnly": false,
       "LoginRequired": true
     },
@@ -30876,7 +30876,7 @@
       "PublishYear": 2025,
       "PublishMonth": 11,
       "PublishDay": 16,
-      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/03/heart-of-the-connection-delhi.jpg",
+      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/03/heart-of-the-connection-hyderabd-swapped.jpg",
       "AudioOnly": false,
       "LoginRequired": true
     },
@@ -35137,5 +35137,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-07-16T08:00:20.518775435Z"
+  "lastUpdated": "2026-07-16T11:23:26.818237065Z"
 }
