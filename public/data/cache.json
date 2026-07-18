@@ -4224,6 +4224,22 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "2858919e-b2ed-4eef-b4be-75df5c14e475": {
+      "MediaID": "2858919e-b2ed-4eef-b4be-75df5c14e475",
+      "Name": "Discovering Yourself",
+      "Category": "Video",
+      "ContentSource": "Timeless Today",
+      "Description": "Who am I? Why am I here? What does it mean to truly know myself? In this introduction to Discovering Yourself, Prem Rawat explores the importance of self-knowledge and the possibility of finding peace, fulfillment and strength within. Through personal reflections and inspiring stories, this video invites viewers to embark on their own journey of self-discovery.",
+      "Duration": 174000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.timelesstoday.tv/en/home/product/2858919e-b2ed-4eef-b4be-75df5c14e475",
+      "PublishYear": 2026,
+      "PublishMonth": 7,
+      "PublishDay": 14,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/260417-Discovering_Yourself_1600_EN_v4.jpg?format=auto",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
     "28748beb-a0f1-4b62-a4d9-ce90ae3ae1fc": {
       "MediaID": "28748beb-a0f1-4b62-a4d9-ce90ae3ae1fc",
       "Name": "जीवन की सरलता (Jeevan ki Saralta)",
@@ -35329,5 +35345,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-07-17T01:42:57.885826217Z"
+  "lastUpdated": "2026-07-18T01:23:01.271655412Z"
 }
