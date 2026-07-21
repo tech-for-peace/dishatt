@@ -1381,7 +1381,7 @@
       "Name": "While You’re Still Here",
       "Category": "Video",
       "ContentSource": "Timeless Today",
-      "Description": "Uncover Life, Prem Rawat in Brighton, UK | Day 3\n\n\nThe closing night of a three-day global gathering in Brighton. The hall was full, the English Channel just steps away, and Prem Rawat showed no signs of winding down.\n\n\n\u003cp\u003eWhat followed was his unique perspective about the world and the purpose of a human being. World leaders who lie so routinely nobody even bothers to ask anymore. Drones that started as children's toys and ended up as weapons of war. A bookworm that eats its way through a Japanese dictionary and still doesn't speak Japanese.\u003c/p\u003e\n\u003cp\u003eRunning through all of it was one question he kept coming back to: who do you listen to? The news? The noise? The leaders? Or something closer, quieter, that has been trying to get a word in for years?\u003c/p\u003e\n\u003cp\u003eThen came the music. Song after song, some never shared before, each one touching exactly where his words had left off.\u003c/p\u003e\n\u003cp\u003eHis closing was simple and direct: be thankful for your life. Enjoy your existence. Never forget how lucky you are to be here.\u003c/p\u003e",
+      "Description": "Uncover Life, Prem Rawat in Brighton, UK | Day 3\n\n\nThe closing night of a three-day global gathering in Brighton. The hall was full, the English Channel just steps away, and Prem Rawat showed no signs of winding down.\n\n\n\n\u003cp\u003eWhat followed was his unique perspective about the world and the purpose of a human being. World leaders who lie so routinely nobody even bothers to ask anymore. Drones that started as children's toys and ended up as weapons of war. A bookworm that eats its way through a Japanese dictionary and still doesn't speak Japanese.\u003c/p\u003e\n\u003cp\u003eRunning through all of it was one question he kept coming back to: who do you listen to? The news? The noise? The leaders? Or something closer, quieter, that has been trying to get a word in for years?\u003c/p\u003e\n\u003cp\u003eThen came the music. Song after song, some never shared before, each one touching exactly where his words had left off.\u003c/p\u003e\n\u003cp\u003eHis closing was simple and direct: be thankful for your life. Enjoy your existence. Never forget how lucky you are to be here.\u003c/p\u003e",
       "Duration": 2879000000000,
       "Language": "en-US",
       "ClickURL": "https://www.timelesstoday.tv/en/home/product/0bd14b83-5b98-4a35-ace8-7a06810f3eb1",
@@ -5885,22 +5885,6 @@
       "PublishMonth": 5,
       "PublishDay": 25,
       "ThumbnailURL": "https://i.ytimg.com/vi/3RD80Wi40PU/mqdefault.jpg",
-      "AudioOnly": false,
-      "LoginRequired": false
-    },
-    "3SqIslzn4P4": {
-      "MediaID": "3SqIslzn4P4",
-      "Name": "Your True Nature",
-      "Category": "Video",
-      "ContentSource": "YouTube @PremRawatOfficial",
-      "Description": "Find out more about Prem Rawat, his life, work and message... https://www.premrawat.com/?utm_source=youtube\u0026utm_medium=des\nhttps://www.timelesstoday.tv/?utm_source=youtube\u0026utm_medium=des",
-      "Duration": 24000000000,
-      "Language": "hi-IN",
-      "ClickURL": "https://www.youtube.com/watch?v=3SqIslzn4P4",
-      "PublishYear": 2020,
-      "PublishMonth": 8,
-      "PublishDay": 18,
-      "ThumbnailURL": "https://i.ytimg.com/vi/3SqIslzn4P4/mqdefault.jpg",
       "AudioOnly": false,
       "LoginRequired": false
     },
@@ -13084,6 +13068,22 @@
       "PublishYear": 2025,
       "PublishMonth": 8,
       "PublishDay": 25,
+      "ThumbnailURL": "https://i.scdn.co/image/ab6765630000ba8af2045479ab214cf768ef61cc",
+      "AudioOnly": true,
+      "LoginRequired": false
+    },
+    "7q0Q54DqxsQAObFsr9ycqw": {
+      "MediaID": "7q0Q54DqxsQAObFsr9ycqw",
+      "Name": "Choosing to be miserable?",
+      "Category": "Podcast",
+      "ContentSource": "Spotify",
+      "Description": "Choosing to be miserable?Tune in for more choices.What do you want? Do you want to be miserable or do you want to be content? Is it really up to you? Does life offer choices or is your destiny already written?  Tap the link for your answer in this free episode of Life’s Essentials with Prem Rawat. Dive deeper into life’s essentials with Prem Rawat’s new bestseller Breath-Wake Up to Life, published by St. Martin’s Essentials, and available from https://BreathBook.life or an independent bookstore near you.If you have any questions for Prem Rawat about his bestselling books or the Life’s Essentials podcast, please email us at lifesessentialswithpremrawat@gmail.com or CustomerCare@timelesstoday.comTo access other seasons and the latest updates, visit www.premrawat.com/podcast.This podcast is brought to you by TimelessToday, a multi-platform media company that produces premium content about the human potential for peace and well-being as explored by Prem Rawat. For more information visit https://timelesstoday.tv Hosted on Acast. See acast.com/privacy for more information.",
+      "Duration": 1602873000000,
+      "Language": "en-US",
+      "ClickURL": "https://open.spotify.com/episode/7q0Q54DqxsQAObFsr9ycqw",
+      "PublishYear": 2026,
+      "PublishMonth": 7,
+      "PublishDay": 20,
       "ThumbnailURL": "https://i.scdn.co/image/ab6765630000ba8af2045479ab214cf768ef61cc",
       "AudioOnly": true,
       "LoginRequired": false
@@ -35345,5 +35345,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-07-20T03:04:45.107863441Z"
+  "lastUpdated": "2026-07-21T01:29:02.358715781Z"
 }
