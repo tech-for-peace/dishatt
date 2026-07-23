@@ -10544,22 +10544,6 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
-    "67283544-bd11-4cce-bde3-d2698585f955": {
-      "MediaID": "67283544-bd11-4cce-bde3-d2698585f955",
-      "Name": "“Gifts” - music by Prem Rawat",
-      "Category": "Music",
-      "ContentSource": "Timeless Today",
-      "Description": "“Gifts” — music by Prem Rawat\n\n\n\u003ch3\u003e\u003ca href=\"https://timelesstoday.tv/en/discover/music/28\" target=\"_blank\" rel=\"noopener\"\u003eListen to the \u0026ldquo;Gifts\u0026rdquo; album now\u003c/a\u003e\u003c/h3\u003e\n\u003cp\u003eWhat began as six songs close to his heart has quietly grown into something extraordinary. Gifts now weaves together original bhajans and songs across multiple languages\u0026mdash;Hindi, English, German, Spanish and Brazilian Portuguese\u0026mdash;each one carrying a simple but profound message for the heart.\u003c/p\u003e\n\u003cp\u003eAmong them are interpretations of beloved compositions by Guru Nanak and Kabir. As Prem explains: \u003cem\u003e\"These are not word-for-word translations. They are feeling-to-feeling interpretations that capture the essential meaning of the original bhajans.\"\u003cbr\u003e\u003c/em\u003e\u003c/p\u003e\n\u003cp\u003eNew tracks have found their way into the world at gatherings from Buenos Aires to Bad Vilbel to Boston\u0026mdash;each one premiered live and offered freely here, on \u003ca href=\"https://www.premrawat.com/gifts-album/\" target=\"_blank\" rel=\"noopener\"\u003e\u003cspan class=\"s1\"\u003ePremRawat.com\u003c/span\u003e\u003c/a\u003e and on \u003ca href=\"https://www.youtube.com/watch?v=2Djz2hBlkjo\u0026amp;list=PLUQ2Jshpz1Yn-sZvDdtJb9WYI8JNGXRLP\u0026amp;index=2\" target=\"_blank\" rel=\"noopener\"\u003ePrem Rawat Official YouTube\u003c/a\u003e.\u003c/p\u003e\n\u003cp\u003eA living album, still growing. Come back and listen.\u003c/p\u003e",
-      "Duration": 120000000000,
-      "Language": "en-US",
-      "ClickURL": "https://www.timelesstoday.tv/en/home/product/67283544-bd11-4cce-bde3-d2698585f955",
-      "PublishYear": 2026,
-      "PublishMonth": 4,
-      "PublishDay": 10,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img26/Gifts_HNY_V1_800x500.jpg?format=auto",
-      "AudioOnly": false,
-      "LoginRequired": false
-    },
     "67679dcc-1291-4979-96e9-f2648f5b77e4": {
       "MediaID": "67679dcc-1291-4979-96e9-f2648f5b77e4",
       "Name": "36500 Days",
@@ -22206,22 +22190,6 @@
       "PublishDay": 27,
       "ThumbnailURL": "https://images.timelesstoday.tv/img/0009543_author-event-with-prem-rawat-video.jpeg?format=auto",
       "AudioOnly": false,
-      "LoginRequired": true
-    },
-    "a07633e4-dbb7-4a6d-a431-6de5e578573c": {
-      "MediaID": "a07633e4-dbb7-4a6d-a431-6de5e578573c",
-      "Name": "Play This Instrument - Prem Rawat",
-      "Category": "Music",
-      "ContentSource": "Timeless Today",
-      "Description": "“Make joy happen in your life. Make peace happen in your life.”\n\nWords: Prem Rawat. Music: We Are Love arranged \u0026 performed by Manuel Iman, written by Geoff Bridgford. From Manuel Iman’s album Songs From A Grateful Heart.\n \nWith kind permission from the respective copyright holder(s). All rights reserved. ",
-      "Duration": 267000000000,
-      "Language": "en-US",
-      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/43",
-      "PublishYear": 2024,
-      "PublishMonth": 2,
-      "PublishDay": 15,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-music/Play_This_Instrument_800x500.jpg",
-      "AudioOnly": true,
       "LoginRequired": true
     },
     "a09dc7c9-e67a-48b2-b398-5237db131779": {
@@ -35345,5 +35313,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-07-22T01:27:54.989619832Z"
+  "lastUpdated": "2026-07-23T01:47:15.630048019Z"
 }
