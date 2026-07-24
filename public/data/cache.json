@@ -30736,6 +30736,22 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "gO_FhsLrrR8": {
+      "MediaID": "gO_FhsLrrR8",
+      "Name": "Preview: Prem Rawat in Conversation with Mr Gee",
+      "Category": "Video",
+      "ContentSource": "YouTube @wopgyt",
+      "Description": "What would happen if you put a young British poet, spoken word recording artist, comedian and broadcaster in a room with international ambassador of peace Prem Rawat? Watch for this very special release from Words of Peace - Prem Rawat in conversation with Mr Gee, part 1, coming November 7. Or check back here tomorrow for another clip and a link to where you can view the video.",
+      "Duration": 86000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.youtube.com/watch?v=gO_FhsLrrR8",
+      "PublishYear": 2014,
+      "PublishMonth": 11,
+      "PublishDay": 6,
+      "ThumbnailURL": "https://i.ytimg.com/vi/gO_FhsLrrR8/mqdefault.jpg",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
     "gWpAMoWYEPA": {
       "MediaID": "gWpAMoWYEPA",
       "Name": "Your Purpose",
@@ -35313,5 +35329,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-07-23T05:47:34.694788489Z"
+  "lastUpdated": "2026-07-24T01:43:14.829231256Z"
 }
