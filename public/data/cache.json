@@ -24848,8 +24848,8 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
-    "brighton-july-11-session-4:-online-premiere": {
-      "MediaID": "brighton-july-11-session-4:-online-premiere",
+    "brighton-july-11-session-4-online-premiere": {
+      "MediaID": "brighton-july-11-session-4-online-premiere",
       "Name": "Brighton – July 11 Session 4: Online Premiere",
       "Category": "Video",
       "ContentSource": "Intelligent Existence",
@@ -24864,8 +24864,8 @@
       "AudioOnly": false,
       "LoginRequired": true
     },
-    "brighton-july-4-session-3:-live-from-brighton": {
-      "MediaID": "brighton-july-4-session-3:-live-from-brighton",
+    "brighton-july-4-session-3-live-from-brighton": {
+      "MediaID": "brighton-july-4-session-3-live-from-brighton",
       "Name": "Brighton – July 4 Session 3: Live from Brighton",
       "Category": "Video",
       "ContentSource": "Intelligent Existence",
@@ -30528,8 +30528,8 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
-    "flip-it-complimentary-session:-1": {
-      "MediaID": "flip-it-complimentary-session:-1",
+    "flip-it-complimentary-session-1": {
+      "MediaID": "flip-it-complimentary-session-1",
       "Name": "Flip It Complimentary Session: 1",
       "Category": "Video",
       "ContentSource": "Intelligent Existence",
@@ -32480,6 +32480,70 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "new-delhi-india-guru-puja-2026-session-1-who-do-you-listen-to": {
+      "MediaID": "new-delhi-india-guru-puja-2026-session-1-who-do-you-listen-to",
+      "Name": "New Delhi, India, Guru Puja 2026 – Session 1 - Who Do You Listen To? (Complimentary)",
+      "Category": "Video",
+      "ContentSource": "Intelligent Existence",
+      "Description": "New Delhi, India, Guru Puja 2026 – Session 1 - Who Do You Listen To? (Complimentary)\nWho Do You Listen To? Have you ever wondered why you see yourself the way you do? Begin with a simple animated story that invites you to take a closer look.",
+      "Duration": 470000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.intelligentexistence.com/who-do-you-listen-to/",
+      "PublishYear": 2026,
+      "PublishMonth": 7,
+      "PublishDay": 20,
+      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/07/who-do-i-listen-to-web-scaled.jpg",
+      "AudioOnly": false,
+      "LoginRequired": true
+    },
+    "new-delhi-india-guru-puja-2026-session-2-who-do-i-listen-to": {
+      "MediaID": "new-delhi-india-guru-puja-2026-session-2-who-do-i-listen-to",
+      "Name": "New Delhi, India, Guru Puja 2026 – Session 2 – Who Do I Listen To? (Complimentary)",
+      "Category": "Video",
+      "ContentSource": "Intelligent Existence",
+      "Description": "New Delhi, India, Guru Puja 2026 – Session 2 – Who Do I Listen To? (Complimentary)\nWho Do I Listen To? Continue through thoughtful reflection and guided prompts, exploring the question: Who do I listen to?",
+      "Duration": 0,
+      "Language": "en-US",
+      "ClickURL": "",
+      "PublishYear": 2026,
+      "PublishMonth": 7,
+      "PublishDay": 28,
+      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/07/who-do-i-listen-to-web-1-scaled.jpg",
+      "AudioOnly": false,
+      "LoginRequired": true
+    },
+    "new-delhi-india-guru-puja-2026-session-3-live-from-india": {
+      "MediaID": "new-delhi-india-guru-puja-2026-session-3-live-from-india",
+      "Name": "New Delhi, India, Guru Puja 2026 – Session 3 – Live from India (Complimentary)",
+      "Category": "Video",
+      "ContentSource": "Intelligent Existence",
+      "Description": "New Delhi, India, Guru Puja 2026 – Session 3 – Live from India (Complimentary)\nAugust 1 – 11:00 AM IST LIVESTREAM with Prem Rawat Real questions. Real experiences. Real-time responses from Prem Rawat.",
+      "Duration": 0,
+      "Language": "en-US",
+      "ClickURL": "https://www.intelligentexistence.com/guru-puja-60th-anniversary/",
+      "PublishYear": 2026,
+      "PublishMonth": 8,
+      "PublishDay": 1,
+      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/07/guru-puja-vr-7-26-vesion-sidebar-no-typos-scaled.jpg",
+      "AudioOnly": false,
+      "LoginRequired": true
+    },
+    "new-delhi-india-guru-puja-2026-session-4-live-from-india": {
+      "MediaID": "new-delhi-india-guru-puja-2026-session-4-live-from-india",
+      "Name": "New Delhi, India, Guru Puja 2026 – Session 4 – Live from India (Complimentary)",
+      "Category": "Video",
+      "ContentSource": "Intelligent Existence",
+      "Description": "New Delhi, India, Guru Puja 2026 – Session 4 – Live from India (Complimentary)\nAugust 2 – 11:00 AM IST LIVESTREAM with Prem Rawat Continue the worldwide celebration with Prem Rawat, live from New Delhi, India.",
+      "Duration": 0,
+      "Language": "en-US",
+      "ClickURL": "",
+      "PublishYear": 2026,
+      "PublishMonth": 8,
+      "PublishDay": 2,
+      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/07/guru-puja-vr-7-26-vesion2-sidebar-scaled.jpg",
+      "AudioOnly": false,
+      "LoginRequired": true
+    },
     "njUtYwi_TF4": {
       "MediaID": "njUtYwi_TF4",
       "Name": "Are You Perfect?",
@@ -33568,70 +33632,6 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
-    "session-1-who-do-you-listen-to?": {
-      "MediaID": "session-1-who-do-you-listen-to?",
-      "Name": "Session 1 - Who Do You Listen To? (Complimentary)",
-      "Category": "Video",
-      "ContentSource": "Intelligent Existence",
-      "Description": "Session 1 - Who Do You Listen To? (Complimentary)\nWho Do You Listen To? Have you ever wondered why you see yourself the way you do? Begin with a simple animated story that invites you to take a closer look.",
-      "Duration": 0,
-      "Language": "en-US",
-      "ClickURL": "https://www.intelligentexistence.com/who-do-you-listen-to/",
-      "PublishYear": 2026,
-      "PublishMonth": 7,
-      "PublishDay": 1,
-      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/07/who-do-i-listen-to-web-scaled.jpg",
-      "AudioOnly": false,
-      "LoginRequired": true
-    },
-    "session-2-who-do-i-listen-to?": {
-      "MediaID": "session-2-who-do-i-listen-to?",
-      "Name": "Session 2 – Who Do I Listen To? (Complimentary)",
-      "Category": "Video",
-      "ContentSource": "Intelligent Existence",
-      "Description": "Session 2 – Who Do I Listen To? (Complimentary)\nWho Do I Listen To? Continue through thoughtful reflection and guided prompts, exploring the question: Who do I listen to?",
-      "Duration": 0,
-      "Language": "en-US",
-      "ClickURL": "",
-      "PublishYear": 2026,
-      "PublishMonth": 7,
-      "PublishDay": 1,
-      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/07/who-do-i-listen-to-web-1-scaled.jpg",
-      "AudioOnly": false,
-      "LoginRequired": true
-    },
-    "session-3-live-from-india": {
-      "MediaID": "session-3-live-from-india",
-      "Name": "Session 3 – Live from India (Complimentary)",
-      "Category": "Video",
-      "ContentSource": "Intelligent Existence",
-      "Description": "Session 3 – Live from India (Complimentary)\nAugust 1 – 11:00 AM IST LIVESTREAM with Prem Rawat Real questions. Real experiences. Real-time responses from Prem Rawat.",
-      "Duration": 0,
-      "Language": "en-US",
-      "ClickURL": "https://www.intelligentexistence.com/guru-puja-60th-anniversary/",
-      "PublishYear": 2026,
-      "PublishMonth": 7,
-      "PublishDay": 1,
-      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/07/guru-puja-vr-7-26-vesion-sidebar-no-typos-scaled.jpg",
-      "AudioOnly": false,
-      "LoginRequired": true
-    },
-    "session-4-live-from-india": {
-      "MediaID": "session-4-live-from-india",
-      "Name": "Session 4 – Live from India (Complimentary)",
-      "Category": "Video",
-      "ContentSource": "Intelligent Existence",
-      "Description": "Session 4 – Live from India (Complimentary)\nAugust 2 – 11:00 AM IST LIVESTREAM with Prem Rawat Continue the worldwide celebration with Prem Rawat, live from New Delhi, India.",
-      "Duration": 0,
-      "Language": "en-US",
-      "ClickURL": "",
-      "PublishYear": 2026,
-      "PublishMonth": 7,
-      "PublishDay": 1,
-      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/07/guru-puja-vr-7-26-vesion2-sidebar-scaled.jpg",
-      "AudioOnly": false,
-      "LoginRequired": true
-    },
     "sgFwM9GbBF0": {
       "MediaID": "sgFwM9GbBF0",
       "Name": "Human Behind the Mask: Prem Rawat in Kyoto",
@@ -34528,8 +34528,8 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
-    "when-you-flip-it-complimentary-session:-2": {
-      "MediaID": "when-you-flip-it-complimentary-session:-2",
+    "when-you-flip-it-complimentary-session-2": {
+      "MediaID": "when-you-flip-it-complimentary-session-2",
       "Name": "When you Flip It Complimentary Session: 2",
       "Category": "Video",
       "ContentSource": "Intelligent Existence",
@@ -35425,5 +35425,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-07-27T13:34:19.186974242Z"
+  "lastUpdated": "2026-07-27T14:04:18.784809031Z"
 }
