@@ -21616,6 +21616,22 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "YvhbJLPl66I": {
+      "MediaID": "YvhbJLPl66I",
+      "Name": "Hear Saraswati share how connecting with Prem Rawat Ji brought clarity and confidence into her life.",
+      "Category": "Video",
+      "ContentSource": "YouTube @rajvidyakender",
+      "Description": "",
+      "Duration": 31000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://www.youtube.com/watch?v=YvhbJLPl66I",
+      "PublishYear": 2026,
+      "PublishMonth": 7,
+      "PublishDay": 30,
+      "ThumbnailURL": "https://i.ytimg.com/vi/YvhbJLPl66I/mqdefault.jpg",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
     "Yw4ZDl0lYbM": {
       "MediaID": "Yw4ZDl0lYbM",
       "Name": "Born to Feel",
@@ -35473,5 +35489,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-07-30T01:20:45.262116386Z"
+  "lastUpdated": "2026-07-31T01:47:17.418570319Z"
 }
