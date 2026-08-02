@@ -30912,22 +30912,6 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
-    "gO_FhsLrrR8": {
-      "MediaID": "gO_FhsLrrR8",
-      "Name": "Preview: Prem Rawat in Conversation with Mr Gee",
-      "Category": "Video",
-      "ContentSource": "YouTube @wopgyt",
-      "Description": "What would happen if you put a young British poet, spoken word recording artist, comedian and broadcaster in a room with international ambassador of peace Prem Rawat? Watch for this very special release from Words of Peace - Prem Rawat in conversation with Mr Gee, part 1, coming November 7. Or check back here tomorrow for another clip and a link to where you can view the video.",
-      "Duration": 86000000000,
-      "Language": "en-US",
-      "ClickURL": "https://www.youtube.com/watch?v=gO_FhsLrrR8",
-      "PublishYear": 2014,
-      "PublishMonth": 11,
-      "PublishDay": 6,
-      "ThumbnailURL": "https://i.ytimg.com/vi/gO_FhsLrrR8/mqdefault.jpg",
-      "AudioOnly": false,
-      "LoginRequired": false
-    },
     "gWpAMoWYEPA": {
       "MediaID": "gWpAMoWYEPA",
       "Name": "Your Purpose",
@@ -32672,19 +32656,19 @@
       "AudioOnly": false,
       "LoginRequired": true
     },
-    "new-delhi-india-guru-puja-2026-session-3-live-from-india": {
-      "MediaID": "new-delhi-india-guru-puja-2026-session-3-live-from-india",
-      "Name": "New Delhi, India, Guru Puja 2026 – Session 3 – Live from India (Complimentary)",
+    "new-delhi-india-guru-puja-2026-session-3-replay-coming-soon": {
+      "MediaID": "new-delhi-india-guru-puja-2026-session-3-replay-coming-soon",
+      "Name": "New Delhi, India, Guru Puja 2026 – Session 3 – Replay Coming Soon! (Complimentary)",
       "Category": "Video",
       "ContentSource": "Intelligent Existence",
-      "Description": "New Delhi, India, Guru Puja 2026 – Session 3 – Live from India (Complimentary)\nAugust 1 – 11:00 AM IST LIVESTREAM with Prem Rawat Real questions. Real experiences. Real-time responses from Prem Rawat.",
+      "Description": "New Delhi, India, Guru Puja 2026 – Session 3 – Replay Coming Soon! (Complimentary)\nAugust 1 – LIVESTREAM Replay with Prem Rawat Real questions. Real experiences. Real-time responses from Prem Rawat.",
       "Duration": 0,
       "Language": "en-US",
-      "ClickURL": "https://live.intelligentexistence.com",
+      "ClickURL": "https://www.intelligentexistence.com/guru-puja-60th-anniversary/",
       "PublishYear": 2026,
       "PublishMonth": 8,
       "PublishDay": 1,
-      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/07/guru-puja-vr-7-26-vesion-sidebar-no-typos-scaled.jpg",
+      "ThumbnailURL": "https://images.weserv.nl/?url=https://www.intelligentexistence.com/wp-content/uploads/2026/07/guru-puja-vr-7-29vr3-the-celebration-begins-web-scaled.jpg",
       "AudioOnly": false,
       "LoginRequired": true
     },
@@ -35617,5 +35601,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-08-01T01:49:03.037764609Z"
+  "lastUpdated": "2026-08-02T01:44:58.740712467Z"
 }
