@@ -48,6 +48,22 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "-Lqibly-ENI": {
+      "MediaID": "-Lqibly-ENI",
+      "Name": "Celebrating 60th anniversary",
+      "Category": "Video",
+      "ContentSource": "YouTube @rajvidyakender",
+      "Description": "",
+      "Duration": 35000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://www.youtube.com/watch?v=-Lqibly-ENI",
+      "PublishYear": 2026,
+      "PublishMonth": 8,
+      "PublishDay": 2,
+      "ThumbnailURL": "https://i.ytimg.com/vi/-Lqibly-ENI/mqdefault.jpg",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
     "-PiDr5znsPY": {
       "MediaID": "-PiDr5znsPY",
       "Name": "2014 Highlights Part Three",
@@ -34320,6 +34336,22 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "umrAiSCQ8z4": {
+      "MediaID": "umrAiSCQ8z4",
+      "Name": "Five sessions. Countless memories. ❤️ #PremRawat #60thGuruPuja #60thAnniversaryCelebration",
+      "Category": "Video",
+      "ContentSource": "YouTube @rajvidyakender",
+      "Description": "",
+      "Duration": 29000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://www.youtube.com/watch?v=umrAiSCQ8z4",
+      "PublishYear": 2026,
+      "PublishMonth": 8,
+      "PublishDay": 2,
+      "ThumbnailURL": "https://i.ytimg.com/vi/umrAiSCQ8z4/mqdefault.jpg",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
     "urFhbVegrnI": {
       "MediaID": "urFhbVegrnI",
       "Name": "Prem Rawat in Long Beach, California",
@@ -35601,5 +35633,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-08-02T01:44:58.740712467Z"
+  "lastUpdated": "2026-08-03T01:47:35.999958657Z"
 }
