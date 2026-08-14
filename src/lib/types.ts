@@ -33,6 +33,7 @@ export interface MediaResult {
   loginRequired?: boolean; // true if login is required to watch
   category?: string; // media category
   channel?: string; // media channel
+  tags?: string[]; // searchable tags (en / hi / hinglish)
 }
 
 export interface MediaResponse {

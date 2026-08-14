@@ -9,6 +9,9 @@ export default defineConfig(() => ({
     port: 8080,
   },
   plugins: [react()],
+  test: {
+    environment: "node",
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
