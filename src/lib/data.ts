@@ -158,6 +158,7 @@ interface MediaData {
   Language?: string;
   AudioOnly?: boolean;
   LoginRequired?: boolean;
+  Tags?: string[] | null;
 }
 
 async function loadAllMedia(): Promise<MediaResult[]> {
@@ -204,6 +205,7 @@ async function loadAllMedia(): Promise<MediaResult[]> {
                 timestamp,
                 category: media.Category || "Video",
                 channel: media.ContentSource || "",
+                tags: media.Tags ?? undefined,
               };
             })
             .sort(compareMedia)
@@ -256,7 +258,7 @@ export async function getUniqueChannels(): Promise<string[]> {
   return Array.from(channels).sort();
 }
 
-function filterMedia(
+export function filterMedia(
   media: MediaResult[],
   filters: SearchFilters,
 ): MediaResult[] {
@@ -304,23 +306,74 @@ function filterMedia(
     }
 
     if (filters.titleSearch) {
-      const searchWords = filters.titleSearch
-        .trim()
-        .toLowerCase()
-        .split(/\s+/)
-        .filter((word) => word.length > 0);
-      const title = media.title.toLowerCase();
-      const description = media.description.toLowerCase();
-
-      for (const word of searchWords) {
-        if (!title.includes(word) && !description.includes(word)) {
-          return false;
-        }
+      if (!mediaMatchesSearch(media.tags, filters.titleSearch)) {
+        return false;
       }
     }
 
     return true;
   });
+}
+
+function mediaMatchesSearch(tags: string[] | undefined, query: string): boolean {
+  const tokens = query
+    .trim()
+    .toLowerCase()
+    .split(/\s+/)
+    .filter((token) => token.length > 0);
+  if (tokens.length === 0) {
+    return true;
+  }
+  if (!tags?.length) {
+    return false;
+  }
+  const normalizedTags = tags.map((tag) => tag.toLowerCase());
+  return tokens.every((token) =>
+    normalizedTags.some((tag) => tokenMatchesTag(token, tag)),
+  );
+}
+
+function tokenMatchesTag(token: string, tag: string): boolean {
+  if (tag.includes(token)) {
+    return true;
+  }
+  if (token.length >= 3 && token.includes(tag)) {
+    return true;
+  }
+  for (const word of tag.split(/\s+/).filter(Boolean)) {
+    if (word.includes(token) || (token.length >= 3 && token.includes(word))) {
+      return true;
+    }
+    const allowed = maxEditDistance(Math.min(token.length, word.length));
+    if (allowed > 0 && levenshtein(token, word) <= allowed) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function maxEditDistance(len: number): number {
+  if (len >= 5) return 2;
+  if (len >= 4) return 1;
+  return 0;
+}
+
+function levenshtein(a: string, b: string): number {
+  if (a === b) return 0;
+  if (a.length === 0) return b.length;
+  if (b.length === 0) return a.length;
+
+  const prev = Array.from({ length: b.length + 1 }, (_, i) => i);
+  for (let i = 1; i <= a.length; i++) {
+    let prevDiag = prev[0];
+    prev[0] = i;
+    for (let j = 1; j <= b.length; j++) {
+      const sub = prevDiag + (a[i - 1] === b[j - 1] ? 0 : 1);
+      prevDiag = prev[j];
+      prev[j] = Math.min(prev[j] + 1, prev[j - 1] + 1, sub);
+    }
+  }
+  return prev[b.length];
 }
 function normalizeLanguageCode(langCode?: string): "en" | "hi" {
   if (!langCode) return "en";
