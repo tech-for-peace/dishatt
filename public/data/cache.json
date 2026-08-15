@@ -16320,6 +16320,22 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
+    "AlAH_bG3bC0": {
+      "MediaID": "AlAH_bG3bC0",
+      "Name": "60वां गुरु पूजा महोत्सव ॰ अपने विवेक की सुनें (एक अंश)",
+      "Category": "Video",
+      "ContentSource": "YouTube @PremRawatOfficial",
+      "Description": "इस समापन संबोधन की शुरुआत एक चेतावनी से हुई: “टेस्ट होगा।”\n\nरेडियो का डायल, उड़ान से पहले हटाई जाने वाली लाल सुरक्षा पट्टी और बिना समझे शब्द दोहराता एक दूल्हा। इन रोचक उदाहरणों के माध्यम से प्रेम रावत जी ने समझाया कि दूसरों की राय हमें कैसे प्रभावित करती है, परिणाम से अधिक प्रयास क्यों मायने रखता है और केवल सुनने तथा सही मायने में समझने में क्या अंतर है।\n\nप्रेम रावत जी का पूरा समापन संबोधन यहाँ देखें: https://timelesstoday.tv/hi/home/product/793b61c0-c22d-40bd-927e-ac142fc9d964",
+      "Duration": 157000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://www.youtube.com/watch?v=AlAH_bG3bC0",
+      "PublishYear": 2026,
+      "PublishMonth": 8,
+      "PublishDay": 14,
+      "ThumbnailURL": "https://i.ytimg.com/vi/AlAH_bG3bC0/mqdefault.jpg",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
     "AqoBvn5p94Y": {
       "MediaID": "AqoBvn5p94Y",
       "Name": "Your Nature",
@@ -35777,5 +35793,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-08-14T01:01:23.121838908Z"
+  "lastUpdated": "2026-08-15T00:36:39.452694494Z"
 }
