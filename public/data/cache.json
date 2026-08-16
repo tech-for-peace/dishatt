@@ -21093,7 +21093,7 @@
       "Name": "Gentle are the Words",
       "Category": "Video",
       "ContentSource": "YouTube @PremRawatOfficial",
-      "Description": "Music video titled “Gentle” by Prem Rawat\n60th Anniversary Celebration: Amaroo 2026\n\nOne line. One song, unfolding. 🎶\n5 days with Prem Rawat, Australia. Stay tuned.",
+      "Description": "Music video titled “Gentle” by Prem Rawat\n60th Anniversary Celebration: Amaroo 2026",
       "Duration": 72000000000,
       "Language": "en-US",
       "ClickURL": "https://www.youtube.com/watch?v=W4pclpV-rD0",
@@ -25071,6 +25071,22 @@
       "ThumbnailURL": "https://images.timelesstoday.tv/img/0003227_amaroo-2018-episode-4-video.jpeg?format=auto",
       "AudioOnly": false,
       "LoginRequired": true
+    },
+    "be88225c-b1ba-49c9-8836-7263314878aa": {
+      "MediaID": "be88225c-b1ba-49c9-8836-7263314878aa",
+      "Name": "Gentle",
+      "Category": "Video",
+      "ContentSource": "Timeless Today",
+      "Description": "A new song by Prem Rawat\n\n\nGentle\nAmaroo 2026\n\n\n\n\u003cp\u003eAnniversary Celebration!\u003c/p\u003e",
+      "Duration": 71000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.timelesstoday.tv/en/home/product/be88225c-b1ba-49c9-8836-7263314878aa",
+      "PublishYear": 2026,
+      "PublishMonth": 8,
+      "PublishDay": 15,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/260801_Gentle_Amaroo_Song_Part_1_1600_v2.jpg?format=auto",
+      "AudioOnly": false,
+      "LoginRequired": false
     },
     "bedcf646-465e-4089-b78a-3be1a0d03963": {
       "MediaID": "bedcf646-465e-4089-b78a-3be1a0d03963",
@@ -35793,5 +35809,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-08-15T00:36:39.452694494Z"
+  "lastUpdated": "2026-08-16T00:38:10.841992982Z"
 }
