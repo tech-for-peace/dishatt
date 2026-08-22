@@ -3158,7 +3158,7 @@
       "Category": "Video",
       "ContentSource": "Timeless Today",
       "Description": "Your story just gets better and better, once you know the plot.",
-      "Duration": 517000000000,
+      "Duration": 277000000000,
       "Language": "en-US",
       "ClickURL": "https://www.timelesstoday.tv/en/home/product/1c904dc0-0528-4811-94d9-30dd18a08662",
       "PublishYear": 2024,
@@ -26304,22 +26304,6 @@
       "AudioOnly": false,
       "LoginRequired": false
     },
-    "cde6760b-b22d-44c0-a460-b7ca4b5a0ea8": {
-      "MediaID": "cde6760b-b22d-44c0-a460-b7ca4b5a0ea8",
-      "Name": "Amaroo 2018! (Trailer)",
-      "Category": "Video",
-      "ContentSource": "Timeless Today",
-      "Description": "5-Day conference, Queensland, Australia.\n\n\nLast September for five full days, thousands of people from every corner of the globe came together with Prem on a pristine patch of land in Queensland, Australia to unplug, unwind—and make the most of a unique opportunity to focus on the essentials of living a fulfilled life.\r\n\r\nImmerse yourself as Prem shares his keen perspective on everything from the epic stories of the Mahabharata to love and relationships in our times. There are personal exchanges with audience members that surface practical life hacks and piercing insights…and far-ranging talks that shed new light on the life we’ve been given…all infused with Prem’s candor, warmth and humor.\n\n\nAmaroo 2018 consists of 9 episodes and will be released one episode at a time every week for nine weeks, starting March 9th. \n\nDon't have the access needed to watch or listen to all 9 episodes? Find more information on https://www.timelesstoday.tv/amaroo2018/",
-      "Duration": 66000000000,
-      "Language": "en-US",
-      "ClickURL": "https://www.timelesstoday.tv/en/home/product/cde6760b-b22d-44c0-a460-b7ca4b5a0ea8",
-      "PublishYear": 2019,
-      "PublishMonth": 3,
-      "PublishDay": 9,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img/0003117_amaroo-2018-trailer.jpeg?format=auto",
-      "AudioOnly": false,
-      "LoginRequired": false
-    },
     "ce0e0cd8-c9c1-47c3-97b3-86edd0d6e66b": {
       "MediaID": "ce0e0cd8-c9c1-47c3-97b3-86edd0d6e66b",
       "Name": "Choices",
@@ -29085,22 +29069,6 @@
       "PublishMonth": 5,
       "PublishDay": 13,
       "ThumbnailURL": "https://images.timelesstoday.tv/img/0005565_lockdown-day-53.jpeg?format=auto",
-      "AudioOnly": false,
-      "LoginRequired": false
-    },
-    "ede0bfb6-fe99-46f7-acea-ecb525c776c5": {
-      "MediaID": "ede0bfb6-fe99-46f7-acea-ecb525c776c5",
-      "Name": "Amaroo 2024 with Prem Rawat",
-      "Category": "Video",
-      "ContentSource": "Timeless Today",
-      "Description": "Stay tuned for more info about Livestream and Video on-Demand\n\n\nThese five days at Amaroo 2024 in the Australian outback provide a unique opportunity to focus on the practice of Knowledge in a community environment while experiencing the wisdom shared by Prem Rawat. \n\n\nOver 2,400 people from 55 countries will venture to Ivorys Rock to unplug, relax and learn. \n\n\nIf you can’t attend the Amaroo event in person or wish to revisit the experience, the following virtual access will be available on the TimelessToday® website. The Special Purchase bundle offers 4 morning sessions with Prem Rawat, including Intelligent Existence® training, along with 5 afternoon sessions, which include the Opening and Closing events.\n\n\n\u003cp dir=\"ltr\"\u003e\u003cstrong\u003eIncluded\u003c/strong\u003e in Your TimelessToday\u0026reg; Subscription:\u003c/p\u003e\n\u003cp dir=\"ltr\" role=\"presentation\"\u003e\u003cstrong\u003e- Livestream and replay\u003c/strong\u003e of Opening Session only.\u0026nbsp;\u003c/p\u003e\n\u003cp dir=\"ltr\" role=\"presentation\"\u003e- Available on the app or website at no additional cost.\u003c/p\u003e\n\u003cp dir=\"ltr\" role=\"presentation\"\u003e- All sessions will be available to subscribers at a later date (to be determined).\u003c/p\u003e\n\u003cp dir=\"ltr\"\u003e\u003cstrong\u003eSpecial Purchase Required\u003c/strong\u003e (Not included in your subscription):\u003c/p\u003e\n\u003cp dir=\"ltr\" role=\"presentation\"\u003e- $150 USD: Purchase all sessions and access at your convenience on TimelessToday website only (not on mobile app)\u0026nbsp;\u003cstrong\u003euntil October 15th.\u003c/strong\u003e\u003c/p\u003e\n\u003cp dir=\"ltr\" role=\"presentation\"\u003e- India residents - please check local pricing.\u003c/p\u003e\n\u003cp dir=\"ltr\"\u003ePurchasing, event sessions, training and translation details will be available soon. Stay tuned.\u003c/p\u003e\n\u003cp\u003eTo attend the Amaroo 2024 event in person, visit \u003ca href=\"https://amaroo.org/\"\u003eAmaroo.org\u003c/a\u003e.\u003c/p\u003e",
-      "Duration": 109000000000,
-      "Language": "en-US",
-      "ClickURL": "https://www.timelesstoday.tv/en/home/product/ede0bfb6-fe99-46f7-acea-ecb525c776c5",
-      "PublishYear": 2024,
-      "PublishMonth": 8,
-      "PublishDay": 21,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img2/img-livestreams/StD-Amaroo-2024_800.jpg?format=auto",
       "AudioOnly": false,
       "LoginRequired": false
     },
@@ -35825,5 +35793,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-08-21T00:38:39.249220043Z"
+  "lastUpdated": "2026-08-22T00:36:13.59800335Z"
 }
