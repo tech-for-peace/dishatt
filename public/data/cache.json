@@ -3606,7 +3606,7 @@
       "Category": "Video",
       "ContentSource": "YouTube @TimelessToday",
       "Description": "“Problems abhor a void,” reveals Prem Rawat in his latest radio broadcast, explaining why the pursuit of problem-free happiness remains eternally elusive.\n\nUnseen, unscripted wisdom from the Vault. Reflections #2: Recorded in Barcelona on May 24, 2019\n\nAvailable ONLY UNTIL July 15.\nPurchase for $79 USD on www.TimelessToday.tv/Store",
-      "Duration": 51000000000,
+      "Duration": 52000000000,
       "Language": "hi-IN",
       "ClickURL": "https://www.youtube.com/watch?v=1wZkHhil51A",
       "PublishYear": 2025,
@@ -17597,6 +17597,22 @@
       "PublishMonth": 11,
       "PublishDay": 8,
       "ThumbnailURL": "https://i.ytimg.com/vi/GquR44fFVBY/mqdefault.jpg",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
+    "GwoAETPmzxk": {
+      "MediaID": "GwoAETPmzxk",
+      "Name": "The Invitation",
+      "Category": "Video",
+      "ContentSource": "YouTube @PremRawatOfficial",
+      "Description": "The Invitation: Music video titled “Gentle” by Prem Rawat\n\nThe 60th Anniversary Celebration continues with a 5-day conference with Prem Rawat at Ivorys Rock, Australia.\n\nStay tuned for details\n\n© Rawat Creations, 2026. All rights reserved\n\nListen to all Gifts music tracks on YouTube\nhttps://www.youtube.com/playlist?list=PLUQ2Jshpz1Yn-sZvDdtJb9WYI8JNGXRLP\nor \nENGLISH: https://timelesstoday.tv/en/discover/music/28/?utm_source=youtube\u0026utm_medium=gifts\nHINDI: https://timelesstoday.tv/hi/discover/music/28/?utm_source=youtube\u0026utm_medium=gifts\n\nhttps://www.premrawat.com/gifts-album/?utm_source=youtube\u0026utm_medium=gifts\n\n#PremRawatOfficial #Amaroo2026 #60thAnniversary",
+      "Duration": 106000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.youtube.com/watch?v=GwoAETPmzxk",
+      "PublishYear": 2026,
+      "PublishMonth": 8,
+      "PublishDay": 24,
+      "ThumbnailURL": "https://i.ytimg.com/vi/GwoAETPmzxk/mqdefault.jpg",
       "AudioOnly": false,
       "LoginRequired": false
     },
@@ -32816,12 +32832,12 @@
       "AudioOnly": false,
       "LoginRequired": true
     },
-    "new-delhi-india-guru-puja-2026-session-3-replay-coming-soon": {
-      "MediaID": "new-delhi-india-guru-puja-2026-session-3-replay-coming-soon",
-      "Name": "New Delhi, India, Guru Puja 2026 – Session 3 – Replay Coming Soon!",
+    "new-delhi-india-guru-puja-2026-session-3-replay-coming": {
+      "MediaID": "new-delhi-india-guru-puja-2026-session-3-replay-coming",
+      "Name": "New Delhi, India, Guru Puja 2026 – Session 3 – Replay Coming",
       "Category": "Video",
       "ContentSource": "Intelligent Existence",
-      "Description": "New Delhi, India, Guru Puja 2026 – Session 3 – Replay Coming Soon!\nAugust 1 – LIVESTREAM Replay with Prem Rawat. Real questions. Real experiences. Real-time responses from Prem Rawat.",
+      "Description": "New Delhi, India, Guru Puja 2026 – Session 3 – Replay Coming\nAugust 1 – LIVESTREAM Replay with Prem Rawat. Real questions. Real experiences. Real-time responses from Prem Rawat.",
       "Duration": 0,
       "Language": "en-US",
       "ClickURL": "https://www.intelligentexistence.com/guru-puja-60th-anniversary/",
@@ -32832,12 +32848,12 @@
       "AudioOnly": false,
       "LoginRequired": true
     },
-    "new-delhi-india-guru-puja-2026-session-4-replay-coming-soon": {
-      "MediaID": "new-delhi-india-guru-puja-2026-session-4-replay-coming-soon",
-      "Name": "New Delhi, India, Guru Puja 2026 – Session 4 – Replay Coming Soon!",
+    "new-delhi-india-guru-puja-2026-session-4-replay-coming": {
+      "MediaID": "new-delhi-india-guru-puja-2026-session-4-replay-coming",
+      "Name": "New Delhi, India, Guru Puja 2026 – Session 4 – Replay Coming",
       "Category": "Video",
       "ContentSource": "Intelligent Existence",
-      "Description": "New Delhi, India, Guru Puja 2026 – Session 4 – Replay Coming Soon!\nAugust 2 – LIVESTREAM Replay with Prem Rawat. Continue the worldwide celebration with Prem Rawat, live from New Delhi, India.",
+      "Description": "New Delhi, India, Guru Puja 2026 – Session 4 – Replay Coming\nAugust 2 – LIVESTREAM Replay with Prem Rawat. Continue the worldwide celebration with Prem Rawat, live from New Delhi, India.",
       "Duration": 0,
       "Language": "en-US",
       "ClickURL": "",
@@ -35793,5 +35809,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-08-24T00:37:34.588206324Z"
+  "lastUpdated": "2026-08-25T00:37:23.880590939Z"
 }
