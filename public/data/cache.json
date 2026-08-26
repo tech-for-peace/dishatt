@@ -1504,6 +1504,22 @@
       "AudioOnly": true,
       "LoginRequired": false
     },
+    "0d4f0d7b-d411-4106-87ce-21d24afff668": {
+      "MediaID": "0d4f0d7b-d411-4106-87ce-21d24afff668",
+      "Name": "The Invitation",
+      "Category": "Video",
+      "ContentSource": "Timeless Today",
+      "Description": "Amaroo 2026 - 60th Anniversary Worldwide Celebration\n\n\n60th Anniversary Worldwide Celebration\n\n\n\u003cp\u003e5 days with Prem Rawat at Amaroo, Queensland, Australia\u003c/p\u003e\n\u003cp\u003eSeptember 7\u0026ndash;11\u003c/p\u003e\n\u003cp\u003eThe Invitation\u003cbr\u003e\"Gentle\"\u003cbr\u003eA new song by Prem Rawat\u003c/p\u003e\n\u003cp\u003e\u0026nbsp;\u003c/p\u003e",
+      "Duration": 106000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.timelesstoday.tv/en/home/product/0d4f0d7b-d411-4106-87ce-21d24afff668",
+      "PublishYear": 2026,
+      "PublishMonth": 8,
+      "PublishDay": 25,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/260819_Gentle_Amaroo_Song_Part_1_The_Invitation_1600.jpg?format=auto",
+      "AudioOnly": false,
+      "LoginRequired": false
+    },
     "0d71c125-5e28-4cad-a5b4-198ad3da68f8": {
       "MediaID": "0d71c125-5e28-4cad-a5b4-198ad3da68f8",
       "Name": "Nothing Without Breath",
@@ -5772,6 +5788,22 @@
       "PublishYear": 2024,
       "PublishMonth": 9,
       "PublishDay": 30,
+      "ThumbnailURL": "https://i.scdn.co/image/ab6765630000ba8af2045479ab214cf768ef61cc",
+      "AudioOnly": true,
+      "LoginRequired": false
+    },
+    "3CFFuR8Op0D0ZuCoYUPJ14": {
+      "MediaID": "3CFFuR8Op0D0ZuCoYUPJ14",
+      "Name": "What drives real change?",
+      "Category": "Podcast",
+      "ContentSource": "Spotify",
+      "Description": "What drives real change?Tune in to be better.Aiming to change your life for the better? Do you try to fix it like a car, one part at a time? Or is there a better way?Tap the link for the surprising answer in a free episode of Life’s Essentials with Prem Rawat.Want to dive even deeper? Prem's new bestseller, Breath: Wake Up to Life, is available now at https://BreathBook.lifeIf you have any questions for Prem Rawat about his bestselling books or the Life’s Essentials podcast, please email us at lifesessentialswithpremrawat@gmail.com or CustomerCare@timelesstoday.comTo access other seasons and the latest updates, visit www.premrawat.com/podcast.This podcast is brought to you by TimelessToday, a multi-platform media company that produces premium content about the human potential for peace and well-being as explored by Prem Rawat. For more information visit https://timelesstoday.tv Hosted on Acast. See acast.com/privacy for more information.",
+      "Duration": 2163173000000,
+      "Language": "en-US",
+      "ClickURL": "https://open.spotify.com/episode/3CFFuR8Op0D0ZuCoYUPJ14",
+      "PublishYear": 2026,
+      "PublishMonth": 8,
+      "PublishDay": 26,
       "ThumbnailURL": "https://i.scdn.co/image/ab6765630000ba8af2045479ab214cf768ef61cc",
       "AudioOnly": true,
       "LoginRequired": false
@@ -35809,5 +35841,5 @@
       "LoginRequired": false
     }
   },
-  "lastUpdated": "2026-08-25T00:37:23.880590939Z"
+  "lastUpdated": "2026-08-26T00:37:58.222361997Z"
 }
