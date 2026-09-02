@@ -46,7 +46,7 @@
     --input: 212 26% 83%;
     --ring: 216 19% 26%;
 
-    --radius: 0rem;
+    --radius: 0.75rem;
 
     /* Custom tokens */
     --gradient-hero: linear-gradient(
@@ -55,19 +55,8 @@
       hsl(200 60% 25%) 50%,
       hsl(185 45% 40%) 100%
     );
-    --gradient-card: linear-gradient(
-      180deg,
-      hsl(0 0% 100%) 0%,
-      hsl(200 25% 97%) 100%
-    );
-    --gradient-accent: linear-gradient(
-      135deg,
-      hsl(35 75% 55%) 0%,
-      hsl(25 80% 50%) 100%
-    );
     --shadow-soft: 0 4px 20px -4px hsl(200 50% 10% / 0.08);
     --shadow-card: 0 8px 32px -8px hsl(200 50% 10% / 0.12);
-    --shadow-glow: 0 0 40px hsl(185 55% 35% / 0.2);
 
     --font-heading: "Cormorant Garamond", serif;
     --font-body: "DM Sans", sans-serif;
@@ -112,10 +101,10 @@
   }
 
   .dark {
-    --background: 220 35% 15%;
+    --background: 222 40% 9%;
     --foreground: 210 40% 98%;
 
-    --card: 220 30% 20%;
+    --card: 220 32% 16%;
     --card-foreground: 210 40% 98%;
 
     --popover: 215 24% 30%;
@@ -142,18 +131,12 @@
 
     --gradient-hero: linear-gradient(
       135deg,
-      hsl(185 45% 30%) 0%,
-      hsl(200 50% 20%) 50%,
-      hsl(185 35% 35%) 100%
-    );
-    --gradient-card: linear-gradient(
-      180deg,
-      hsl(220 30% 18%) 0%,
-      hsl(220 35% 15%) 100%
+      hsl(185 52% 32%) 0%,
+      hsl(200 58% 22%) 50%,
+      hsl(185 45% 28%) 100%
     );
     --shadow-soft: 0 4px 20px -4px hsl(0 0% 0% / 0.25);
     --shadow-card: 0 8px 32px -8px hsl(0 0% 0% / 0.35);
-    --shadow-glow: 0 0 40px hsl(185 45% 40% / 0.12);
 
     --sidebar-background: 220 30% 12%;
     --sidebar-foreground: 210 40% 98%;
@@ -206,11 +189,6 @@
 }
 
 @layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-accent);
-  }
-
   .bg-hero {
     background: var(--gradient-hero);
   }
@@ -223,20 +201,12 @@
     box-shadow: var(--shadow-card);
   }
 
-  .shadow-glow {
-    box-shadow: var(--shadow-glow);
-  }
-
   .animate-fade-in {
     animation: fadeIn 0.5s ease-out forwards;
   }
 
   .animate-slide-up {
     animation: slideUp 0.6s ease-out forwards;
-  }
-
-  .animate-scale-in {
-    animation: scaleIn 0.4s ease-out forwards;
   }
 }
 
@@ -257,16 +227,5 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
   }
 }

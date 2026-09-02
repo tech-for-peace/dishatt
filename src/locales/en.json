@@ -1,29 +1,27 @@
 {
-  "header": {
-    "tagline": "Discover videos from Timeless Today and Prem Rawat official YouTube channels."
-  },
   "filters": {
     "language": "Language",
-    "category": "Category",
-    "channel": "Channel",
-    "duration": "Duration",
+    "category": "Type",
+    "channel": "From",
+    "duration": "Length",
     "year": "Year",
-    "allLanguages": "All Languages",
-    "allCategories": "All Categories",
-    "allChannels": "All Channels",
-    "allYears": "All Years",
-    "allDurations": "All Durations",
-    "selected": "selected",
-    "searchPlaceholder": "Search in title and description (optional)...",
-    "reset": "Reset Filters",
-    "freeOnly": "Free"
+    "searchPlaceholder": "Type a name or word…",
+    "searchMore": "Add another word…",
+    "reset": "Clear",
+    "freeOnly": "Free to watch",
+    "clearQuery": "Clear search",
+    "removeToken": "Remove {{token}}",
+    "suggestionChannel": "Channel",
+    "suggestionTag": "Topic",
+    "suggestionYear": "Year",
+    "suggestionCategory": "Type",
+    "suggestionLanguage": "Language",
+    "suggestionDuration": "Length"
   },
   "results": {
     "mediaCount_one": "{{count}} video found",
     "mediaCount_other": "{{count}} videos found",
-    "loading": "Loading...",
-    "noMediaFound": "No videos found",
-    "noMediaMessage": "Try adjusting your search terms or filters to discover more content.",
+    "noMediaMessage": "Try another word, or tap Clear.",
     "new": "New"
   },
   "mediaCard": {
@@ -40,5 +38,12 @@
     "video": "Video",
     "music": "Music",
     "podcast": "Podcast"
+  },
+  "theme": {
+    "dark": "Dark",
+    "light": "Light"
+  },
+  "footer": {
+    "version": "Version {{version}} ({{commit}}) · Updated {{date}}"
   }
 }
