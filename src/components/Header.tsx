@@ -1,40 +1,22 @@
-import { useTranslation } from "react-i18next";
+import { type ReactNode } from "react";
+
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { DarkModeToggle } from "./DarkModeToggle";
 
-export function Header() {
-  const { t } = useTranslation();
+export function Header({ children }: { children?: ReactNode }) {
   return (
-    <header
-      className={`bg-hero text-primary-foreground py-6 md:py-16 px-4 relative overflow-hidden`}
-    >
-      {/* Language switcher and dark mode toggle in top-right corner */}
-      <div className="absolute top-4 right-0 md:right-4 z-30 flex items-center gap-2">
+    <header className="mx-auto grid max-w-6xl grid-cols-[1fr_auto] items-center gap-2 px-4 py-2 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:gap-5 lg:gap-8">
+      <h1 className="font-heading shrink-0 text-2xl font-bold leading-none text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.55)] sm:text-3xl">
+        Disha
+      </h1>
+      {children ? (
+        <div className="order-last col-span-2 min-w-0 sm:order-none sm:col-span-1">
+          {children}
+        </div>
+      ) : null}
+      <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
         <LanguageSwitcher />
         <DarkModeToggle />
-      </div>
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div
-          className="absolute -top-1/2 -right-1/4 w-96 h-96 rounded-full
-                         bg-secondary/20 blur-3xl"
-        />
-        <div
-          className="absolute -bottom-1/2 -left-1/4 w-96 h-96 rounded-full
-                         bg-primary-foreground/10 blur-3xl"
-        />
-      </div>
-      <div className="container max-w-4xl mx-auto text-center relative z-10 px-4">
-        <p
-          className="text-sm md:text-lg text-primary-foreground/80 dark:text-white/90
-                     mx-auto animate-slide-up
-                     leading-relaxed
-                     md:leading-normal
-                     line-clamp-2"
-          style={{ animationDelay: "100ms" }}
-        >
-          {t("header.tagline")}
-        </p>
       </div>
     </header>
   );

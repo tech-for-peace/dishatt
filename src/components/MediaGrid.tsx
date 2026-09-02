@@ -1,30 +1,32 @@
 import { useTranslation } from "react-i18next";
 import { Compass } from "lucide-react";
+
 import { MediaResult } from "@/lib/types";
 import { MediaCard } from "./MediaCard";
+
 interface MediaGridProps {
   media: MediaResult[];
   isLoading: boolean;
 }
+
 export function MediaGrid({ media, isLoading }: MediaGridProps) {
   const { t } = useTranslation();
-  // Container with min-height to prevent layout shifts
-  const containerClass = "min-h-[600px]";
+  const containerClass = "min-h-[200px]";
+
   if (isLoading) {
     return (
       <div className={containerClass}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {Array.from({ length: 6 }).map((_, i) => (
             <div
               key={i}
-              className="bg-card rounded-xl overflow-hidden shadow-soft border border-border
-                       animate-pulse"
+              className="animate-pulse overflow-hidden rounded-xl border border-border bg-card shadow-soft"
             >
               <div className="aspect-video bg-muted" />
-              <div className="p-4 space-y-3">
-                <div className="h-5 bg-muted rounded w-3/4" />
-                <div className="h-4 bg-muted rounded w-full" />
-                <div className="h-4 bg-muted rounded w-2/3" />
+              <div className="space-y-3 p-4">
+                <div className="h-5 w-3/4 rounded bg-muted" />
+                <div className="h-4 w-full rounded bg-muted" />
+                <div className="h-4 w-2/3 rounded bg-muted" />
               </div>
             </div>
           ))}
@@ -35,14 +37,11 @@ export function MediaGrid({ media, isLoading }: MediaGridProps) {
 
   if (media.length === 0) {
     return (
-      <div className={`${containerClass} text-center py-16 animate-fade-in`}>
-        <div
-          className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary/10
-                         flex items-center justify-center"
-        >
+      <div className={`${containerClass} animate-fade-in py-8 text-center`}>
+        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
           <Compass className="h-10 w-10 text-primary" />
         </div>
-        <p className="text-muted-foreground text-center py-8">
+        <p className="py-8 text-center text-muted-foreground">
           {t("results.noMediaMessage")}
         </p>
       </div>
@@ -51,9 +50,9 @@ export function MediaGrid({ media, isLoading }: MediaGridProps) {
 
   return (
     <div className={containerClass}>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {media.map((media, index) => (
-          <MediaCard key={media.id} media={media} index={index} />
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {media.map((item, index) => (
+          <MediaCard key={item.id} media={item} index={index} />
         ))}
       </div>
     </div>

@@ -3,16 +3,19 @@ import { filterMedia } from "@/lib/data";
 import type { MediaResult, SearchFilters } from "@/lib/types";
 
 const emptyFilters: SearchFilters = {
-  language: "",
+  languages: [],
   categories: [],
   channels: [],
   durationBands: [],
   years: [],
   titleSearch: "",
+  searchTokens: [],
   freeOnly: false,
 };
 
-function media(partial: Partial<MediaResult> & Pick<MediaResult, "id" | "title">): MediaResult {
+function media(
+  partial: Partial<MediaResult> & Pick<MediaResult, "id" | "title">,
+): MediaResult {
   return {
     description: "",
     thumbnail: "",
@@ -37,7 +40,13 @@ describe("filterMedia tags-only titleSearch", () => {
       id: "2",
       title: "Tanav Talk",
       description: "about stress",
-      tags: ["tanav", "तनाव", "peace education program", "शांति शिक्षा कार्यक्रम", "shanti shiksha karyakram"],
+      tags: [
+        "tanav",
+        "तनाव",
+        "peace education program",
+        "शांति शिक्षा कार्यक्रम",
+        "shanti shiksha karyakram",
+      ],
     }),
     media({
       id: "3",
@@ -66,7 +75,10 @@ describe("filterMedia tags-only titleSearch", () => {
   });
 
   it("does not match title or description when tags lack the term", () => {
-    const got = filterMedia(catalog, { ...emptyFilters, titleSearch: "stress" });
+    const got = filterMedia(catalog, {
+      ...emptyFilters,
+      titleSearch: "stress",
+    });
     expect(got).toEqual([]);
   });
 
@@ -143,5 +155,36 @@ describe("filterMedia tags-only titleSearch", () => {
       { ...emptyFilters, titleSearch: "teach" },
     );
     expect(got).toEqual([]);
+  });
+});
+
+describe("filterMedia languages", () => {
+  const catalog = [
+    media({ id: "en", title: "English talk", language: "en" }),
+    media({ id: "hi", title: "Hindi talk", language: "hi" }),
+  ];
+
+  it("keeps both languages when none are selected", () => {
+    expect(filterMedia(catalog, emptyFilters).map((item) => item.id)).toEqual([
+      "en",
+      "hi",
+    ]);
+  });
+
+  it("can keep only Hindi", () => {
+    expect(
+      filterMedia(catalog, { ...emptyFilters, languages: ["hindi"] }).map(
+        (item) => item.id,
+      ),
+    ).toEqual(["hi"]);
+  });
+
+  it("keeps both when Hindi and English are selected", () => {
+    expect(
+      filterMedia(catalog, {
+        ...emptyFilters,
+        languages: ["english", "hindi"],
+      }).map((item) => item.id),
+    ).toEqual(["en", "hi"]);
   });
 });

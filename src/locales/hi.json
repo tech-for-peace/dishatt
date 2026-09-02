@@ -1,29 +1,27 @@
 {
-  "header": {
-    "tagline": "Timeless Today और Prem Rawat के आधिकारिक YouTube चैनल से वीडियो खोजें।"
-  },
   "filters": {
     "language": "भाषा",
-    "category": "श्रेणी",
-    "channel": "चैनल",
+    "category": "प्रकार",
+    "channel": "स्रोत",
     "duration": "अवधि",
     "year": "वर्ष",
-    "allLanguages": "सभी भाषाएँ",
-    "allCategories": "सभी श्रेणियाँ",
-    "allChannels": "सभी चैनल",
-    "allYears": "सभी वर्ष",
-    "allDurations": "सभी अवधि",
-    "selected": "चुने हुए",
-    "searchPlaceholder": "शीर्षक और विवरण में खोजें (वैकल्पिक)...",
-    "reset": "फ़िल्टर्स रीसेट करें",
-    "freeOnly": "Free"
+    "searchPlaceholder": "कोई नाम या शब्द लिखें…",
+    "searchMore": "एक और शब्द लिखें…",
+    "reset": "साफ़ करें",
+    "freeOnly": "मुफ्त में देखें",
+    "clearQuery": "खोज साफ़ करें",
+    "removeToken": "{{token}} हटाएँ",
+    "suggestionChannel": "चैनल",
+    "suggestionTag": "विषय",
+    "suggestionYear": "वर्ष",
+    "suggestionCategory": "प्रकार",
+    "suggestionLanguage": "भाषा",
+    "suggestionDuration": "अवधि"
   },
   "results": {
     "mediaCount_one": "{{count}} वीडियो मिला",
     "mediaCount_other": "{{count}} वीडियो मिले",
-    "loading": "लोड हो रहा है...",
-    "noMediaFound": "कोई वीडियो नहीं मिला",
-    "noMediaMessage": "और सामग्री खोजने के लिए अपने खोज शब्द या फ़िल्टर बदलने का प्रयास करें।",
+    "noMediaMessage": "कोई और शब्द लिखें, या साफ़ करें दबाएँ।",
     "new": "नया"
   },
   "mediaCard": {
@@ -40,5 +38,12 @@
     "video": "वीडियो",
     "music": "संगीत",
     "podcast": "पॉडकास्ट"
+  },
+  "theme": {
+    "dark": "डार्क",
+    "light": "लाइट"
+  },
+  "footer": {
+    "version": "संस्करण {{version}} ({{commit}}) · अपडेट {{date}}"
   }
 }

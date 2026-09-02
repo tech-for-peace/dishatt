@@ -1,26 +1,27 @@
 import { useState, useCallback, useEffect, useRef, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Header } from "@/components/Header";
 import { FilterPanel } from "@/components/FilterPanel";
 import { MediaGrid } from "@/components/MediaGrid";
+import { BuildInfo } from "@/components/BuildInfo";
 
 import { searchMedia } from "@/lib/data";
 import { SearchFilters, MediaResult, DURATION_BANDS } from "@/lib/types";
-import { useToast } from "@/lib";
+import { useToast } from "@/lib/use-toast";
 import { UI_CONFIG } from "@/lib/constants";
 
 const initialFilters: SearchFilters = {
-  language: "",
+  languages: [],
   categories: [],
   channels: [],
   years: [],
   durationBands: [],
   titleSearch: "",
+  searchTokens: [],
   freeOnly: false,
 };
 
-const VALID_LANGUAGES: string[] = ["", "english", "hindi"];
+const VALID_LANGUAGES: string[] = ["english", "hindi"];
 const VALID_CATEGORIES: string[] = ["Video", "Music", "Podcast"];
 const VALID_DURATION_LABELS: string[] = DURATION_BANDS.map((b) => b.label);
 const YEAR_REGEX = /^\d{4}$/;
@@ -33,12 +34,14 @@ const isStringArray = (
   arr.length <= maxLen &&
   arr.every((item) => typeof item === "string" && validator(item));
 
-const isValidSearchFilters = (data: unknown): data is SearchFilters => {
+const isValidSearchFilters = (data: unknown): boolean => {
   if (typeof data !== "object" || data === null) return false;
   const obj = data as Record<string, unknown>;
   return (
-    typeof obj.language === "string" &&
-    VALID_LANGUAGES.includes(obj.language) &&
+    ((Array.isArray(obj.languages) &&
+      isStringArray(obj.languages, 2, (s) => VALID_LANGUAGES.includes(s))) ||
+      (typeof obj.language === "string" &&
+        (obj.language === "" || VALID_LANGUAGES.includes(obj.language)))) &&
     Array.isArray(obj.categories) &&
     isStringArray(obj.categories, 10, (s) => VALID_CATEGORIES.includes(s)) &&
     Array.isArray(obj.channels) &&
@@ -50,11 +53,12 @@ const isValidSearchFilters = (data: unknown): data is SearchFilters => {
     Array.isArray(obj.years) &&
     isStringArray(obj.years, 20, (s) => YEAR_REGEX.test(s)) &&
     Array.isArray(obj.durationBands) &&
-    isStringArray(obj.durationBands, 10, (s) =>
-      VALID_DURATION_LABELS.includes(s),
-    ) &&
+    isStringArray(obj.durationBands, 10, (s) => s.length <= 40) &&
     typeof obj.titleSearch === "string" &&
     (obj.titleSearch as string).length <= 500 &&
+    (obj.searchTokens === undefined ||
+      (Array.isArray(obj.searchTokens) &&
+        isStringArray(obj.searchTokens, 20, (s) => s.length <= 100))) &&
     typeof obj.freeOnly === "boolean"
   );
 };
@@ -64,15 +68,39 @@ const getStoredFilters = (): SearchFilters => {
   if (!stored) return initialFilters;
 
   try {
-    const parsed = JSON.parse(stored);
-    return isValidSearchFilters(parsed) ? parsed : initialFilters;
+    const parsed = JSON.parse(stored) as Record<string, unknown>;
+    if (!isValidSearchFilters(parsed)) return initialFilters;
+    const searchTokens =
+      Array.isArray(parsed.searchTokens) && parsed.searchTokens.length > 0
+        ? (parsed.searchTokens as string[])
+        : typeof parsed.titleSearch === "string" && parsed.titleSearch
+          ? [parsed.titleSearch]
+          : [];
+    const languages = Array.isArray(parsed.languages)
+      ? (parsed.languages as SearchFilters["languages"])
+      : typeof parsed.language === "string" && parsed.language
+        ? [parsed.language as SearchFilters["languages"][number]]
+        : [];
+    return {
+      ...(parsed as unknown as SearchFilters),
+      languages,
+      searchTokens,
+      titleSearch: searchTokens.join(" "),
+      durationBands: Array.isArray(parsed.durationBands)
+        ? (parsed.durationBands as string[]).filter((band) =>
+            VALID_DURATION_LABELS.includes(band),
+          )
+        : [],
+    };
   } catch {
     return initialFilters;
   }
 };
+
 const storeFilters = (filters: SearchFilters): void => {
   localStorage.setItem(UI_CONFIG.cacheKey, JSON.stringify(filters));
 };
+
 const Index = () => {
   const [filters, setFilters] = useState<SearchFilters>(getStoredFilters());
   const [allMedia, setAllMedia] = useState<MediaResult[]>([]);
@@ -81,26 +109,6 @@ const Index = () => {
 
   const { toast } = useToast();
   const { t } = useTranslation();
-  const performSearch = useCallback(
-    async (searchFilters: SearchFilters) => {
-      setIsLoading(true);
-      setVisibleCount(UI_CONFIG.mediaPerLoad);
-
-      try {
-        const results = await searchMedia(searchFilters);
-        setAllMedia(results);
-      } catch {
-        toast({
-          title: "Search failed",
-          description: "Unable to fetch results. Please try again.",
-          variant: "destructive",
-        });
-      } finally {
-        setIsLoading(false);
-      }
-    },
-    [toast],
-  );
   const displayedMedia = useMemo(
     () => allMedia.slice(0, visibleCount),
     [allMedia, visibleCount],
@@ -127,6 +135,7 @@ const Index = () => {
 
     return () => observer.disconnect();
   }, [isLoading, allMedia.length, visibleCount]);
+
   useEffect(() => {
     const controller = new AbortController();
 
@@ -158,15 +167,20 @@ const Index = () => {
 
     return () => controller.abort();
   }, [filters, toast]);
+
+  const handleFiltersChange = useCallback((patch: Partial<SearchFilters>) => {
+    setFilters((prev) => {
+      const newFilters = { ...prev, ...patch };
+      storeFilters(newFilters);
+      return newFilters;
+    });
+  }, []);
+
   const handleFilterChange = useCallback(
     (key: keyof SearchFilters, value: string | string[] | boolean) => {
-      setFilters((prev) => {
-        const newFilters = { ...prev, [key]: value };
-        storeFilters(newFilters);
-        return newFilters;
-      });
+      handleFiltersChange({ [key]: value });
     },
-    [],
+    [handleFiltersChange],
   );
 
   const handleResetFilters = useCallback(() => {
@@ -174,28 +188,21 @@ const Index = () => {
     storeFilters(initialFilters);
     setVisibleCount(UI_CONFIG.mediaPerLoad);
   }, []);
+
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Header />
-      <main className="flex-1 container max-w-6xl mx-auto px-4 py-4 md:py-8 space-y-3">
-        {/* Filters */}
-        <div className="-mt-8 md:-mt-20 relative z-20">
-          <FilterPanel
-            filters={filters}
-            onFilterChange={handleFilterChange}
-            onResetFilters={handleResetFilters}
-          />
-        </div>
-        {/* Results Header */}
-        <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
-          <h2 className="text-2xl font-semibold text-foreground">
-            {t("results.mediaCount", { count: allMedia.length })}
-          </h2>
-        </div>
-        {/* Media Grid */}
-        <div className="space-y-8">
+    <div className="flex min-h-screen flex-col bg-background">
+      <FilterPanel
+        filters={filters}
+        onFilterChange={handleFilterChange}
+        onFiltersChange={handleFiltersChange}
+        onResetFilters={handleResetFilters}
+      />
+      <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 pb-6 pt-3">
+        <h2 className="mb-3 text-2xl font-bold text-foreground">
+          {t("results.mediaCount", { count: allMedia.length })}
+        </h2>
+        <div className="space-y-4">
           <MediaGrid media={displayedMedia} isLoading={isLoading} />
-          {/* Infinite scroll trigger */}
           {allMedia.length > displayedMedia.length && (
             <div ref={loadMoreRef} className="flex justify-center py-8">
               <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
@@ -203,15 +210,16 @@ const Index = () => {
           )}
         </div>
       </main>
-      {/* Footer */}
-      <footer className="py-1 mt-auto">
-        <div className="container max-w-6xl mx-auto px-4 text-center">
-          <p className="text-sm text-muted-foreground">
+      <footer className="mt-auto py-3">
+        <div className="mx-auto max-w-6xl px-4 text-center">
+          <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} techforpeace.co.in
           </p>
+          <BuildInfo />
         </div>
       </footer>
     </div>
   );
 };
+
 export default Index;

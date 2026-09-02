@@ -1,29 +1,34 @@
+import {
+  type ReactNode,
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useTranslation } from "react-i18next";
-import { RefreshCw, ChevronDown } from "lucide-react";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuCheckboxItem,
-} from "@/components/ui/dropdown-menu";
-import { SearchFilters, DURATION_BANDS, YEARS, Language } from "@/lib/types";
-import { useState, useEffect } from "react";
-import { getUniqueCategories, getUniqueChannels } from "@/lib/data";
-const formatDurationLabel = (label: string, language: string): string => {
-  if (label === "Any Duration") return label;
+  Calendar,
+  Clapperboard,
+  Clock,
+  Globe,
+  type LucideIcon,
+  Tv,
+} from "lucide-react";
 
-  // Handle 'hour' in the label
+import { Header } from "@/components/Header";
+import { SearchBar } from "@/components/SearchBar";
+import { getFilterOptions } from "@/lib/data";
+import {
+  buildSuggestions,
+  formatChannelLabel,
+  type SearchSuggestion,
+} from "@/lib/suggestions";
+import { SearchFilters, DURATION_BANDS, YEARS, Language } from "@/lib/types";
+import { cn } from "@/lib/utils";
+
+const formatDurationLabel = (label: string, language: string): string => {
   if (label.includes("hour")) {
-    const num = parseInt(label.match(/\d+/)?.[0] || "1", 10);
-    return language === "hi" ? `${num} घंटे से अधिक` : label;
+    return language === "hi" ? "1 घंटे+" : "1 hour+";
   }
 
   const match = label.match(/([<>-]?\s*\d+)\s*(?:-\s*)?(\d+)?\s*(min)?/);
@@ -33,297 +38,440 @@ const formatDurationLabel = (label: string, language: string): string => {
   const num1 = parseInt(firstNum.replace(/[<>-]/g, "").trim(), 10);
   const num2 = secondNum ? parseInt(secondNum, 10) : null;
 
-  if (language === "hi") {
-    if (label.startsWith("<")) {
-      return `${num1} मिनट से कम`;
-    } else if (label.includes("-")) {
-      return `${num1}-${num2} मिनट`;
-    } else if (label.startsWith(">")) {
-      return `${num1} मिनट से अधिक`;
-    }
+  if (label.startsWith("<")) {
+    return language === "hi" ? `${num1} मिनट से कम` : `< ${num1} min`;
   }
-
-  return label; // Return original for English or if no match
+  if (label.includes("-")) {
+    return language === "hi"
+      ? `${num1} से ${num2} मिनट`
+      : `${num1} to ${num2} min`;
+  }
+  if (label.startsWith(">")) {
+    return language === "hi" ? `${num1} मिनट से अधिक` : `> ${num1} min`;
+  }
+  return label;
 };
+
 interface FilterPanelProps {
   filters: SearchFilters;
   onFilterChange: (
     key: keyof SearchFilters,
     value: string | string[] | boolean,
   ) => void;
+  onFiltersChange: (patch: Partial<SearchFilters>) => void;
   onResetFilters: () => void;
 }
+
+function FilterChip({
+  selected,
+  onClick,
+  children,
+}: {
+  selected: boolean;
+  onClick: () => void;
+  children: ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={selected}
+      className={cn(
+        "h-8 shrink-0 rounded-full border px-3 text-sm font-medium transition-colors",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        selected
+          ? "border-white bg-white text-[hsl(200_55%_18%)]"
+          : "border-white/30 bg-white/15 text-white hover:border-white/50 hover:bg-white/25",
+      )}
+    >
+      {children}
+    </button>
+  );
+}
+
+function FilterGroup({
+  label,
+  icon: Icon,
+  fill = false,
+  children,
+}: {
+  label: string;
+  icon: LucideIcon;
+  fill?: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <div
+      className={cn("flex items-center gap-2", fill ? "min-w-0" : "shrink-0")}
+      role="group"
+      aria-label={label}
+    >
+      <span className="shrink-0 text-white/80" title={label}>
+        <Icon className="h-4 w-4" aria-hidden="true" />
+      </span>
+      <div
+        className={cn(
+          "flex items-center gap-1.5",
+          fill &&
+            "min-w-0 flex-1 overflow-x-auto pb-0.5 [scrollbar-width:thin]",
+        )}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function toggleValue<T extends string>(current: T[], value: T): T[] {
+  return current.includes(value)
+    ? current.filter((item) => item !== value)
+    : [...current, value];
+}
+
 export function FilterPanel({
   filters,
   onFilterChange,
+  onFiltersChange,
   onResetFilters,
 }: FilterPanelProps) {
   const { t, i18n } = useTranslation();
+  const [query, setQuery] = useState("");
+  const deferredQuery = useDeferredValue(query);
   const [categories, setCategories] = useState<string[]>([]);
   const [channels, setChannels] = useState<string[]>([]);
+  const [tags, setTags] = useState<string[]>([]);
 
   useEffect(() => {
     const loadFilterOptions = async () => {
-      const [uniqueCategories, uniqueChannels] = await Promise.all([
-        getUniqueCategories(),
-        getUniqueChannels(),
-      ]);
-      setCategories(uniqueCategories);
-      setChannels(uniqueChannels);
+      const options = await getFilterOptions();
+      setCategories(options.categories);
+      setChannels(options.channels);
+      setTags(options.tags);
     };
 
     loadFilterOptions();
   }, []);
 
-  const durationOptions = DURATION_BANDS.filter(
-    (band) => band.label !== "Any Duration",
+  const languageOptions = useMemo(
+    (): { value: Language; label: string }[] => [
+      { value: "english", label: t("language.english") },
+      { value: "hindi", label: t("language.hindi") },
+    ],
+    [t],
   );
-  const handleDurationToggle = (label: string) => {
-    const current = filters.durationBands || [];
-    const newValue = current.includes(label)
-      ? current.filter((l) => l !== label)
-      : [...current, label];
-    onFilterChange("durationBands", newValue);
-  };
-  const handleYearToggle = (year: string) => {
-    const current = filters.years || [];
-    const newValue = current.includes(year)
-      ? current.filter((y) => y !== year)
-      : [...current, year];
-    onFilterChange("years", newValue);
-  };
-  const handleCategoryToggle = (category: string) => {
-    const current = filters.categories || [];
-    const newValue = current.includes(category)
-      ? current.filter((c) => c !== category)
-      : [...current, category];
-    onFilterChange("categories", newValue);
-  };
-  const handleChannelToggle = (channel: string) => {
-    const current = filters.channels || [];
-    const newValue = current.includes(channel)
-      ? current.filter((c) => c !== channel)
-      : [...current, channel];
-    onFilterChange("channels", newValue);
-  };
-  const getDurationDisplayText = () => {
-    const selected = filters.durationBands || [];
-    if (selected.length === 0) return t("filters.allDurations");
-    if (selected.length === 1)
-      return formatDurationLabel(selected[0], i18n.language);
-    return `${selected.length} ${t("filters.selected")}`;
-  };
-  const getYearDisplayText = () => {
-    const selected = filters.years || [];
-    if (selected.length === 0) return t("filters.allYears");
-    if (selected.length === 1) return selected[0];
-    return `${selected.length} ${t("filters.selected")}`;
-  };
-  const getCategoryKey = (category: string): string => {
-    return category.toLowerCase();
-  };
 
-  const getCategoryDisplayText = () => {
-    const selected = filters.categories || [];
-    if (selected.length === 0) return t("filters.allCategories");
-    if (selected.length === 1) {
-      const categoryKey = getCategoryKey(selected[0]);
-      return t(`category.${categoryKey}`);
+  const suggestions = useMemo(
+    () =>
+      buildSuggestions(
+        deferredQuery,
+        {
+          channels: channels.map((channel) => ({
+            value: channel,
+            label: formatChannelLabel(channel),
+          })),
+          categories: categories.map((category) => ({
+            value: category,
+            label: t(`category.${category.toLowerCase()}`, category),
+          })),
+          languages: languageOptions,
+          years: YEARS.map((year) => ({ value: year, label: year })),
+          durations: DURATION_BANDS.map((band) => ({
+            value: band.label,
+            label: formatDurationLabel(band.label, i18n.language),
+          })),
+          tags,
+        },
+        {
+          channels: filters.channels,
+          categories: filters.categories,
+          languages: filters.languages,
+          years: filters.years,
+          durationBands: filters.durationBands,
+          searchTokens: filters.searchTokens ?? [],
+        },
+      ),
+    [
+      deferredQuery,
+      channels,
+      categories,
+      tags,
+      languageOptions,
+      i18n.language,
+      filters.channels,
+      filters.categories,
+      filters.languages,
+      filters.years,
+      filters.durationBands,
+      filters.searchTokens,
+      t,
+    ],
+  );
+
+  const addSearchToken = (token: string) => {
+    const trimmed = token.trim();
+    if (!trimmed) return;
+    const currentTokens = filters.searchTokens ?? [];
+    if (
+      currentTokens.some((item) => item.toLowerCase() === trimmed.toLowerCase())
+    ) {
+      setQuery("");
+      return;
     }
-    return `${selected.length} ${t("filters.selected")}`;
+    const searchTokens = [...currentTokens, trimmed];
+    onFiltersChange({
+      searchTokens,
+      titleSearch: searchTokens.join(" "),
+    });
+    setQuery("");
   };
 
-  const getChannelDisplayText = () => {
-    const selected = filters.channels || [];
-    if (selected.length === 0) return t("filters.allChannels");
-    if (selected.length === 1) return selected[0];
-    return `${selected.length} ${t("filters.selected")}`;
+  const applySuggestion = (suggestion: SearchSuggestion) => {
+    switch (suggestion.kind) {
+      case "channel":
+        onFilterChange("channels", [...filters.channels, suggestion.value]);
+        break;
+      case "category":
+        onFilterChange("categories", [...filters.categories, suggestion.value]);
+        break;
+      case "language":
+        if (suggestion.value === "english" || suggestion.value === "hindi") {
+          onFilterChange("languages", [...filters.languages, suggestion.value]);
+        }
+        break;
+      case "year":
+        onFilterChange("years", [...filters.years, suggestion.value]);
+        break;
+      case "duration":
+        onFilterChange("durationBands", [
+          ...filters.durationBands,
+          suggestion.value,
+        ]);
+        break;
+      case "tag":
+        addSearchToken(suggestion.value);
+        return;
+    }
+    setQuery("");
   };
+
+  const hasActiveFilters =
+    filters.languages.length > 0 ||
+    filters.categories.length > 0 ||
+    filters.channels.length > 0 ||
+    filters.years.length > 0 ||
+    filters.durationBands.length > 0 ||
+    (filters.searchTokens ?? []).length > 0 ||
+    filters.freeOnly;
+
+  const searchBarTokens = useMemo(() => {
+    const tokens: {
+      id: string;
+      label: string;
+      onRemove: () => void;
+    }[] = [];
+
+    for (const token of filters.searchTokens ?? []) {
+      tokens.push({
+        id: `tag:${token}`,
+        label: token,
+        onRemove: () => {
+          const searchTokens = (filters.searchTokens ?? []).filter(
+            (item) => item !== token,
+          );
+          onFiltersChange({
+            searchTokens,
+            titleSearch: searchTokens.join(" "),
+          });
+        },
+      });
+    }
+    for (const language of filters.languages) {
+      const option = languageOptions.find((item) => item.value === language);
+      tokens.push({
+        id: `language:${language}`,
+        label: option?.label ?? language,
+        onRemove: () =>
+          onFilterChange(
+            "languages",
+            filters.languages.filter((item) => item !== language),
+          ),
+      });
+    }
+    for (const category of filters.categories) {
+      tokens.push({
+        id: `category:${category}`,
+        label: t(`category.${category.toLowerCase()}`, category),
+        onRemove: () =>
+          onFilterChange(
+            "categories",
+            filters.categories.filter((item) => item !== category),
+          ),
+      });
+    }
+    for (const channel of filters.channels) {
+      tokens.push({
+        id: `channel:${channel}`,
+        label: formatChannelLabel(channel),
+        onRemove: () =>
+          onFilterChange(
+            "channels",
+            filters.channels.filter((item) => item !== channel),
+          ),
+      });
+    }
+    for (const band of filters.durationBands) {
+      tokens.push({
+        id: `duration:${band}`,
+        label: formatDurationLabel(band, i18n.language),
+        onRemove: () =>
+          onFilterChange(
+            "durationBands",
+            filters.durationBands.filter((item) => item !== band),
+          ),
+      });
+    }
+    for (const year of filters.years) {
+      tokens.push({
+        id: `year:${year}`,
+        label: year,
+        onRemove: () =>
+          onFilterChange(
+            "years",
+            filters.years.filter((item) => item !== year),
+          ),
+      });
+    }
+    if (filters.freeOnly) {
+      tokens.push({
+        id: "freeOnly",
+        label: t("filters.freeOnly"),
+        onRemove: () => onFilterChange("freeOnly", false),
+      });
+    }
+    return tokens;
+  }, [
+    filters.searchTokens,
+    filters.languages,
+    filters.categories,
+    filters.channels,
+    filters.durationBands,
+    filters.years,
+    filters.freeOnly,
+    languageOptions,
+    i18n.language,
+    onFilterChange,
+    onFiltersChange,
+    t,
+  ]);
+
   return (
-    <div className="w-full bg-card/80 backdrop-blur-sm rounded-xl p-3 shadow-soft border border-border/50 animate-fade-in">
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1.5">
-        <Select
-          value={filters.language || "all"}
-          onValueChange={(value) =>
-            onFilterChange(
-              "language",
-              value === "all" ? "" : (value as Language),
-            )
-          }
-        >
-          <SelectTrigger className="bg-background/50 border-border/50 hover:border-primary/30 transition-colors h-8">
-            <SelectValue placeholder={t("filters.language")} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">{t("filters.allLanguages")}</SelectItem>
-            <SelectItem value="english">{t("language.english")}</SelectItem>
-            <SelectItem value="hindi">{t("language.hindi")}</SelectItem>
-          </SelectContent>
-        </Select>
-        <DropdownMenu>
-          <DropdownMenuTrigger className="flex h-8 w-full items-center justify-between rounded-md border border-border/50 bg-background/50 px-3 py-1 text-sm ring-offset-background placeholder:text-muted-foreground hover:border-primary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
-            <span className="truncate">{getCategoryDisplayText()}</span>
-            <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="start" className="w-48">
-            <DropdownMenuCheckboxItem
-              checked={(filters.categories || []).length === 0}
-              onCheckedChange={() => onFilterChange("categories", [])}
-            >
-              {t("filters.allCategories")}
-            </DropdownMenuCheckboxItem>
-            {categories.map((category) => {
-              const categoryKey = getCategoryKey(category);
-              const isSelected = (filters.categories || []).includes(category);
-              return (
-                <DropdownMenuCheckboxItem
-                  key={category}
-                  checked={isSelected}
-                  onCheckedChange={() => handleCategoryToggle(category)}
-                  onSelect={(e) => e.preventDefault()}
-                >
-                  {t(`category.${categoryKey}`, category)}
-                </DropdownMenuCheckboxItem>
-              );
-            })}
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <DropdownMenu>
-          <DropdownMenuTrigger className="flex h-8 w-full items-center justify-between rounded-md border border-border/50 bg-background/50 px-3 py-1 text-sm ring-offset-background placeholder:text-muted-foreground hover:border-primary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
-            <span className="truncate">{getChannelDisplayText()}</span>
-            <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            align="start"
-            className="w-48 max-h-64 overflow-y-auto"
-          >
-            <DropdownMenuCheckboxItem
-              checked={(filters.channels || []).length === 0}
-              onCheckedChange={() => onFilterChange("channels", [])}
-            >
-              {t("filters.allChannels")}
-            </DropdownMenuCheckboxItem>
-            {channels.map((channel) => {
-              const isSelected = (filters.channels || []).includes(channel);
-              return (
-                <DropdownMenuCheckboxItem
-                  key={channel}
-                  checked={isSelected}
-                  onCheckedChange={() => handleChannelToggle(channel)}
-                  onSelect={(e) => e.preventDefault()}
-                >
-                  {channel}
-                </DropdownMenuCheckboxItem>
-              );
-            })}
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <DropdownMenu>
-          <DropdownMenuTrigger className="flex h-8 w-full items-center justify-between rounded-md border border-border/50 bg-background/50 px-3 py-1 text-sm ring-offset-background placeholder:text-muted-foreground hover:border-primary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
-            <span className="truncate">{getDurationDisplayText()}</span>
-            <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="start" className="w-48">
-            <DropdownMenuCheckboxItem
-              checked={(filters.durationBands || []).length === 0}
-              onCheckedChange={() => onFilterChange("durationBands", [])}
-            >
-              {t("filters.allDurations")}
-            </DropdownMenuCheckboxItem>
-            {durationOptions.map((band) => {
-              const displayLabel = formatDurationLabel(
-                band.label,
-                i18n.language,
-              );
-              const isSelected = (filters.durationBands || []).includes(
-                band.label,
-              );
-              return (
-                <DropdownMenuCheckboxItem
-                  key={band.label}
-                  checked={isSelected}
-                  onCheckedChange={() => handleDurationToggle(band.label)}
-                  onSelect={(e) => e.preventDefault()}
-                >
-                  {displayLabel}
-                </DropdownMenuCheckboxItem>
-              );
-            })}
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <DropdownMenu>
-          <DropdownMenuTrigger className="flex h-8 w-full items-center justify-between rounded-md border border-border/50 bg-background/50 px-3 py-1 text-sm ring-offset-background placeholder:text-muted-foreground hover:border-primary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
-            <span className="truncate">{getYearDisplayText()}</span>
-            <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            align="start"
-            className="w-48 max-h-64 overflow-y-auto"
-          >
-            <DropdownMenuCheckboxItem
-              checked={(filters.years || []).length === 0}
-              onCheckedChange={() => onFilterChange("years", [])}
-            >
-              {t("filters.allYears")}
-            </DropdownMenuCheckboxItem>
-            {YEARS.map((year) => {
-              const isSelected = (filters.years || []).includes(year);
-              return (
-                <DropdownMenuCheckboxItem
-                  key={year}
-                  checked={isSelected}
-                  onCheckedChange={() => handleYearToggle(year)}
-                  onSelect={(e) => e.preventDefault()}
-                >
-                  {year}
-                </DropdownMenuCheckboxItem>
-              );
-            })}
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <label className="flex items-center gap-2 px-3 py-1 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors whitespace-nowrap rounded-md border border-border/60 hover:border-border cursor-pointer select-none h-8 lg:hidden">
-          <input
-            type="checkbox"
-            checked={filters.freeOnly}
-            onChange={(e) => onFilterChange("freeOnly", e.target.checked)}
-            className="h-4 w-4 rounded border-border accent-primary"
+    <div className="bg-hero shadow-[0_8px_24px_-12px_hsl(0_0%_0%/0.45)]">
+      <div className="sticky top-0 z-30 bg-hero pt-[env(safe-area-inset-top)]">
+        <Header>
+          <SearchBar
+            query={query}
+            onQueryChange={setQuery}
+            tokens={searchBarTokens}
+            suggestions={suggestions}
+            onSelectSuggestion={applySuggestion}
+            onSubmitQuery={addSearchToken}
+            onResetFilters={onResetFilters}
+            canReset={hasActiveFilters}
           />
-          <span>{t("filters.freeOnly")}</span>
-        </label>
+        </Header>
       </div>
-      {/* Text Search and Reset Filter */}
-      <div className="mt-2">
-        <div className="flex gap-2">
-          <Input
-            placeholder={t("filters.searchPlaceholder")}
-            value={filters.titleSearch}
-            onChange={(e) => onFilterChange("titleSearch", e.target.value)}
-            className="bg-background/50 border-border/50 hover:border-primary/30 transition-colors flex-1 h-8"
-            inputMode="search"
-            autoComplete="off"
-            autoCorrect="off"
-            autoCapitalize="off"
-            spellCheck="false"
-          />
-          <label className="hidden lg:flex items-center gap-2 px-3 py-1 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors whitespace-nowrap rounded-md border border-border/60 hover:border-border cursor-pointer select-none h-8">
-            <input
-              type="checkbox"
-              checked={filters.freeOnly}
-              onChange={(e) => onFilterChange("freeOnly", e.target.checked)}
-              className="h-4 w-4 rounded border-border accent-primary"
-            />
-            <span>{t("filters.freeOnly")}</span>
-          </label>
-          <button
-            type="button"
-            onClick={onResetFilters}
-            className="flex items-center gap-1.5 px-3 py-1 text-xs font-medium text-foreground/70 hover:text-foreground hover:bg-muted/40 transition-colors whitespace-nowrap rounded-md border border-border/60 hover:border-border h-8"
-            title={t("filters.reset")}
+
+      <div className="mx-auto max-w-6xl space-y-2 px-4 py-3">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 sm:flex-nowrap sm:overflow-x-auto [scrollbar-width:thin]">
+          <FilterGroup label={t("filters.language")} icon={Globe}>
+            {languageOptions.map((option) => (
+              <FilterChip
+                key={option.value}
+                selected={filters.languages.includes(option.value)}
+                onClick={() =>
+                  onFilterChange(
+                    "languages",
+                    toggleValue(filters.languages, option.value),
+                  )
+                }
+              >
+                {option.label}
+              </FilterChip>
+            ))}
+          </FilterGroup>
+          <div className="max-sm:order-last max-sm:w-full">
+            <FilterGroup label={t("filters.category")} icon={Clapperboard}>
+              {categories.map((category) => (
+                <FilterChip
+                  key={category}
+                  selected={filters.categories.includes(category)}
+                  onClick={() =>
+                    onFilterChange(
+                      "categories",
+                      toggleValue(filters.categories, category),
+                    )
+                  }
+                >
+                  {t(`category.${category.toLowerCase()}`, category)}
+                </FilterChip>
+              ))}
+            </FilterGroup>
+          </div>
+          <FilterChip
+            selected={filters.freeOnly}
+            onClick={() => onFilterChange("freeOnly", !filters.freeOnly)}
           >
-            <RefreshCw className="h-3.5 w-3.5" />
-            <span>{t("filters.reset")}</span>
-          </button>
+            {t("filters.freeOnly")}
+          </FilterChip>
         </div>
+
+        <FilterGroup label={t("filters.duration")} icon={Clock} fill>
+          {DURATION_BANDS.map((band) => (
+            <FilterChip
+              key={band.label}
+              selected={filters.durationBands.includes(band.label)}
+              onClick={() =>
+                onFilterChange(
+                  "durationBands",
+                  toggleValue(filters.durationBands, band.label),
+                )
+              }
+            >
+              {formatDurationLabel(band.label, i18n.language)}
+            </FilterChip>
+          ))}
+        </FilterGroup>
+
+        <FilterGroup label={t("filters.channel")} icon={Tv} fill>
+          {channels.map((channel) => (
+            <FilterChip
+              key={channel}
+              selected={filters.channels.includes(channel)}
+              onClick={() =>
+                onFilterChange(
+                  "channels",
+                  toggleValue(filters.channels, channel),
+                )
+              }
+            >
+              {formatChannelLabel(channel)}
+            </FilterChip>
+          ))}
+        </FilterGroup>
+
+        <FilterGroup label={t("filters.year")} icon={Calendar} fill>
+          {YEARS.map((year) => (
+            <FilterChip
+              key={year}
+              selected={filters.years.includes(year)}
+              onClick={() =>
+                onFilterChange("years", toggleValue(filters.years, year))
+              }
+            >
+              {year}
+            </FilterChip>
+          ))}
+        </FilterGroup>
       </div>
     </div>
   );

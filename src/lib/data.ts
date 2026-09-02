@@ -205,7 +205,7 @@ async function loadAllMedia(): Promise<MediaResult[]> {
                 timestamp,
                 category: media.Category || "Video",
                 channel: media.ContentSource || "",
-                tags: media.Tags ?? undefined,
+                tags: (media.Tags ?? []).map((tag) => tag.toLowerCase()),
               };
             })
             .sort(compareMedia)
@@ -229,6 +229,7 @@ async function loadAllMedia(): Promise<MediaResult[]> {
 
   return cachePromise;
 }
+
 export async function searchMedia(
   filters: SearchFilters,
 ): Promise<MediaResult[]> {
@@ -236,61 +237,77 @@ export async function searchMedia(
   return filterMedia(allMedia, filters);
 }
 
-export async function getUniqueCategories(): Promise<string[]> {
-  const allMedia = await loadAllMedia();
-  const categories = new Set<string>();
-  allMedia.forEach((media) => {
-    if (media.category) {
-      categories.add(media.category);
-    }
-  });
-  return Array.from(categories).sort();
+function sortedByCount(counts: Map<string, number>): string[] {
+  return [...counts.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .map(([key]) => key);
 }
 
-export async function getUniqueChannels(): Promise<string[]> {
+export async function getFilterOptions(): Promise<{
+  categories: string[];
+  channels: string[];
+  tags: string[];
+}> {
   const allMedia = await loadAllMedia();
-  const channels = new Set<string>();
-  allMedia.forEach((media) => {
+  const categoryCounts = new Map<string, number>();
+  const channelCounts = new Map<string, number>();
+  const tagCounts = new Map<string, number>();
+
+  for (const media of allMedia) {
+    const category = media.category || "Video";
+    categoryCounts.set(category, (categoryCounts.get(category) ?? 0) + 1);
     if (media.channel) {
-      channels.add(media.channel);
+      channelCounts.set(
+        media.channel,
+        (channelCounts.get(media.channel) ?? 0) + 1,
+      );
     }
-  });
-  return Array.from(channels).sort();
+    for (const tag of media.tags ?? []) {
+      if (tag) {
+        tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+      }
+    }
+  }
+
+  return {
+    categories: sortedByCount(categoryCounts),
+    channels: sortedByCount(channelCounts),
+    tags: sortedByCount(tagCounts),
+  };
 }
 
 export function filterMedia(
   media: MediaResult[],
   filters: SearchFilters,
 ): MediaResult[] {
-  return media.filter((media) => {
-    if (filters.language) {
-      const mediaLang = media.language;
-      const filterLang = filters.language === "hindi" ? "hi" : "en";
-      if (mediaLang !== filterLang) {
+  return media.filter((item) => {
+    if (filters.languages.length === 1) {
+      const filterLang = filters.languages[0] === "hindi" ? "hi" : "en";
+      if (item.language !== filterLang) {
         return false;
       }
     }
 
-    if (filters.categories && filters.categories.length > 0) {
-      if (!filters.categories.includes(media.category || "Video")) {
+    if (filters.categories.length > 0) {
+      if (!filters.categories.includes(item.category || "Video")) {
         return false;
       }
     }
 
-    if (filters.channels && filters.channels.length > 0) {
-      if (!media.channel || !filters.channels.includes(media.channel)) {
+    if (filters.channels.length > 0) {
+      if (!item.channel || !filters.channels.includes(item.channel)) {
         return false;
       }
     }
 
-    if (filters.years && filters.years.length > 0) {
-      if (!filters.years.includes(String(media.publishedYear))) {
+    if (filters.years.length > 0) {
+      if (!filters.years.includes(String(item.publishedYear))) {
         return false;
       }
     }
 
-    if (filters.durationBands && filters.durationBands.length > 0) {
-      const duration = media.duration || 0;
+    if (filters.durationBands.length > 0) {
+      const duration = item.duration || 0;
       const matchesAnyBand = filters.durationBands.some((bandLabel) => {
         const band = DURATION_BANDS.find((b) => b.label === bandLabel);
         if (!band) return false;
@@ -301,12 +318,12 @@ export function filterMedia(
       if (!matchesAnyBand) return false;
     }
 
-    if (filters.freeOnly && media.loginRequired) {
+    if (filters.freeOnly && item.loginRequired) {
       return false;
     }
 
     if (filters.titleSearch) {
-      if (!mediaMatchesSearch(media.tags, filters.titleSearch)) {
+      if (!mediaMatchesSearch(item.tags, filters.titleSearch)) {
         return false;
       }
     }
@@ -315,7 +332,10 @@ export function filterMedia(
   });
 }
 
-function mediaMatchesSearch(tags: string[] | undefined, query: string): boolean {
+function mediaMatchesSearch(
+  tags: string[] | undefined,
+  query: string,
+): boolean {
   const tokens = query
     .trim()
     .toLowerCase()
@@ -327,25 +347,25 @@ function mediaMatchesSearch(tags: string[] | undefined, query: string): boolean 
   if (!tags?.length) {
     return false;
   }
-  const normalizedTags = tags.map((tag) => tag.toLowerCase());
   return tokens.every((token) =>
-    normalizedTags.some((tag) => tokenMatchesTag(token, tag)),
+    tags.some((tag) => tokenMatchesTag(token, tag)),
   );
 }
 
 function tokenMatchesTag(token: string, tag: string): boolean {
-  if (tag.includes(token)) {
+  const normalizedTag = tag.toLowerCase();
+  if (normalizedTag.includes(token)) {
     return true;
   }
-  if (isPrefixStem(token, tag)) {
+  if (isPrefixStem(token, normalizedTag)) {
     return true;
   }
-  for (const word of tag.split(/\s+/).filter(Boolean)) {
+  for (const word of normalizedTag.split(/\s+/).filter(Boolean)) {
     if (word.includes(token) || isPrefixStem(token, word)) {
       return true;
     }
     const allowed = maxEditDistance(Math.min(token.length, word.length));
-    if (allowed > 0 && levenshtein(token, word) <= allowed) {
+    if (allowed > 0 && levenshteinAtMost(token, word, allowed)) {
       return true;
     }
   }
@@ -362,23 +382,28 @@ function maxEditDistance(len: number): number {
   return 0;
 }
 
-function levenshtein(a: string, b: string): number {
-  if (a === b) return 0;
-  if (a.length === 0) return b.length;
-  if (b.length === 0) return a.length;
+function levenshteinAtMost(a: string, b: string, max: number): boolean {
+  if (a === b) return true;
+  const lengthDiff = Math.abs(a.length - b.length);
+  if (lengthDiff > max) return false;
 
   const prev = Array.from({ length: b.length + 1 }, (_, i) => i);
   for (let i = 1; i <= a.length; i++) {
     let prevDiag = prev[0];
     prev[0] = i;
+    let rowMin = prev[0];
     for (let j = 1; j <= b.length; j++) {
-      const sub = prevDiag + (a[i - 1] === b[j - 1] ? 0 : 1);
+      const sub =
+        prevDiag + (a.charCodeAt(i - 1) === b.charCodeAt(j - 1) ? 0 : 1);
       prevDiag = prev[j];
       prev[j] = Math.min(prev[j] + 1, prev[j - 1] + 1, sub);
+      if (prev[j] < rowMin) rowMin = prev[j];
     }
+    if (rowMin > max) return false;
   }
-  return prev[b.length];
+  return prev[b.length] <= max;
 }
+
 function normalizeLanguageCode(langCode?: string): "en" | "hi" {
   if (!langCode) return "en";
   const lang = langCode.split("-")[0].toLowerCase();
