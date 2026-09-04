@@ -1,13 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { RefreshCw, ChevronDown } from "lucide-react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
+import { FilterPill } from "@/components/ui/filter-pill";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -16,7 +10,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { SearchFilters, DURATION_BANDS, YEARS, Language } from "@/lib/types";
 import { useState, useEffect } from "react";
-import { getUniqueCategories, getUniqueChannels } from "@/lib/data";
+import { getUniqueCategories } from "@/lib/data";
+import { HIDDEN_CATEGORIES } from "@/lib/constants";
 const formatDurationLabel = (label: string, language: string): string => {
   if (label === "Any Duration") return label;
 
@@ -45,6 +40,31 @@ const formatDurationLabel = (label: string, language: string): string => {
 
   return label; // Return original for English or if no match
 };
+
+const DROPDOWN_TRIGGER_CLASS =
+  "flex h-8 w-full lg:w-44 items-center justify-between rounded-md border border-border/50 bg-background/50 px-3 py-1 text-sm ring-offset-background placeholder:text-muted-foreground hover:border-primary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50";
+
+/** One width for every filter pill, so no group's pills look bigger than
+ *  another's. Wide enough for the longest label ("English") at text-sm. */
+const PILL_CLASS = "w-24 sm:w-28";
+
+/** Divider between filter groups. Deliberately stronger than `border` so the
+ *  grouping reads at a glance against the translucent filter card. */
+function FilterSeparator({ className = "" }: { className?: string }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`h-7 w-px shrink-0 self-center bg-foreground/25 ${className}`}
+    />
+  );
+}
+
+// No "All" pill: clicking the active language clears it back to all.
+const LANGUAGE_OPTIONS: { value: Language; labelKey: string }[] = [
+  { value: "english", labelKey: "language.english" },
+  { value: "hindi", labelKey: "language.hindi" },
+];
+
 interface FilterPanelProps {
   filters: SearchFilters;
   onFilterChange: (
@@ -60,16 +80,11 @@ export function FilterPanel({
 }: FilterPanelProps) {
   const { t, i18n } = useTranslation();
   const [categories, setCategories] = useState<string[]>([]);
-  const [channels, setChannels] = useState<string[]>([]);
 
   useEffect(() => {
     const loadFilterOptions = async () => {
-      const [uniqueCategories, uniqueChannels] = await Promise.all([
-        getUniqueCategories(),
-        getUniqueChannels(),
-      ]);
-      setCategories(uniqueCategories);
-      setChannels(uniqueChannels);
+      const unique = await getUniqueCategories();
+      setCategories(unique.filter((c) => !HIDDEN_CATEGORIES.includes(c)));
     };
 
     loadFilterOptions();
@@ -92,19 +107,15 @@ export function FilterPanel({
       : [...current, year];
     onFilterChange("years", newValue);
   };
+  const handleLanguageToggle = (value: Language) => {
+    onFilterChange("language", filters.language === value ? "" : value);
+  };
   const handleCategoryToggle = (category: string) => {
     const current = filters.categories || [];
     const newValue = current.includes(category)
       ? current.filter((c) => c !== category)
       : [...current, category];
     onFilterChange("categories", newValue);
-  };
-  const handleChannelToggle = (channel: string) => {
-    const current = filters.channels || [];
-    const newValue = current.includes(channel)
-      ? current.filter((c) => c !== channel)
-      : [...current, channel];
-    onFilterChange("channels", newValue);
   };
   const getDurationDisplayText = () => {
     const selected = filters.durationBands || [];
@@ -123,207 +134,141 @@ export function FilterPanel({
     return category.toLowerCase();
   };
 
-  const getCategoryDisplayText = () => {
-    const selected = filters.categories || [];
-    if (selected.length === 0) return t("filters.allCategories");
-    if (selected.length === 1) {
-      const categoryKey = getCategoryKey(selected[0]);
-      return t(`category.${categoryKey}`);
-    }
-    return `${selected.length} ${t("filters.selected")}`;
-  };
+  const selectedCategories = filters.categories || [];
 
-  const getChannelDisplayText = () => {
-    const selected = filters.channels || [];
-    if (selected.length === 0) return t("filters.allChannels");
-    if (selected.length === 1) return selected[0];
-    return `${selected.length} ${t("filters.selected")}`;
-  };
   return (
-    <div className="w-full bg-card/80 backdrop-blur-sm rounded-xl p-3 shadow-soft border border-border/50 animate-fade-in">
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1.5">
-        <Select
-          value={filters.language || "all"}
-          onValueChange={(value) =>
-            onFilterChange(
-              "language",
-              value === "all" ? "" : (value as Language),
-            )
-          }
-        >
-          <SelectTrigger className="bg-background/50 border-border/50 hover:border-primary/30 transition-colors h-8">
-            <SelectValue placeholder={t("filters.language")} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">{t("filters.allLanguages")}</SelectItem>
-            <SelectItem value="english">{t("language.english")}</SelectItem>
-            <SelectItem value="hindi">{t("language.hindi")}</SelectItem>
-          </SelectContent>
-        </Select>
-        <DropdownMenu>
-          <DropdownMenuTrigger className="flex h-8 w-full items-center justify-between rounded-md border border-border/50 bg-background/50 px-3 py-1 text-sm ring-offset-background placeholder:text-muted-foreground hover:border-primary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
-            <span className="truncate">{getCategoryDisplayText()}</span>
-            <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="start" className="w-48">
-            <DropdownMenuCheckboxItem
-              checked={(filters.categories || []).length === 0}
-              onCheckedChange={() => onFilterChange("categories", [])}
+    <div className="w-full bg-card/80 backdrop-blur-sm rounded-xl p-3 shadow-soft border border-border/50 animate-fade-in space-y-2">
+      {/* Dropdowns and pills stack on small screens and share a single line
+          from lg up, where there is room for both. */}
+      <div className="flex flex-col items-center gap-2 lg:flex-row lg:justify-center lg:gap-3">
+        {/* Dropdown filters: Duration and Year. Full width on phones, but capped
+            from md up so they don't stretch into oversized bars on a laptop. */}
+        <div className="grid w-full grid-cols-2 gap-2 md:w-auto md:max-w-md lg:flex lg:max-w-none lg:shrink-0">
+          <DropdownMenu>
+            <DropdownMenuTrigger className={DROPDOWN_TRIGGER_CLASS}>
+              <span className="truncate">{getDurationDisplayText()}</span>
+              <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-48">
+              <DropdownMenuCheckboxItem
+                checked={(filters.durationBands || []).length === 0}
+                onCheckedChange={() => onFilterChange("durationBands", [])}
+              >
+                {t("filters.allDurations")}
+              </DropdownMenuCheckboxItem>
+              {durationOptions.map((band) => {
+                const displayLabel = formatDurationLabel(
+                  band.label,
+                  i18n.language,
+                );
+                const isSelected = (filters.durationBands || []).includes(
+                  band.label,
+                );
+                return (
+                  <DropdownMenuCheckboxItem
+                    key={band.label}
+                    checked={isSelected}
+                    onCheckedChange={() => handleDurationToggle(band.label)}
+                    onSelect={(e) => e.preventDefault()}
+                  >
+                    {displayLabel}
+                  </DropdownMenuCheckboxItem>
+                );
+              })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <DropdownMenu>
+            <DropdownMenuTrigger className={DROPDOWN_TRIGGER_CLASS}>
+              <span className="truncate">{getYearDisplayText()}</span>
+              <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              align="start"
+              className="w-48 max-h-64 overflow-y-auto"
             >
-              {t("filters.allCategories")}
-            </DropdownMenuCheckboxItem>
-            {categories.map((category) => {
-              const categoryKey = getCategoryKey(category);
-              const isSelected = (filters.categories || []).includes(category);
-              return (
-                <DropdownMenuCheckboxItem
-                  key={category}
-                  checked={isSelected}
-                  onCheckedChange={() => handleCategoryToggle(category)}
-                  onSelect={(e) => e.preventDefault()}
-                >
-                  {t(`category.${categoryKey}`, category)}
-                </DropdownMenuCheckboxItem>
-              );
-            })}
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <DropdownMenu>
-          <DropdownMenuTrigger className="flex h-8 w-full items-center justify-between rounded-md border border-border/50 bg-background/50 px-3 py-1 text-sm ring-offset-background placeholder:text-muted-foreground hover:border-primary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
-            <span className="truncate">{getChannelDisplayText()}</span>
-            <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            align="start"
-            className="w-48 max-h-64 overflow-y-auto"
-          >
-            <DropdownMenuCheckboxItem
-              checked={(filters.channels || []).length === 0}
-              onCheckedChange={() => onFilterChange("channels", [])}
-            >
-              {t("filters.allChannels")}
-            </DropdownMenuCheckboxItem>
-            {channels.map((channel) => {
-              const isSelected = (filters.channels || []).includes(channel);
-              return (
-                <DropdownMenuCheckboxItem
-                  key={channel}
-                  checked={isSelected}
-                  onCheckedChange={() => handleChannelToggle(channel)}
-                  onSelect={(e) => e.preventDefault()}
-                >
-                  {channel}
-                </DropdownMenuCheckboxItem>
-              );
-            })}
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <DropdownMenu>
-          <DropdownMenuTrigger className="flex h-8 w-full items-center justify-between rounded-md border border-border/50 bg-background/50 px-3 py-1 text-sm ring-offset-background placeholder:text-muted-foreground hover:border-primary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
-            <span className="truncate">{getDurationDisplayText()}</span>
-            <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="start" className="w-48">
-            <DropdownMenuCheckboxItem
-              checked={(filters.durationBands || []).length === 0}
-              onCheckedChange={() => onFilterChange("durationBands", [])}
-            >
-              {t("filters.allDurations")}
-            </DropdownMenuCheckboxItem>
-            {durationOptions.map((band) => {
-              const displayLabel = formatDurationLabel(
-                band.label,
-                i18n.language,
-              );
-              const isSelected = (filters.durationBands || []).includes(
-                band.label,
-              );
-              return (
-                <DropdownMenuCheckboxItem
-                  key={band.label}
-                  checked={isSelected}
-                  onCheckedChange={() => handleDurationToggle(band.label)}
-                  onSelect={(e) => e.preventDefault()}
-                >
-                  {displayLabel}
-                </DropdownMenuCheckboxItem>
-              );
-            })}
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <DropdownMenu>
-          <DropdownMenuTrigger className="flex h-8 w-full items-center justify-between rounded-md border border-border/50 bg-background/50 px-3 py-1 text-sm ring-offset-background placeholder:text-muted-foreground hover:border-primary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
-            <span className="truncate">{getYearDisplayText()}</span>
-            <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            align="start"
-            className="w-48 max-h-64 overflow-y-auto"
-          >
-            <DropdownMenuCheckboxItem
-              checked={(filters.years || []).length === 0}
-              onCheckedChange={() => onFilterChange("years", [])}
-            >
-              {t("filters.allYears")}
-            </DropdownMenuCheckboxItem>
-            {YEARS.map((year) => {
-              const isSelected = (filters.years || []).includes(year);
-              return (
-                <DropdownMenuCheckboxItem
-                  key={year}
-                  checked={isSelected}
-                  onCheckedChange={() => handleYearToggle(year)}
-                  onSelect={(e) => e.preventDefault()}
-                >
-                  {year}
-                </DropdownMenuCheckboxItem>
-              );
-            })}
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <label className="flex items-center gap-2 px-3 py-1 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors whitespace-nowrap rounded-md border border-border/60 hover:border-border cursor-pointer select-none h-8 lg:hidden">
-          <input
-            type="checkbox"
-            checked={filters.freeOnly}
-            onChange={(e) => onFilterChange("freeOnly", e.target.checked)}
-            className="h-4 w-4 rounded border-border accent-primary"
-          />
-          <span>{t("filters.freeOnly")}</span>
-        </label>
-      </div>
-      {/* Text Search and Reset Filter */}
-      <div className="mt-2">
-        <div className="flex gap-2">
-          <Input
-            placeholder={t("filters.searchPlaceholder")}
-            value={filters.titleSearch}
-            onChange={(e) => onFilterChange("titleSearch", e.target.value)}
-            className="bg-background/50 border-border/50 hover:border-primary/30 transition-colors flex-1 h-8"
-            inputMode="search"
-            autoComplete="off"
-            autoCorrect="off"
-            autoCapitalize="off"
-            spellCheck="false"
-          />
-          <label className="hidden lg:flex items-center gap-2 px-3 py-1 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors whitespace-nowrap rounded-md border border-border/60 hover:border-border cursor-pointer select-none h-8">
-            <input
-              type="checkbox"
-              checked={filters.freeOnly}
-              onChange={(e) => onFilterChange("freeOnly", e.target.checked)}
-              className="h-4 w-4 rounded border-border accent-primary"
-            />
-            <span>{t("filters.freeOnly")}</span>
-          </label>
-          <button
-            type="button"
-            onClick={onResetFilters}
-            className="flex items-center gap-1.5 px-3 py-1 text-xs font-medium text-foreground/70 hover:text-foreground hover:bg-muted/40 transition-colors whitespace-nowrap rounded-md border border-border/60 hover:border-border h-8"
-            title={t("filters.reset")}
-          >
-            <RefreshCw className="h-3.5 w-3.5" />
-            <span>{t("filters.reset")}</span>
-          </button>
+              <DropdownMenuCheckboxItem
+                checked={(filters.years || []).length === 0}
+                onCheckedChange={() => onFilterChange("years", [])}
+              >
+                {t("filters.allYears")}
+              </DropdownMenuCheckboxItem>
+              {YEARS.map((year) => {
+                const isSelected = (filters.years || []).includes(year);
+                return (
+                  <DropdownMenuCheckboxItem
+                    key={year}
+                    checked={isSelected}
+                    onCheckedChange={() => handleYearToggle(year)}
+                    onSelect={(e) => e.preventDefault()}
+                  >
+                    {year}
+                  </DropdownMenuCheckboxItem>
+                );
+              })}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
+
+        <FilterSeparator className="hidden lg:block" />
+
+        {/* Pill filters: Language, then Category, then Free. Every pill gets
+            the same fixed width so the groups stay visually uniform however
+            many options each one happens to have. */}
+        <div className="flex flex-wrap items-center justify-center gap-1.5">
+          {LANGUAGE_OPTIONS.map((option) => (
+            <FilterPill
+              key={option.value}
+              className={PILL_CLASS}
+              selected={filters.language === option.value}
+              onClick={() => handleLanguageToggle(option.value)}
+            >
+              {t(option.labelKey)}
+            </FilterPill>
+          ))}
+          <FilterSeparator className="hidden sm:block" />
+          {categories.map((category) => (
+            <FilterPill
+              key={category}
+              className={PILL_CLASS}
+              selected={selectedCategories.includes(category)}
+              onClick={() => handleCategoryToggle(category)}
+            >
+              {t(`category.${getCategoryKey(category)}`, category)}
+            </FilterPill>
+          ))}
+          <FilterSeparator className="hidden sm:block" />
+          <FilterPill
+            className={PILL_CLASS}
+            selected={filters.freeOnly}
+            onClick={() => onFilterChange("freeOnly", !filters.freeOnly)}
+          >
+            {t("filters.freeOnly")}
+          </FilterPill>
+        </div>
+      </div>
+
+      {/* Text Search and Reset Filter */}
+      <div className="flex gap-2">
+        <Input
+          placeholder={t("filters.searchPlaceholder")}
+          value={filters.titleSearch}
+          onChange={(e) => onFilterChange("titleSearch", e.target.value)}
+          className="bg-background/50 border-border/50 hover:border-primary/30 transition-colors flex-1 h-8"
+          inputMode="search"
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck="false"
+        />
+        <button
+          type="button"
+          onClick={onResetFilters}
+          className="flex items-center gap-1.5 px-3 py-1 text-xs font-medium text-foreground/70 hover:text-foreground hover:bg-muted/40 transition-colors whitespace-nowrap rounded-md border border-border/60 hover:border-border h-8"
+          title={t("filters.reset")}
+        >
+          <RefreshCw className="h-3.5 w-3.5" />
+          <span className="hidden sm:inline">{t("filters.reset")}</span>
+        </button>
       </div>
     </div>
   );

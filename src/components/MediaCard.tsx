@@ -161,8 +161,8 @@ export const MediaCard = memo(function MediaCard({
   return (
     <div
       onClick={handleClick}
-      className={`group bg-card rounded-xl overflow-hidden shadow-soft border border-border hover:shadow-card hover:border-primary/30 transition-all duration-300 cursor-pointer animate-slide-up`}
-      style={{ animationDelay: `${index * 100}ms` }}
+      className={`group w-full h-full bg-card rounded-xl overflow-hidden shadow-soft border border-border hover:shadow-card hover:border-primary/30 transition-all duration-300 cursor-pointer animate-slide-up`}
+      style={{ animationDelay: `${Math.min(index, 5) * 60}ms` }}
     >
       {/* Thumbnail */}
       <div className="relative aspect-video overflow-hidden">
@@ -206,27 +206,16 @@ export const MediaCard = memo(function MediaCard({
             {formatDuration(media.duration, currentLanguage)}
           </div>
         )}
-        {/* Source Badge */}
-        <Badge
-          variant="secondary"
-          className={`absolute top-2 left-3 text-xs font-medium ${
-            media.channel?.includes("YouTube")
-              ? "bg-red-600 hover:bg-red-700 text-white"
-              : media.channel?.includes("Spotify")
-                ? "bg-green-600 hover:bg-green-700 text-white"
-                : media.channel?.includes("Intelligent Existence")
-                  ? "bg-gray-800 hover:bg-gray-900 text-white"
-                  : "bg-amber-600 hover:bg-amber-700 text-white"
-          }`}
-        >
-          {media.channel?.includes("YouTube")
-            ? t("mediaCard.youtube")
-            : media.channel?.includes("Spotify")
-              ? t("mediaCard.spotify")
-              : media.channel?.includes("Intelligent Existence")
-                ? t("mediaCard.intelligentExistence")
-                : t("mediaCard.timelessToday")}
-        </Badge>
+        {media.audioOnly && (
+          <Badge
+            variant="secondary"
+            className="absolute bottom-3 left-3 bg-pink-500 hover:bg-pink-600 text-white text-xs h-5 px-1.5 sm:px-2"
+          >
+            <Headphones className="h-2.5 w-2.5 sm:mr-1" />
+            {/* Icon only on phones, where the label crowds the thumbnail. */}
+            <span className="hidden sm:inline">Audio only</span>
+          </Badge>
+        )}
         {/* Badge - Show Upcoming if applicable, otherwise show New if applicable */}
         {isUpcoming && (
           <Badge
@@ -248,34 +237,26 @@ export const MediaCard = memo(function MediaCard({
         )}
       </div>
       {/* Content */}
-      <div className="px-3 pt-1 pb-1 flex flex-col h-[90px]">
-        <div className="flex-grow">
-          <h3 className="font-heading text-xl font-semibold text-foreground line-clamp-2 group-hover:text-primary transition-colors duration-200">
+      <div className="px-3 pt-1.5 pb-1.5 flex flex-col h-[72px] sm:h-[80px] md:h-[84px]">
+        <div className="flex-grow overflow-hidden">
+          <h3 className="font-heading text-sm sm:text-base md:text-lg font-semibold leading-snug text-foreground line-clamp-2 group-hover:text-primary transition-colors duration-200">
             {media.title}
           </h3>
         </div>
         {/* Meta Info */}
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5">
+        <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
+          <div className="flex min-w-0 items-center gap-2">
+            <span className="flex items-center gap-1.5 whitespace-nowrap">
               <Calendar className="h-3.5 w-3.5 flex-shrink-0" />
               {formatDate(mediaDate, hasDay)}
             </span>
-            <span className="flex items-center gap-1 capitalize">
-              <Globe className="h-3.5 w-3.5" />
+            {/* Cards are ~165px wide on phones, so the language only fits from sm up. */}
+            <span className="hidden sm:flex items-center gap-1 capitalize truncate">
+              <Globe className="h-3.5 w-3.5 flex-shrink-0" />
               {formatLanguage(media.language)}
             </span>
           </div>
-          <div className="flex items-center gap-2">
-            {media.audioOnly && (
-              <Badge
-                variant="secondary"
-                className="bg-pink-500 hover:bg-pink-600 text-white text-xs h-5 px-2"
-              >
-                <Headphones className="h-2.5 w-2.5 mr-1" />
-                Audio only
-              </Badge>
-            )}
+          <div className="flex flex-shrink-0 items-center gap-2">
             <button
               onClick={handleShare}
               className="p-1.5 rounded-full bg-green-500 hover:bg-green-600 text-white transition-colors duration-200 ml-1 md:hidden"

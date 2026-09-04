@@ -1,14 +1,13 @@
-import { useState, useCallback, useEffect, useRef, useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import { useState, useCallback, useEffect, useMemo } from "react";
 
 import { Header } from "@/components/Header";
 import { FilterPanel } from "@/components/FilterPanel";
-import { MediaGrid } from "@/components/MediaGrid";
+import { MediaRows } from "@/components/MediaRows";
 
 import { searchMedia } from "@/lib/data";
 import { SearchFilters, MediaResult, DURATION_BANDS } from "@/lib/types";
 import { useToast } from "@/lib";
-import { UI_CONFIG } from "@/lib/constants";
+import { HIDDEN_CATEGORIES, UI_CONFIG } from "@/lib/constants";
 
 const initialFilters: SearchFilters = {
   language: "",
@@ -65,7 +64,15 @@ const getStoredFilters = (): SearchFilters => {
 
   try {
     const parsed = JSON.parse(stored);
-    return isValidSearchFilters(parsed) ? parsed : initialFilters;
+    if (!isValidSearchFilters(parsed)) return initialFilters;
+    // Drop categories that no longer have a pill, otherwise a previously
+    // selected one would stay applied with no way to switch it off.
+    return {
+      ...parsed,
+      categories: parsed.categories.filter(
+        (c) => !HIDDEN_CATEGORIES.includes(c),
+      ),
+    };
   } catch {
     return initialFilters;
   }
@@ -77,65 +84,41 @@ const Index = () => {
   const [filters, setFilters] = useState<SearchFilters>(getStoredFilters());
   const [allMedia, setAllMedia] = useState<MediaResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(UI_CONFIG.mediaPerLoad);
 
   const { toast } = useToast();
-  const { t } = useTranslation();
-  const performSearch = useCallback(
-    async (searchFilters: SearchFilters) => {
-      setIsLoading(true);
-      setVisibleCount(UI_CONFIG.mediaPerLoad);
 
-      try {
-        const results = await searchMedia(searchFilters);
-        setAllMedia(results);
-      } catch {
-        toast({
-          title: "Search failed",
-          description: "Unable to fetch results. Please try again.",
-          variant: "destructive",
-        });
-      } finally {
-        setIsLoading(false);
-      }
-    },
-    [toast],
+  // `channels` is deliberately excluded: it only narrows the YouTube rail, so
+  // applying it globally would empty the other rails. Keeping it out of this
+  // memo also stops a channel pill click from re-running the search and
+  // resetting every rail's scroll position.
+  const searchFilters = useMemo<SearchFilters>(
+    () => ({
+      language: filters.language,
+      categories: filters.categories,
+      years: filters.years,
+      durationBands: filters.durationBands,
+      titleSearch: filters.titleSearch,
+      freeOnly: filters.freeOnly,
+      channels: [],
+    }),
+    [
+      filters.language,
+      filters.categories,
+      filters.years,
+      filters.durationBands,
+      filters.titleSearch,
+      filters.freeOnly,
+    ],
   );
-  const displayedMedia = useMemo(
-    () => allMedia.slice(0, visibleCount),
-    [allMedia, visibleCount],
-  );
-  const loadMoreRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (
-          entries[0].isIntersecting &&
-          !isLoading &&
-          allMedia.length > visibleCount
-        ) {
-          setVisibleCount((prev) => prev + UI_CONFIG.mediaPerLoad);
-        }
-      },
-      { threshold: 0.1 },
-    );
-
-    if (loadMoreRef.current && allMedia.length > visibleCount) {
-      observer.observe(loadMoreRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [isLoading, allMedia.length, visibleCount]);
   useEffect(() => {
     const controller = new AbortController();
 
     const doSearch = async () => {
       setIsLoading(true);
-      setVisibleCount(UI_CONFIG.mediaPerLoad);
 
       try {
-        const results = await searchMedia(filters);
+        const results = await searchMedia(searchFilters);
         if (!controller.signal.aborted) {
           setAllMedia(results);
         }
@@ -157,7 +140,7 @@ const Index = () => {
     doSearch();
 
     return () => controller.abort();
-  }, [filters, toast]);
+  }, [searchFilters, toast]);
   const handleFilterChange = useCallback(
     (key: keyof SearchFilters, value: string | string[] | boolean) => {
       setFilters((prev) => {
@@ -169,15 +152,19 @@ const Index = () => {
     [],
   );
 
+  const handleChannelsChange = useCallback(
+    (channels: string[]) => handleFilterChange("channels", channels),
+    [handleFilterChange],
+  );
+
   const handleResetFilters = useCallback(() => {
     setFilters(initialFilters);
     storeFilters(initialFilters);
-    setVisibleCount(UI_CONFIG.mediaPerLoad);
   }, []);
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
-      <main className="flex-1 container max-w-6xl mx-auto px-4 py-4 md:py-8 space-y-3">
+      <main className="flex-1 container max-w-7xl mx-auto px-4 py-4 md:py-8 space-y-6">
         {/* Filters */}
         <div className="-mt-8 md:-mt-20 relative z-20">
           <FilterPanel
@@ -186,26 +173,17 @@ const Index = () => {
             onResetFilters={handleResetFilters}
           />
         </div>
-        {/* Results Header */}
-        <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
-          <h2 className="text-2xl font-semibold text-foreground">
-            {t("results.mediaCount", { count: allMedia.length })}
-          </h2>
-        </div>
-        {/* Media Grid */}
-        <div className="space-y-8">
-          <MediaGrid media={displayedMedia} isLoading={isLoading} />
-          {/* Infinite scroll trigger */}
-          {allMedia.length > displayedMedia.length && (
-            <div ref={loadMoreRef} className="flex justify-center py-8">
-              <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
-            </div>
-          )}
-        </div>
+        {/* Rails grouped by source */}
+        <MediaRows
+          media={allMedia}
+          isLoading={isLoading}
+          selectedChannels={filters.channels}
+          onChannelsChange={handleChannelsChange}
+        />
       </main>
       {/* Footer */}
       <footer className="py-1 mt-auto">
-        <div className="container max-w-6xl mx-auto px-4 text-center">
+        <div className="container max-w-7xl mx-auto px-4 text-center">
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} techforpeace.co.in
           </p>

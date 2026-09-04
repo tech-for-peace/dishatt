@@ -18,6 +18,12 @@
     "reset": "फ़िल्टर्स रीसेट करें",
     "freeOnly": "Free"
   },
+  "rows": {
+    "empty": "इन फ़िल्टर्स के लिए कुछ नहीं मिला",
+    "channelAll": "सभी चैनल",
+    "scrollLeft": "बाएँ स्क्रॉल करें",
+    "scrollRight": "दाएँ स्क्रॉल करें"
+  },
   "results": {
     "mediaCount_one": "{{count}} वीडियो मिला",
     "mediaCount_other": "{{count}} वीडियो मिले",
