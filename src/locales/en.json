@@ -18,6 +18,12 @@
     "reset": "Reset Filters",
     "freeOnly": "Free"
   },
+  "rows": {
+    "empty": "No matches for the current filters",
+    "channelAll": "All Channels",
+    "scrollLeft": "Scroll left",
+    "scrollRight": "Scroll right"
+  },
   "results": {
     "mediaCount_one": "{{count}} video found",
     "mediaCount_other": "{{count}} videos found",

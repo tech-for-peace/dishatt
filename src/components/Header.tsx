@@ -9,7 +9,7 @@ export function Header() {
       className={`bg-hero text-primary-foreground py-6 md:py-16 px-4 relative overflow-hidden`}
     >
       {/* Language switcher and dark mode toggle in top-right corner */}
-      <div className="absolute top-4 right-0 md:right-4 z-30 flex items-center gap-2">
+      <div className="absolute top-4 right-3 md:right-4 z-30 flex items-center gap-2">
         <LanguageSwitcher />
         <DarkModeToggle />
       </div>
@@ -24,7 +24,7 @@ export function Header() {
                          bg-primary-foreground/10 blur-3xl"
         />
       </div>
-      <div className="container max-w-4xl mx-auto text-center relative z-10 px-4">
+      <div className="container max-w-4xl mx-auto text-center relative z-10 px-16 md:px-4">
         <p
           className="text-sm md:text-lg text-primary-foreground/80 dark:text-white/90
                      mx-auto animate-slide-up
