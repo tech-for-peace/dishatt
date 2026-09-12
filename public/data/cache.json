@@ -848,6 +848,40 @@
         "shandaar"
       ]
     },
+    "046a0ab2-de62-4a5b-852e-d8e7bd15e088": {
+      "MediaID": "046a0ab2-de62-4a5b-852e-d8e7bd15e088",
+      "Name": "Drop (Amaroo 2026)",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Drop by Prem Rawat from the Amaroo 2026, 60th Anniversary Celebration Concerts. Part of Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "Duration": 384000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/141",
+      "PublishYear": 2026,
+      "PublishMonth": 9,
+      "PublishDay": 10,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Drop_1600_EN.jpg",
+      "AudioOnly": true,
+      "LoginRequired": false,
+      "Tags": [
+        "drop",
+        "छोड़ना",
+        "chhodna",
+        "drop amaroo 2026",
+        "ड्रॉप अमारू 2026",
+        "amaroo 2026",
+        "अमारू 2026",
+        "60th anniversary celebration concerts",
+        "60वीं वर्षगांठ के समारोह संगीत कार्यक्रम",
+        "60vin varshgaanth ke samaroh sangeet karyakram",
+        "gifts",
+        "उपहार",
+        "uphaar",
+        "song",
+        "गीत",
+        "geet"
+      ]
+    },
     "046b462b-80a9-45d5-8460-f2b5d26fe0b4": {
       "MediaID": "046b462b-80a9-45d5-8460-f2b5d26fe0b4",
       "Name": "The Most Powerful Friend",
@@ -974,6 +1008,39 @@
         "teacher-student relationship",
         "शिक्षक-छात्र संबंध",
         "shikshak-chhaatr sambandh"
+      ]
+    },
+    "04f9c45d-e953-4913-ac60-d528a0d3a055": {
+      "MediaID": "04f9c45d-e953-4913-ac60-d528a0d3a055",
+      "Name": "Tu Hai Sakhi (Amaroo 2026)",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Tu Ha Sakhi by Prem Rawat from the Amaroo 2026, 60th Anniversary Celebration Concerts. Part of Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "Duration": 384000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/142",
+      "PublishYear": 2026,
+      "PublishMonth": 9,
+      "PublishDay": 10,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Tu_Ha_Sakhi_1600_EN.jpg",
+      "AudioOnly": true,
+      "LoginRequired": false,
+      "Tags": [
+        "tu hai sakhi",
+        "तू है सखी",
+        "tu hai sakhi amaroo 2026",
+        "तू है सखी अमारू 2026",
+        "amaroo 2026",
+        "अमारू 2026",
+        "60th anniversary celebration concerts",
+        "60वीं वर्षगांठ के समारोह संगीत कार्यक्रम",
+        "60vin varshgaanth ke samaroh sangeet karyakram",
+        "gifts",
+        "उपहार",
+        "uphaar",
+        "song",
+        "गीत",
+        "geet"
       ]
     },
     "0536d85f-a4d7-4993-ae94-813f32d3ca31": {
@@ -3110,6 +3177,40 @@
         "positive memories",
         "सकारात्मक स्मृतियाँ",
         "sakaaraatmak smritiyaan"
+      ]
+    },
+    "0bc54444-ea4b-406c-aa75-2c795e80ec1f": {
+      "MediaID": "0bc54444-ea4b-406c-aa75-2c795e80ec1f",
+      "Name": "This Little Boat (Amaroo 2026)",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "This Little Boat by Prem Rawat from the Amaroo 2026, 60th Anniversary Celebration Concerts. Part of Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "Duration": 279000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/147",
+      "PublishYear": 2026,
+      "PublishMonth": 9,
+      "PublishDay": 10,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_This_Little_Boat_1600_EN.jpg",
+      "AudioOnly": true,
+      "LoginRequired": false,
+      "Tags": [
+        "this little boat",
+        "यह छोटी नाव",
+        "yah chhoti naav",
+        "this little boat amaroo 2026",
+        "दिस लिटल बोट अमारू 2026",
+        "amaroo 2026",
+        "अमारू 2026",
+        "60th anniversary celebration concerts",
+        "60वीं वर्षगांठ के समारोह संगीत कार्यक्रम",
+        "60vin varshgaanth ke samaroh sangeet karyakram",
+        "gifts",
+        "उपहार",
+        "uphaar",
+        "song",
+        "गीत",
+        "geet"
       ]
     },
     "0bd14b83-5b98-4a35-ace8-7a06810f3eb1": {
@@ -7229,7 +7330,7 @@
     },
     "1c0cc6b5-7179-4d99-86a3-c2b566b8ea49": {
       "MediaID": "1c0cc6b5-7179-4d99-86a3-c2b566b8ea49",
-      "Name": "When I Was Born NEW",
+      "Name": "When I Was Born",
       "Category": "Music",
       "ContentSource": "Timeless Today",
       "Description": "When I Was Born, a song included in Prem Rawat’s album Gifts. Listen now on TimelessToday.",
@@ -7246,17 +7347,12 @@
         "when i was born",
         "जब मेरा जन्म हुआ",
         "jab mera janm hua",
-        "new",
-        "नया",
-        "naya",
+        "gifts",
+        "उपहार",
+        "uphaar",
         "song",
         "गीत",
-        "geet",
-        "gifts album",
-        "गिफ्ट्स एल्बम",
-        "music",
-        "संगीत",
-        "sangeet"
+        "geet"
       ]
     },
     "1c4c2d71-53ef-40d8-a313-11fc745844bb": {
@@ -10068,6 +10164,39 @@
         "maanav jeevan"
       ]
     },
+    "2983e3aa-bf40-4568-9159-e0c6140dab2a": {
+      "MediaID": "2983e3aa-bf40-4568-9159-e0c6140dab2a",
+      "Name": "Pitu Matu (Amaroo 2026)",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Pitu Mat Ver by Prem Rawat from the Amaroo 2026, 60th Anniversary Celebration Concerts. Part of Prem Rawat’s album Gifts. Listen now on TimelessToday.\n",
+      "Duration": 345000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/154",
+      "PublishYear": 2026,
+      "PublishMonth": 9,
+      "PublishDay": 10,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Pitu_Matu_1600_EN.jpg?format=auto",
+      "AudioOnly": true,
+      "LoginRequired": false,
+      "Tags": [
+        "pitu matu",
+        "पिटु मातु",
+        "pitu matu amaroo 2026",
+        "पिटु मातु अमारू 2026",
+        "amaroo 2026",
+        "अमारू 2026",
+        "60th anniversary celebration concerts",
+        "60वीं वर्षगांठ के समारोह संगीत कार्यक्रम",
+        "60vin varshgaanth ke samaroh sangeet karyakram",
+        "gifts",
+        "उपहार",
+        "uphaar",
+        "song",
+        "गीत",
+        "geet"
+      ]
+    },
     "298d5be6-5be7-43d9-b6e7-c4662ee5e949": {
       "MediaID": "298d5be6-5be7-43d9-b6e7-c4662ee5e949",
       "Name": "Peace is Inevitable",
@@ -11213,7 +11342,7 @@
     },
     "2dd31c0a-0f37-4598-b926-91aa0cea835b": {
       "MediaID": "2dd31c0a-0f37-4598-b926-91aa0cea835b",
-      "Name": "Silence NEW",
+      "Name": "Silence",
       "Category": "Music",
       "ContentSource": "Timeless Today",
       "Description": "Silence, a song included in Prem Rawat’s album Gifts. Listen now on TimelessToday.",
@@ -11227,21 +11356,15 @@
       "AudioOnly": true,
       "LoginRequired": false,
       "Tags": [
-        "silence new",
-        "मौन नया",
-        "maun naya",
         "silence",
         "मौन",
         "maun",
-        "song",
-        "गीत",
-        "geet",
         "gifts",
         "उपहार",
-        "upahaar",
-        "music album",
-        "संगीत एल्बम",
-        "sangeet album"
+        "uphaar",
+        "song",
+        "गीत",
+        "geet"
       ]
     },
     "2ecf65b2-6291-4a86-9f85-36864a93c143": {
@@ -11705,6 +11828,40 @@
         "water-like flexibility",
         "जल जैसा लचीलापन",
         "jal jaisa lachilapan"
+      ]
+    },
+    "30072227-f716-493e-8cbe-32eab338f840": {
+      "MediaID": "30072227-f716-493e-8cbe-32eab338f840",
+      "Name": "Strength (Amaroo 2026)",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Strength by Prem Rawat from the Amaroo 2026, 60th Anniversary Celebration Concerts. Part of Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "Duration": 310000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/149",
+      "PublishYear": 2026,
+      "PublishMonth": 9,
+      "PublishDay": 10,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Strength_1600_EN.jpg?format=auto",
+      "AudioOnly": true,
+      "LoginRequired": false,
+      "Tags": [
+        "strength",
+        "शक्ति",
+        "shakti",
+        "strength amaroo 2026",
+        "स्ट्रेंथ अमारू 2026",
+        "amaroo 2026",
+        "अमारू 2026",
+        "60th anniversary celebration concerts",
+        "60वीं वर्षगांठ के समारोह संगीत कार्यक्रम",
+        "60vin varshgaanth ke samaroh sangeet karyakram",
+        "gifts",
+        "उपहार",
+        "uphaar",
+        "song",
+        "गीत",
+        "geet"
       ]
     },
     "303df85e-1bf7-46d4-9788-2a71ef7fe211": {
@@ -12334,6 +12491,41 @@
         "pustak vimochan karyakram"
       ]
     },
+    "341c87d7-381d-4a12-91f8-40af8d5d4775": {
+      "MediaID": "341c87d7-381d-4a12-91f8-40af8d5d4775",
+      "Name": "Gratitude - New Version (Amaroo 2026)",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Gratitude (New Version) by Prem Rawat from the Amaroo 2026, 60th Anniversary Celebration Concerts. Part of Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "Duration": 313000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/139",
+      "PublishYear": 2026,
+      "PublishMonth": 9,
+      "PublishDay": 10,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Gratitude_New_Version_1600_EN.jpg",
+      "AudioOnly": true,
+      "LoginRequired": false,
+      "Tags": [
+        "gratitude new version",
+        "कृतज्ञता का नया संस्करण",
+        "kritagyata ka naya sanskaran",
+        "gratitude new version amaroo 2026",
+        "कृतज्ञता का नया संस्करण अमारू 2026",
+        "kritagyata ka naya sanskaran amaroo 2026",
+        "amaroo 2026",
+        "अमारू 2026",
+        "60th anniversary celebration concerts",
+        "60वीं वर्षगांठ के समारोह संगीत कार्यक्रम",
+        "60vin varshgaanth ke samaroh sangeet karyakram",
+        "gifts",
+        "उपहार",
+        "uphaar",
+        "song",
+        "गीत",
+        "geet"
+      ]
+    },
     "3449b1ec-88e1-47e5-aef7-4d28b52bc22b": {
       "MediaID": "3449b1ec-88e1-47e5-aef7-4d28b52bc22b",
       "Name": "Ruler of Your House",
@@ -12749,6 +12941,40 @@
         "peace",
         "शांति",
         "shanti"
+      ]
+    },
+    "361d85ee-e6e6-47b2-8627-5990b56e1f6e": {
+      "MediaID": "361d85ee-e6e6-47b2-8627-5990b56e1f6e",
+      "Name": "Rain (Amaroo 2026)",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Rain by Prem Rawat from the Amaroo 2026, 60th Anniversary Celebration Concerts. Part of Prem Rawat’s album Gifts. Listen now on TimelessToday.\n",
+      "Duration": 350000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/146",
+      "PublishYear": 2026,
+      "PublishMonth": 9,
+      "PublishDay": 10,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Rain_1600_EN.jpg",
+      "AudioOnly": true,
+      "LoginRequired": false,
+      "Tags": [
+        "rain",
+        "बारिश",
+        "baarish",
+        "rain amaroo 2026",
+        "रेन अमारू 2026",
+        "amaroo 2026",
+        "अमारू 2026",
+        "60th anniversary celebration concerts",
+        "60वीं वर्षगांठ के समारोह संगीत कार्यक्रम",
+        "60vin varshgaanth ke samaroh sangeet karyakram",
+        "gifts",
+        "उपहार",
+        "uphaar",
+        "song",
+        "गीत",
+        "geet"
       ]
     },
     "362ab7c7-717a-4704-ab9c-6dcccae57711": {
@@ -15690,6 +15916,40 @@
         "swasthya aur kalyan"
       ]
     },
+    "41a56f39-70a9-4c6b-bf51-d7f4cc3756e2": {
+      "MediaID": "41a56f39-70a9-4c6b-bf51-d7f4cc3756e2",
+      "Name": "Tailwinds (Amaroo 2026)",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Tailwinds by Prem Rawat from the Amaroo 2026, 60th Anniversary Celebration Concerts. Part of Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "Duration": 293000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/155",
+      "PublishYear": 2026,
+      "PublishMonth": 9,
+      "PublishDay": 10,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Tailwinds_1600_EN.jpg?format=auto",
+      "AudioOnly": true,
+      "LoginRequired": false,
+      "Tags": [
+        "tailwinds",
+        "अनुकूल पवनें",
+        "anukool pavnen",
+        "tailwinds amaroo 2026",
+        "टेलविंड्स अमारू 2026",
+        "amaroo 2026",
+        "अमारू 2026",
+        "60th anniversary celebration concerts",
+        "60वीं वर्षगांठ के समारोह संगीत कार्यक्रम",
+        "60vin varshgaanth ke samaroh sangeet karyakram",
+        "gifts",
+        "उपहार",
+        "uphaar",
+        "song",
+        "गीत",
+        "geet"
+      ]
+    },
     "41a69a31-3131-45ff-888d-6f3b038fa230": {
       "MediaID": "41a69a31-3131-45ff-888d-6f3b038fa230",
       "Name": "The Timeless Breath Part 2",
@@ -15916,6 +16176,41 @@
         "self and the divine",
         "स्व और परमात्मा",
         "swa aur parmaatma"
+      ]
+    },
+    "428e7802-9a31-4d64-990c-a6652f1c35e0": {
+      "MediaID": "428e7802-9a31-4d64-990c-a6652f1c35e0",
+      "Name": "Power Of Light (Amaroo 2026)",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Power Of Light by Prem Rawat from the Amaroo 2026, 60th Anniversary Celebration Concerts. Part of Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "Duration": 273000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/144",
+      "PublishYear": 2026,
+      "PublishMonth": 9,
+      "PublishDay": 10,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Power_Of_Light_1600_EN.jpg",
+      "AudioOnly": true,
+      "LoginRequired": false,
+      "Tags": [
+        "power of light",
+        "प्रकाश की शक्ति",
+        "prakash ki shakti",
+        "power of light amaroo 2026",
+        "प्रकाश की शक्ति अमारू 2026",
+        "prakash ki shakti amaroo 2026",
+        "amaroo 2026",
+        "अमारू 2026",
+        "60th anniversary celebration concerts",
+        "60वीं वर्षगांठ के समारोह संगीत कार्यक्रम",
+        "60vin varshgaanth ke samaroh sangeet karyakram",
+        "gifts",
+        "उपहार",
+        "uphaar",
+        "song",
+        "गीत",
+        "geet"
       ]
     },
     "42ade83c-86b9-43f7-8a17-d93df9ae3607": {
@@ -19051,7 +19346,7 @@
     },
     "4f2cd854-b193-43b4-b014-eb2c3ddccdda": {
       "MediaID": "4f2cd854-b193-43b4-b014-eb2c3ddccdda",
-      "Name": "Thousand Tears NEW",
+      "Name": "Thousand Tears",
       "Category": "Music",
       "ContentSource": "Timeless Today",
       "Description": "Thousand Tears, a song included in Prem Rawat’s album Gifts. Listen now on TimelessToday.",
@@ -19067,16 +19362,13 @@
       "Tags": [
         "thousand tears",
         "हज़ार आँसू",
-        "hazaar aansoo",
+        "hazaar aansu",
+        "gifts",
+        "उपहार",
+        "uphaar",
         "song",
         "गीत",
-        "geet",
-        "gifts album",
-        "‘गिफ्ट्स’ एल्बम",
-        "‘gifts’ album",
-        "music",
-        "संगीत",
-        "sangeet"
+        "geet"
       ]
     },
     "4f30e757-7cde-440b-8569-a96e03cb06b2": {
@@ -24934,6 +25226,40 @@
         "shanti shiksha karyakram"
       ]
     },
+    "67c5cdf3-c984-4bb3-93f6-75205445078c": {
+      "MediaID": "67c5cdf3-c984-4bb3-93f6-75205445078c",
+      "Name": "Let Go (Amaroo 2026)",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Let Go by Prem Rawat from the Amaroo 2026, 60th Anniversary Celebration Concerts. Part of Prem Rawat’s album Gifts. Listen now on TimelessToday.\n",
+      "Duration": 295000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/153",
+      "PublishYear": 2026,
+      "PublishMonth": 9,
+      "PublishDay": 10,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Let_Go_1600_EN.jpg?format=auto",
+      "AudioOnly": true,
+      "LoginRequired": false,
+      "Tags": [
+        "let go",
+        "जाने देना",
+        "jaane dena",
+        "let go amaroo 2026",
+        "लेट गो अमारू 2026",
+        "amaroo 2026",
+        "अमारू 2026",
+        "60th anniversary celebration concerts",
+        "60वीं वर्षगांठ के समारोह संगीत कार्यक्रम",
+        "60vin varshgaanth ke samaroh sangeet karyakram",
+        "gifts",
+        "उपहार",
+        "uphaar",
+        "song",
+        "गीत",
+        "geet"
+      ]
+    },
     "67d42409-202d-4008-99b9-401ba0c582bc": {
       "MediaID": "67d42409-202d-4008-99b9-401ba0c582bc",
       "Name": "The Fascinating Infinite",
@@ -25841,7 +26167,7 @@
     },
     "6bb15895-b121-475c-b7eb-4b119c60b616": {
       "MediaID": "6bb15895-b121-475c-b7eb-4b119c60b616",
-      "Name": "Going To Amaroo NEW",
+      "Name": "Going To Amaroo",
       "Category": "Music",
       "ContentSource": "Timeless Today",
       "Description": "Going To Amaroo, a song included in Prem Rawat’s album Gifts. Listen now on\nTimelessToday.",
@@ -25855,22 +26181,17 @@
       "AudioOnly": true,
       "LoginRequired": false,
       "Tags": [
-        "going to amaroo new",
-        "अमारू जा रहे हैं — नया",
-        "amaroo ja rahe hain — naya",
         "going to amaroo",
         "अमारू जाना",
         "amaroo jaana",
         "amaroo",
         "अमारू",
+        "gifts",
+        "उपहार",
+        "uphaar",
         "song",
         "गीत",
-        "geet",
-        "gifts album",
-        "गिफ्ट्स एल्बम",
-        "music",
-        "संगीत",
-        "sangeet"
+        "geet"
       ]
     },
     "6bd852ac-c7ca-41c9-bd89-fb92da81dda5": {
@@ -27577,6 +27898,40 @@
         "manav"
       ]
     },
+    "74162576-5843-49a3-9fd4-f6dee402169f": {
+      "MediaID": "74162576-5843-49a3-9fd4-f6dee402169f",
+      "Name": "Come Running (Amaroo 2026)",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Come Running by Prem Rawat from the Amaroo 2026, 60th Anniversary Celebration Concerts. Part of Prem Rawat’s album Gifts. Listen now on TimelessToday.\n",
+      "Duration": 283000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/151",
+      "PublishYear": 2026,
+      "PublishMonth": 9,
+      "PublishDay": 10,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Come_Running_1600_EN.jpg?format=auto",
+      "AudioOnly": true,
+      "LoginRequired": false,
+      "Tags": [
+        "come running",
+        "दौड़ते हुए आना",
+        "daudte hue aana",
+        "come running amaroo 2026",
+        "कम रनिंग अमारू 2026",
+        "amaroo 2026",
+        "अमारू 2026",
+        "60th anniversary celebration concerts",
+        "60वीं वर्षगांठ के समारोह संगीत कार्यक्रम",
+        "60vin varshgaanth ke samaroh sangeet karyakram",
+        "gifts",
+        "उपहार",
+        "uphaar",
+        "song",
+        "गीत",
+        "geet"
+      ]
+    },
     "742e966a-b514-40b7-8015-ff85026da560": {
       "MediaID": "742e966a-b514-40b7-8015-ff85026da560",
       "Name": "Such Grace - English/Español",
@@ -27646,7 +28001,7 @@
     },
     "7496a444-01f7-44bb-90f9-931cd4786139": {
       "MediaID": "7496a444-01f7-44bb-90f9-931cd4786139",
-      "Name": "Lucky Lucky NEW",
+      "Name": "Lucky Lucky",
       "Category": "Music",
       "ContentSource": "Timeless Today",
       "Description": "Lucky Lucky, a song included in Prem Rawat’s album Gifts. Listen now on ",
@@ -27660,19 +28015,15 @@
       "AudioOnly": true,
       "LoginRequired": false,
       "Tags": [
-        "lucky lucky new",
-        "लकी लकी नया",
-        "lucky lucky naya",
         "lucky lucky",
-        "लकी लकी",
+        "भाग्यशाली भाग्यशाली",
+        "bhaagyashaali bhaagyashaali",
+        "gifts",
+        "उपहार",
+        "uphaar",
         "song",
         "गीत",
-        "geet",
-        "gifts album",
-        "गिफ्ट्स एल्बम",
-        "music release",
-        "संगीत रिलीज़",
-        "sangeet release"
+        "geet"
       ]
     },
     "74ee6717-3b11-4504-ab60-204a4bc33a92": {
@@ -36053,6 +36404,40 @@
         "american psychological association",
         "अमेरिकी मनोवैज्ञानिक संघ",
         "ameriki manovaigyanik sangh"
+      ]
+    },
+    "9a4146c9-783a-4db1-bc7b-170621643cce": {
+      "MediaID": "9a4146c9-783a-4db1-bc7b-170621643cce",
+      "Name": "Call Me (Amaroo 2026)",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Call Me by Prem Rawat from the Amaroo 2026, 60th Anniversary Celebration Concerts. Part of Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "Duration": 364000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/150",
+      "PublishYear": 2026,
+      "PublishMonth": 9,
+      "PublishDay": 10,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Call_Me_1600_EN.jpg?format=auto",
+      "AudioOnly": true,
+      "LoginRequired": false,
+      "Tags": [
+        "call me",
+        "मुझे बुलाओ",
+        "mujhe bulao",
+        "call me amaroo 2026",
+        "कॉल मी अमारू 2026",
+        "amaroo 2026",
+        "अमारू 2026",
+        "60th anniversary celebration concerts",
+        "60वीं वर्षगांठ के समारोह संगीत कार्यक्रम",
+        "60vin varshgaanth ke samaroh sangeet karyakram",
+        "gifts",
+        "उपहार",
+        "uphaar",
+        "song",
+        "गीत",
+        "geet"
       ]
     },
     "9a45e7c7-a2d4-404b-8e3b-6910653d5c9a": {
@@ -53625,6 +54010,40 @@
         "kshamata ke beej"
       ]
     },
+    "a3f52215-8174-475f-a47c-0811758a9be7": {
+      "MediaID": "a3f52215-8174-475f-a47c-0811758a9be7",
+      "Name": "Being Here (Amaroo 2026)",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Being Here by Prem Rawat from the Amaroo 2026, 60th Anniversary Celebration Concerts. Part of Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "Duration": 309000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/140",
+      "PublishYear": 2026,
+      "PublishMonth": 9,
+      "PublishDay": 10,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Being_Here_1600_EN.jpg",
+      "AudioOnly": true,
+      "LoginRequired": false,
+      "Tags": [
+        "being here",
+        "यहाँ होना",
+        "yahan hona",
+        "being here amaroo 2026",
+        "बीइंग हियर अमारू 2026",
+        "amaroo 2026",
+        "अमारू 2026",
+        "60th anniversary celebration concerts",
+        "60वीं वर्षगांठ के समारोह संगीत कार्यक्रम",
+        "60vin varshgaanth ke samaroh sangeet karyakram",
+        "gifts",
+        "उपहार",
+        "uphaar",
+        "song",
+        "गीत",
+        "geet"
+      ]
+    },
     "a407d6ba-f14b-4e8c-8190-17e7f7138826": {
       "MediaID": "a407d6ba-f14b-4e8c-8190-17e7f7138826",
       "Name": "Session 9, Amaroo 2025",
@@ -54133,6 +54552,40 @@
         "book launch",
         "पुस्तक विमोचन",
         "pustak vimochan"
+      ]
+    },
+    "a7550b09-cf64-407b-854c-936a59b208a5": {
+      "MediaID": "a7550b09-cf64-407b-854c-936a59b208a5",
+      "Name": "Dirt (Amaroo 2026)",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Dirt by Prem Rawat from the Amaroo 2026, 60th Anniversary Celebration Concerts. Part of Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "Duration": 320000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/152",
+      "PublishYear": 2026,
+      "PublishMonth": 9,
+      "PublishDay": 10,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Dirt_1600_EN.jpg?format=auto",
+      "AudioOnly": true,
+      "LoginRequired": false,
+      "Tags": [
+        "dirt",
+        "मिट्टी",
+        "mitti",
+        "dirt amaroo 2026",
+        "डर्ट अमारू 2026",
+        "amaroo 2026",
+        "अमारू 2026",
+        "60th anniversary celebration concerts",
+        "60वीं वर्षगांठ के समारोह संगीत कार्यक्रम",
+        "60vin varshgaanth ke samaroh sangeet karyakram",
+        "gifts",
+        "उपहार",
+        "uphaar",
+        "song",
+        "गीत",
+        "geet"
       ]
     },
     "a76dfbdb-f81d-4a63-9b55-152fb453871c": {
@@ -55208,7 +55661,7 @@
     },
     "ad2d3591-499e-4d13-aed8-4b7dda30f6cc": {
       "MediaID": "ad2d3591-499e-4d13-aed8-4b7dda30f6cc",
-      "Name": "Who Do You Listen To?  NEW",
+      "Name": "Who Do You Listen To?",
       "Category": "Music",
       "ContentSource": "Timeless Today",
       "Description": "Who Do You Listen To, a song included in Prem Rawat’s album Gifts. Listen now on TimelessToday.",
@@ -55222,20 +55675,15 @@
       "AudioOnly": true,
       "LoginRequired": false,
       "Tags": [
-        "who do you listen to? new",
-        "आप किसकी सुनते हैं? नया",
-        "aap kiskee sunte hain? naya",
         "who do you listen to",
         "आप किसकी सुनते हैं",
-        "aap kiskee sunte hain",
+        "aap kiski sunte hain",
         "gifts",
         "उपहार",
         "uphaar",
         "song",
         "गीत",
-        "geet",
-        "album",
-        "एल्बम"
+        "geet"
       ]
     },
     "ad39f18f-5bbd-4575-bd8c-bd837b6aecbf": {
@@ -58305,6 +58753,40 @@
         "ideal conditions",
         "आदर्श परिस्थितियाँ",
         "aadarsh paristhitiyan"
+      ]
+    },
+    "ba490dd6-62d1-4146-aa93-308f71d949e1": {
+      "MediaID": "ba490dd6-62d1-4146-aa93-308f71d949e1",
+      "Name": "Peace (Amaroo 2026)",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Peace by Prem Rawat from the Amaroo 2026, 60th Anniversary Celebration Concerts. Part of Prem Rawat’s album Gifts. Listen now on TimelessToday.\n",
+      "Duration": 447000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/143",
+      "PublishYear": 2026,
+      "PublishMonth": 9,
+      "PublishDay": 10,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Peace_1600_EN.jpg",
+      "AudioOnly": true,
+      "LoginRequired": false,
+      "Tags": [
+        "peace",
+        "शांति",
+        "shaanti",
+        "amaroo 2026",
+        "अमारू 2026",
+        "60th anniversary celebration concerts",
+        "60वीं वर्षगांठ के समारोह संगीत कार्यक्रम",
+        "60veen varshgaanth ke samaroh sangeet karyakram",
+        "gifts",
+        "उपहार",
+        "uphaar",
+        "album",
+        "एल्बम",
+        "song",
+        "गीत",
+        "geet"
       ]
     },
     "baaeab66-a6dc-4218-8733-974ebddaf3e7": {
@@ -61567,7 +62049,7 @@
     },
     "cef668fd-bcdb-4052-ad58-80032cd9399f": {
       "MediaID": "cef668fd-bcdb-4052-ad58-80032cd9399f",
-      "Name": "Heart Knocking NEW",
+      "Name": "Heart Knocking",
       "Category": "Music",
       "ContentSource": "Timeless Today",
       "Description": "Heart Knocking, a song included in Prem Rawat’s album Gifts. Listen now on TimelessToday.",
@@ -61581,18 +62063,17 @@
       "AudioOnly": true,
       "LoginRequired": false,
       "Tags": [
-        "heart knocking new",
-        "दिल की दस्तक नया",
-        "dil ki dastak naya",
         "heart knocking",
         "दिल की दस्तक",
         "dil ki dastak",
-        "song",
-        "गीत",
-        "geet",
         "gifts",
         "उपहार",
-        "uphaar"
+        "uphaar",
+        "album",
+        "एल्बम",
+        "song",
+        "गीत",
+        "geet"
       ]
     },
     "cf12784a-a576-4839-805a-9664f26058ce": {
@@ -63429,6 +63910,40 @@
         "personal conversation",
         "व्यक्तिगत बातचीत",
         "vyaktigat baatcheet"
+      ]
+    },
+    "d89af364-953c-475a-a2e9-43739681c317": {
+      "MediaID": "d89af364-953c-475a-a2e9-43739681c317",
+      "Name": "Turmoil (Amaroo 2026)",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Turmoil by Prem Rawat from the Amaroo 2026, 60th Anniversary Celebration Concerts. Part of Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "Duration": 325000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/148",
+      "PublishYear": 2026,
+      "PublishMonth": 9,
+      "PublishDay": 10,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Turmoil_1600_EN.jpg",
+      "AudioOnly": true,
+      "LoginRequired": false,
+      "Tags": [
+        "turmoil",
+        "उथल-पुथल",
+        "uthal-puthal",
+        "amaroo 2026",
+        "अमारू 2026",
+        "60th anniversary celebration concerts",
+        "60वीं वर्षगांठ के समारोह संगीत कार्यक्रम",
+        "60veen varshgaanth ke samaroh sangeet karyakram",
+        "gifts",
+        "उपहार",
+        "uphaar",
+        "album",
+        "एल्बम",
+        "song",
+        "गीत",
+        "geet"
       ]
     },
     "d9252529-4f35-43d8-beee-00cadbd9f5bd": {
@@ -65588,7 +66103,7 @@
     },
     "e1a2b49a-0348-4899-9b8e-f51728682f5c": {
       "MediaID": "e1a2b49a-0348-4899-9b8e-f51728682f5c",
-      "Name": "பன்வாரி ரே (Banwari Re) - NEW",
+      "Name": "பன்வாரி ரே (Banwari Re)",
       "Category": "Music",
       "ContentSource": "Timeless Today",
       "Description": "பன்வாரி ரே (Banwari) , a song included in Prem Rawat’s album Gifts. Listen now on TimelessToday.",
@@ -65604,15 +66119,14 @@
       "Tags": [
         "banwari re",
         "बनवारी रे",
-        "song",
-        "गीत",
-        "geet",
         "gifts",
         "उपहार",
         "uphaar",
-        "new release",
-        "नई प्रस्तुति",
-        "nai prastuti"
+        "album",
+        "एल्बम",
+        "song",
+        "गीत",
+        "geet"
       ]
     },
     "e1d51aba-ead4-42ad-8091-0efe0f61a268": {
@@ -66318,6 +66832,40 @@
         "hang on to the good",
         "अच्छाई को थामे रहें",
         "achchhaai ko thaame rahen"
+      ]
+    },
+    "e8374828-a3c5-4fb5-ba29-b292fb60275e": {
+      "MediaID": "e8374828-a3c5-4fb5-ba29-b292fb60275e",
+      "Name": "Present (Amaroo 2026)",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Present by Prem Rawat from the Amaroo 2026, 60th Anniversary Celebration Concerts. Part of Prem Rawat’s album Gifts. Listen now on TimelessToday.\n",
+      "Duration": 323000000000,
+      "Language": "en-US",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/145",
+      "PublishYear": 2026,
+      "PublishMonth": 9,
+      "PublishDay": 10,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Present_1600_EN.jpg",
+      "AudioOnly": true,
+      "LoginRequired": false,
+      "Tags": [
+        "present",
+        "वर्तमान",
+        "vartamaan",
+        "amaroo 2026",
+        "अमारू 2026",
+        "60th anniversary celebration concerts",
+        "60वीं वर्षगांठ के समारोह संगीत कार्यक्रम",
+        "60veen varshgaanth ke samaroh sangeet karyakram",
+        "gifts",
+        "उपहार",
+        "uphaar",
+        "album",
+        "एल्बम",
+        "song",
+        "गीत",
+        "geet"
       ]
     },
     "e8634856-5dda-42d8-b5a8-cd8e21856e7c": {
@@ -83757,5 +84305,5 @@
       ]
     }
   },
-  "lastUpdated": "2026-09-11T01:57:09.512080809Z"
+  "lastUpdated": "2026-09-12T02:01:07.57550063Z"
 }
