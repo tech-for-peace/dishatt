@@ -11893,7 +11893,7 @@
       "PublishYear": 2026,
       "PublishMonth": 9,
       "PublishDay": 10,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Strength_1600_EN.jpg?format=auto",
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Strength_1600_EN.jpg",
       "AudioOnly": true,
       "LoginRequired": false,
       "Tags": [
@@ -36469,7 +36469,7 @@
       "PublishYear": 2026,
       "PublishMonth": 9,
       "PublishDay": 10,
-      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Call_Me_1600_EN.jpg?format=auto",
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Call_Me_1600_EN.jpg",
       "AudioOnly": true,
       "LoginRequired": false,
       "Tags": [
@@ -84356,5 +84356,5 @@
       ]
     }
   },
-  "lastUpdated": "2026-09-16T02:42:31.936558796Z"
+  "lastUpdated": "2026-09-17T02:17:10.634957762Z"
 }
