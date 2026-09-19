@@ -23,11 +23,7 @@ export default defineConfig(() => ({
       output: {
         manualChunks: (id: string) => {
           if (id.includes("node_modules")) {
-            if (
-              id.includes("react-dom") ||
-              id.includes("/react/") ||
-              id.includes("react-i18next")
-            )
+            if (id.includes("react-dom") || id.includes("/react/") || id.includes("react-i18next"))
               return "vendor-react";
             if (id.includes("react-router")) return "vendor-router";
             if (id.includes("i18next")) return "vendor-i18n";

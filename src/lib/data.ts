@@ -5,8 +5,7 @@ const CACHE_PATH = "/data/cache.json";
 const LAST_VISIT_KEY = "dishatt_last_visit";
 const VISITOR_KEY = "dishatt_visitor_id";
 const MIN_NEW_MEDIA = 2;
-const VISITOR_ID_RE =
-  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const VISITOR_ID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 let cachedMedia: MediaResult[] | null = null;
 let cachePromise: Promise<MediaResult[]> | null = null;
@@ -49,16 +48,11 @@ function getClickedMediaIds(): Set<string> {
  * Save clicked media IDs to localStorage
  * Cleans up IDs that are no longer in the media dataset
  */
-function saveClickedMediaIds(
-  clickedIds: Set<string>,
-  validMediaIds: Set<string>,
-): void {
+function saveClickedMediaIds(clickedIds: Set<string>, validMediaIds: Set<string>): void {
   if (typeof window === "undefined") return;
 
   // Only keep IDs that exist in current media dataset to prevent growth
-  const cleanedIds = Array.from(clickedIds).filter((id) =>
-    validMediaIds.has(id),
-  );
+  const cleanedIds = Array.from(clickedIds).filter((id) => validMediaIds.has(id));
   localStorage.setItem(LAST_VISIT_KEY, JSON.stringify(cleanedIds));
 }
 
@@ -156,10 +150,7 @@ function compareMedia(a: MediaResult, b: MediaResult): number {
  * A media is new if: published in current month AND never clicked
  * If fewer than MIN_NEW_MEDIA, include last month's unclicked media
  */
-function determineNewMedia(
-  media: MediaResult[],
-  clickedIds: Set<string>,
-): MediaResult[] {
+function determineNewMedia(media: MediaResult[], clickedIds: Set<string>): MediaResult[] {
   const now = new Date();
   const currentMonth = now.getMonth();
   const currentYear = now.getFullYear();
@@ -170,10 +161,7 @@ function determineNewMedia(
   const currentMonthNewMedia = media.filter((media) => {
     if (clickedIds.has(media.id)) return false;
     const mediaDate = new Date(media.timestamp!);
-    return (
-      mediaDate.getMonth() === currentMonth &&
-      mediaDate.getFullYear() === currentYear
-    );
+    return mediaDate.getMonth() === currentMonth && mediaDate.getFullYear() === currentYear;
   });
 
   let newMedia = [...currentMonthNewMedia];
@@ -183,10 +171,7 @@ function determineNewMedia(
     const lastMonthNewMedia = media.filter((media) => {
       if (clickedIds.has(media.id)) return false;
       const mediaDate = new Date(media.timestamp!);
-      return (
-        mediaDate.getMonth() === lastMonth &&
-        mediaDate.getFullYear() === lastMonthYear
-      );
+      return mediaDate.getMonth() === lastMonth && mediaDate.getFullYear() === lastMonthYear;
     });
 
     // Sort by timestamp descending (most recent first), then by title length descending, then by title descending
@@ -290,9 +275,7 @@ async function loadAllMedia(): Promise<MediaResult[]> {
 
   return cachePromise;
 }
-export async function searchMedia(
-  filters: SearchFilters,
-): Promise<MediaResult[]> {
+export async function searchMedia(filters: SearchFilters): Promise<MediaResult[]> {
   const allMedia = await loadAllMedia();
   return filterMedia(allMedia, filters);
 }
@@ -319,10 +302,7 @@ export async function getUniqueChannels(): Promise<string[]> {
   return Array.from(channels).sort();
 }
 
-export function filterMedia(
-  media: MediaResult[],
-  filters: SearchFilters,
-): MediaResult[] {
+export function filterMedia(media: MediaResult[], filters: SearchFilters): MediaResult[] {
   return media.filter((media) => {
     if (filters.language) {
       const mediaLang = media.language;
@@ -389,9 +369,7 @@ function mediaMatchesSearch(tags: string[] | undefined, query: string): boolean 
     return false;
   }
   const normalizedTags = tags.map((tag) => tag.toLowerCase());
-  return tokens.every((token) =>
-    normalizedTags.some((tag) => tokenMatchesTag(token, tag)),
-  );
+  return tokens.every((token) => normalizedTags.some((tag) => tokenMatchesTag(token, tag)));
 }
 
 function tokenMatchesTag(token: string, tag: string): boolean {

@@ -77,10 +77,7 @@ interface MediaCardProps {
   index: number;
 }
 
-export const MediaCard = memo(function MediaCard({
-  media,
-  index,
-}: MediaCardProps) {
+export const MediaCard = memo(function MediaCard({ media, index }: MediaCardProps) {
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language;
   const mediaDate = new Date(
@@ -89,9 +86,7 @@ export const MediaCard = memo(function MediaCard({
     media.publishedDay && media.publishedDay > 0 ? media.publishedDay : 1,
   );
   const hasDay =
-    media.publishedDay !== undefined &&
-    media.publishedDay !== 0 &&
-    media.publishedDay > 0;
+    media.publishedDay !== undefined && media.publishedDay !== 0 && media.publishedDay > 0;
   const isUpcoming = mediaDate > new Date();
 
   const [imageError, setImageError] = useState(false);
@@ -136,10 +131,7 @@ export const MediaCard = memo(function MediaCard({
           const blob = await response.blob();
 
           // Validate content type and size
-          if (
-            ALLOWED_IMAGE_TYPES.includes(blob.type) &&
-            blob.size <= MAX_THUMBNAIL_BYTES
-          ) {
+          if (ALLOWED_IMAGE_TYPES.includes(blob.type) && blob.size <= MAX_THUMBNAIL_BYTES) {
             const file = new File([blob], "thumbnail.jpg", { type: blob.type });
             const shareData = { text: shareText, files: [file] };
 

@@ -42,9 +42,7 @@ export function MediaGrid({ media, isLoading }: MediaGridProps) {
         >
           <Compass className="h-10 w-10 text-primary" />
         </div>
-        <p className="text-muted-foreground text-center py-8">
-          {t("results.noMediaMessage")}
-        </p>
+        <p className="text-muted-foreground text-center py-8">{t("results.noMediaMessage")}</p>
       </div>
     );
   }
