@@ -1,8 +1,12 @@
 import { SearchFilters, MediaResult, DURATION_BANDS } from "@/lib/types";
+import { API_CONFIG } from "@/lib/constants";
 
 const CACHE_PATH = "/data/cache.json";
 const LAST_VISIT_KEY = "dishatt_last_visit";
+const VISITOR_KEY = "dishatt_visitor_id";
 const MIN_NEW_MEDIA = 2;
+const VISITOR_ID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 let cachedMedia: MediaResult[] | null = null;
 let cachePromise: Promise<MediaResult[]> | null = null;
@@ -56,6 +60,63 @@ function saveClickedMediaIds(
     validMediaIds.has(id),
   );
   localStorage.setItem(LAST_VISIT_KEY, JSON.stringify(cleanedIds));
+}
+
+function getVisitorId(): string | null {
+  try {
+    if (typeof window === "undefined") return null;
+
+    const stored = localStorage.getItem(VISITOR_KEY);
+    if (stored && VISITOR_ID_RE.test(stored)) {
+      return stored;
+    }
+
+    const id = crypto.randomUUID();
+    localStorage.setItem(VISITOR_KEY, id);
+    return id;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Fire-and-forget click count. Must never throw into the card click handler.
+ */
+export function recordMediaClick(mediaId: string): void {
+  try {
+    if (typeof window === "undefined") return;
+    if (!isValidMediaId(mediaId) || !API_CONFIG.apiUrl) return;
+
+    const visitorId = getVisitorId();
+    if (!visitorId) return;
+
+    const payload = JSON.stringify({
+      mediaId,
+      visitorId,
+    });
+    const url = `${API_CONFIG.apiUrl.replace(/\/$/, "")}/api/clicks`;
+
+    try {
+      const blob = new Blob([payload], { type: "text/plain" });
+      if (navigator.sendBeacon?.(url, blob)) {
+        return;
+      }
+    } catch {
+      // fall through to fetch
+    }
+
+    void fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain" },
+      body: payload,
+      keepalive: true,
+      mode: "cors",
+    }).catch(() => {
+      // ignore network errors
+    });
+  } catch {
+    // analytics must not block opening the video
+  }
 }
 
 /**

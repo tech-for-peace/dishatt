@@ -3,7 +3,7 @@ import { Calendar, Globe, Play, Sparkles, Headphones } from "lucide-react";
 import { memo, useState } from "react";
 
 import { MediaResult } from "@/lib/types";
-import { formatLanguage, markMediaAsClicked } from "@/lib/data";
+import { formatLanguage, markMediaAsClicked, recordMediaClick } from "@/lib/data";
 import { Badge } from "./ui/badge";
 
 const WHATSAPP_ICON_PATH =
@@ -103,8 +103,9 @@ export const MediaCard = memo(function MediaCard({
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
 
-    // Mark media as clicked (removes NEW badge)
+    // Mark media as clicked (removes NEW badge) and record a unique click.
     markMediaAsClicked(media.id);
+    recordMediaClick(media.id);
 
     let url = media.url;
     if (url.includes("timelesstoday.tv")) {
