@@ -30,8 +30,7 @@ const isStringArray = (
   maxLen: number,
   validator: (s: string) => boolean,
 ): boolean =>
-  arr.length <= maxLen &&
-  arr.every((item) => typeof item === "string" && validator(item));
+  arr.length <= maxLen && arr.every((item) => typeof item === "string" && validator(item));
 
 const isValidSearchFilters = (data: unknown): data is SearchFilters => {
   if (typeof data !== "object" || data === null) return false;
@@ -42,17 +41,11 @@ const isValidSearchFilters = (data: unknown): data is SearchFilters => {
     Array.isArray(obj.categories) &&
     isStringArray(obj.categories, 10, (s) => VALID_CATEGORIES.includes(s)) &&
     Array.isArray(obj.channels) &&
-    isStringArray(
-      obj.channels,
-      20,
-      (s) => typeof s === "string" && s.length <= 100,
-    ) &&
+    isStringArray(obj.channels, 20, (s) => typeof s === "string" && s.length <= 100) &&
     Array.isArray(obj.years) &&
     isStringArray(obj.years, 20, (s) => YEAR_REGEX.test(s)) &&
     Array.isArray(obj.durationBands) &&
-    isStringArray(obj.durationBands, 10, (s) =>
-      VALID_DURATION_LABELS.includes(s),
-    ) &&
+    isStringArray(obj.durationBands, 10, (s) => VALID_DURATION_LABELS.includes(s)) &&
     typeof obj.titleSearch === "string" &&
     (obj.titleSearch as string).length <= 500 &&
     typeof obj.freeOnly === "boolean"
@@ -101,20 +94,13 @@ const Index = () => {
     },
     [toast],
   );
-  const displayedMedia = useMemo(
-    () => allMedia.slice(0, visibleCount),
-    [allMedia, visibleCount],
-  );
+  const displayedMedia = useMemo(() => allMedia.slice(0, visibleCount), [allMedia, visibleCount]);
   const loadMoreRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (
-          entries[0].isIntersecting &&
-          !isLoading &&
-          allMedia.length > visibleCount
-        ) {
+        if (entries[0].isIntersecting && !isLoading && allMedia.length > visibleCount) {
           setVisibleCount((prev) => prev + UI_CONFIG.mediaPerLoad);
         }
       },

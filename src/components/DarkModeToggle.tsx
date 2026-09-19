@@ -7,8 +7,7 @@ export function DarkModeToggle() {
 
   const isDark =
     theme === "dark" ||
-    (theme === "system" &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches);
+    (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
 
   const toggleTheme = () => {
     setTheme(isDark ? "light" : "dark");

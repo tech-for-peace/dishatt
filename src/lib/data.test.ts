@@ -51,7 +51,13 @@ describe("filterMedia tags-only titleSearch", () => {
       id: "2",
       title: "Tanav Talk",
       description: "about stress",
-      tags: ["tanav", "तनाव", "peace education program", "शांति शिक्षा कार्यक्रम", "shanti shiksha karyakram"],
+      tags: [
+        "tanav",
+        "तनाव",
+        "peace education program",
+        "शांति शिक्षा कार्यक्रम",
+        "shanti shiksha karyakram",
+      ],
     }),
     media({
       id: "3",
@@ -116,10 +122,10 @@ describe("filterMedia tags-only titleSearch", () => {
   });
 
   it("matches close spellings of a tag word", () => {
-    const got = filterMedia(
-      [media({ id: "1", title: "Delhi only", tags: ["delhi", "दिल्ली"] })],
-      { ...emptyFilters, titleSearch: "delhy" },
-    );
+    const got = filterMedia([media({ id: "1", title: "Delhi only", tags: ["delhi", "दिल्ली"] })], {
+      ...emptyFilters,
+      titleSearch: "delhy",
+    });
     expect(got.map((m) => m.id)).toEqual(["1"]);
 
     const jayanti = filterMedia(
@@ -152,10 +158,10 @@ describe("filterMedia tags-only titleSearch", () => {
   });
 
   it("does not fuzzy-match unrelated 5-letter words", () => {
-    const got = filterMedia(
-      [media({ id: "8", title: "Peace talk", tags: ["peace"] })],
-      { ...emptyFilters, titleSearch: "teach" },
-    );
+    const got = filterMedia([media({ id: "8", title: "Peace talk", tags: ["peace"] })], {
+      ...emptyFilters,
+      titleSearch: "teach",
+    });
     expect(got).toEqual([]);
   });
 });
@@ -214,9 +220,7 @@ describe("recordMediaClick", () => {
     recordMediaClick(mediaId);
 
     expect(sendBeacon).toHaveBeenCalledOnce();
-    expect(sendBeacon.mock.calls[0][0]).toBe(
-      "https://clicks.example/api/clicks",
-    );
+    expect(sendBeacon.mock.calls[0][0]).toBe("https://clicks.example/api/clicks");
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
@@ -226,9 +230,7 @@ describe("recordMediaClick", () => {
     recordMediaClick(mediaId);
 
     expect(fetchMock).toHaveBeenCalledOnce();
-    expect(fetchMock.mock.calls[0][0]).toBe(
-      "https://clicks.example/api/clicks",
-    );
+    expect(fetchMock.mock.calls[0][0]).toBe("https://clicks.example/api/clicks");
     expect(fetchMock.mock.calls[0][1]).toMatchObject({
       method: "POST",
       keepalive: true,

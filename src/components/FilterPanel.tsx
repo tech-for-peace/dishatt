@@ -47,17 +47,10 @@ const formatDurationLabel = (label: string, language: string): string => {
 };
 interface FilterPanelProps {
   filters: SearchFilters;
-  onFilterChange: (
-    key: keyof SearchFilters,
-    value: string | string[] | boolean,
-  ) => void;
+  onFilterChange: (key: keyof SearchFilters, value: string | string[] | boolean) => void;
   onResetFilters: () => void;
 }
-export function FilterPanel({
-  filters,
-  onFilterChange,
-  onResetFilters,
-}: FilterPanelProps) {
+export function FilterPanel({ filters, onFilterChange, onResetFilters }: FilterPanelProps) {
   const { t, i18n } = useTranslation();
   const [categories, setCategories] = useState<string[]>([]);
   const [channels, setChannels] = useState<string[]>([]);
@@ -75,9 +68,7 @@ export function FilterPanel({
     loadFilterOptions();
   }, []);
 
-  const durationOptions = DURATION_BANDS.filter(
-    (band) => band.label !== "Any Duration",
-  );
+  const durationOptions = DURATION_BANDS.filter((band) => band.label !== "Any Duration");
   const handleDurationToggle = (label: string) => {
     const current = filters.durationBands || [];
     const newValue = current.includes(label)
@@ -109,8 +100,7 @@ export function FilterPanel({
   const getDurationDisplayText = () => {
     const selected = filters.durationBands || [];
     if (selected.length === 0) return t("filters.allDurations");
-    if (selected.length === 1)
-      return formatDurationLabel(selected[0], i18n.language);
+    if (selected.length === 1) return formatDurationLabel(selected[0], i18n.language);
     return `${selected.length} ${t("filters.selected")}`;
   };
   const getYearDisplayText = () => {
@@ -145,10 +135,7 @@ export function FilterPanel({
         <Select
           value={filters.language || "all"}
           onValueChange={(value) =>
-            onFilterChange(
-              "language",
-              value === "all" ? "" : (value as Language),
-            )
+            onFilterChange("language", value === "all" ? "" : (value as Language))
           }
         >
           <SelectTrigger className="bg-background/50 border-border/50 hover:border-primary/30 transition-colors h-8">
@@ -193,10 +180,7 @@ export function FilterPanel({
             <span className="truncate">{getChannelDisplayText()}</span>
             <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
           </DropdownMenuTrigger>
-          <DropdownMenuContent
-            align="start"
-            className="w-48 max-h-64 overflow-y-auto"
-          >
+          <DropdownMenuContent align="start" className="w-48 max-h-64 overflow-y-auto">
             <DropdownMenuCheckboxItem
               checked={(filters.channels || []).length === 0}
               onCheckedChange={() => onFilterChange("channels", [])}
@@ -231,13 +215,8 @@ export function FilterPanel({
               {t("filters.allDurations")}
             </DropdownMenuCheckboxItem>
             {durationOptions.map((band) => {
-              const displayLabel = formatDurationLabel(
-                band.label,
-                i18n.language,
-              );
-              const isSelected = (filters.durationBands || []).includes(
-                band.label,
-              );
+              const displayLabel = formatDurationLabel(band.label, i18n.language);
+              const isSelected = (filters.durationBands || []).includes(band.label);
               return (
                 <DropdownMenuCheckboxItem
                   key={band.label}
@@ -256,10 +235,7 @@ export function FilterPanel({
             <span className="truncate">{getYearDisplayText()}</span>
             <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
           </DropdownMenuTrigger>
-          <DropdownMenuContent
-            align="start"
-            className="w-48 max-h-64 overflow-y-auto"
-          >
+          <DropdownMenuContent align="start" className="w-48 max-h-64 overflow-y-auto">
             <DropdownMenuCheckboxItem
               checked={(filters.years || []).length === 0}
               onCheckedChange={() => onFilterChange("years", [])}
