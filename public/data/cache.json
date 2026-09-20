@@ -35918,6 +35918,43 @@
         "bhakti geet"
       ]
     },
+    "96b09286-6bf3-4151-8979-419b5b0be8a1": {
+      "MediaID": "96b09286-6bf3-4151-8979-419b5b0be8a1",
+      "Name": "Sat Samudra - Seven Seas (Amaroo 2026)",
+      "Category": "Music",
+      "ContentSource": "Timeless Today",
+      "Description": "Sat Samudra- Seven Seas by Prem Rawat from the Amaroo 2026, 60th Anniversary Celebration Concerts. Part of Prem Rawat’s album Gifts. Listen now on TimelessToday.",
+      "Duration": 453000000000,
+      "Language": "hi-IN",
+      "ClickURL": "https://timelesstoday.tv/en/discover/music/all-music/details/162",
+      "PublishYear": 2026,
+      "PublishMonth": 9,
+      "PublishDay": 18,
+      "ThumbnailURL": "https://images.timelesstoday.tv/img26/26-img-music/GIFTS/GIFTS_Sat_Samudra_1600_HI_EN.jpg",
+      "AudioOnly": true,
+      "LoginRequired": false,
+      "Tags": [
+        "sat samudra - seven seas",
+        "सत समुद्र - सात सागर",
+        "sat samudra - saat sagar",
+        "amaroo 2026",
+        "अमारू 2026",
+        "60th anniversary celebration concerts",
+        "60वीं वर्षगांठ के उत्सव संगीत समारोह",
+        "60vin varshgaanth ke utsav sangeet samaroh",
+        "song",
+        "गीत",
+        "geet",
+        "gifts album",
+        "गिफ्ट्स एल्बम",
+        "seven seas",
+        "सात सागर",
+        "saat sagar",
+        "music concert",
+        "संगीत समारोह",
+        "sangeet samaroh"
+      ]
+    },
     "96cee41a-92bb-49b5-afac-126a21a85f5f": {
       "MediaID": "96cee41a-92bb-49b5-afac-126a21a85f5f",
       "Name": "लॉकडाउन प्रेम रावत जी के साथ  #51  (15 मई,, 2020)",
@@ -43475,6 +43512,51 @@
         "hear yourself",
         "स्वयं को सुनो",
         "svayam ko suno"
+      ]
+    },
+    "KTT9LBjER_M": {
+      "MediaID": "KTT9LBjER_M",
+      "Name": "Sat Samudra - Seven Seas - Prem Rawat - Gifts (Amaroo 2026 Concert)",
+      "Category": "Video",
+      "ContentSource": "YouTube @PremRawatOfficial",
+      "Description": "Sat Samudra - Seven Seas by Prem Rawat - part of his Gifts Collection.\nThis song was premiered during his 60th Anniversary Celebration concerts at Amaroo, 2026.\n\nListen to all of Prem Rawat’s tracks on YouTube\nhttps://www.youtube.com/playlist?list=PLUQ2Jshpz1Yn-sZvDdtJb9WYI8JNGXRLP\n\nhttps://www.premrawat.com/gifts-album/?utm_source=youtube\u0026utm_medium=gifts\n\nor\nENGLISH: https://timelesstoday.tv/en/discover/music/28/?utm_source=youtube\u0026utm_medium=gifts\nHINDI: https://timelesstoday.tv/hi/discover/music/28/?utm_source=youtube\u0026utm_medium=gifts\n\n... where you can also find out more about the Amaroo 2026 Extended Media Collection which includes video and audio of all 9 events, with keynote addresses, the music concert segments and celebrations.\n\nCreated in collaboration with Intelligent Existence®.\n\n© Rawat Creations, 2026. All rights reserved.\n\n#PremRawatOfficial #Amaroo2026 #PremRawatMusic #60thAnniversary",
+      "Duration": 459000000000,
+      "Language": "en-US",
+      "ClickURL": "https://www.youtube.com/watch?v=KTT9LBjER_M",
+      "PublishYear": 2026,
+      "PublishMonth": 9,
+      "PublishDay": 19,
+      "ThumbnailURL": "https://i.ytimg.com/vi/KTT9LBjER_M/mqdefault.jpg",
+      "AudioOnly": false,
+      "LoginRequired": false,
+      "Tags": [
+        "sat samudra - seven seas",
+        "सत समुद्र - सात सागर",
+        "sat samudra - saat sagar",
+        "gifts collection",
+        "गिफ्ट्स संग्रह",
+        "gifts sangrah",
+        "amaroo 2026 concert",
+        "अमारू 2026 संगीत समारोह",
+        "amaroo 2026 sangeet samaroh",
+        "60th anniversary celebration concerts",
+        "60वीं वर्षगांठ के उत्सव संगीत समारोह",
+        "60vin varshgaanth ke utsav sangeet samaroh",
+        "गीत का प्रथम प्रस्तुतीकरण",
+        "geet ka pratham prastutikaran",
+        "2026",
+        "amaroo 2026 extended media collection",
+        "अमारू 2026 विस्तारित मीडिया संग्रह",
+        "amaroo 2026 vistarit media sangrah",
+        "nine events",
+        "नौ कार्यक्रम",
+        "nau karyakram",
+        "music concert segments",
+        "संगीत समारोह के खंड",
+        "sangeet samaroh ke khand",
+        "celebrations",
+        "उत्सव",
+        "utsav"
       ]
     },
     "KYyt47qnIqM": {
@@ -85177,5 +85259,5 @@
       ]
     }
   },
-  "lastUpdated": "2026-09-19T11:43:40.991145524Z"
+  "lastUpdated": "2026-09-20T02:13:27.347082328Z"
 }
