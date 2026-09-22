@@ -9,7 +9,6 @@ const { apiUrlState } = vi.hoisted(() => ({
 vi.mock("@/lib/constants", () => ({
   API_CONFIG: {
     cachePath: "/data/cache.json",
-    searchDelay: 300,
     get apiUrl() {
       return apiUrlState.value;
     },
@@ -28,7 +27,6 @@ const emptyFilters: SearchFilters = {
 
 function media(partial: Partial<MediaResult> & Pick<MediaResult, "id" | "title">): MediaResult {
   return {
-    description: "",
     thumbnail: "",
     duration: 10,
     publishedYear: 2024,
@@ -44,13 +42,11 @@ describe("filterMedia tags-only titleSearch", () => {
     media({
       id: "1",
       title: "Should Not Match By Title Alone",
-      description: "tanav is only in description",
       tags: ["delhi", "दिल्ली", "dilli"],
     }),
     media({
       id: "2",
       title: "Tanav Talk",
-      description: "about stress",
       tags: [
         "tanav",
         "तनाव",
@@ -62,7 +58,6 @@ describe("filterMedia tags-only titleSearch", () => {
     media({
       id: "3",
       title: "Untagged",
-      description: "no tags field useful",
       tags: undefined,
     }),
   ];
@@ -85,7 +80,7 @@ describe("filterMedia tags-only titleSearch", () => {
     expect(got.map((m) => m.id)).toEqual(["2"]);
   });
 
-  it("does not match title or description when tags lack the term", () => {
+  it("does not match title when tags lack the term", () => {
     const got = filterMedia(catalog, { ...emptyFilters, titleSearch: "stress" });
     expect(got).toEqual([]);
   });

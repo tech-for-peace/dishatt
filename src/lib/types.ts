@@ -19,7 +19,6 @@ export interface SearchFilters {
 export interface MediaResult {
   id: string;
   title: string;
-  description: string;
   thumbnail: string;
   duration: number; // in minutes
   publishedYear: number;
@@ -34,13 +33,6 @@ export interface MediaResult {
   category?: string; // media category
   channel?: string; // media channel
   tags?: string[]; // searchable tags (en / hi / hinglish)
-}
-
-export interface MediaResponse {
-  results: MediaResult[];
-  total: number;
-  limit: number;
-  offset: number;
 }
 
 export const DURATION_BANDS: DurationBand[] = [

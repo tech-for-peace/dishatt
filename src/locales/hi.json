@@ -3,26 +3,22 @@
     "tagline": "Timeless Today और Prem Rawat के आधिकारिक YouTube चैनल से वीडियो खोजें।"
   },
   "filters": {
-    "language": "भाषा",
-    "category": "श्रेणी",
-    "channel": "चैनल",
-    "duration": "अवधि",
-    "year": "वर्ष",
     "allLanguages": "सभी भाषाएँ",
     "allCategories": "सभी श्रेणियाँ",
-    "allChannels": "सभी चैनल",
     "allYears": "सभी वर्ष",
     "allDurations": "सभी अवधि",
     "selected": "चुने हुए",
-    "searchPlaceholder": "शीर्षक और विवरण में खोजें (वैकल्पिक)...",
+    "searchPlaceholder": "यहां खोजें ...",
     "reset": "फ़िल्टर्स रीसेट करें",
     "freeOnly": "Free"
+  },
+  "sources": {
+    "all": "सभी",
+    "channelAll": "सभी चैनल"
   },
   "results": {
     "mediaCount_one": "{{count}} वीडियो मिला",
     "mediaCount_other": "{{count}} वीडियो मिले",
-    "loading": "लोड हो रहा है...",
-    "noMediaFound": "कोई वीडियो नहीं मिला",
     "noMediaMessage": "और सामग्री खोजने के लिए अपने खोज शब्द या फ़िल्टर बदलने का प्रयास करें।",
     "new": "नया"
   },
