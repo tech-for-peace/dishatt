@@ -13,7 +13,7 @@ export function MediaGrid({ media, isLoading }: MediaGridProps) {
   if (isLoading) {
     return (
       <div className={containerClass}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
           {Array.from({ length: 6 }).map((_, i) => (
             <div
               key={i}
@@ -21,7 +21,7 @@ export function MediaGrid({ media, isLoading }: MediaGridProps) {
                        animate-pulse"
             >
               <div className="aspect-video bg-muted" />
-              <div className="p-4 space-y-3">
+              <div className="p-3 space-y-2">
                 <div className="h-5 bg-muted rounded w-3/4" />
                 <div className="h-4 bg-muted rounded w-full" />
                 <div className="h-4 bg-muted rounded w-2/3" />
@@ -49,7 +49,7 @@ export function MediaGrid({ media, isLoading }: MediaGridProps) {
 
   return (
     <div className={containerClass}>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
         {media.map((media, index) => (
           <MediaCard key={media.id} media={media} index={index} />
         ))}

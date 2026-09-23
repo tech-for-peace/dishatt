@@ -1,7 +1,6 @@
 import { SearchFilters, MediaResult, DURATION_BANDS } from "@/lib/types";
 import { API_CONFIG } from "@/lib/constants";
 
-const CACHE_PATH = "/data/cache.json";
 const LAST_VISIT_KEY = "dishatt_last_visit";
 const VISITOR_KEY = "dishatt_visitor_id";
 const MIN_NEW_MEDIA = 2;
@@ -194,7 +193,6 @@ interface MediaData {
   Category?: string;
   ContentSource?: string;
   Name: string;
-  Description?: string;
   ThumbnailURL: string;
   Duration?: number;
   ClickURL?: string;
@@ -218,7 +216,7 @@ async function loadAllMedia(): Promise<MediaResult[]> {
 
   cachePromise = (async () => {
     try {
-      const response = await fetch(CACHE_PATH);
+      const response = await fetch(API_CONFIG.cachePath);
       if (!response.ok) {
         throw new Error("Failed to load media data");
       }
@@ -238,7 +236,6 @@ async function loadAllMedia(): Promise<MediaResult[]> {
               return {
                 id: media.MediaID,
                 title: media.Name,
-                description: media.Description || "",
                 thumbnail: media.ThumbnailURL,
                 duration: Math.round((media.Duration || 0) / 1e9 / 60),
                 publishedYear: media.PublishYear,

@@ -28,7 +28,6 @@ export default defineConfig(() => ({
             if (id.includes("react-router")) return "vendor-router";
             if (id.includes("i18next")) return "vendor-i18n";
             if (id.includes("@radix-ui")) return "vendor-radix";
-            if (id.includes("@tanstack")) return "vendor-query";
             if (id.includes("lucide-react")) return "vendor-icons";
           }
         },

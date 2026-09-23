@@ -3,26 +3,22 @@
     "tagline": "Discover videos from Timeless Today and Prem Rawat official YouTube channels."
   },
   "filters": {
-    "language": "Language",
-    "category": "Category",
-    "channel": "Channel",
-    "duration": "Duration",
-    "year": "Year",
     "allLanguages": "All Languages",
     "allCategories": "All Categories",
-    "allChannels": "All Channels",
     "allYears": "All Years",
     "allDurations": "All Durations",
     "selected": "selected",
-    "searchPlaceholder": "Search in title and description (optional)...",
+    "searchPlaceholder": "Search here ...",
     "reset": "Reset Filters",
     "freeOnly": "Free"
+  },
+  "sources": {
+    "all": "All",
+    "channelAll": "All channels"
   },
   "results": {
     "mediaCount_one": "{{count}} video found",
     "mediaCount_other": "{{count}} videos found",
-    "loading": "Loading...",
-    "noMediaFound": "No videos found",
     "noMediaMessage": "Try adjusting your search terms or filters to discover more content.",
     "new": "New"
   },

@@ -5,11 +5,10 @@ import { DarkModeToggle } from "./DarkModeToggle";
 export function Header() {
   const { t } = useTranslation();
   return (
-    <header
-      className={`bg-hero text-primary-foreground py-6 md:py-16 px-4 relative overflow-hidden`}
-    >
-      {/* Language switcher and dark mode toggle in top-right corner */}
-      <div className="absolute top-4 right-0 md:right-4 z-30 flex items-center gap-2">
+    <header className="relative flex items-center justify-center overflow-hidden bg-hero px-4 py-8 text-primary-foreground md:py-16">
+      {/* Language switcher and dark mode toggle in top-right corner.
+          Stacked on phones so they don't eat into the tagline. */}
+      <div className="absolute top-3 right-2 z-30 flex flex-col items-end gap-1.5 md:top-4 md:right-4 md:flex-row md:items-center md:gap-2">
         <LanguageSwitcher />
         <DarkModeToggle />
       </div>
@@ -24,13 +23,9 @@ export function Header() {
                          bg-primary-foreground/10 blur-3xl"
         />
       </div>
-      <div className="container max-w-4xl mx-auto text-center relative z-10 px-4">
+      <div className="container relative z-10 mx-auto max-w-4xl px-12 text-center md:px-4">
         <p
-          className="text-sm md:text-lg text-primary-foreground/80 dark:text-white/90
-                     mx-auto animate-slide-up
-                     leading-relaxed
-                     md:leading-normal
-                     line-clamp-2"
+          className="mx-auto animate-slide-up text-sm leading-relaxed text-primary-foreground/80 line-clamp-2 md:text-lg md:leading-normal dark:text-white/90"
           style={{ animationDelay: "100ms" }}
         >
           {t("header.tagline")}
