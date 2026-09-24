@@ -277,6 +277,61 @@ export async function searchMedia(filters: SearchFilters): Promise<MediaResult[]
   return filterMedia(allMedia, filters);
 }
 
+export interface TopStatsItem {
+  mediaId: string;
+  clicks: number;
+  title?: string;
+  thumbnail?: string;
+}
+
+interface TopStatsResult {
+  n: number;
+  hours: number;
+  items: TopStatsItem[];
+}
+
+/**
+ * Fetch top-N media by click count over the last M hours from the worker,
+ * then join catalog metadata from cache.json when available.
+ */
+export async function fetchTopStats(n: number, hours: number): Promise<TopStatsResult> {
+  if (!API_CONFIG.apiUrl) {
+    throw new Error("API URL is not configured");
+  }
+
+  const url = new URL(`${API_CONFIG.apiUrl.replace(/\/$/, "")}/api/stats/top`);
+  url.searchParams.set("n", String(n));
+  url.searchParams.set("hours", String(hours));
+
+  const response = await fetch(url.toString());
+  if (!response.ok) {
+    throw new Error(`Stats request failed (${response.status})`);
+  }
+
+  const data = (await response.json()) as {
+    n: number;
+    hours: number;
+    items: { mediaId: string; clicks: number }[];
+  };
+
+  const catalog = await loadAllMedia();
+  const byId = new Map(catalog.map((m) => [m.id, m]));
+
+  return {
+    n: data.n,
+    hours: data.hours,
+    items: (data.items ?? []).map((item) => {
+      const media = byId.get(item.mediaId);
+      return {
+        mediaId: item.mediaId,
+        clicks: item.clicks,
+        title: media?.title,
+        thumbnail: media?.thumbnail,
+      };
+    }),
+  };
+}
+
 export async function getUniqueCategories(): Promise<string[]> {
   const allMedia = await loadAllMedia();
   const categories = new Set<string>();

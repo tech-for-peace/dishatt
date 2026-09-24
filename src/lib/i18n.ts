@@ -47,3 +47,5 @@ i18n.on("languageChanged", (lng) => {
     // Silent error handling for localStorage
   }
 });
+
+export default i18n;
