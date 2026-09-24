@@ -1,7 +1,12 @@
 import { useEffect, useState, type ComponentType, type SVGProps } from "react";
 import { useTranslation } from "react-i18next";
 
-import { AllSourcesIcon, SpotifyIcon, YoutubeIcon } from "@/components/icons/source-icons";
+import {
+  AllSourcesIcon,
+  ApplePodcastIcon,
+  SpotifyIcon,
+  YoutubeIcon,
+} from "@/components/icons/source-icons";
 import { getUniqueChannels } from "@/lib/data";
 import {
   formatChannelLabel,
@@ -31,6 +36,7 @@ const SOURCE_VISUAL: Record<ActiveSource, SourceVisual> = {
     src: "https://www.intelligentexistence.com/wp-content/uploads/2023/08/IE_Logo_%C2%AE_light.png",
   },
   spotify: { kind: "icon", Icon: SpotifyIcon },
+  applePodcast: { kind: "icon", Icon: ApplePodcastIcon },
 };
 
 const TAB_KEYS: ActiveSource[] = ["all", ...SOURCE_ORDER];
