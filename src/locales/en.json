@@ -37,5 +37,16 @@
     "video": "Video",
     "music": "Music",
     "podcast": "Podcast"
+  },
+  "stats": {
+    "title": "Stats",
+    "summary_one": "Top {{n}} media by clicks in the last {{count}} hour.",
+    "summary_other": "Top {{n}} media by clicks in the last {{count}} hours.",
+    "topN": "Top N",
+    "hours": "Hours",
+    "apply": "Apply",
+    "loading": "Loading…",
+    "loadError": "Failed to load stats",
+    "empty": "No clicks in this window."
   }
 }
