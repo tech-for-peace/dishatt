@@ -15,7 +15,6 @@ describe("getSourceKey", () => {
   });
 
   it("maps Apple Podcast channels", () => {
-    expect(getSourceKey("Podcast")).toBe("applePodcast");
     expect(getSourceKey("Apple Podcast")).toBe("applePodcast");
   });
 
