@@ -117,48 +117,51 @@ export default function Stats() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-background text-foreground" lang="en">
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[28rem] bg-hero opacity-90"
+        className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-hero opacity-90"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -left-24 top-32 h-72 w-72 rounded-full bg-secondary/20 blur-3xl"
+        className="pointer-events-none absolute -left-16 top-8 h-28 w-28 rounded-full bg-secondary/20 blur-3xl"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -right-16 top-10 h-64 w-64 rounded-full bg-primary-foreground/10 blur-3xl"
+        className="pointer-events-none absolute -right-10 top-2 h-24 w-24 rounded-full bg-primary-foreground/10 blur-3xl"
         aria-hidden
       />
 
-      <div className="absolute top-3 right-2 z-30 md:top-4 md:right-4">
+      <div className="absolute top-2 right-2 z-30">
         <DarkModeToggle />
       </div>
 
-      <main className="relative z-10 mx-auto max-w-3xl px-4 pb-16 pt-14 md:pt-20">
-        <header className="animate-fade-in text-primary-foreground">
-          <h1 className="font-heading text-5xl font-semibold tracking-tight md:text-6xl">
-            {t("stats.title")}
-          </h1>
-          <p className="mt-3 max-w-lg text-sm text-primary-foreground/80 md:text-base">
-            {t("stats.summary", {
-              n: query.n,
-              window: windowLabel(query.start, query.end, t),
-            })}
-          </p>
-        </header>
+      <main className="relative z-10 mx-auto max-w-3xl px-4 pb-16 pt-3">
+        <div className="flex flex-col items-center">
+          <header className="animate-fade-in text-center text-white">
+            <h1 className="font-heading text-3xl font-semibold tracking-tight">
+              {t("stats.title")}
+            </h1>
+          </header>
 
-        <section
-          className="animate-slide-up mt-10 rounded-2xl border border-border/50 bg-card/80 p-5 shadow-card backdrop-blur-md md:p-6"
-          style={{ animationDelay: "80ms" }}
-        >
-          <div className="space-y-7">
-            <div>
-              <div className="mb-3 flex items-baseline justify-between gap-3">
-                <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+          <section
+            className="animate-slide-up mt-3 w-fit max-w-full rounded-2xl border border-border/60 bg-card/90 px-4 py-3 shadow-card backdrop-blur-md"
+            style={{ animationDelay: "80ms" }}
+          >
+            <div className="grid grid-cols-[auto_16rem] items-start gap-x-8 gap-y-2">
+              <div className="flex h-4 items-center">
+                <span className="text-xs font-medium uppercase leading-none tracking-wider text-muted-foreground">
                   {t("stats.topN")}
                 </span>
               </div>
+              <div className="flex h-4 min-w-0 items-center justify-between gap-3">
+                <span className="text-xs font-medium uppercase leading-none tracking-wider text-muted-foreground">
+                  {t("stats.window")}
+                </span>
+                <span className="truncate text-xs font-medium leading-none text-foreground">
+                  {liveWindow}
+                </span>
+              </div>
+
               <div
-                className="inline-flex w-full flex-wrap gap-1 rounded-xl bg-muted/40 p-1 dark:bg-muted/20"
+                className="inline-flex gap-0.5 self-center rounded-xl bg-muted/50 p-1 dark:bg-muted/25"
                 role="group"
                 aria-label={t("stats.topN")}
               >
@@ -172,7 +175,7 @@ export default function Stats() {
                       aria-pressed={selected}
                       onClick={() => onSelectN(option)}
                       className={cn(
-                        "min-w-[3.25rem] flex-1 rounded-lg px-3 py-2 text-sm font-medium tabular-nums transition-all duration-200",
+                        "rounded-lg px-3 py-1.5 text-sm font-medium tabular-nums transition-all duration-200",
                         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                         "disabled:pointer-events-none disabled:opacity-50",
                         selected
@@ -185,19 +188,8 @@ export default function Stats() {
                   );
                 })}
               </div>
-            </div>
 
-            <div>
-              <div className="mb-1 flex items-baseline justify-between gap-3">
-                <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                  {t("stats.window")}
-                </span>
-              </div>
-              <p className="mb-4 font-heading text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
-                {liveWindow}
-              </p>
-
-              <div className="relative px-1">
+              <div className="min-w-0 self-center">
                 <Slider
                   min={MIN_HOURS_AGO}
                   max={MAX_HOURS_AGO}
@@ -213,8 +205,7 @@ export default function Stats() {
                   aria-label={t("stats.window")}
                   aria-valuetext={liveWindow}
                 />
-                {/* Day marks under the track (0 = now … 7d). */}
-                <div className="pointer-events-none relative mt-3 h-6">
+                <div className="pointer-events-none relative h-4">
                   {DAY_TICKS.map((day) => {
                     const pct = (day * 24) / MAX_HOURS_AGO;
                     return (
@@ -222,14 +213,13 @@ export default function Stats() {
                         key={day}
                         className={cn(
                           "absolute top-0 flex flex-col items-center",
-                          day === 0 && "translate-x-0 items-start",
+                          day === 0 && "items-start",
                           day === 7 && "-translate-x-full items-end",
                           day > 0 && day < 7 && "-translate-x-1/2",
                         )}
                         style={{ left: `${pct * 100}%` }}
                       >
-                        <span className="mb-1 h-1.5 w-px bg-border" />
-                        <span className="text-[11px] tabular-nums text-muted-foreground">
+                        <span className="text-[11px] tabular-nums leading-none text-muted-foreground">
                           {day === 0 ? t("stats.now") : t("stats.dayTick", { count: day })}
                         </span>
                       </div>
@@ -238,10 +228,10 @@ export default function Stats() {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
 
-        <section className="mt-8">
+        <section className="mt-4">
           {loadFailed && (
             <p
               className="animate-fade-in rounded-xl border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm text-destructive"
