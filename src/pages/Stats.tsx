@@ -117,7 +117,7 @@ export default function Stats() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-background text-foreground" lang="en">
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-hero opacity-90"
+        className="pointer-events-none absolute inset-x-0 top-0 h-60 bg-hero opacity-90 sm:h-40"
         aria-hidden
       />
       <div
@@ -142,54 +142,55 @@ export default function Stats() {
           </header>
 
           <section
-            className="animate-slide-up mt-3 w-fit max-w-full rounded-2xl border border-border/60 bg-card/90 px-4 py-3 shadow-card backdrop-blur-md"
+            className="animate-slide-up mt-3 w-full rounded-2xl border border-border/60 bg-card/90 px-3 py-3 shadow-card backdrop-blur-md sm:w-fit sm:px-4"
             style={{ animationDelay: "80ms" }}
           >
-            <div className="grid grid-cols-[auto_16rem] items-start gap-x-8 gap-y-2">
-              <div className="flex h-4 items-center">
-                <span className="text-xs font-medium uppercase leading-none tracking-wider text-muted-foreground">
-                  {t("stats.topN")}
-                </span>
-              </div>
-              <div className="flex h-4 min-w-0 items-center justify-between gap-3">
-                <span className="text-xs font-medium uppercase leading-none tracking-wider text-muted-foreground">
-                  {t("stats.window")}
-                </span>
-                <span className="truncate text-xs font-medium leading-none text-foreground">
-                  {liveWindow}
-                </span>
-              </div>
-
-              <div
-                className="inline-flex gap-0.5 self-center rounded-xl bg-muted/50 p-1 dark:bg-muted/25"
-                role="group"
-                aria-label={t("stats.topN")}
-              >
-                {N_OPTIONS.map((option) => {
-                  const selected = query.n === option;
-                  return (
-                    <button
-                      key={option}
-                      type="button"
-                      disabled={loading}
-                      aria-pressed={selected}
-                      onClick={() => onSelectN(option)}
-                      className={cn(
-                        "rounded-lg px-3 py-1.5 text-sm font-medium tabular-nums transition-all duration-200",
-                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-                        "disabled:pointer-events-none disabled:opacity-50",
-                        selected
-                          ? "bg-background text-foreground shadow-soft"
-                          : "text-muted-foreground hover:text-foreground",
-                      )}
-                    >
-                      {option}
-                    </button>
-                  );
-                })}
+            <div className="flex w-full flex-col gap-4 sm:w-auto sm:flex-row sm:items-start sm:gap-8">
+              <div className="min-w-0">
+                <div className="mb-2 flex h-4 items-center">
+                  <span className="text-xs font-medium uppercase leading-none tracking-wider text-muted-foreground">
+                    {t("stats.topN")}
+                  </span>
+                </div>
+                <div
+                  className="flex gap-0.5 rounded-xl bg-muted/50 p-1 dark:bg-muted/25"
+                  role="group"
+                  aria-label={t("stats.topN")}
+                >
+                  {N_OPTIONS.map((option) => {
+                    const selected = query.n === option;
+                    return (
+                      <button
+                        key={option}
+                        type="button"
+                        disabled={loading}
+                        aria-pressed={selected}
+                        onClick={() => onSelectN(option)}
+                        className={cn(
+                          "flex-1 rounded-lg px-2 py-1.5 text-sm font-medium tabular-nums transition-all duration-200 sm:flex-none sm:px-3",
+                          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                          "disabled:pointer-events-none disabled:opacity-50",
+                          selected
+                            ? "bg-background text-foreground shadow-soft"
+                            : "text-muted-foreground hover:text-foreground",
+                        )}
+                      >
+                        {option}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
 
-              <div className="min-w-0 self-center">
+              <div className="min-w-0 sm:w-64">
+                <div className="mb-2 flex h-4 min-w-0 items-center justify-between gap-3">
+                  <span className="text-xs font-medium uppercase leading-none tracking-wider text-muted-foreground">
+                    {t("stats.window")}
+                  </span>
+                  <span className="truncate text-xs font-medium leading-none text-foreground">
+                    {liveWindow}
+                  </span>
+                </div>
                 <Slider
                   min={MIN_HOURS_AGO}
                   max={MAX_HOURS_AGO}
@@ -246,11 +247,11 @@ export default function Stats() {
               {Array.from({ length: 5 }).map((_, i) => (
                 <li
                   key={i}
-                  className="flex animate-pulse items-center gap-4 rounded-2xl bg-card/60 p-4 md:gap-5 md:p-5"
+                  className="flex animate-pulse items-center gap-2 rounded-2xl bg-card/60 p-2.5 sm:gap-4 sm:p-4 md:gap-5 md:p-5"
                   style={{ animationDelay: `${i * 60}ms` }}
                 >
-                  <div className="h-6 w-8 rounded bg-muted/50" />
-                  <div className="h-20 w-36 shrink-0 rounded-xl bg-muted/50 md:h-24 md:w-40" />
+                  <div className="h-5 w-6 shrink-0 rounded bg-muted/50 sm:h-6 sm:w-8" />
+                  <div className="h-12 w-20 shrink-0 rounded-lg bg-muted/50 sm:h-20 sm:w-36 sm:rounded-xl md:h-24 md:w-40" />
                   <div className="min-w-0 flex-1 space-y-2">
                     <div className="h-5 w-3/4 max-w-[16rem] rounded bg-muted/50" />
                     <div className="h-3 w-24 rounded bg-muted/40" />
@@ -271,7 +272,7 @@ export default function Stats() {
             <ol className="space-y-3">
               {items.map((item, index) => {
                 const rowClass = cn(
-                  "animate-slide-up group flex items-center gap-4 rounded-2xl border border-transparent bg-card/50 p-4 transition-colors duration-200 md:gap-5 md:p-5",
+                  "animate-slide-up group flex items-center gap-2 rounded-2xl border border-transparent bg-card/50 p-2.5 transition-colors duration-200 sm:gap-4 sm:p-4 md:gap-5 md:p-5",
                   item.url &&
                     "hover:border-border/60 hover:bg-card hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                 );
@@ -279,7 +280,7 @@ export default function Stats() {
                   <>
                     <span
                       className={cn(
-                        "w-8 shrink-0 text-center font-heading text-2xl tabular-nums leading-none md:w-10 md:text-3xl",
+                        "w-6 shrink-0 text-center font-heading text-xl tabular-nums leading-none sm:w-8 sm:text-2xl md:w-10 md:text-3xl",
                         index === 0
                           ? "font-semibold text-foreground"
                           : "font-medium text-muted-foreground",
@@ -291,15 +292,15 @@ export default function Stats() {
                       <img
                         src={item.thumbnail}
                         alt=""
-                        className="h-20 w-36 shrink-0 rounded-xl object-cover shadow-soft transition-transform duration-300 group-hover:scale-[1.02] md:h-24 md:w-40"
+                        className="h-12 w-20 shrink-0 rounded-lg object-cover shadow-soft transition-transform duration-300 group-hover:scale-[1.02] sm:h-20 sm:w-36 sm:rounded-xl md:h-24 md:w-40"
                       />
                     ) : (
-                      <div className="h-20 w-36 shrink-0 rounded-xl bg-muted md:h-24 md:w-40" />
+                      <div className="h-12 w-20 shrink-0 rounded-lg bg-muted sm:h-20 sm:w-36 sm:rounded-xl md:h-24 md:w-40" />
                     )}
                     <div className="min-w-0 flex-1">
                       <p
                         className={cn(
-                          "text-base font-medium leading-snug md:text-lg",
+                          "truncate text-sm font-medium leading-snug sm:text-base md:text-lg",
                           item.url ? "group-hover:underline group-hover:underline-offset-2" : "",
                           !item.inCatalog && "text-muted-foreground",
                         )}
@@ -318,7 +319,7 @@ export default function Stats() {
                       )}
                     </div>
                     <div className="shrink-0 text-right">
-                      <p className="font-heading text-3xl font-semibold tabular-nums leading-none tracking-tight md:text-4xl">
+                      <p className="font-heading text-2xl font-semibold tabular-nums leading-none tracking-tight sm:text-3xl md:text-4xl">
                         {item.clicks}
                       </p>
                       <p className="mt-1.5 text-[11px] uppercase tracking-wider text-muted-foreground">
