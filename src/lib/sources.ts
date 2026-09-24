@@ -13,8 +13,7 @@ export function getSourceKey(channel?: string): SourceKey {
   if (channel?.includes("YouTube")) return "youtube";
   if (channel?.includes("Spotify")) return "spotify";
   if (channel?.includes("Intelligent Existence")) return "intelligentExistence";
-  // Cache uses ContentSource "Podcast" for Apple Podcasts episodes.
-  if (channel?.includes("Podcast")) return "applePodcast";
+  if (channel?.includes("Apple Podcast")) return "applePodcast";
   return "timelessToday";
 }
 
