@@ -13,7 +13,7 @@ export function MediaGrid({ media, isLoading }: MediaGridProps) {
   if (isLoading) {
     return (
       <div className={containerClass}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4 lg:grid-cols-3">
           {Array.from({ length: 6 }).map((_, i) => (
             <div
               key={i}
@@ -49,7 +49,7 @@ export function MediaGrid({ media, isLoading }: MediaGridProps) {
 
   return (
     <div className={containerClass}>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4 lg:grid-cols-3">
         {media.map((media, index) => (
           <MediaCard key={media.id} media={media} index={index} />
         ))}

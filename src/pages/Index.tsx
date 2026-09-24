@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { Header } from "@/components/Header";
 import { FilterBar } from "@/components/FilterBar";
+import { LangCategoryTabs } from "@/components/LangCategoryTabs";
 import { MediaGrid } from "@/components/MediaGrid";
 import { ActiveSource, SourceTabs } from "@/components/SourceTabs";
 
@@ -23,7 +24,9 @@ const initialFilters: SearchFilters = {
 };
 
 const VALID_LANGUAGES: string[] = ["", "english", "hindi"];
+/** Keep Podcast valid so old saved state isn't wiped; UI only offers Video|Music. */
 const VALID_CATEGORIES: string[] = ["Video", "Music", "Podcast"];
+const UI_CATEGORIES = new Set(["Video", "Music"]);
 const VALID_DURATION_LABELS: string[] = DURATION_BANDS.map((b) => b.label);
 const YEAR_REGEX = /^\d{4}$/;
 
@@ -54,6 +57,17 @@ const isValidSearchFilters = (data: unknown): data is SearchFilters => {
   );
 };
 
+/**
+ * Collapse multi-select history to one category for the word-tab UI.
+ * Prefer Video|Music when present; otherwise keep legacy Podcast.
+ */
+const normalizeCategories = (categories: string[]): string[] => {
+  const firstUi = categories.find((c) => UI_CATEGORIES.has(c));
+  if (firstUi) return [firstUi];
+  if (categories.includes("Podcast")) return ["Podcast"];
+  return [];
+};
+
 const getStoredFilters = (): SearchFilters => {
   const stored = localStorage.getItem(UI_CONFIG.cacheKey);
   if (!stored) return initialFilters;
@@ -66,6 +80,7 @@ const getStoredFilters = (): SearchFilters => {
     return {
       ...parsed,
       channels: youtubeChannels.slice(0, 1),
+      categories: normalizeCategories(parsed.categories),
     };
   } catch {
     return initialFilters;
@@ -257,10 +272,27 @@ const Index = () => {
     setVisibleCount(UI_CONFIG.mediaPerLoad);
   }, []);
 
+  const handleLangCategoryClear = useCallback(() => {
+    setFilters((prev) => {
+      const next = { ...prev, language: "" as const, categories: [] as string[] };
+      storeFilters(next);
+      return next;
+    });
+  }, []);
+
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <Header />
-      <main className="flex-1 container max-w-6xl mx-auto px-4 py-3 md:py-4 space-y-2.5">
+    <div className="flex min-h-screen flex-col bg-background">
+      {/*
+        Hero green stretches through the gap above filters and to the filter
+        midpoint: mobile 2-row panel → end of first row; md+ 1-row → half row.
+        Opaque FilterBar is pulled up with -mt so it straddles the edge.
+      */}
+      <section className="bg-hero pb-[calc(0.75rem+2.25rem)] md:pb-[calc(1rem+1.125rem)]">
+        <Header />
+      </section>
+
+      {/* Filters → Browse → Results on page bg */}
+      <main className="container mx-auto max-w-6xl flex-1 space-y-3 px-4 -mt-9 pb-3 pt-0 md:-mt-[1.125rem] md:space-y-3.5 md:pb-4">
         <FilterBar
           filters={filters}
           onFilterChange={handleFilterChange}
@@ -275,8 +307,16 @@ const Index = () => {
           onChannelsChange={handleChannelsChange}
         />
 
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <h2 className="font-heading text-2xl font-semibold text-foreground">
+        {/* Mobile: count under tabs. md+: one line with 4-digit count. */}
+        <div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-between md:gap-x-3">
+          <LangCategoryTabs
+            language={filters.language}
+            category={filters.categories[0] ?? ""}
+            onLanguageChange={(value) => handleFilterChange("language", value)}
+            onCategoryChange={(value) => handleFilterChange("categories", value ? [value] : [])}
+            onClear={handleLangCategoryClear}
+          />
+          <h2 className="shrink-0 self-end font-heading text-base font-semibold text-foreground md:ml-auto md:self-auto md:text-xl lg:text-2xl">
             {t("results.mediaCount", { count: visibleMedia.length })}
           </h2>
         </div>
@@ -290,8 +330,9 @@ const Index = () => {
           )}
         </div>
       </main>
-      <footer className="py-1 mt-auto">
-        <div className="container max-w-6xl mx-auto px-4 text-center">
+
+      <footer className="mt-auto py-1">
+        <div className="container mx-auto max-w-6xl px-4 text-center">
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} techforpeace.co.in
           </p>

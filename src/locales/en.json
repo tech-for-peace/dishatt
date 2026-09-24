@@ -1,10 +1,8 @@
 {
   "header": {
-    "tagline": "Discover videos from Timeless Today and Prem Rawat official YouTube channels."
+    "tagline": "Discover videos from Timeless Today and Prem Rawat's official channels."
   },
   "filters": {
-    "allLanguages": "All Languages",
-    "allCategories": "All Categories",
     "allYears": "All Years",
     "allDurations": "All Durations",
     "selected": "selected",
@@ -34,7 +32,6 @@
   },
   "category": {
     "video": "Video",
-    "music": "Music",
-    "podcast": "Podcast"
+    "music": "Music"
   }
 }

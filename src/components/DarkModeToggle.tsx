@@ -18,14 +18,14 @@ export function DarkModeToggle() {
       variant="outline"
       size="sm"
       onClick={toggleTheme}
-      className="h-5 md:h-10 gap-1 px-1 md:px-3 bg-white border-gray-300 hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all duration-200"
+      className="h-5 gap-1 bg-white px-1 shadow-lg transition-all duration-200 hover:bg-gray-50 hover:shadow-xl border-gray-300 md:h-7 md:px-2 lg:h-8 lg:px-2.5"
     >
       {isDark ? (
-        <Moon className="h-2 w-2 md:h-4 md:w-4 text-gray-700" />
+        <Moon className="h-2 w-2 text-gray-700 md:h-3.5 md:w-3.5" />
       ) : (
-        <Sun className="h-2 w-2 md:h-4 md:w-4 text-gray-700" />
+        <Sun className="h-2 w-2 text-gray-700 md:h-3.5 md:w-3.5" />
       )}
-      <span className="font-semibold text-xs md:text-sm text-gray-800 hidden md:inline">
+      <span className="hidden font-semibold text-gray-800 md:inline md:text-xs lg:text-sm">
         {isDark ? "DA" : "LI"}
       </span>
     </Button>
