@@ -14,6 +14,11 @@ describe("getSourceKey", () => {
     expect(getSourceKey("Intelligent Existence")).toBe("intelligentExistence");
   });
 
+  it("maps Apple Podcast channels", () => {
+    expect(getSourceKey("Podcast")).toBe("applePodcast");
+    expect(getSourceKey("Apple Podcast")).toBe("applePodcast");
+  });
+
   it("defaults to Timeless Today", () => {
     expect(getSourceKey("Timeless Today")).toBe("timelessToday");
     expect(getSourceKey(undefined)).toBe("timelessToday");
@@ -44,7 +49,14 @@ describe("youtubeChannelLogoUrl", () => {
 });
 
 describe("SOURCE_ORDER", () => {
-  it("lists all four sources", () => {
-    expect(SOURCE_ORDER).toEqual(["timelessToday", "youtube", "intelligentExistence", "spotify"]);
+  it("lists each source once", () => {
+    expect(SOURCE_ORDER).toEqual([
+      "timelessToday",
+      "youtube",
+      "intelligentExistence",
+      "spotify",
+      "applePodcast",
+    ]);
+    expect(new Set(SOURCE_ORDER).size).toBe(SOURCE_ORDER.length);
   });
 });

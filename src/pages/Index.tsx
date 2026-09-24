@@ -8,7 +8,7 @@ import { ActiveSource, SourceTabs } from "@/components/SourceTabs";
 
 import { searchMedia, getUniqueChannels } from "@/lib/data";
 import { SearchFilters, MediaResult, DURATION_BANDS } from "@/lib/types";
-import { getSourceKey } from "@/lib/sources";
+import { getSourceKey, SOURCE_ORDER } from "@/lib/sources";
 import { useToast } from "@/lib/use-toast";
 import { UI_CONFIG } from "@/lib/constants";
 
@@ -76,13 +76,11 @@ const storeFilters = (filters: SearchFilters): void => {
   localStorage.setItem(UI_CONFIG.cacheKey, JSON.stringify(filters));
 };
 
-const emptyCounts = (): Record<ActiveSource, number> => ({
-  all: 0,
-  timelessToday: 0,
-  youtube: 0,
-  intelligentExistence: 0,
-  spotify: 0,
-});
+const emptyCounts = (): Record<ActiveSource, number> =>
+  Object.fromEntries([["all", 0], ...SOURCE_ORDER.map((key) => [key, 0])]) as Record<
+    ActiveSource,
+    number
+  >;
 
 const Index = () => {
   const [filters, setFilters] = useState<SearchFilters>(getStoredFilters());

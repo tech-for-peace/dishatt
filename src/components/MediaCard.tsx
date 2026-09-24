@@ -12,6 +12,7 @@ const SOURCE_BADGE_CLASS: Record<SourceKey, string> = {
   spotify: "bg-emerald-600 hover:bg-emerald-700 text-white",
   intelligentExistence: "bg-violet-600 hover:bg-violet-700 text-white",
   timelessToday: "bg-amber-600 hover:bg-amber-700 text-white",
+  applePodcast: "bg-[#9933CC] hover:bg-[#7A29A3] text-white",
 };
 
 const WHATSAPP_ICON_PATH =
@@ -80,6 +81,10 @@ function isSafeUrl(url: string): boolean {
   }
 }
 
+function isAllowedThumbnailHost(hostname: string): boolean {
+  return ALLOWED_THUMBNAIL_DOMAINS.includes(hostname) || hostname.endsWith(".mzstatic.com");
+}
+
 interface MediaCardProps {
   media: MediaResult;
   index: number;
@@ -136,7 +141,7 @@ export const MediaCard = memo(function MediaCard({ media, index }: MediaCardProp
       try {
         // Validate thumbnail domain before fetching
         const thumbUrl = new URL(media.thumbnail);
-        if (ALLOWED_THUMBNAIL_DOMAINS.includes(thumbUrl.hostname)) {
+        if (isAllowedThumbnailHost(thumbUrl.hostname)) {
           const response = await fetch(media.thumbnail);
           const blob = await response.blob();
 

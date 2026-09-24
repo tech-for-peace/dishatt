@@ -1,25 +1,26 @@
-export type SourceKey = "timelessToday" | "youtube" | "intelligentExistence" | "spotify";
+/** Canonical source order; `SourceKey` is derived from this list. */
+export const SOURCE_ORDER = [
+  "timelessToday",
+  "youtube",
+  "intelligentExistence",
+  "spotify",
+  "applePodcast",
+] as const;
+
+export type SourceKey = (typeof SOURCE_ORDER)[number];
 
 export function getSourceKey(channel?: string): SourceKey {
   if (channel?.includes("YouTube")) return "youtube";
   if (channel?.includes("Spotify")) return "spotify";
   if (channel?.includes("Intelligent Existence")) return "intelligentExistence";
+  // Cache uses ContentSource "Podcast" for Apple Podcasts episodes.
+  if (channel?.includes("Podcast")) return "applePodcast";
   return "timelessToday";
 }
 
-export const SOURCE_ORDER: SourceKey[] = [
-  "timelessToday",
-  "youtube",
-  "intelligentExistence",
-  "spotify",
-];
-
-export const SOURCE_LABEL_KEY: Record<SourceKey, string> = {
-  timelessToday: "mediaCard.timelessToday",
-  youtube: "mediaCard.youtube",
-  intelligentExistence: "mediaCard.intelligentExistence",
-  spotify: "mediaCard.spotify",
-};
+export const SOURCE_LABEL_KEY: Record<SourceKey, string> = Object.fromEntries(
+  SOURCE_ORDER.map((key) => [key, `mediaCard.${key}`]),
+) as Record<SourceKey, string>;
 
 /** Strip the "YouTube " prefix for display, e.g. "YouTube @Foo" -> "@Foo". */
 export function formatChannelLabel(channel: string): string {
