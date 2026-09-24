@@ -14,68 +14,35 @@ interface FilterMenuOption {
   label: string;
 }
 
-interface FilterMenuBase {
-  /** Shown on the trigger when nothing is selected (e.g. "All Languages"). */
+interface FilterMenuProps {
+  /** Shown on the trigger when nothing is selected (e.g. "All Durations"). */
   label: string;
   options: FilterMenuOption[];
+  values: string[];
+  onChange: (values: string[]) => void;
   className?: string;
 }
 
-interface SingleFilterMenuProps extends FilterMenuBase {
-  mode: "single";
-  value: string;
-  onChange: (value: string) => void;
-}
-
-interface MultiFilterMenuProps extends FilterMenuBase {
-  mode: "multi";
-  values: string[];
-  onChange: (values: string[]) => void;
-}
-
-type FilterMenuProps = SingleFilterMenuProps | MultiFilterMenuProps;
-
 const TRIGGER_CLASS =
-  "flex h-8 w-full items-center justify-between rounded-none border border-border/50 bg-background/50 px-3 py-1 text-sm ring-offset-background hover:border-primary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2";
+  "flex h-9 w-full items-center justify-between rounded-none border-0 bg-transparent px-3 py-1 text-sm text-foreground ring-offset-background transition-colors hover:bg-muted/40 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2";
 
-export function FilterMenu(props: FilterMenuProps) {
+export function FilterMenu({ label, options, values, onChange, className }: FilterMenuProps) {
   const { t } = useTranslation();
-  const { label, options, className } = props;
-
-  const isMulti = props.mode === "multi";
-  const selectedCount = isMulti ? props.values.length : props.value ? 1 : 0;
-  const isActive = selectedCount > 0;
+  const isActive = values.length > 0;
 
   const displayText = (() => {
     if (!isActive) return label;
-    if (isMulti) {
-      if (props.values.length === 1) {
-        return options.find((o) => o.value === props.values[0])?.label ?? label;
-      }
-      return `${props.values.length} ${t("filters.selected")}`;
+    if (values.length === 1) {
+      return options.find((o) => o.value === values[0])?.label ?? label;
     }
-    return options.find((o) => o.value === props.value)?.label ?? label;
+    return `${values.length} ${t("filters.selected")}`;
   })();
 
-  const handleSingleToggle = (optionValue: string) => {
-    if (props.mode !== "single") return;
-    props.onChange(props.value === optionValue ? "" : optionValue);
-  };
-
-  const handleMultiToggle = (optionValue: string) => {
-    if (props.mode !== "multi") return;
-    const next = props.values.includes(optionValue)
-      ? props.values.filter((v) => v !== optionValue)
-      : [...props.values, optionValue];
-    props.onChange(next);
-  };
-
-  const handleClear = () => {
-    if (isMulti) {
-      props.onChange([]);
-    } else {
-      props.onChange("");
-    }
+  const handleToggle = (optionValue: string) => {
+    const next = values.includes(optionValue)
+      ? values.filter((v) => v !== optionValue)
+      : [...values, optionValue];
+    onChange(next);
   };
 
   return (
@@ -87,32 +54,21 @@ export function FilterMenu(props: FilterMenuProps) {
       <DropdownMenuContent align="start" className="max-h-64 w-48 overflow-y-auto rounded-none">
         <DropdownMenuCheckboxItem
           checked={!isActive}
-          onCheckedChange={handleClear}
-          onSelect={(e) => {
-            if (isMulti) e.preventDefault();
-          }}
+          onCheckedChange={() => onChange([])}
+          onSelect={(e) => e.preventDefault()}
         >
           {label}
         </DropdownMenuCheckboxItem>
-        {options.map((option) => {
-          const checked = isMulti
-            ? props.values.includes(option.value)
-            : props.value === option.value;
-          return (
-            <DropdownMenuCheckboxItem
-              key={option.value}
-              checked={checked}
-              onCheckedChange={() =>
-                isMulti ? handleMultiToggle(option.value) : handleSingleToggle(option.value)
-              }
-              onSelect={(e) => {
-                if (isMulti) e.preventDefault();
-              }}
-            >
-              {option.label}
-            </DropdownMenuCheckboxItem>
-          );
-        })}
+        {options.map((option) => (
+          <DropdownMenuCheckboxItem
+            key={option.value}
+            checked={values.includes(option.value)}
+            onCheckedChange={() => handleToggle(option.value)}
+            onSelect={(e) => e.preventDefault()}
+          >
+            {option.label}
+          </DropdownMenuCheckboxItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );

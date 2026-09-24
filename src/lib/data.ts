@@ -277,17 +277,6 @@ export async function searchMedia(filters: SearchFilters): Promise<MediaResult[]
   return filterMedia(allMedia, filters);
 }
 
-export async function getUniqueCategories(): Promise<string[]> {
-  const allMedia = await loadAllMedia();
-  const categories = new Set<string>();
-  allMedia.forEach((media) => {
-    if (media.category) {
-      categories.add(media.category);
-    }
-  });
-  return Array.from(categories).sort();
-}
-
 export async function getUniqueChannels(): Promise<string[]> {
   const allMedia = await loadAllMedia();
   const channels = new Set<string>();

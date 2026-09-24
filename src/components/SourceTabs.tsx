@@ -66,7 +66,7 @@ export function SourceTabs({
 
   return (
     <div className="space-y-1.5">
-      <div className="flex w-full flex-nowrap items-stretch gap-1 overflow-hidden sm:gap-2">
+      <div className="flex w-full flex-nowrap items-stretch gap-1 overflow-hidden md:gap-2">
         {TAB_KEYS.map((key) => {
           const visual = SOURCE_VISUAL[key];
           const isActive = activeSource === key;
@@ -82,7 +82,7 @@ export function SourceTabs({
               onClick={() => onSourceChange(key)}
               className={cn(
                 "inline-flex min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-none border-2 bg-card px-1 py-1.5 text-foreground shadow-sm transition-all",
-                "sm:h-11 sm:flex-row sm:gap-2 sm:px-2 sm:py-0",
+                "md:h-11 md:flex-row md:gap-2 md:px-2 md:py-0 lg:gap-2.5 lg:px-3",
                 "cursor-pointer select-none active:translate-y-px active:shadow-none",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                 isActive
@@ -96,15 +96,15 @@ export function SourceTabs({
                   alt=""
                   width={24}
                   height={24}
-                  className="h-5 w-5 shrink-0 object-cover object-left sm:h-6 sm:w-6"
+                  className="h-5 w-5 shrink-0 object-cover object-left md:h-6 md:w-6"
                   loading="lazy"
                   decoding="async"
                   referrerPolicy="no-referrer"
                 />
               ) : (
-                <visual.Icon className="h-5 w-5 shrink-0 sm:h-6 sm:w-6" />
+                <visual.Icon className="h-5 w-5 shrink-0 md:h-6 md:w-6" />
               )}
-              <span className="text-center text-[10px] font-medium leading-tight sm:text-left sm:text-xs">
+              <span className="text-center text-[10px] font-medium leading-tight md:text-left md:text-xs lg:text-sm">
                 {label}
               </span>
             </button>
