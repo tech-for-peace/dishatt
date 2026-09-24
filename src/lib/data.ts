@@ -282,26 +282,35 @@ export interface TopStatsItem {
   clicks: number;
   title?: string;
   thumbnail?: string;
+  url?: string;
+  /** False when mediaId is absent from the current cache.json catalog. */
+  inCatalog: boolean;
 }
 
 interface TopStatsResult {
   n: number;
-  hours: number;
+  start: number;
+  end: number;
   items: TopStatsItem[];
 }
 
 /**
- * Fetch top-N media by click count over the last M hours from the worker,
+ * Fetch top-N media by click count in the [start, end) hours-ago window,
  * then join catalog metadata from cache.json when available.
  */
-export async function fetchTopStats(n: number, hours: number): Promise<TopStatsResult> {
+export async function fetchTopStats(
+  n: number,
+  start: number,
+  end: number,
+): Promise<TopStatsResult> {
   if (!API_CONFIG.apiUrl) {
     throw new Error("API URL is not configured");
   }
 
   const url = new URL(`${API_CONFIG.apiUrl.replace(/\/$/, "")}/api/stats/top`);
   url.searchParams.set("n", String(n));
-  url.searchParams.set("hours", String(hours));
+  url.searchParams.set("start", String(start));
+  url.searchParams.set("end", String(end));
 
   const response = await fetch(url.toString());
   if (!response.ok) {
@@ -310,7 +319,8 @@ export async function fetchTopStats(n: number, hours: number): Promise<TopStatsR
 
   const data = (await response.json()) as {
     n: number;
-    hours: number;
+    start: number;
+    end: number;
     items: { mediaId: string; clicks: number }[];
   };
 
@@ -319,7 +329,8 @@ export async function fetchTopStats(n: number, hours: number): Promise<TopStatsR
 
   return {
     n: data.n,
-    hours: data.hours,
+    start: data.start,
+    end: data.end,
     items: (data.items ?? []).map((item) => {
       const media = byId.get(item.mediaId);
       return {
@@ -327,6 +338,8 @@ export async function fetchTopStats(n: number, hours: number): Promise<TopStatsR
         clicks: item.clicks,
         title: media?.title,
         thumbnail: media?.thumbnail,
+        url: media?.url,
+        inCatalog: media !== undefined,
       };
     }),
   };
