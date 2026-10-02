@@ -19,19 +19,5 @@ export default defineConfig(() => ({
   },
   build: {
     sourcemap: false,
-    rollupOptions: {
-      output: {
-        manualChunks: (id: string) => {
-          if (id.includes("node_modules")) {
-            if (id.includes("react-dom") || id.includes("/react/") || id.includes("react-i18next"))
-              return "vendor-react";
-            if (id.includes("react-router")) return "vendor-router";
-            if (id.includes("i18next")) return "vendor-i18n";
-            if (id.includes("@radix-ui")) return "vendor-radix";
-            if (id.includes("lucide-react")) return "vendor-icons";
-          }
-        },
-      },
-    },
   },
 }));

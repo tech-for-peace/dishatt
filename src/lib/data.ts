@@ -1,5 +1,6 @@
-import { SearchFilters, MediaResult, DURATION_BANDS } from "@/lib/types";
+import { SearchFilters, MediaResult, DURATION_BANDS, FilterFacets, SortOrder } from "@/lib/types";
 import { API_CONFIG } from "@/lib/constants";
+import { ActiveSource, getSourceKey, mediaForSource, sortYoutubeChannels } from "@/lib/sources";
 
 const LAST_VISIT_KEY = "dishatt_last_visit";
 const VISITOR_KEY = "dishatt_visitor_id";
@@ -9,10 +10,6 @@ const VISITOR_ID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{
 let cachedMedia: MediaResult[] | null = null;
 let cachePromise: Promise<MediaResult[]> | null = null;
 
-/**
- * Get the set of clicked media IDs from localStorage
- * Returns empty set if no data or if old date format is detected
- */
 const isValidMediaId = (id: string): boolean => /^[\w-]{1,128}$/.test(id);
 
 const isValidClickedIds = (data: unknown): data is string[] => {
@@ -23,6 +20,7 @@ const isValidClickedIds = (data: unknown): data is string[] => {
   );
 };
 
+/** Clicked media IDs from localStorage; empty if missing or malformed. */
 function getClickedMediaIds(): Set<string> {
   if (typeof window === "undefined") return new Set();
 
@@ -205,7 +203,7 @@ interface MediaData {
   Tags?: string[] | null;
 }
 
-async function loadAllMedia(): Promise<MediaResult[]> {
+export async function loadAllMedia(): Promise<MediaResult[]> {
   if (cachedMedia) {
     return cachedMedia;
   }
@@ -263,18 +261,15 @@ async function loadAllMedia(): Promise<MediaResult[]> {
       }
 
       return cachedMedia;
-    } catch {
-      return [];
+    } catch (error) {
+      cachedMedia = null;
+      throw error;
     } finally {
       cachePromise = null;
     }
   })();
 
   return cachePromise;
-}
-export async function searchMedia(filters: SearchFilters): Promise<MediaResult[]> {
-  const allMedia = await loadAllMedia();
-  return filterMedia(allMedia, filters);
 }
 
 export interface TopStatsItem {
@@ -324,7 +319,12 @@ export async function fetchTopStats(
     items: { mediaId: string; clicks: number }[];
   };
 
-  const catalog = await loadAllMedia();
+  let catalog: MediaResult[] = [];
+  try {
+    catalog = await loadAllMedia();
+  } catch {
+    // Click stats are still useful when the catalog file fails to load.
+  }
   const byId = new Map(catalog.map((m) => [m.id, m]));
 
   return {
@@ -345,26 +345,98 @@ export async function fetchTopStats(
   };
 }
 
-export async function getUniqueCategories(): Promise<string[]> {
-  const allMedia = await loadAllMedia();
-  const categories = new Set<string>();
-  allMedia.forEach((media) => {
-    if (media.category) {
-      categories.add(media.category);
-    }
-  });
-  return Array.from(categories).sort();
+function durationMatchesBand(duration: number, band: { min?: number; max?: number }): boolean {
+  if (band.min !== undefined && duration < band.min) return false;
+  if (band.max !== undefined && duration >= band.max) return false;
+  return true;
 }
 
-export async function getUniqueChannels(): Promise<string[]> {
-  const allMedia = await loadAllMedia();
+/**
+ * Derive filter options that actually exist among items for the chosen source.
+ * Language/category menus with a single value are still returned so callers can
+ * choose to hide them; channels are only populated for YouTube.
+ * When `categories` is set (e.g. Video / Music from the picker), facets — including
+ * channel chips — only reflect items in those categories.
+ */
+export function getFacets(
+  media: MediaResult[],
+  source: ActiveSource,
+  categoriesFilter?: string[],
+): FilterFacets {
+  let scoped = mediaForSource(media, source);
+  if (categoriesFilter && categoriesFilter.length > 0) {
+    const allowed = new Set(categoriesFilter);
+    scoped = scoped.filter((item) => allowed.has(item.category || "Video"));
+  }
+
+  const languageCodes = new Set<"en" | "hi">();
+  const categories = new Set<string>();
   const channels = new Set<string>();
-  allMedia.forEach((media) => {
-    if (media.channel) {
-      channels.add(media.channel);
+  const years = new Set<number>();
+  let hasLoginRequired = false;
+
+  for (const item of scoped) {
+    languageCodes.add(item.language);
+    categories.add(item.category || "Video");
+    if (item.channel && getSourceKey(item.channel) === "youtube") {
+      channels.add(item.channel);
     }
-  });
-  return Array.from(channels).sort();
+    years.add(item.publishedYear);
+    if (item.loginRequired) hasLoginRequired = true;
+  }
+
+  const languages: Array<"english" | "hindi"> = [];
+  if (languageCodes.has("en")) languages.push("english");
+  if (languageCodes.has("hi")) languages.push("hindi");
+
+  const durationBands = DURATION_BANDS.filter((band) =>
+    scoped.some((item) => durationMatchesBand(item.duration || 0, band)),
+  ).map((band) => band.label);
+
+  return {
+    languages,
+    categories: Array.from(categories).sort(),
+    channels: source === "youtube" ? sortYoutubeChannels(Array.from(channels)) : [],
+    years: Array.from(years)
+      .sort((a, b) => b - a)
+      .map(String),
+    durationBands,
+    hasLoginRequired,
+  };
+}
+
+/** Drop filter values that are no longer valid for the given facets. */
+export function sanitizeFiltersAgainstFacets(
+  filters: SearchFilters,
+  facets: FilterFacets,
+): SearchFilters {
+  const languages = new Set(facets.languages);
+  const categories = new Set(facets.categories);
+  const channels = new Set(facets.channels);
+  const years = new Set(facets.years);
+  const durationBands = new Set(facets.durationBands);
+
+  const language =
+    filters.language && languages.has(filters.language as "english" | "hindi")
+      ? filters.language
+      : facets.languages.length === 1
+        ? facets.languages[0]
+        : "";
+
+  return {
+    language,
+    categories: filters.categories.filter((c) => categories.has(c)),
+    channels: filters.channels.filter((c) => channels.has(c)).slice(0, 1),
+    years: filters.years.filter((y) => years.has(y)),
+    durationBands: filters.durationBands.filter((b) => durationBands.has(b)),
+    titleSearch: filters.titleSearch,
+    freeOnly: facets.hasLoginRequired ? filters.freeOnly : false,
+  };
+}
+
+/** The catalog is stored newest-first; "oldest" is its exact reverse. */
+export function sortMedia(media: MediaResult[], order: SortOrder): MediaResult[] {
+  return order === "oldest" ? [...media].reverse() : media;
 }
 
 export function filterMedia(media: MediaResult[], filters: SearchFilters): MediaResult[] {
@@ -400,9 +472,7 @@ export function filterMedia(media: MediaResult[], filters: SearchFilters): Media
       const matchesAnyBand = filters.durationBands.some((bandLabel) => {
         const band = DURATION_BANDS.find((b) => b.label === bandLabel);
         if (!band) return false;
-        if (band.min !== undefined && duration < band.min) return false;
-        if (band.max !== undefined && duration >= band.max) return false;
-        return true;
+        return durationMatchesBand(duration, band);
       });
       if (!matchesAnyBand) return false;
     }
@@ -483,6 +553,7 @@ function levenshtein(a: string, b: string): number {
   }
   return prev[b.length];
 }
+
 function normalizeLanguageCode(langCode?: string): "en" | "hi" {
   if (!langCode) return "en";
   const lang = langCode.split("-")[0].toLowerCase();

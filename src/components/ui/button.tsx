@@ -7,15 +7,15 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-      },
-      size: {
-        sm: "h-9 rounded-md px-3",
+        // Square outlined control beside the results heading (back, sort).
+        chip: "h-9 gap-1.5 rounded-none border border-border/60 bg-card/80 px-3 text-foreground/80 hover:border-border hover:text-foreground",
+        // White chip floating on the hero gradient (language, theme).
+        header:
+          "h-5 gap-1 border border-gray-300 bg-white px-1 text-gray-800 shadow-lg transition-all duration-200 hover:bg-gray-50 hover:shadow-xl md:h-10 md:px-3",
       },
     },
     defaultVariants: {
-      variant: "outline",
-      size: "sm",
+      variant: "chip",
     },
   },
 );
@@ -24,8 +24,8 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants>;
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, ...props }, ref) => (
-    <button className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
+  ({ className, variant, ...props }, ref) => (
+    <button className={cn(buttonVariants({ variant, className }))} ref={ref} {...props} />
   ),
 );
 Button.displayName = "Button";

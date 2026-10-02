@@ -1,6 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { filterMedia, recordMediaClick } from "@/lib/data";
-import type { MediaResult, SearchFilters } from "@/lib/types";
+import {
+  filterMedia,
+  getFacets,
+  recordMediaClick,
+  sanitizeFiltersAgainstFacets,
+  sortMedia,
+} from "@/lib/data";
+import type { FilterFacets, MediaResult, SearchFilters } from "@/lib/types";
 
 const { apiUrlState } = vi.hoisted(() => ({
   apiUrlState: { value: "" as string },
@@ -158,6 +164,202 @@ describe("filterMedia tags-only titleSearch", () => {
       titleSearch: "teach",
     });
     expect(got).toEqual([]);
+  });
+});
+
+describe("getFacets", () => {
+  const catalog = [
+    media({
+      id: "tt1",
+      title: "TT Hindi Video",
+      channel: "Timeless Today",
+      language: "hi",
+      category: "Video",
+      publishedYear: 2023,
+      duration: 5,
+      loginRequired: true,
+    }),
+    media({
+      id: "tt2",
+      title: "TT English Music",
+      channel: "Timeless Today",
+      language: "en",
+      category: "Music",
+      publishedYear: 2021,
+      duration: 70,
+      loginRequired: false,
+    }),
+    media({
+      id: "yt1",
+      title: "YT Official",
+      channel: "YouTube @PremRawatOfficial",
+      language: "en",
+      category: "Video",
+      publishedYear: 2024,
+      duration: 15,
+    }),
+    media({
+      id: "yt2",
+      title: "YT WOPG",
+      channel: "YouTube @wopgyt",
+      language: "hi",
+      category: "Video",
+      publishedYear: 2022,
+      duration: 45,
+    }),
+    media({
+      id: "sp1",
+      title: "Spotify episode",
+      channel: "Spotify",
+      language: "en",
+      category: "Podcast",
+      publishedYear: 2020,
+      duration: 30,
+    }),
+  ];
+
+  it("scopes options to YouTube and exposes channels", () => {
+    const facets = getFacets(catalog, "youtube");
+    expect(facets.channels).toEqual(["YouTube @PremRawatOfficial", "YouTube @wopgyt"]);
+    expect(facets.categories).toEqual(["Video"]);
+    expect(facets.languages).toEqual(["english", "hindi"]);
+    expect(facets.years).toEqual(["2024", "2022"]);
+    expect(facets.durationBands).toEqual(["10-20 min", "40-60 min"]);
+    expect(facets.hasLoginRequired).toBe(false);
+  });
+
+  it("only lists YouTube channels that have items in the chosen category", () => {
+    const withMusic = [
+      ...catalog,
+      media({
+        id: "yt3",
+        title: "YT Music",
+        channel: "YouTube @rajvidyakender",
+        language: "en",
+        category: "Music",
+        publishedYear: 2023,
+        duration: 5,
+      }),
+    ];
+    expect(getFacets(withMusic, "youtube", ["Music"]).channels).toEqual([
+      "YouTube @rajvidyakender",
+    ]);
+    expect(getFacets(withMusic, "youtube", ["Video"]).channels).toEqual([
+      "YouTube @PremRawatOfficial",
+      "YouTube @wopgyt",
+    ]);
+  });
+
+  it("does not expose channels for Spotify", () => {
+    const facets = getFacets(catalog, "spotify");
+    expect(facets.channels).toEqual([]);
+    expect(facets.categories).toEqual(["Podcast"]);
+    expect(facets.languages).toEqual(["english"]);
+    expect(facets.years).toEqual(["2020"]);
+    expect(facets.durationBands).toEqual(["20-40 min"]);
+    expect(facets.hasLoginRequired).toBe(false);
+  });
+
+  it("marks hasLoginRequired for Timeless Today", () => {
+    const facets = getFacets(catalog, "timelessToday");
+    expect(facets.hasLoginRequired).toBe(true);
+    expect(facets.languages).toEqual(["english", "hindi"]);
+    expect(facets.categories).toEqual(["Music", "Video"]);
+    expect(facets.years).toEqual(["2023", "2021"]);
+    expect(facets.durationBands).toEqual(["< 10 min", "> 1 hour"]);
+    expect(facets.channels).toEqual([]);
+  });
+
+  it("unions facets for All", () => {
+    const facets = getFacets(catalog, "all");
+    expect(facets.channels).toEqual([]);
+    expect(facets.languages).toEqual(["english", "hindi"]);
+    expect(facets.categories).toEqual(["Music", "Podcast", "Video"]);
+    expect(facets.years).toEqual(["2024", "2023", "2022", "2021", "2020"]);
+    expect(facets.hasLoginRequired).toBe(true);
+    expect(facets.durationBands).toEqual([
+      "< 10 min",
+      "10-20 min",
+      "20-40 min",
+      "40-60 min",
+      "> 1 hour",
+    ]);
+  });
+});
+
+describe("sortMedia", () => {
+  const items = [
+    media({ id: "a", title: "A", timestamp: 3 }),
+    media({ id: "b", title: "B", timestamp: 2 }),
+    media({ id: "c", title: "C", timestamp: 1 }),
+  ];
+
+  it("keeps the newest-first catalog order", () => {
+    expect(sortMedia(items, "newest").map((m) => m.id)).toEqual(["a", "b", "c"]);
+  });
+
+  it("reverses for oldest first without mutating the input", () => {
+    expect(sortMedia(items, "oldest").map((m) => m.id)).toEqual(["c", "b", "a"]);
+    expect(items.map((m) => m.id)).toEqual(["a", "b", "c"]);
+  });
+});
+
+describe("sanitizeFiltersAgainstFacets", () => {
+  const facets: FilterFacets = {
+    languages: ["english"],
+    categories: ["Podcast"],
+    channels: [],
+    years: ["2020"],
+    durationBands: ["20-40 min"],
+    hasLoginRequired: false,
+  };
+
+  it("drops invalid values and clears freeOnly when unavailable", () => {
+    const dirty: SearchFilters = {
+      language: "hindi",
+      categories: ["Video", "Podcast"],
+      channels: ["YouTube @PremRawatOfficial"],
+      years: ["2024", "2020"],
+      durationBands: ["< 10 min", "20-40 min"],
+      titleSearch: "peace",
+      freeOnly: true,
+    };
+    expect(sanitizeFiltersAgainstFacets(dirty, facets)).toEqual({
+      language: "english",
+      categories: ["Podcast"],
+      channels: [],
+      years: ["2020"],
+      durationBands: ["20-40 min"],
+      titleSearch: "peace",
+      freeOnly: false,
+    });
+  });
+
+  it("defaults to the sole available language", () => {
+    expect(sanitizeFiltersAgainstFacets({ ...emptyFilters, language: "" }, facets).language).toBe(
+      "english",
+    );
+  });
+
+  it("keeps a single valid YouTube channel", () => {
+    const ytFacets: FilterFacets = {
+      ...facets,
+      languages: ["english", "hindi"],
+      categories: ["Video"],
+      channels: ["YouTube @PremRawatOfficial", "YouTube @wopgyt"],
+      years: ["2024"],
+      durationBands: ["10-20 min"],
+    };
+    const result = sanitizeFiltersAgainstFacets(
+      {
+        ...emptyFilters,
+        language: "english",
+        channels: ["YouTube @wopgyt", "YouTube @PremRawatOfficial"],
+      },
+      ytFacets,
+    );
+    expect(result.channels).toEqual(["YouTube @wopgyt"]);
+    expect(result.language).toBe("english");
   });
 });
 

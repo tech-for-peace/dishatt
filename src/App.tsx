@@ -1,5 +1,4 @@
 import { lazy, Suspense } from "react";
-import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
@@ -8,7 +7,6 @@ const Stats = lazy(() => import("./pages/Stats"));
 
 const App = () => (
   <ThemeProvider defaultTheme="system">
-    <Toaster />
     <BrowserRouter>
       <Suspense fallback={<div className="min-h-screen bg-background" />}>
         <Routes>

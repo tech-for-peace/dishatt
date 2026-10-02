@@ -10,8 +10,8 @@
     "noEmit": true,
     "noFallthroughCasesInSwitch": false,
     "noImplicitAny": false,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "paths": {
       "@/*": ["./src/*"]
     },
