@@ -49,7 +49,6 @@ interface StatsQuery {
   n: number;
   start: number;
   end: number;
-  seq: number;
 }
 
 export default function Stats() {
@@ -61,7 +60,6 @@ export default function Stats() {
     n: DEFAULT_N,
     start: DEFAULT_START,
     end: DEFAULT_END,
-    seq: 0,
   });
   const [items, setItems] = useState<TopStatsItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -93,9 +91,9 @@ export default function Stats() {
     };
   }, [query]);
 
-  const applyQuery = (next: { n: number; start: number; end: number }) => {
+  const applyQuery = (next: StatsQuery) => {
     setLoading(true);
-    setQuery((prev) => ({ ...next, seq: prev.seq + 1 }));
+    setQuery(next);
   };
 
   const onSelectN = (nextN: number) => {

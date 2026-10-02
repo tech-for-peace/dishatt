@@ -1,10 +1,21 @@
 {
   "header": {
-    "tagline": "Timeless Today और Prem Rawat के आधिकारिक YouTube चैनल से वीडियो खोजें।"
+    "tagline": "Prem Rawat का संदेश खोजें — Timeless Today, YouTube, Intelligent Existence, Spotify और Apple Podcast पर।"
+  },
+  "picker": {
+    "subtitle": "शुरू करने के लिए एक स्रोत चुनें।",
+    "goBack": "वापस जाएं",
+    "itemCount_one": "{{count}} आइटम",
+    "itemCount_other": "{{count}} आइटम",
+    "allVideo": "सभी वीडियो",
+    "allMusic": "सभी संगीत",
+    "ttVideo": "टाइमलेस टुडे पर वीडियो",
+    "ttMusic": "टाइमलेस टुडे पर संगीत",
+    "ytVideo": "यूट्यूब पर वीडियो",
+    "ytMusic": "यूट्यूब पर संगीत"
   },
   "filters": {
     "allLanguages": "सभी भाषाएँ",
-    "allCategories": "सभी श्रेणियाँ",
     "allYears": "सभी वर्ष",
     "allDurations": "सभी अवधि",
     "selected": "चुने हुए",
@@ -13,13 +24,19 @@
     "freeOnly": "Free"
   },
   "sources": {
-    "all": "सभी",
-    "channelAll": "सभी चैनल"
+    "all": "सभी"
+  },
+  "sort": {
+    "newest": "नया पहले",
+    "oldest": "पुराना पहले",
+    "toggle": "क्रम बदलें"
   },
   "results": {
     "mediaCount_one": "{{count}} वीडियो मिला",
     "mediaCount_other": "{{count}} वीडियो मिले",
     "noMediaMessage": "और सामग्री खोजने के लिए अपने खोज शब्द या फ़िल्टर बदलने का प्रयास करें।",
+    "loadError": "सामग्री लोड नहीं हो सकी।",
+    "retry": "फिर कोशिश करें",
     "new": "नया"
   },
   "mediaCard": {
@@ -32,10 +49,5 @@
   "language": {
     "english": "English",
     "hindi": "हिंदी"
-  },
-  "category": {
-    "video": "वीडियो",
-    "music": "संगीत",
-    "podcast": "पॉडकास्ट"
   }
 }

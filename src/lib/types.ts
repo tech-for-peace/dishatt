@@ -1,5 +1,7 @@
 export type Language = "english" | "hindi" | "";
 
+export type SortOrder = "newest" | "oldest";
+
 export interface DurationBand {
   label: string;
   min?: number;
@@ -36,7 +38,6 @@ export interface MediaResult {
 }
 
 export const DURATION_BANDS: DurationBand[] = [
-  { label: "Any Duration" },
   { label: "< 10 min", max: 10 },
   { label: "10-20 min", min: 10, max: 20 },
   { label: "20-40 min", min: 20, max: 40 },
@@ -44,6 +45,15 @@ export const DURATION_BANDS: DurationBand[] = [
   { label: "> 1 hour", min: 60 },
 ];
 
-export const YEARS = Array.from({ length: 15 }, (_, i) =>
-  (new Date().getFullYear() - i).toString(),
-);
+export interface FilterFacets {
+  languages: Array<"english" | "hindi">;
+  categories: string[];
+  /** YouTube ContentSource strings; empty for non-YouTube sources. */
+  channels: string[];
+  /** Distinct published years, newest first. */
+  years: string[];
+  /** Duration band labels that contain at least one item. */
+  durationBands: string[];
+  /** When true, the Free-only checkbox is meaningful for this source. */
+  hasLoginRequired: boolean;
+}

@@ -4,8 +4,8 @@ import { memo, useState } from "react";
 
 import { MediaResult } from "@/lib/types";
 import { formatLanguage, markMediaAsClicked, recordMediaClick } from "@/lib/data";
-import { getSourceKey, SOURCE_LABEL_KEY, SourceKey } from "@/lib/sources";
-import { Badge } from "./ui/badge";
+import { getSourceKey, sourceLabelKey, SourceKey } from "@/lib/sources";
+import { Badge } from "@/components/ui/badge";
 
 const SOURCE_BADGE_CLASS: Record<SourceKey, string> = {
   youtube: "bg-red-600 hover:bg-red-700 text-white",
@@ -81,6 +81,11 @@ function isSafeUrl(url: string): boolean {
   }
 }
 
+/** Timeless Today links work without the "www." prefix. */
+function canonicalUrl(url: string): string {
+  return url.includes("timelesstoday.tv") ? url.replace("//www.", "//") : url;
+}
+
 function isAllowedThumbnailHost(hostname: string): boolean {
   return ALLOWED_THUMBNAIL_DOMAINS.includes(hostname) || hostname.endsWith(".mzstatic.com");
 }
@@ -93,13 +98,12 @@ interface MediaCardProps {
 export const MediaCard = memo(function MediaCard({ media, index }: MediaCardProps) {
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language;
+  const hasDay = (media.publishedDay ?? 0) > 0;
   const mediaDate = new Date(
     media.publishedYear,
     media.publishedMonth,
-    media.publishedDay && media.publishedDay > 0 ? media.publishedDay : 1,
+    hasDay ? media.publishedDay : 1,
   );
-  const hasDay =
-    media.publishedDay !== undefined && media.publishedDay !== 0 && media.publishedDay > 0;
   const isUpcoming = mediaDate > new Date();
 
   const [imageError, setImageError] = useState(false);
@@ -116,23 +120,15 @@ export const MediaCard = memo(function MediaCard({ media, index }: MediaCardProp
     markMediaAsClicked(media.id);
     recordMediaClick(media.id);
 
-    let url = media.url?.trim() ?? "";
-    if (!url) return;
-
-    if (url.includes("timelesstoday.tv")) {
-      url = url.replace("//www.", "//");
-    }
-    if (!isSafeUrl(url)) return;
+    const url = canonicalUrl(media.url?.trim() ?? "");
+    if (!url || !isSafeUrl(url)) return;
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
   const handleShare = async (e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent card click
 
-    let shareUrl = media.url;
-    if (shareUrl.includes("timelesstoday.tv")) {
-      shareUrl = shareUrl.replace("//www.", "//");
-    }
+    const shareUrl = canonicalUrl(media.url);
 
     const shareText = `${media.title} - ${shareUrl}`;
 
@@ -162,10 +158,11 @@ export const MediaCard = memo(function MediaCard({ media, index }: MediaCardProp
     }
 
     // Fallback to direct WhatsApp URL
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
-    if (isSafeUrl(whatsappUrl)) {
-      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-    }
+    window.open(
+      `https://wa.me/?text=${encodeURIComponent(shareText)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
   };
 
   return (
@@ -215,7 +212,7 @@ export const MediaCard = memo(function MediaCard({ media, index }: MediaCardProp
           variant="secondary"
           className={`absolute top-2 left-3 text-xs font-medium ${SOURCE_BADGE_CLASS[sourceKey]}`}
         >
-          {t(SOURCE_LABEL_KEY[sourceKey])}
+          {t(sourceLabelKey(sourceKey))}
         </Badge>
         {/* Badge - Show Upcoming if applicable, otherwise show New if applicable */}
         {isUpcoming && (

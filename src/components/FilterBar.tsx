@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { RefreshCw } from "lucide-react";
 
 import { FilterMenu } from "@/components/ui/filter-menu";
 import { Input } from "@/components/ui/input";
-import { getUniqueCategories } from "@/lib/data";
-import { SearchFilters, DURATION_BANDS, YEARS, Language } from "@/lib/types";
+import { YoutubeIcon } from "@/components/icons/source-icons";
+import { formatChannelLabel, youtubeChannelLogoUrl } from "@/lib/sources";
+import { FilterFacets, Language, SearchFilters } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 const formatDurationLabel = (label: string, language: string): string => {
-  if (label === "Any Duration") return label;
-
   if (label.includes("hour")) {
     const num = parseInt(label.match(/\d+/)?.[0] || "1", 10);
     return language === "hi" ? `${num} घंटे से अधिक` : label;
@@ -33,107 +32,170 @@ const formatDurationLabel = (label: string, language: string): string => {
 
 interface FilterBarProps {
   filters: SearchFilters;
+  facets: FilterFacets;
   onFilterChange: (key: keyof SearchFilters, value: string | string[] | boolean) => void;
   onResetFilters: () => void;
 }
 
-export function FilterBar({ filters, onFilterChange, onResetFilters }: FilterBarProps) {
+export function FilterBar({ filters, facets, onFilterChange, onResetFilters }: FilterBarProps) {
   const { t, i18n } = useTranslation();
-  const [categories, setCategories] = useState<string[]>([]);
 
-  useEffect(() => {
-    getUniqueCategories().then(setCategories);
-  }, []);
+  // Show language even when only one option (e.g. Spotify / Apple → English).
+  const showLanguage = facets.languages.length >= 1;
+  const showDurations = facets.durationBands.length > 0;
+  const showYears = facets.years.length > 0;
+  const showFreeOnly = facets.hasLoginRequired;
+  const showChannels = facets.channels.length > 0;
 
-  const durationOptions = DURATION_BANDS.filter((band) => band.label !== "Any Duration").map(
-    (band) => ({
-      value: band.label,
-      label: formatDurationLabel(band.label, i18n.language),
-    }),
-  );
-
-  const languageOptions = [
-    { value: "english", label: t("language.english") },
-    { value: "hindi", label: t("language.hindi") },
-  ];
-
-  const categoryOptions = categories.map((category) => ({
-    value: category,
-    label: t(`category.${category.toLowerCase()}`, category),
+  const languageOptions = facets.languages.map((value) => ({
+    value,
+    label: t(`language.${value}`),
   }));
 
-  const yearOptions = YEARS.map((year) => ({ value: year, label: year }));
+  const durationOptions = facets.durationBands.map((band) => ({
+    value: band,
+    label: formatDurationLabel(band, i18n.language),
+  }));
 
-  const freeCheckbox = (
-    <label className="flex h-8 cursor-pointer select-none items-center gap-2 whitespace-nowrap rounded-none border border-border/60 px-3 py-1 text-sm font-medium text-foreground/80 transition-colors hover:border-border hover:text-foreground">
+  const yearOptions = facets.years.map((year) => ({ value: year, label: year }));
+
+  const dropdownCount = Number(showLanguage) + Number(showDurations) + Number(showYears);
+  // Phone uses 2 filter columns; an odd count leaves the last menu alone — span it full width.
+  const phoneLastMenuSpans = dropdownCount % 2 === 1;
+  const lastMenu = showYears
+    ? "years"
+    : showDurations
+      ? "durations"
+      : showLanguage
+        ? "language"
+        : null;
+
+  const selectChannel = (channel: string) => {
+    const next = filters.channels[0] === channel ? [] : [channel];
+    onFilterChange("channels", next);
+  };
+
+  const menuSpanClass = (menu: "language" | "durations" | "years") =>
+    phoneLastMenuSpans && lastMenu === menu ? "col-span-2 sm:col-span-1" : undefined;
+
+  const freeCheckbox = showFreeOnly ? (
+    <label className="flex h-9 cursor-pointer select-none items-center justify-center gap-1.5 whitespace-nowrap rounded-none border border-border/60 px-2.5 py-1 text-base font-medium text-foreground/80 transition-colors hover:border-border hover:text-foreground sm:gap-2 sm:px-3">
       <input
         type="checkbox"
         checked={filters.freeOnly}
         onChange={(e) => onFilterChange("freeOnly", e.target.checked)}
-        className="h-4 w-4 rounded border-border accent-primary"
+        className="h-4 w-4 shrink-0 rounded border-border accent-primary"
       />
       <span>{t("filters.freeOnly")}</span>
     </label>
+  ) : null;
+
+  const resetButton = (
+    <button
+      type="button"
+      onClick={onResetFilters}
+      aria-label={t("filters.reset")}
+      title={t("filters.reset")}
+      className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-none border border-border/60 text-foreground/70 transition-colors hover:border-border hover:bg-muted/40 hover:text-foreground"
+    >
+      <RefreshCw className="h-4 w-4" />
+    </button>
   );
 
   return (
-    <div className="relative z-20 -mt-8 md:-mt-20">
-      <div className="w-full animate-fade-in rounded-none border border-border/50 bg-card/80 p-2.5 shadow-soft backdrop-blur-sm">
-        {/* Dropdowns above search — same layout as main */}
-        <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3 md:grid-cols-4">
-          <FilterMenu
-            label={t("filters.allLanguages")}
-            mode="single"
-            value={filters.language}
-            options={languageOptions}
-            onChange={(value) => onFilterChange("language", value as Language)}
-          />
-          <FilterMenu
-            label={t("filters.allCategories")}
-            mode="multi"
-            values={filters.categories || []}
-            options={categoryOptions}
-            onChange={(values) => onFilterChange("categories", values)}
-          />
-          <FilterMenu
-            label={t("filters.allDurations")}
-            mode="multi"
-            values={filters.durationBands || []}
-            options={durationOptions}
-            onChange={(values) => onFilterChange("durationBands", values)}
-          />
-          <FilterMenu
-            label={t("filters.allYears")}
-            mode="multi"
-            values={filters.years || []}
-            options={yearOptions}
-            onChange={(values) => onFilterChange("years", values)}
-          />
-        </div>
+    <div className="relative z-20 -mt-8">
+      <div className="w-full animate-fade-in rounded-none border border-border/50 bg-card/80 p-2.5 shadow-soft backdrop-blur-sm space-y-1.5">
+        {dropdownCount > 0 && (
+          <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3">
+            {showLanguage && (
+              <FilterMenu
+                label={t("filters.allLanguages")}
+                mode="single"
+                value={filters.language}
+                options={languageOptions}
+                onChange={(value) => onFilterChange("language", value as Language)}
+                className={menuSpanClass("language")}
+              />
+            )}
+            {showDurations && (
+              <FilterMenu
+                label={t("filters.allDurations")}
+                mode="multi"
+                values={filters.durationBands || []}
+                options={durationOptions}
+                onChange={(values) => onFilterChange("durationBands", values)}
+                className={menuSpanClass("durations")}
+              />
+            )}
+            {showYears && (
+              <FilterMenu
+                label={t("filters.allYears")}
+                mode="multi"
+                values={filters.years || []}
+                options={yearOptions}
+                onChange={(values) => onFilterChange("years", values)}
+                className={menuSpanClass("years")}
+              />
+            )}
+          </div>
+        )}
 
-        <div className="mt-1.5 flex gap-1.5">
+        <div className="flex gap-1.5">
           <Input
             placeholder={t("filters.searchPlaceholder")}
             value={filters.titleSearch}
             onChange={(e) => onFilterChange("titleSearch", e.target.value)}
-            className="h-8 flex-1 rounded-none border-border/50 bg-background/50 transition-colors hover:border-primary/30"
+            className="h-9 min-w-0 flex-1 rounded-none border-border/50 bg-background/50 text-base transition-colors hover:border-primary/30"
             inputMode="search"
             autoComplete="off"
             autoCorrect="off"
             autoCapitalize="off"
             spellCheck="false"
           />
-          {freeCheckbox}
-          <button
-            type="button"
-            onClick={onResetFilters}
-            className="flex h-8 items-center gap-1.5 whitespace-nowrap rounded-none border border-border/60 px-3 py-1 text-xs font-medium text-foreground/70 transition-colors hover:border-border hover:bg-muted/40 hover:text-foreground"
-            title={t("filters.reset")}
-          >
-            <RefreshCw className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline">{t("filters.reset")}</span>
-          </button>
+          <div className="flex gap-1.5">
+            {freeCheckbox}
+            {resetButton}
+          </div>
         </div>
+
+        {showChannels && (
+          <div className="flex flex-wrap items-center gap-1">
+            {facets.channels.map((channel) => {
+              const selected = filters.channels[0] === channel;
+              const logoUrl = youtubeChannelLogoUrl(channel);
+              return (
+                <button
+                  key={channel}
+                  type="button"
+                  aria-pressed={selected}
+                  onClick={() => selectChannel(channel)}
+                  className={cn(
+                    "inline-flex h-7 cursor-pointer items-center gap-1 rounded-none border px-1.5 text-xs font-medium shadow-sm transition-all active:translate-y-px",
+                    selected
+                      ? "border-foreground bg-foreground text-background"
+                      : "border-border bg-card text-foreground/80 opacity-75 hover:opacity-100",
+                  )}
+                >
+                  {logoUrl ? (
+                    <img
+                      src={logoUrl}
+                      alt=""
+                      width={14}
+                      height={14}
+                      className="h-3.5 w-3.5 shrink-0 rounded-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    <YoutubeIcon className="h-3 w-3 shrink-0" />
+                  )}
+                  {formatChannelLabel(channel)}
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

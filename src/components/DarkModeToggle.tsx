@@ -14,12 +14,7 @@ export function DarkModeToggle() {
   };
 
   return (
-    <Button
-      variant="outline"
-      size="sm"
-      onClick={toggleTheme}
-      className="h-5 md:h-10 gap-1 px-1 md:px-3 bg-white border-gray-300 hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all duration-200"
-    >
+    <Button variant="header" onClick={toggleTheme}>
       {isDark ? (
         <Moon className="h-2 w-2 md:h-4 md:w-4 text-gray-700" />
       ) : (

@@ -7,7 +7,6 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { cn } from "@/lib/utils";
 
 interface FilterMenuOption {
   value: string;
@@ -36,7 +35,7 @@ interface MultiFilterMenuProps extends FilterMenuBase {
 type FilterMenuProps = SingleFilterMenuProps | MultiFilterMenuProps;
 
 const TRIGGER_CLASS =
-  "flex h-8 w-full items-center justify-between rounded-none border border-border/50 bg-background/50 px-3 py-1 text-sm ring-offset-background hover:border-primary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2";
+  "flex h-9 w-full items-center justify-between rounded-none border border-border/50 bg-background/50 px-3 py-1 text-base ring-offset-background hover:border-primary/30 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2";
 
 export function FilterMenu(props: FilterMenuProps) {
   const { t } = useTranslation();
@@ -79,41 +78,43 @@ export function FilterMenu(props: FilterMenuProps) {
   };
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger className={cn(TRIGGER_CLASS, className)}>
-        <span className="truncate">{displayText}</span>
-        <ChevronDown className="h-4 w-4 shrink-0 opacity-50" />
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="max-h-64 w-48 overflow-y-auto rounded-none">
-        <DropdownMenuCheckboxItem
-          checked={!isActive}
-          onCheckedChange={handleClear}
-          onSelect={(e) => {
-            if (isMulti) e.preventDefault();
-          }}
-        >
-          {label}
-        </DropdownMenuCheckboxItem>
-        {options.map((option) => {
-          const checked = isMulti
-            ? props.values.includes(option.value)
-            : props.value === option.value;
-          return (
-            <DropdownMenuCheckboxItem
-              key={option.value}
-              checked={checked}
-              onCheckedChange={() =>
-                isMulti ? handleMultiToggle(option.value) : handleSingleToggle(option.value)
-              }
-              onSelect={(e) => {
-                if (isMulti) e.preventDefault();
-              }}
-            >
-              {option.label}
-            </DropdownMenuCheckboxItem>
-          );
-        })}
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <div className={className}>
+      <DropdownMenu>
+        <DropdownMenuTrigger className={TRIGGER_CLASS}>
+          <span className="truncate">{displayText}</span>
+          <ChevronDown className="h-4 w-4 shrink-0 opacity-50" />
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="start" className="max-h-64 w-48 overflow-y-auto rounded-none">
+          <DropdownMenuCheckboxItem
+            checked={!isActive}
+            onCheckedChange={handleClear}
+            onSelect={(e) => {
+              if (isMulti) e.preventDefault();
+            }}
+          >
+            {label}
+          </DropdownMenuCheckboxItem>
+          {options.map((option) => {
+            const checked = isMulti
+              ? props.values.includes(option.value)
+              : props.value === option.value;
+            return (
+              <DropdownMenuCheckboxItem
+                key={option.value}
+                checked={checked}
+                onCheckedChange={() =>
+                  isMulti ? handleMultiToggle(option.value) : handleSingleToggle(option.value)
+                }
+                onSelect={(e) => {
+                  if (isMulti) e.preventDefault();
+                }}
+              >
+                {option.label}
+              </DropdownMenuCheckboxItem>
+            );
+          })}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
   );
 }

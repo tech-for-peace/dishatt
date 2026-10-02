@@ -1,6 +1,7 @@
 export const UI_CONFIG = {
   mediaPerLoad: 12,
-  cacheKey: "videoSearchFilters",
+  /** Bumped when filter shape / wizard UX changed so stale localStorage is ignored. */
+  cacheKey: "videoSearchFilters_v2",
 };
 
 export const API_CONFIG = {

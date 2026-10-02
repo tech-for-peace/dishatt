@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Compass } from "lucide-react";
 import { MediaResult } from "@/lib/types";
-import { MediaCard } from "./MediaCard";
+import { MediaCard } from "@/components/MediaCard";
 interface MediaGridProps {
   media: MediaResult[];
   isLoading: boolean;

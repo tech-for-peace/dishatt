@@ -1,10 +1,21 @@
 {
   "header": {
-    "tagline": "Discover videos from Timeless Today and Prem Rawat official YouTube channels."
+    "tagline": "Discover Prem Rawat's message on Timeless Today, YouTube, Intelligent Existence, Spotify, and Apple Podcast."
+  },
+  "picker": {
+    "subtitle": "Choose a source to get started.",
+    "goBack": "Go back",
+    "itemCount_one": "{{count}} item",
+    "itemCount_other": "{{count}} items",
+    "allVideo": "All Video",
+    "allMusic": "All Music",
+    "ttVideo": "Video on Timeless Today",
+    "ttMusic": "Music on Timeless Today",
+    "ytVideo": "Video on YouTube",
+    "ytMusic": "Music on YouTube"
   },
   "filters": {
     "allLanguages": "All Languages",
-    "allCategories": "All Categories",
     "allYears": "All Years",
     "allDurations": "All Durations",
     "selected": "selected",
@@ -13,13 +24,19 @@
     "freeOnly": "Free"
   },
   "sources": {
-    "all": "All",
-    "channelAll": "All channels"
+    "all": "All"
+  },
+  "sort": {
+    "newest": "Newest first",
+    "oldest": "Oldest first",
+    "toggle": "Change sort order"
   },
   "results": {
     "mediaCount_one": "{{count}} video found",
     "mediaCount_other": "{{count}} videos found",
     "noMediaMessage": "Try adjusting your search terms or filters to discover more content.",
+    "loadError": "Couldn't load content.",
+    "retry": "Try again",
     "new": "New"
   },
   "mediaCard": {
@@ -33,14 +50,8 @@
     "english": "English",
     "hindi": "Hindi"
   },
-  "category": {
-    "video": "Video",
-    "music": "Music",
-    "podcast": "Podcast"
-  },
   "stats": {
     "title": "Disha (stats)",
-    "summary": "Top {{n}} · {{window}}",
     "topN": "Results",
     "window": "Time window",
     "lastHours_one": "Last {{count}} hour",
